@@ -1,5 +1,7 @@
 # 📚 The Social Work Meta-Data Project
 
+**🌐 Project page: [beperron.github.io/SocialWork-MetaData](https://beperron.github.io/SocialWork-MetaData/)**
+
 The Social Work Meta-Data Project maintains two curated bibliographic databases documenting the scholarly record of social work: the **Social Work Research Database (SWRD)**, covering the discipline's journal literature, and the **SSWR Conference Database**, covering presentations at the Society for Social Work and Research annual conference. Together they provide an infrastructure for scientometric analysis, literature discovery, and the study of knowledge production in the discipline.
 
 Each database consists of structured records — title, abstract, authors and affiliations, publication venue, year, and classification labels — rather than full texts. Records link to source articles through their DOIs.
@@ -132,6 +134,6 @@ The SWRD's original version (1989–2013) was introduced in Perron, B. E., Victo
 
 Inquiries, collaboration proposals, and requests for data extracts are welcome.
 
-**Brian Perron** · University of Michigan School of Social Work · **beperron@umich.edu**
+**[Brian Perron](https://parallel42.ai)** · University of Michigan School of Social Work · **beperron@umich.edu**
 
 <sub>Technical documentation for working with the databases directly is in the [docs folder](docs/TECHNICAL_OVERVIEW.md).</sub>
