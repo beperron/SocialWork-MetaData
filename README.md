@@ -5,7 +5,31 @@ A consolidated research metadata platform for social work scholarship, hosted on
 | Schema | Dataset | Scale |
 |---|---|---|
 | **`sswr`** | Society for Social Work and Research (SSWR) annual conference metadata, 2005–2026 | 23,793 papers · 21,209 canonical authors · 69,924 authorship records |
-| **`swrd`** | Social Work Research Database — peer-reviewed journal articles, 1920–2025 | 110,618 papers · 164,549 authors · 91 journals · 241,766 authorship records · 113,646 author–organization affiliations |
+| **`swrd`** | Social Work Research Database (SWRD) — article records from the population of disciplinary social work journals | 110,618 papers · 164,549 authors · 91 journals · 241,766 authorship records · 113,646 author–organization affiliations |
+
+## Citing these databases
+
+**SWRD** — the database is defined by, and should be cited as:
+
+> Perron, B. E., Victor, B. G., Hodge, D. R., Salas-Wright, C. P., Vaughn, M. G., & Taylor, R. J. (2017). Laying the foundations for scientometric research: A data science approach. *Research on Social Work Practice, 27*(7), 802–812. https://doi.org/10.1177/1049731515624966
+
+**SSWR** — the conference metadata database is described in:
+
+> Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation of conference scholarship: Compiling, structuring, and analyzing two decades of presentations at the Society for Social Work and Research. *arXiv*. https://doi.org/10.48550/arXiv.2603.06814 — **in press, *Journal of the Society for Social Work and Research***.
+
+Both citations are also embedded in the database itself: `select * from swrd.database_info;` / `select * from sswr.database_info;`, and as `COMMENT ON SCHEMA`.
+
+## The SWRD: core corpus and supplemental extensions
+
+The **core SWRD** is the corpus established by Perron et al. (2017): a comprehensive population list of **90 disciplinary social work journals** (built from Hodge & Lacasse, 2011, with team-reviewed additions), with **33,330 unique article records from 80 of those journals covering 1989–2013**, harvested via EBSCOhost and ProQuest across 35 databases, restricted to journal articles (editorials, book reviews, letters, and obituaries excluded), restructured into uniform records with the open-source *BibWrangleR* R package, and coverage-validated against Scopus. It was, at publication, the largest stand-alone collection of article records from disciplinary social work journals — and the first fully reproducible study published in a social work journal.
+
+Everything else in the `swrd` schema is a **supplemental extension** of that core, added in later phases of the project:
+
+- **Temporal extensions** — historical backfill to 1920 and ongoing updates through 2025, bringing the core window's coverage from 33,330 to 50,924 records (later harvesting filled indexing gaps identified in the original extraction) within a 110,618-record total.
+- **Additional sources** — Web of Science and Scopus API harvests, DOAJ, Digital Commons, and journal-archive imports, deduplicated against the core on DOI/WoS/Scopus identifiers (4,500 records still carry the original harvest's source tag).
+- **Enrichment** — LLM-based classification of papers with abstracts (`is_scientific`, `is_empirical`, `research_method`), and 768-dim semantic embeddings.
+
+The schema encodes this distinction directly: **`swrd.core_papers`** (1989–2013 window, currently 50,924 rows) and **`swrd.supplemental_papers`** (59,694 rows) views sit alongside the full `swrd.papers` table, so analyses can target the citable core corpus, the extensions, or both. The current `journals` table holds 91 titles against the paper's population of 90 (one post-publication addition after historical-title consolidation).
 
 Both datasets carry full-text search (Postgres `tsvector`), trigram author/institution matching (`pg_trgm`), and 768-dimensional semantic embeddings (`pgvector`, EmbeddingGemma-300m) for hybrid retrieval.
 
@@ -36,11 +60,12 @@ Embeddings were **not** migrated. Both schemas were re-embedded from scratch wit
 - `paper_export` — flat denormalized view for analysis exports
 
 ### `swrd` schema
-- `papers` — integer PK, DOI/WoS/Scopus identifiers, journal FK, citations, OA flag, volume/issue/pages, plus LLM-enrichment fields: `is_scientific`, `is_empirical`, `research_method`, stage confidences/justifications
+- `papers` — integer PK, DOI/WoS/Scopus identifiers, journal FK, citations, OA flag, volume/issue/pages, plus supplemental LLM-enrichment fields: `is_scientific`, `is_empirical`, `research_method`, stage confidences/justifications
+- `core_papers` / `supplemental_papers` — views separating the citable core corpus (1989–2013, per Perron et al., 2017) from the supplemental extensions
 - `journals`, `authors` (ORCID/WoS/Scopus ids), `organizations`, `paper_authors` (position, corresponding flag), `author_affiliations`
-- `title_abstract_embeddings` — one 768-dim vector per paper, HNSW-indexed
+- `title_abstract_embeddings` — one 768-dim vector per paper, HNSW-indexed (supplemental)
 - `embedding_models` / `embedding_runs` — embedding provenance tracking
-- Views: `papers_with_journals`, `author_publication_stats`, `publication_trends`, `highly_cited_papers`, `database_summary`, `organization_collaborations`
+- Views: `database_info` (citation + core/supplemental counts), `papers_with_journals`, `author_publication_stats`, `publication_trends`, `highly_cited_papers`, `database_summary`, `organization_collaborations`
 
 ### Semantic embeddings
 All embeddings are generated locally via [Ollama](https://ollama.com) with **`embeddinggemma:300m`** (Google EmbeddingGemma, 768 dims), using the model's document prompt convention:
@@ -110,8 +135,8 @@ Full recipes, the grants model, and re-embedding notes: [`docs/RECONNECTION_GUID
 
 ## Provenance
 
-- SSWR data was scraped and entity-resolved from official SSWR conference programs (2005–2026); see the SSWR-History project.
-- SWRD aggregates Web of Science, Scopus, DOAJ, Digital Commons, and journal-archive exports, deduplicated on DOI/WoS/Scopus identifiers, with LLM-based scientific/empirical/method classification on papers with abstracts (61.5% coverage).
+- **SSWR** (`sswr`): compiled and entity-resolved from official SSWR conference programs (2005–2026) using AI-assisted curation; methodology in Perron, Victor, & Qi (2026, arXiv:2603.06814; in press, *JSSWR*). See the SSWR-History project.
+- **SWRD** (`swrd`): core corpus per Perron et al. (2017) — EBSCOhost/ProQuest harvest of the social work journal population, 1989–2013, BibWrangleR-processed, Scopus-validated. Supplemental extensions aggregate Web of Science, Scopus, DOAJ, Digital Commons, and journal-archive exports (deduplicated on DOI/WoS/Scopus identifiers), plus LLM-based scientific/empirical/method classification on papers with abstracts (61.5% coverage).
 - The original source Supabase projects remain intact (read-only reference) until formally retired.
 
 ---
