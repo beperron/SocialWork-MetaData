@@ -149,7 +149,7 @@ def ollama_sql(model, question):
         "options": {"temperature": 0},
         "messages": [{"role": "system", "content": SYSTEM},
                      {"role": "user", "content": question}],
-    }, timeout=600)
+    }, timeout=int(os.environ.get("OLLAMA_TIMEOUT", "600")))
     r.raise_for_status()
     text = r.json()["message"]["content"]
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.S)      # strip reasoning tags
@@ -168,7 +168,13 @@ def values_of(rows):
     return vals
 
 def main():
-    models = sys.argv[1:]
+    args = sys.argv[1:]
+    only = None                       # --only 35,42  → rerun just those questions (1-based), merge into existing answers
+    if "--only" in args:
+        k = args.index("--only")
+        only = [int(x) - 1 for x in args[k + 1].split(",")]
+        args = args[:k] + args[k + 2:]
+    models = args
     truths = []
     for item in QUESTIONS:
         truths.append(values_of(run_sql(item["truth_sql"])))
@@ -180,9 +186,20 @@ def main():
     else:
         results = {"questions": [q["q"] for q in QUESTIONS], "categories": [q["cat"] for q in QUESTIONS], "models": {}}
     for model in models:
-        per_q = []
-        for i, item in enumerate(QUESTIONS):
+        prev = results["models"].get(model, {}).get("answers")
+        if only is not None:
+            if not prev or len(prev) != len(QUESTIONS):
+                print(f"[{model}] --only requires existing full results; skipping", flush=True)
+                continue
+            per_q = list(prev)
+            idxs = only
+        else:
+            per_q = [None] * len(QUESTIONS)
+            idxs = range(len(QUESTIONS))
+        for i in idxs:
+            item = QUESTIONS[i]
             t0 = time.time()
+            rows = None
             try:
                 sql, raw = ollama_sql(model, item["q"])
                 rows = run_sql(sql)
@@ -194,7 +211,7 @@ def main():
                     detail = "correct" if ok else f"expected one of {sorted(truths[i])[:3]}, got {sorted(got)[:3]}"
             except Exception as e:
                 sql, ok, detail = "", False, f"harness error: {e}"
-            per_q.append({"ok": ok, "sql": sql, "detail": detail, "secs": round(time.time()-t0, 1), "rows": (rows[:3] if isinstance(rows, list) else rows)})
+            per_q[i] = {"ok": ok, "sql": sql, "detail": detail, "secs": round(time.time()-t0, 1), "rows": (rows[:3] if isinstance(rows, list) else rows)}
             print(f"[{model}] Q{i+1} {'PASS' if ok else 'FAIL'} ({per_q[-1]['secs']}s) {detail[:100]}", flush=True)
         score = sum(1 for r in per_q if r["ok"])
         results["models"][model] = {"score": score, "total": len(QUESTIONS), "answers": per_q}

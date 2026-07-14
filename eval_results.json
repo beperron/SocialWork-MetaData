@@ -1047,13 +1047,9 @@
     {
      "ok": false,
      "sql": "",
-     "detail": "harness error: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=600)",
-     "secs": 600.0,
-     "rows": [
-      {
-       "count": 11
-      }
-     ]
+     "detail": "non-terminating generation: at temperature 0 the model reasons in circles and never emits an answer (>94,000 tokens over a 30-minute limit; reproduced three times)",
+     "secs": 1800.0,
+     "rows": null
     },
     {
      "ok": true,
@@ -2838,6 +2834,562 @@
      "sql": "SELECT COUNT(*) FROM (SELECT paper_id FROM sswr.paper_authors GROUP BY paper_id HAVING COUNT(*) > 6) AS sub",
      "detail": "correct",
      "secs": 14.7,
+     "rows": [
+      {
+       "count": 1083
+      }
+     ]
+    }
+   ]
+  },
+  "ornith:35b": {
+   "score": 48,
+   "total": 48,
+   "answers": [
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers",
+     "detail": "correct",
+     "secs": 5.9,
+     "rows": [
+      {
+       "count": 110618
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.papers where publication_year < 1989",
+     "detail": "correct",
+     "secs": 3.8,
+     "rows": [
+      {
+       "count": 23288
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.journals",
+     "detail": "correct",
+     "secs": 2.9,
+     "rows": [
+      {
+       "count": 91
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) as n from swrd.papers p join swrd.journals j on j.id = p.journal_id where j.name = 'Child & Family Social Work'",
+     "detail": "correct",
+     "secs": 7.3,
+     "rows": [
+      {
+       "n": 1624
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.papers where year = 2024",
+     "detail": "correct",
+     "secs": 2.6,
+     "rows": [
+      {
+       "count": 1516
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.papers",
+     "detail": "correct",
+     "secs": 1.7,
+     "rows": [
+      {
+       "count": 23793
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.authors",
+     "detail": "correct",
+     "secs": 3.7,
+     "rows": [
+      {
+       "count": 21209
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2005",
+     "detail": "correct",
+     "secs": 3.2,
+     "rows": [
+      {
+       "count": 423
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select distinct research_method from swrd.papers order by 1",
+     "detail": "correct",
+     "secs": 3.4,
+     "rows": [
+      {
+       "research_method": "Mixed-Methods"
+      },
+      {
+       "research_method": "Qualitative"
+      },
+      {
+       "research_method": "Quantitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.papers where research_method = 'Mixed-Methods'",
+     "detail": "correct",
+     "secs": 7.0,
+     "rows": [
+      {
+       "count": 1970
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) as n from swrd.papers where research_method = 'Review'",
+     "detail": "correct",
+     "secs": 4.4,
+     "rows": [
+      {
+       "n": 706
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) as n from swrd.papers where is_scientific = true and is_empirical = false",
+     "detail": "correct",
+     "secs": 5.4,
+     "rows": [
+      {
+       "n": 27918
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select distinct methodology from sswr.papers order by 1",
+     "detail": "correct",
+     "secs": 4.8,
+     "rows": [
+      {
+       "methodology": "mixed_methods"
+      },
+      {
+       "methodology": "other"
+      },
+      {
+       "methodology": "qualitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.papers where methodology = 'other'",
+     "detail": "correct",
+     "secs": 2.5,
+     "rows": [
+      {
+       "count": 240
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.papers where methodology = 'mixed_methods'",
+     "detail": "correct",
+     "secs": 2.5,
+     "rows": [
+      {
+       "count": 2172
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(DISTINCT format) FROM sswr.papers",
+     "detail": "correct",
+     "secs": 3.3,
+     "rows": [
+      {
+       "count": 7
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select j.name, count(*) as n from swrd.papers p join swrd.journals j on j.id = p.journal_id where p.publication_year >= 1989 group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 3.9,
+     "rows": [
+      {
+       "n": 5931,
+       "name": "British Journal of Social Work"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.papers p join swrd.journals j on j.id = p.journal_id where p.publication_year >= 1989 and j.name = 'Research on Social Work Practice'",
+     "detail": "correct",
+     "secs": 13.6,
+     "rows": [
+      {
+       "count": 2911
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(distinct aa.organization_id) as n_organizations from swrd.papers p join swrd.author_affiliations aa on aa.paper_id = p.id where p.publication_year = 2020",
+     "detail": "correct",
+     "secs": 11.5,
+     "rows": [
+      {
+       "n_organizations": 2463
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.paper_authors pa join swrd.papers p on p.id = pa.paper_id where p.publication_year = 2019",
+     "detail": "correct",
+     "secs": 3.8,
+     "rows": [
+      {
+       "count": 9953
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select institution_normalized, count(*) as n from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where pa.author_order = 1 and p.year between 2020 and 2026 group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 6.7,
+     "rows": [
+      {
+       "n": 290,
+       "institution_normalized": "Washington University in St. Louis"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select total_papers from sswr.authors where id = 108089",
+     "detail": "correct",
+     "secs": 22.1,
+     "rows": [
+      {
+       "total_papers": 89
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(distinct pa.author_id) from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where p.year = 2015",
+     "detail": "correct",
+     "secs": 5.9,
+     "rows": [
+      {
+       "count": 2089
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.paper_authors pa where pa.author_order = 1 and pa.institution_normalized = 'University of Michigan'",
+     "detail": "correct",
+     "secs": 11.5,
+     "rows": [
+      {
+       "count": 665
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select publication_year, count(*) as n from swrd.papers where publication_year >= 1989 and publication_year <= 2023 and is_scientific = true and abstract is not null group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 8.2,
+     "rows": [
+      {
+       "n": 2806,
+       "publication_year": 2023
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) as n from swrd.papers where publication_year = 2020 and is_scientific and is_empirical and abstract is not null",
+     "detail": "correct",
+     "secs": 12.6,
+     "rows": [
+      {
+       "n": 1729
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.papers where publication_year between 2010 and 2019 and is_scientific and abstract is not null",
+     "detail": "correct",
+     "secs": 5.5,
+     "rows": [
+      {
+       "count": 21719
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT ROUND(AVG(cnt), 2) AS mean_authors_per_paper FROM (SELECT pa.paper_id, COUNT(*) AS cnt FROM swrd.paper_authors pa JOIN swrd.papers p ON p.id = pa.paper_id WHERE p.publication_year >= 1989 GROUP BY pa.paper_id) sub",
+     "detail": "correct",
+     "secs": 24.2,
+     "rows": [
+      {
+       "mean_authors_per_paper": 2.5
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select year, count(*) as n from sswr.papers group by 1 having count(*) > 1000 order by 1 asc limit 1",
+     "detail": "correct",
+     "secs": 9.7,
+     "rows": [
+      {
+       "n": 1166,
+       "year": 2015
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select year, count(*) as n from sswr.papers group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 4.2,
+     "rows": [
+      {
+       "n": 1935,
+       "year": 2026
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.papers where year = 2010 and methodology = 'qualitative'",
+     "detail": "correct",
+     "secs": 6.7,
+     "rows": [
+      {
+       "count": 82
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select year, count(*) as n from sswr.papers where methodology = 'mixed_methods' group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 7.2,
+     "rows": [
+      {
+       "n": 192,
+       "year": 2025
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select id from swrd.search_papers_keyword('food insecurity', 1)",
+     "detail": "correct",
+     "secs": 19.9,
+     "rows": [
+      {
+       "id": 68376
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.search_papers_keyword('homelessness', 20) where publication_year >= 2015",
+     "detail": "correct",
+     "secs": 50.0,
+     "rows": [
+      {
+       "count": 11
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select j.name as journal_name from swrd.search_papers_keyword('child welfare workforce turnover', 1) s join swrd.papers p on p.id = s.id join swrd.journals j on j.id = p.journal_id",
+     "detail": "correct",
+     "secs": 31.8,
+     "rows": [
+      {
+       "journal_name": "Social Work"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from swrd.search_papers_keyword('social work education', 10) s join swrd.papers p on p.id = s.id join swrd.journals j on j.id = p.journal_id where j.name = 'Journal of Social Work Education'",
+     "detail": "correct",
+     "secs": 37.3,
+     "rows": [
+      {
+       "count": 0
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select id from sswr.search_papers_keyword('opioid overdose', 1)",
+     "detail": "correct",
+     "secs": 7.2,
+     "rows": [
+      {
+       "id": "2021-P-0475"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from (select year from sswr.search_papers_keyword('food insecurity', 20)) as t where year >= 2020",
+     "detail": "correct",
+     "secs": 33.4,
+     "rows": [
+      {
+       "count": 9
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select year, title from sswr.search_papers_keyword('artificial intelligence', 1) limit 1",
+     "detail": "correct",
+     "secs": 12.7,
+     "rows": [
+      {
+       "year": 2026,
+       "title": "Defining Affirmation: Generating an Affirmative Clinical Framework Utilizing Artificial Intelligence"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from sswr.search_papers_keyword('telehealth', 15) where methodology = 'quantitative'",
+     "detail": "correct",
+     "secs": 50.4,
+     "rows": [
+      {
+       "count": 10
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select j.name\nfrom swrd.papers p\njoin swrd.journals j on j.id = p.journal_id\nwhere p.publication_year >= 1989\ngroup by j.name\nhaving count(*) >= 1000\norder by (count(*) filter (where is_empirical and research_method = 'Qualitative')::numeric / nullif(count(*) filter (where is_empirical), 0)) desc\nlimit 1",
+     "detail": "correct",
+     "secs": 70.5,
+     "rows": [
+      {
+       "name": "Qualitative Social Work"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM (SELECT p.id FROM swrd.papers p JOIN swrd.paper_authors pa ON p.id = pa.paper_id WHERE p.publication_year >= 1989 GROUP BY p.id HAVING COUNT(pa.author_id) > 5) subquery",
+     "detail": "correct",
+     "secs": 12.7,
+     "rows": [
+      {
+       "count": 6439
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select publication_year, count(*) as n from swrd.papers where publication_year >= 1989 and publication_year <= 2023 and research_method = 'Review' group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 5.7,
+     "rows": [
+      {
+       "n": 79,
+       "publication_year": 2022
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM (SELECT journal_id FROM swrd.papers WHERE publication_year IN (1989, 2025) GROUP BY journal_id HAVING COUNT(DISTINCT publication_year) = 2) sub",
+     "detail": "correct",
+     "secs": 11.5,
+     "rows": [
+      {
+       "count": 27
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select a.name, count(*) as n from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id join sswr.authors a on a.id = pa.author_id where pa.author_order = 1 and p.year between 2010 and 2015 group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 26.4,
+     "rows": [
+      {
+       "n": 14,
+       "name": "Michal Grinstein-Weiss"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from (select distinct pa.author_id from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where p.year = '2005' intersect select distinct pa.author_id from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where p.year = '2026') as t",
+     "detail": "correct",
+     "secs": 53.7,
+     "rows": [
+      {
+       "count": 79
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select p.year, count(distinct pa.institution_normalized) as n_institutions from sswr.papers p join sswr.paper_authors pa on pa.paper_id = p.id where pa.author_order = 1 group by 1 order by 2 desc limit 1",
+     "detail": "correct",
+     "secs": 10.1,
+     "rows": [
+      {
+       "year": 2026,
+       "n_institutions": 392
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "select count(*) from (select paper_id from sswr.paper_authors group by paper_id having count(*) > 6) t",
+     "detail": "correct",
+     "secs": 6.0,
      "rows": [
       {
        "count": 1083
