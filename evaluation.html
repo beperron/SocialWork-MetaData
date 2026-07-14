@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluation — The Social Work Meta-Data Project</title>
+<meta name="description" content="Can small, free, local language models successfully query the Social Work Meta-Data databases? An empirical evaluation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #18181B; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  *, *::before, *::after { box-sizing: border-box; }
+  a { color: #00274C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms; }
+  a:hover { border-bottom-color: currentColor; }
+  ::selection { background: #FFCB05; color: #00274C; }
+  table.results { width: 100%; border-collapse: collapse; }
+  table.results th, table.results td { text-align: left; padding: 14px 18px; border-bottom: 1px solid #E7E5E0; font-size: 14px; }
+  table.results th { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #71717A; background: #FAFAF9; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  @media (max-width: 880px) { .g2 { grid-template-columns: 1fr !important; } .nav-links a.nav-item { display: none; } }
+</style>
+</head>
+<body>
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.86); backdrop-filter:blur(8px); border-bottom:1px solid #E7E5E0;">
+  <div style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); height:60px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+    <a href="index.html" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#00274C; border:none;">Social Work Meta-Data</a>
+    <nav class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a class="nav-item" href="index.html#databases" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Databases</a>
+      <a class="nav-item" href="index.html#access" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">AI access</a>
+      <a class="nav-item" href="index.html#download" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Download</a>
+      <a class="nav-item" href="evaluation.html" style="font-size:13.5px; font-weight:600; color:#00274C; border:none;">Evaluation</a>
+      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#00274C; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section style="position:relative; overflow:hidden; background:radial-gradient(1200px 700px at 78% -10%, #1F3A5F 0%, #00274C 42%, #001A33 100%);">
+  <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1.4px); background-size:26px 26px; mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%); -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);"></div>
+  <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#FFCB05;">Empirical evaluation · July 2026</p>
+    <h1 style="margin:0; max-width:22ch; font-size:clamp(32px,4.4vw,48px); line-height:1.08; font-weight:600; letter-spacing:-0.022em; color:#FFFFFF;">Can small local models drive these databases?</h1>
+    <p style="margin:22px 0 0; max-width:60ch; font-size:clamp(15px,1.8vw,18px); line-height:1.55; color:#C7D2E0;">We handed free, laptop-scale language models the same instructions any assistant gets, asked them research questions, and executed whatever SQL they wrote against the live databases through the public endpoint. No cloud AI involved. Here is what happened.</p>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid #E7E5E0; background:#FAFAF9;">
+  <div style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(3,1fr);" class="g2">
+    <div style="padding:32px 24px 30px 0; border-right:1px solid #E7E5E0;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">22 / 24</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">answers correct or defensibly<br>stricter than the reference</div>
+    </div>
+    <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">2.1 GB</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">size of the smallest model tested —<br>it tied the 20B model's score</div>
+    </div>
+    <div style="padding:32px 0 30px 24px;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">0.7 s</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">average time per question for the<br>3B model, on an ordinary Mac</div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+  <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+    <span class="mono" style="font-size:12px; font-weight:500; letter-spacing:0.08em; color:#A1A1AA;">01</span>
+    <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+    <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Method</span>
+  </div>
+  <h2 style="margin:0; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#18181B;">Blind questions, real execution, exact-match scoring</h2>
+  <p style="margin:16px 0 0; max-width:70ch; font-size:15.5px; color:#3F3F46;">Three open-weight models — run locally through <a href="https://ollama.com">Ollama</a>, temperature 0 — each received a condensed version of the project's skill instructions (schema, value vocabularies, analysis rules) and eight research questions, one at a time. Each model's SQL was executed verbatim against the live databases through the same public read-only endpoint available to everyone. An answer scored a <strong>strict pass</strong> only if it reproduced the value from a pre-registered reference query; answers that differed because the model applied the documented corpus rules more strictly than the reference were separately classified as <strong>defensible</strong>.</p>
+  <p style="margin:12px 0 0; max-width:70ch; font-size:14px; color:#71717A;">Questions covered corpus counts, joins, value-vocabulary filters, ranking, and use of the built-in search functions, across both databases. Full harness, questions, and raw results are in the repository (<a href="https://github.com/beperron/SocialWork-MetaData/blob/master/migration/08_eval_local_models.py" class="mono" style="font-size:13px;">migration/08_eval_local_models.py</a>, <a href="https://github.com/beperron/SocialWork-MetaData/blob/master/eval_results.json" class="mono" style="font-size:13px;">eval_results.json</a>).</p>
+</section>
+
+<section style="background:#FAFAF9; border-top:1px solid #E7E5E0; border-bottom:1px solid #E7E5E0;">
+  <div style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+      <span class="mono" style="font-size:12px; font-weight:500; letter-spacing:0.08em; color:#A1A1AA;">02</span>
+      <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+      <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Results</span>
+    </div>
+    <h2 style="margin:0 0 28px; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#18181B;">Small models work — including the smallest</h2>
+    <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; overflow-x:auto; box-shadow:0 1px 2px rgba(24,24,27,0.04);">
+      <table class="results">
+        <tr><th>Model</th><th>Size</th><th>Strict passes</th><th>Correct or defensible</th><th>Avg time / question</th><th>True errors</th></tr>
+        <tr>
+          <td><span class="mono">granite4.1:3b</span> (IBM)</td><td>3B · 2.1 GB</td>
+          <td><strong>6 / 8</strong></td><td><strong>7 / 8</strong></td><td>0.7 s</td>
+          <td>1 — emitted a bare function call without SELECT</td>
+        </tr>
+        <tr>
+          <td><span class="mono">gemma4:e4b</span> (Google)</td><td>~4B active · 9.6 GB</td>
+          <td><strong>6 / 8</strong></td><td><strong>8 / 8</strong></td><td>1.3 s</td>
+          <td>0 — both "misses" applied the documented corpus rules more strictly than the reference</td>
+        </tr>
+        <tr>
+          <td><span class="mono">gpt-oss:20b</span> (OpenAI)</td><td>20B · 13 GB</td>
+          <td><strong>5 / 8</strong></td><td><strong>7 / 8</strong></td><td>4.4 s</td>
+          <td>1 — sorted search results ascending, returning the worst match instead of the best</td>
+        </tr>
+      </table>
+    </div>
+    <p style="margin:18px 0 0; max-width:70ch; font-size:14px; color:#3F3F46;">The most instructive finding: <strong>capability did not scale with size on this task.</strong> The 2.1 GB model answered in under a second per question and matched the 20 B model. The catalog, value vocabularies, and analysis rules in the skill files appear to do the heavy lifting — when the instructions are precise, a small model following them is enough.</p>
+  </div>
+</section>
+
+<section style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+  <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+    <span class="mono" style="font-size:12px; font-weight:500; letter-spacing:0.08em; color:#A1A1AA;">03</span>
+    <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+    <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">A worked example</span>
+  </div>
+  <h2 style="margin:0 0 24px; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#18181B;">What "defensibly stricter" looks like</h2>
+  <div class="g2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:24px; box-shadow:0 1px 2px rgba(24,24,27,0.04);">
+      <span style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#71717A;">Question 4</span>
+      <p style="margin:10px 0 0; font-size:14.5px; color:#18181B;">"How many empirical articles in the SWRD used qualitative methods?"</p>
+      <p style="margin:12px 0 0; font-size:13.5px; color:#3F3F46;">Reference answer: <span class="mono">15,164</span> (all years). Model answer: <span class="mono">14,921</span>.</p>
+    </div>
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:24px; background:#FAFAF9;">
+      <span style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4D7C0F;">The model's SQL (gemma4:e4b)</span>
+      <pre class="mono" style="margin:12px 0 0; font-size:12px; line-height:1.6; white-space:pre-wrap; color:#18181B;">SELECT count(id) FROM swrd.papers
+WHERE is_empirical = TRUE
+  AND research_method = 'Qualitative'
+  AND publication_year &gt;= 1989
+  AND is_scientific = TRUE
+  AND abstract IS NOT NULL</pre>
+      <p style="margin:12px 0 0; font-size:13px; color:#3F3F46;">The model added the corpus-scoping filters the skill file instructs analysts to use by default — a more careful answer than the reference query, and the reason it "failed" strict scoring.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#00274C; position:relative; overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1.4px); background-size:26px 26px;"></div>
+  <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+      <span class="mono" style="font-size:12px; font-weight:500; letter-spacing:0.08em; color:#5E7794;">04</span>
+      <span style="height:1px; flex:0 0 40px; background:rgba(255,255,255,0.25); align-self:center;"></span>
+      <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#8FA6BF;">Honest limits</span>
+    </div>
+    <h2 style="margin:0; max-width:26ch; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#FFFFFF;">What this evaluation does and doesn't show</h2>
+    <div class="g2" style="margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
+        <p style="margin:0; font-size:14.5px; color:#E4EAF1;"><strong style="color:#FFFFFF;">It shows</strong> that free, local, laptop-scale models can reliably translate research questions into correct queries against these databases when given the skill files — the design goal of this project's documentation.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
+        <p style="margin:0; font-size:14.5px; color:#E4EAF1;"><strong style="color:#FFFFFF;">It doesn't show</strong> performance on long multi-step analyses, semantic-search orchestration, or robustness across phrasings — eight questions, one run, temperature 0. Treat it as an existence proof, not a benchmark.</p>
+      </div>
+    </div>
+    <p style="margin:22px 0 0; font-size:13px; color:#8FA6BF;">Reproduce it: <span class="mono">python migration/08_eval_local_models.py &lt;ollama-model&gt; …</span> — the harness, questions, reference queries, and raw outputs are all in the repository.</p>
+  </div>
+</section>
+
+<footer style="background:#001A33;">
+  <div style="max-width:1180px; margin:0 auto; padding:36px clamp(20px,3vw,32px); display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center;">
+    <a href="index.html" class="mono" style="font-size:11.5px; color:#5E7794; border:none;">← The Social Work Meta-Data Project</a>
+    <a href="https://parallel42.ai" class="mono" style="font-size:11.5px; color:#5E7794; border:none;">Brian Perron · parallel42.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>

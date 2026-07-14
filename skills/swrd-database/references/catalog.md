@@ -140,7 +140,6 @@ One row per journal article. The primary table.
 | `abstract` | text | 61.5% | Full abstract where available; NULL when never digitized. |
 | `publication_year` | integer | 100.0% | Year of publication. 1989+ = the SWRD proper; pre-1989 = Supplement (incomplete). |
 | `journal_id` | integer | 100.0% | Foreign key to journals.id. |
-| `times_cited` | integer | 99.3% | Citation count from CrossRef at time of enrichment. |
 | `document_type` | text | 97.2% | Source-reported document type (article, review, etc.). |
 | `data_source` | text | 100.0% | Which harvest supplied the record (WoS, Scopus, RDS = original SWRD 1.0, etc.). Messy vocabulary — do not treat as clean categories. |
 | `wos_uid` | text | 68.2% |  |
@@ -260,12 +259,11 @@ One 768-dim meaning vector per paper (embeddinggemma:300m over 'title: {t} | tex
 | `author_publication_stats` |  |
 | `database_info` |  |
 | `database_summary` |  |
-| `highly_cited_papers` |  |
 | `organization_collaborations` |  |
 | `papers_with_journals` |  |
 | `publication_trends` |  |
-| `swrd_papers` | The SWRD (primary database): article records from disciplinary social work journals, 1989-2025, as described in Perron, Victor, & Qi (2026), Research on Social Work Practice, doi:10.1177/10497315261416833. |
-| `swrd_supplement_papers` | SWRD Supplement: historical records predating 1989 (back to 1920). Much more incomplete than the primary database; retained for historical exploration. |
+| `swrd_papers` | The SWRD (primary database): article records 1989-2025, per Perron, Victor, & Qi (2026), doi:10.1177/10497315261416833. |
+| `swrd_supplement_papers` | SWRD Supplement: historical records 1920-1988; much less complete; retained for historical exploration. |
 
 ## Functions (callable via SQL or the REST rpc endpoint)
 

@@ -17,7 +17,7 @@ This document holds the technical detail that intentionally stays out of the REA
 
 ## Schema: `swrd`
 
-- `papers` — integer PK, DOI/WoS/Scopus identifiers, journal FK, `times_cited` (CrossRef), OA flag, volume/issue/pages, `data_source`, plus SLM classification fields (`is_scientific`, `is_empirical`, `research_method`, stage confidences/justifications). 110,618 rows total.
+- `papers` — integer PK, DOI/WoS/Scopus identifiers, journal FK, OA flag, volume/issue/pages, `data_source`, plus SLM classification fields (`is_scientific`, `is_empirical`, `research_method`, stage confidences/justifications). 110,618 rows total.
 - **Primary vs Supplement** (per Perron, Victor, & Qi, 2026): `swrd_papers` view = publication_year ≥ 1989 (87,329 rows — the SWRD proper; contains the paper's 62,602 scientific-with-abstract records exactly); `swrd_supplement_papers` view = pre-1989 back to 1920 (23,289 rows; much more incomplete — missing abstracts/details; retained for historical exploration).
 - `journals` (91), `authors` (164,549 — **names preserved as provided by sources; NO entity resolution/disambiguation performed**, per the 2026 paper), `organizations` (34,967), `paper_authors` (241,766; position, corresponding flag), `author_affiliations` (113,646).
 - `title_abstract_embeddings` — one 768-dim vector per paper, HNSW cosine index.

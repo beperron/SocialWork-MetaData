@@ -26,7 +26,6 @@ DESC = {
   "swrd.papers.abstract": "Full abstract where available; NULL when never digitized.",
   "swrd.papers.publication_year": "Year of publication. 1989+ = the SWRD proper; pre-1989 = Supplement (incomplete).",
   "swrd.papers.journal_id": "Foreign key to journals.id.",
-  "swrd.papers.times_cited": "Citation count from CrossRef at time of enrichment.",
   "swrd.papers.document_type": "Source-reported document type (article, review, etc.).",
   "swrd.papers.data_source": "Which harvest supplied the record (WoS, Scopus, RDS = original SWRD 1.0, etc.). Messy vocabulary — do not treat as clean categories.",
   "swrd.papers.open_access": "Whether the article is open access (source-reported).",

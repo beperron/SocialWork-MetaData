@@ -1,0 +1,176 @@
+{
+ "questions": [
+  "How many research articles with abstracts does the SWRD contain from 1989 onward? (research articles = flagged scientific)",
+  "Which journal has published the most articles in the SWRD (1989 onward), and how many?",
+  "How many SWRD articles from 1989 onward mention 'kinship care' in the title or abstract?",
+  "How many empirical articles in the SWRD used qualitative methods?",
+  "How many presentations were given at the 2024 SSWR conference?",
+  "How many SSWR presentations used mixed methods?",
+  "Who are the three most prolific presenters in the SSWR database, by total presentations?",
+  "Using the SSWR keyword search function, what is the id of the top-ranked presentation about 'opioid overdose'?"
+ ],
+ "models": {
+  "granite4.1:3b": {
+   "score": 6,
+   "total": 8,
+   "answers": [
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 \n  AND is_scientific = TRUE \n  AND abstract IS NOT NULL",
+     "detail": "correct",
+     "secs": 2.2
+    },
+    {
+     "ok": true,
+     "sql": "SELECT j.name,\n       COUNT(p.id) AS article_count\nFROM swrd.papers p\nJOIN swrd.journals j ON p.journal_id = j.id\nWHERE p.publication_year >= 1989\nGROUP BY j.name\nORDER BY article_count DESC\nLIMIT 1",
+     "detail": "correct",
+     "secs": 0.7
+    },
+    {
+     "ok": false,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 \n  AND (title LIKE '%kinship care%' OR abstract LIKE '%kinship care%')",
+     "detail": "expected one of ['239'], got ['218']",
+     "secs": 0.8
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE is_scientific = true \n  AND is_empirical = true \n  AND research_method = 'Qualitative'",
+     "detail": "correct",
+     "secs": 0.5
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM sswr.papers \nWHERE year = 2024",
+     "detail": "correct",
+     "secs": 0.4
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM sswr.papers \nWHERE methodology = 'mixed_methods'",
+     "detail": "correct",
+     "secs": 0.4
+    },
+    {
+     "ok": true,
+     "sql": "SELECT name \nFROM sswr.authors \nORDER BY total_papers DESC \nLIMIT 3",
+     "detail": "correct",
+     "secs": 0.4
+    },
+    {
+     "ok": false,
+     "sql": "sswr.search_papers_keyword('opioid overdose', 1)",
+     "detail": "SQL error: syntax error at or near \")\"",
+     "secs": 0.4
+    }
+   ]
+  },
+  "gemma4:e4b-mlx": {
+   "score": 6,
+   "total": 8,
+   "answers": [
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE is_scientific IS TRUE AND abstract IS NOT NULL AND publication_year >= 1989",
+     "detail": "correct",
+     "secs": 3.7
+    },
+    {
+     "ok": true,
+     "sql": "SELECT swrd.journals.name FROM swrd.papers JOIN swrd.journals ON swrd.papers.journal_id = swrd.journals.id WHERE swrd.papers.publication_year >= 1989 AND swrd.papers.is_scientific = TRUE AND swrd.papers.abstract IS NOT NULL GROUP BY swrd.journals.name ORDER BY COUNT(swrd.papers.id) DESC LIMIT 1",
+     "detail": "correct",
+     "secs": 1.2
+    },
+    {
+     "ok": false,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
+     "detail": "expected one of ['239'], got ['224']",
+     "secs": 1.9
+    },
+    {
+     "ok": false,
+     "sql": "SELECT count(id) FROM swrd.papers WHERE is_empirical = TRUE AND research_method = 'Qualitative' AND publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL",
+     "detail": "expected one of ['15164'], got ['14921']",
+     "secs": 0.8
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(id) FROM sswr.papers WHERE year = 2024",
+     "detail": "correct",
+     "secs": 1.4
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM sswr.papers WHERE methodology = 'mixed_methods'",
+     "detail": "correct",
+     "secs": 0.6
+    },
+    {
+     "ok": true,
+     "sql": "SELECT T1.name FROM sswr.authors AS T1 ORDER BY T1.total_papers DESC LIMIT 3",
+     "detail": "correct",
+     "secs": 0.6
+    },
+    {
+     "ok": true,
+     "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 1)",
+     "detail": "correct",
+     "secs": 0.4
+    }
+   ]
+  },
+  "gpt-oss:20b": {
+   "score": 5,
+   "total": 8,
+   "answers": [
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS count FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = true AND abstract IS NOT NULL",
+     "detail": "correct",
+     "secs": 7.9
+    },
+    {
+     "ok": true,
+     "sql": "SELECT j.name AS JournalName, COUNT(*) AS ArticleCount\nFROM swrd.papers p\nJOIN swrd.journals j ON p.journal_id = j.id\nWHERE p.publication_year >= 1989 AND p.is_scientific\nGROUP BY j.name\nORDER BY ArticleCount DESC\nLIMIT 1",
+     "detail": "correct",
+     "secs": 4.7
+    },
+    {
+     "ok": false,
+     "sql": "SELECT COUNT(*) AS count\nFROM swrd.papers\nWHERE publication_year >= 1989\n  AND is_scientific\n  AND abstract IS NOT NULL\n  AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
+     "detail": "expected one of ['239'], got ['224']",
+     "secs": 4.7
+    },
+    {
+     "ok": false,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE is_empirical = TRUE AND research_method = 'Qualitative' AND publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL",
+     "detail": "expected one of ['15164'], got ['14921']",
+     "secs": 4.5
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2024",
+     "detail": "correct",
+     "secs": 2.9
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE methodology = 'mixed_methods'",
+     "detail": "correct",
+     "secs": 2.3
+    },
+    {
+     "ok": true,
+     "sql": "SELECT name, total_papers FROM sswr.authors ORDER BY total_papers DESC LIMIT 3",
+     "detail": "correct",
+     "secs": 3.6
+    },
+    {
+     "ok": false,
+     "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 10) ORDER BY rank ASC LIMIT 1",
+     "detail": "expected one of ['2021-p-0475'], got ['2026-p-0810']",
+     "secs": 4.3
+    }
+   ]
+  }
+ }
+}

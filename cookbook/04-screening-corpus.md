@@ -57,7 +57,7 @@ print(len(candidates), "unique candidates")
 ids = ",".join(str(i) for i in candidates)
 rows = run_sql(f"""
   select p.id, p.title, p.abstract, p.publication_year, j.name as journal,
-         p.doi, p.times_cited, p.is_empirical, p.research_method
+         p.doi, p.is_empirical, p.research_method
   from swrd.papers p left join swrd.journals j on j.id = p.journal_id
   where p.id in ({ids}) order by p.publication_year""")
 

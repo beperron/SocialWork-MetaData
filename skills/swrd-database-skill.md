@@ -11,7 +11,7 @@ You (the agent) can query a hosted database of social work journal-article recor
 
 ## 1. What this database is
 
-The SWRD contains records (title, abstract, authors, affiliations, journal, year, DOI, citation count) for articles in **91 disciplinary social work journals**:
+The SWRD contains records (title, abstract, authors, affiliations, journal, year, DOI) for articles in **91 disciplinary social work journals**:
 
 - **The SWRD proper:** 87,329 records, **1989–2025**, systematically compiled and validated. Within it, **62,602 research articles with abstracts**, each classified: `is_scientific` (research vs editorial/review/letter), `is_empirical`, and `research_method` (values: `Quantitative`, `Qualitative`, `Mixed-Methods`, `Review` — note the exact capitalization).
 - **The SWRD Supplement:** 23,289 records, **1920–1988**, substantially incomplete (missing abstracts/details). Treat pre-1989 counts as lower bounds. **Default analyses to `publication_year >= 1989` unless the user asks for historical data.**
@@ -34,11 +34,11 @@ The key is intentionally public and grants read-only access. Writes are rejected
 
 | Table | Rows | Key columns |
 |---|---|---|
-| `swrd.papers` | 110,618 | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id` → journals, `doi`, `times_cited`, `document_type`, `data_source`, `open_access`, `volume`, `issue`, `pages`, `is_scientific` (bool), `is_empirical` (bool), `research_method` (text: `Quantitative`/`Qualitative`/`Mixed-Methods`/`Review`) |
+| `swrd.papers` | 110,618 | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id` → journals, `doi`, `document_type`, `data_source`, `open_access`, `volume`, `issue`, `pages`, `is_scientific` (bool), `is_empirical` (bool), `research_method` (text: `Quantitative`/`Qualitative`/`Mixed-Methods`/`Review`) |
 | `swrd.journals` | 91 | `id`, `name`, `publisher` |
 | `swrd.authors` | 164,549 | `id`, `name` (as published), `orcid`, `wos_author_id`, `scopus_author_id` |
 | `swrd.paper_authors` | 241,766 | `paper_id`, `author_id`, `position` (1 = first author), `is_corresponding` |
-| `swrd.organizations` | 34,967 | `id`, `name`, `country` |
+| `swrd.organizations` | 34,967 | `id`, `name` |
 | `swrd.author_affiliations` | 113,646 | `author_id`, `organization_id`, `paper_id` |
 | `swrd.title_abstract_embeddings` | 110,618 | `paper_id`, `embedding` (768-dim vector), `model` |
 
@@ -88,11 +88,11 @@ where publication_year >= 1989
 select (publication_year/10)*10 as decade, research_method, count(*) as n
 from swrd.papers where is_empirical group by 1,2 order by 1,2
 
--- Most-cited articles in a journal
-select p.title, p.publication_year, p.times_cited
+-- Recent articles in one journal
+select p.title, p.publication_year
 from swrd.papers p join swrd.journals j on j.id = p.journal_id
 where j.name = 'Social Service Review'
-order by p.times_cited desc limit 10
+order by p.publication_year desc limit 10
 
 -- Full author list for a paper (names as published!)
 select a.name, pa.position, pa.is_corresponding
@@ -187,7 +187,7 @@ KEY="sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
 H1="apikey: $KEY"; H2="Authorization: Bearer $KEY"; H3="Accept-Profile: swrd"
 
 # Recent highly cited articles about foster care
-curl -s "$BASE/papers?select=title,publication_year,times_cited&title=ilike.*foster%20care*&publication_year=gte.2015&order=times_cited.desc&limit=5" -H "$H1" -H "$H2" -H "$H3"
+curl -s "$BASE/papers?select=title,publication_year&title=ilike.*foster%20care*&publication_year=gte.2015&order=publication_year.desc&limit=5" -H "$H1" -H "$H2" -H "$H3"
 
 # Database overview (citation + counts)
 curl -s "$BASE/database_info" -H "$H1" -H "$H2" -H "$H3"

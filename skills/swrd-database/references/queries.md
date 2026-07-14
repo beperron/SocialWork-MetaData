@@ -43,7 +43,7 @@ where publication_year >= 1989
   and (title ilike '%kinship care%' or abstract ilike '%kinship care%')
 
 -- The actual records (paginate with offset)
-select id, title, publication_year, times_cited, doi
+select id, title, publication_year, doi
 from swrd.papers
 where publication_year >= 1989
   and (title ilike '%kinship care%' or abstract ilike '%kinship care%')
@@ -55,27 +55,16 @@ limit 100 offset 0
 
 ```sql
 -- Output by journal
-select j.name, count(*) as n, round(avg(p.times_cited),1) as mean_cited
+select j.name, count(*) as n
 from swrd.papers p join swrd.journals j on j.id = p.journal_id
 where p.publication_year >= 1989
 group by 1 order by 2 desc
 
--- Most-cited articles in one journal
-select p.title, p.publication_year, p.times_cited
+-- Recent articles in one journal
+select p.title, p.publication_year
 from swrd.papers p join swrd.journals j on j.id = p.journal_id
 where j.name = 'Social Service Review'
-order by p.times_cited desc nulls last limit 10
-```
-
-## Citations
-
-```sql
--- Uncited share by decade (cf. 17.5% overall in the 2026 article)
-select (publication_year/10)*10 as decade,
-       round(100.0 * count(*) filter (where times_cited = 0) / count(*), 1) as pct_uncited
-from swrd.papers
-where publication_year >= 1989 and is_scientific and times_cited is not null
-group by 1 order by 1
+order by p.publication_year desc limit 10
 ```
 
 ## Authorship (remember: names NOT disambiguated)

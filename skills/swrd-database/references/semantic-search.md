@@ -47,7 +47,7 @@ Keyword-arm tip: `query_text` goes through `websearch_to_tsquery`, which ANDs te
 ```python
 hits = requests.post(f"{BASE}/rpc/search_papers_semantic", headers=H,
     json={"query_embedding": emb, "match_count": 10}).json()
-# fields: id, title, abstract, publication_year, journal_name, times_cited, similarity
+# fields: id, title, abstract, publication_year, journal_name, similarity
 ```
 
 Interpretation: cosine `similarity` 0–1; on this corpus ≥ ~0.55 usually on-topic, ≥ ~0.65 strongly so.
@@ -77,5 +77,5 @@ The same functions are callable in SQL — useful to join search results with an
 select h.title, h.rrf_score, p.doi
 from swrd.search_papers_hybrid('kinship care', '[...768 floats...]'::extensions.vector, 20) h
 join swrd.papers p on p.id = h.id
-where p.times_cited > 10
+where p.publication_year >= 2015
 ```

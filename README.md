@@ -1,6 +1,6 @@
 # 📚 The Social Work Meta-Data Project
 
-**🌐 Project page: [beperron.github.io/SocialWork-MetaData](https://beperron.github.io/SocialWork-MetaData/)**
+**🌐 Project page: [beperron.github.io/SocialWork-MetaData](https://beperron.github.io/SocialWork-MetaData/)** · **⬇️ [Download the data (CSV)](https://github.com/beperron/SocialWork-MetaData/releases/latest)**
 
 The Social Work Meta-Data Project maintains two curated bibliographic databases documenting the scholarly record of social work: the **Social Work Research Database (SWRD)**, covering the discipline's journal literature, and the **SSWR Conference Database**, covering presentations at the Society for Social Work and Research annual conference. Together they provide an infrastructure for scientometric analysis, literature discovery, and the study of knowledge production in the discipline.
 
@@ -20,6 +20,19 @@ The fastest way to work with these data is to hand one of these two files to an 
 Each file is a self-contained instruction set. Once an assistant has read it, it can immediately: run any read-only analysis query, search the literature **by meaning, by keywords, or by a fusion of both** (the same search interface on both databases), and pull filtered slices of records — all with the built-in public access key. **No password, no account, and no software installation is required for querying**; every command in these files has been tested against the live databases. Simply download the file and attach or paste it into your AI assistant's conversation.
 
 Going deeper: the [skills folder](skills/) also holds full per-database skills with a complete data catalog generated from the live database, tested SQL recipe collections, and a separate one-time [semantic-search setup skill](skills/ollama-embeddings/SKILL.md); the [cookbook](cookbook/) walks through complete analyses end to end (topic mapping, trend analysis, scholar trajectories, review screening corpora).
+
+---
+
+## ⬇️ Download the data
+
+Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration:
+
+| | |
+|---|---|
+| 📗 [`swrd-database-csv.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/swrd-database-csv.zip) (27 MB) | **The SWRD** — exactly the 62,602-article corpus of the 2026 article, plus the historical Supplement (1920–1988), additional records, journals, authors, and linkage tables |
+| 📘 [`sswr-database-csv.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/sswr-database-csv.zip) (26 MB) | **The SSWR Conference Database** — all 23,793 presentations with abstracts and methodology labels, disambiguated authors, and authorship links |
+
+Each zip includes a README describing every file, the join keys, and the citation. (Semantic embeddings are not included — they are regenerable; see the skills.)
 
 ---
 
@@ -45,7 +58,7 @@ Its analytic core is **62,602 research articles with abstracts**, each classifie
 
 Classification was performed with a supervised language-model procedure validated against human raters (κ ≥ .85 required for each task). Surrounding this core are additional records from the same journals and period — **87,329 in all** — including articles whose abstracts were never digitized by any indexing service.
 
-The database also stores per-article citation counts (via CrossRef) and open-access status.
+The database also stores each article's open-access status.
 
 ### 🕰️ The SWRD Supplement
 
@@ -79,7 +92,7 @@ Records in both databases share a common structure:
 | 📓 **Venue** | Journal (or conference), year, volume/issue/pages |
 | 📝 **Abstract** | Full abstract, where available |
 | 🏷️ **Classification** | Scientific/non-scientific; methodology category |
-| 🔗 **Impact & identifiers** | Citation count; DOI |
+| 🔗 **Identifier** | DOI — the article's permanent link |
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: swrd-database
-description: Analyze the Social Work Research Database (SWRD) — journal-article records from 91 social work journals (1920–2025) with study-type classifications, citation counts, and semantic + keyword + hybrid search. Use for questions about the social work journal literature, publication trends, methodology patterns, or finding studies on a topic.
+description: Analyze the Social Work Research Database (SWRD) — journal-article records from 91 social work journals (1920–2025) with study-type classifications and semantic + keyword + hybrid search. Use for questions about the social work journal literature, publication trends, methodology patterns, or finding studies on a topic.
 ---
 
 # SWRD — Social Work Research Database: Analysis Skill
@@ -9,7 +9,7 @@ Everything works over HTTPS with the public key below — no password, no accoun
 
 ## What this database is
 
-Article records (title, abstract, authors, affiliations, journal, year, DOI, citation count) from **91 disciplinary social work journals**:
+Article records (title, abstract, authors, affiliations, journal, year, DOI) from **91 disciplinary social work journals**:
 
 - **The SWRD proper:** 87,329 records, **1989–2025**. Analytic core: **62,602 research articles with abstracts**, each classified: `is_scientific`, `is_empirical`, `research_method` (`Quantitative` / `Qualitative` / `Mixed-Methods` / `Review` — exact capitalization).
 - **The SWRD Supplement:** 23,289 records, **1920–1988**, substantially incomplete. Treat pre-1989 counts as lower bounds. **Default analyses to `publication_year >= 1989`.**
