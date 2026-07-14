@@ -1,0 +1,836 @@
+=== DATABASE SIZE ===
+ current_database | db_size 
+------------------+---------
+ postgres         | 1242 MB
+(1 row)
+
+=== SERVER VERSION ===
+                                      version                                       
+------------------------------------------------------------------------------------
+ PostgreSQL 15.8 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+(1 row)
+
+=== PER-TABLE SIZES (public) ===
+        table_name        | total_size | table_size 
+--------------------------+------------+------------
+ paper_embeddings         | 881 MB     | 4584 kB
+ papers                   | 270 MB     | 25 MB
+ paper_authors            | 63 MB      | 52 MB
+ authors                  | 6800 kB    | 3760 kB
+ paper_html_mappings      | 5488 kB    | 2696 kB
+ institution_mappings     | 2272 kB    | 672 kB
+ search_logs              | 112 kB     | 32 kB
+ author_canonical_mapping | 104 kB     | 40 kB
+ author_linkage_audit     | 96 kB      | 32 kB
+ country_mappings         | 64 kB      | 8192 bytes
+ fence_sync               | 64 kB      | 8192 bytes
+ page_views               | 24 kB      | 0 bytes
+(12 rows)
+
+=== EXACT ROW COUNTS ===
+        table_name        | row_count 
+--------------------------+-----------
+ author_canonical_mapping |       375
+ author_linkage_audit     |       153
+ authors                  |     21209
+ country_mappings         |       106
+ fence_sync               |         2
+ institution_mappings     |      4335
+ page_views               |         0
+ paper_authors            |     69924
+ paper_embeddings         |     23793
+ paper_html_mappings      |     24610
+ papers                   |     23793
+ search_logs              |       146
+(12 rows)
+
+=== EXTENSIONS AND THEIR SCHEMAS ===
+      extname       | extversion |   schema   
+--------------------+------------+------------
+ pg_stat_statements | 1.10       | extensions
+ pg_trgm            | 1.6        | public
+ pgcrypto           | 1.3        | extensions
+ pgjwt              | 0.2.0      | extensions
+ pgsodium           | 3.1.8      | pgsodium
+ plpgsql            | 1.0        | pg_catalog
+ supabase_vault     | 0.3.1      | vault
+ uuid-ossp          | 1.1        | extensions
+ vector             | 0.8.0      | extensions
+(9 rows)
+
+=== VECTOR COLUMNS (declared types) ===
+           table_name            |   column_name   | declared_type 
+---------------------------------+-----------------+---------------
+ papers                          | fts             | tsvector
+ paper_embeddings                | embedding       | vector(1536)
+ paper_embeddings                | embedding_large | vector(3072)
+ paper_embeddings                | embedding_small | vector(1536)
+ idx_paper_embeddings_hnsw       | embedding       | vector(1536)
+ idx_paper_embeddings_small_hnsw | embedding_small | vector(1536)
+(6 rows)
+
+=== ALL COLUMNS (parity baseline) ===
+        table_name        |           column_name            |        data_type         | is_nullable |                    column_default                    
+--------------------------+----------------------------------+--------------------------+-------------+------------------------------------------------------
+ author_canonical_mapping | id                               | integer                  | NO          | nextval('author_canonical_mapping_id_seq'::regclass)
+ author_canonical_mapping | author_id                        | integer                  | NO          | 
+ author_canonical_mapping | canonical_author_id              | integer                  | NO          | 
+ author_canonical_mapping | confidence                       | double precision         | NO          | 
+ author_canonical_mapping | match_reasons                    | ARRAY                    | YES         | 
+ author_canonical_mapping | reviewed                         | boolean                  | YES         | false
+ author_canonical_mapping | created_at                       | timestamp with time zone | YES         | now()
+ author_linkage_audit     | id                               | integer                  | NO          | nextval('author_linkage_audit_id_seq'::regclass)
+ author_linkage_audit     | paper_author_id                  | bigint                   | NO          | 
+ author_linkage_audit     | original_name                    | text                     | YES         | 
+ author_linkage_audit     | original_name_normalized         | text                     | YES         | 
+ author_linkage_audit     | matched_author_id                | integer                  | YES         | 
+ author_linkage_audit     | matched_author_name              | text                     | YES         | 
+ author_linkage_audit     | match_type                       | text                     | NO          | 
+ author_linkage_audit     | match_score                      | integer                  | YES         | 
+ author_linkage_audit     | created_at                       | timestamp with time zone | YES         | now()
+ author_linkage_audit     | notes                            | text                     | YES         | 
+ authors                  | id                               | integer                  | NO          | nextval('authors_canonical_id_seq'::regclass)
+ authors                  | name                             | text                     | NO          | 
+ authors                  | variants                         | jsonb                    | YES         | 
+ authors                  | institutions                     | jsonb                    | YES         | 
+ authors                  | years                            | jsonb                    | YES         | 
+ authors                  | total_papers                     | integer                  | YES         | 
+ authors                  | is_canonical                     | boolean                  | YES         | true
+ country_mappings         | id                               | integer                  | NO          | nextval('country_mappings_id_seq'::regclass)
+ country_mappings         | raw_name                         | text                     | NO          | 
+ country_mappings         | normalized_name                  | text                     | YES         | 
+ country_mappings         | created_at                       | timestamp with time zone | YES         | now()
+ fence_sync               | house_id                         | text                     | NO          | 
+ fence_sync               | dog_out                          | boolean                  | NO          | false
+ fence_sync               | request_out                      | boolean                  | NO          | false
+ fence_sync               | updated_at                       | timestamp with time zone | NO          | now()
+ institution_mappings     | id                               | integer                  | NO          | nextval('institution_mappings_id_seq'::regclass)
+ institution_mappings     | raw_name                         | text                     | NO          | 
+ institution_mappings     | cleaned_name                     | text                     | YES         | 
+ institution_mappings     | canonical_name                   | text                     | YES         | 
+ institution_mappings     | institution_id                   | text                     | YES         | 
+ institution_mappings     | created_at                       | timestamp with time zone | YES         | now()
+ page_views               | id                               | bigint                   | NO          | 
+ page_views               | visited_at                       | timestamp with time zone | YES         | now()
+ page_views               | page                             | text                     | YES         | 
+ page_views               | referrer                         | text                     | YES         | 
+ page_views               | user_agent                       | text                     | YES         | 
+ page_views               | screen_width                     | integer                  | YES         | 
+ page_views               | screen_height                    | integer                  | YES         | 
+ paper_authors            | id                               | bigint                   | NO          | 
+ paper_authors            | paper_id                         | text                     | YES         | 
+ paper_authors            | author_order                     | integer                  | YES         | 
+ paper_authors            | name                             | text                     | YES         | 
+ paper_authors            | name_normalized                  | text                     | YES         | 
+ paper_authors            | degree                           | text                     | YES         | 
+ paper_authors            | position                         | text                     | YES         | 
+ paper_authors            | institution                      | text                     | YES         | 
+ paper_authors            | institution_raw                  | text                     | YES         | 
+ paper_authors            | institution_id                   | text                     | YES         | 
+ paper_authors            | city                             | text                     | YES         | 
+ paper_authors            | state_province                   | text                     | YES         | 
+ paper_authors            | country                          | text                     | YES         | 
+ paper_authors            | country_normalized               | text                     | YES         | 
+ paper_authors            | country_fixed                    | boolean                  | YES         | 
+ paper_authors            | country_fix_from                 | text                     | YES         | 
+ paper_authors            | parsing_error                    | boolean                  | YES         | 
+ paper_authors            | author_id                        | integer                  | YES         | 
+ paper_authors            | position_normalized              | text                     | YES         | 
+ paper_authors            | canonical_author_id              | integer                  | YES         | 
+ paper_authors            | institution_normalized           | text                     | YES         | 
+ paper_embeddings         | id                               | bigint                   | NO          | 
+ paper_embeddings         | paper_id                         | text                     | YES         | 
+ paper_embeddings         | embedding                        | USER-DEFINED             | YES         | 
+ paper_embeddings         | created_at                       | timestamp with time zone | NO          | timezone('utc'::text, now())
+ paper_embeddings         | embedding_large                  | USER-DEFINED             | YES         | 
+ paper_embeddings         | embedding_small                  | USER-DEFINED             | YES         | 
+ paper_embeddings         | model_large                      | text                     | YES         | 'text-embedding-3-large'::text
+ paper_embeddings         | model_small                      | text                     | YES         | 'text-embedding-3-small'::text
+ paper_export             | id                               | text                     | YES         | 
+ paper_export             | title                            | text                     | YES         | 
+ paper_export             | year                             | integer                  | YES         | 
+ paper_export             | abstract                         | text                     | YES         | 
+ paper_export             | authors                          | ARRAY                    | YES         | 
+ paper_export             | canonical_authors                | ARRAY                    | YES         | 
+ paper_export             | institutions                     | ARRAY                    | YES         | 
+ paper_export             | canonical_institutions           | ARRAY                    | YES         | 
+ paper_export             | positions                        | ARRAY                    | YES         | 
+ paper_export             | canonical_positions              | ARRAY                    | YES         | 
+ paper_export             | methodology                      | text                     | YES         | 
+ paper_export             | empirical                        | boolean                  | YES         | 
+ paper_html_mappings      | html_path                        | text                     | NO          | 
+ paper_html_mappings      | paper_id                         | text                     | YES         | 
+ paper_html_mappings      | year                             | integer                  | YES         | 
+ paper_html_mappings      | match_method                     | text                     | YES         | 
+ paper_html_mappings      | created_at                       | timestamp with time zone | YES         | now()
+ papers                   | id                               | text                     | NO          | 
+ papers                   | year                             | integer                  | YES         | 
+ papers                   | title                            | text                     | YES         | 
+ papers                   | abstract                         | text                     | YES         | 
+ papers                   | format                           | text                     | YES         | 
+ papers                   | author_parse_llm                 | text                     | YES         | 
+ papers                   | original_paper_id                | text                     | YES         | 
+ papers                   | methodology_qwen3-32b            | text                     | YES         | 
+ papers                   | methodology_confidence_qwen3-32b | text                     | YES         | 
+ papers                   | status                           | text                     | YES         | 
+ papers                   | author_count                     | integer                  | YES         | 0
+ papers                   | fts                              | tsvector                 | YES         | 
+ papers                   | methodology_evidence_qwen3-32b   | text                     | YES         | 
+ papers                   | methodology_gpt-oss-20b          | text                     | YES         | 
+ papers                   | methodology_evidence_gpt-oss-20b | text                     | YES         | 
+ papers                   | methodology                      | text                     | YES         | 
+ search_logs              | id                               | bigint                   | NO          | 
+ search_logs              | created_at                       | timestamp with time zone | YES         | now()
+ search_logs              | search_type                      | text                     | NO          | 
+ search_logs              | query_text                       | text                     | NO          | 
+ search_logs              | filters                          | jsonb                    | YES         | 
+ search_logs              | results_count                    | integer                  | YES         | 
+ search_logs              | session_hash                     | text                     | YES         | 
+ search_logs              | duration_ms                      | integer                  | YES         | 
+(115 rows)
+
+=== FUNCTION DDL (live-only RPCs) ===
+                  proname                  |                                                                                                        definition                                                                                                        
+-------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ autocomplete_institutions                 | CREATE OR REPLACE FUNCTION public.autocomplete_institutions(prefix text, limit_count integer DEFAULT 10)                                                                                                                +
+                                           |  RETURNS TABLE(name text)                                                                                                                                                                                               +
+                                           |  LANGUAGE sql                                                                                                                                                                                                           +
+                                           |  STABLE                                                                                                                                                                                                                 +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           |   SELECT DISTINCT canonical_name                                                                                                                                                                                        +
+                                           |   FROM institution_mappings                                                                                                                                                                                             +
+                                           |   WHERE canonical_name ILIKE prefix || '%'                                                                                                                                                                              +
+                                           |   ORDER BY canonical_name                                                                                                                                                                                               +
+                                           |   LIMIT limit_count;                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ export_paper_embeddings                   | CREATE OR REPLACE FUNCTION public.export_paper_embeddings()                                                                                                                                                             +
+                                           |  RETURNS text                                                                                                                                                                                                           +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SECURITY DEFINER                                                                                                                                                                                                       +
+                                           |  SET search_path TO 'public'                                                                                                                                                                                            +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | DECLARE                                                                                                                                                                                                                 +
+                                           |     result text;                                                                                                                                                                                                        +
+                                           | BEGIN                                                                                                                                                                                                                   +
+                                           |     SELECT json_agg(paper_embeddings)::text INTO result                                                                                                                                                                 +
+                                           |     FROM paper_embeddings;                                                                                                                                                                                              +
+                                           |     RETURN result;                                                                                                                                                                                                      +
+                                           | END;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ gin_extract_query_trgm                    | CREATE OR REPLACE FUNCTION public.gin_extract_query_trgm(text, internal, smallint, internal, internal, internal, internal)                                                                                              +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gin_extract_query_trgm$function$                                                                                                                                                        +
+                                           | 
+ gin_extract_value_trgm                    | CREATE OR REPLACE FUNCTION public.gin_extract_value_trgm(text, internal)                                                                                                                                                +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gin_extract_value_trgm$function$                                                                                                                                                        +
+                                           | 
+ gin_trgm_consistent                       | CREATE OR REPLACE FUNCTION public.gin_trgm_consistent(internal, smallint, text, integer, internal, internal, internal, internal)                                                                                        +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gin_trgm_consistent$function$                                                                                                                                                           +
+                                           | 
+ gin_trgm_triconsistent                    | CREATE OR REPLACE FUNCTION public.gin_trgm_triconsistent(internal, smallint, text, integer, internal, internal, internal)                                                                                               +
+                                           |  RETURNS "char"                                                                                                                                                                                                         +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gin_trgm_triconsistent$function$                                                                                                                                                        +
+                                           | 
+ gtrgm_compress                            | CREATE OR REPLACE FUNCTION public.gtrgm_compress(internal)                                                                                                                                                              +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_compress$function$                                                                                                                                                                +
+                                           | 
+ gtrgm_consistent                          | CREATE OR REPLACE FUNCTION public.gtrgm_consistent(internal, text, smallint, oid, internal)                                                                                                                             +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_consistent$function$                                                                                                                                                              +
+                                           | 
+ gtrgm_decompress                          | CREATE OR REPLACE FUNCTION public.gtrgm_decompress(internal)                                                                                                                                                            +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_decompress$function$                                                                                                                                                              +
+                                           | 
+ gtrgm_distance                            | CREATE OR REPLACE FUNCTION public.gtrgm_distance(internal, text, smallint, oid, internal)                                                                                                                               +
+                                           |  RETURNS double precision                                                                                                                                                                                               +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_distance$function$                                                                                                                                                                +
+                                           | 
+ gtrgm_in                                  | CREATE OR REPLACE FUNCTION public.gtrgm_in(cstring)                                                                                                                                                                     +
+                                           |  RETURNS gtrgm                                                                                                                                                                                                          +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_in$function$                                                                                                                                                                      +
+                                           | 
+ gtrgm_options                             | CREATE OR REPLACE FUNCTION public.gtrgm_options(internal)                                                                                                                                                               +
+                                           |  RETURNS void                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE                                                                                                                                                                                                +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_options$function$                                                                                                                                                                 +
+                                           | 
+ gtrgm_out                                 | CREATE OR REPLACE FUNCTION public.gtrgm_out(gtrgm)                                                                                                                                                                      +
+                                           |  RETURNS cstring                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_out$function$                                                                                                                                                                     +
+                                           | 
+ gtrgm_penalty                             | CREATE OR REPLACE FUNCTION public.gtrgm_penalty(internal, internal, internal)                                                                                                                                           +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_penalty$function$                                                                                                                                                                 +
+                                           | 
+ gtrgm_picksplit                           | CREATE OR REPLACE FUNCTION public.gtrgm_picksplit(internal, internal)                                                                                                                                                   +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_picksplit$function$                                                                                                                                                               +
+                                           | 
+ gtrgm_same                                | CREATE OR REPLACE FUNCTION public.gtrgm_same(gtrgm, gtrgm, internal)                                                                                                                                                    +
+                                           |  RETURNS internal                                                                                                                                                                                                       +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_same$function$                                                                                                                                                                    +
+                                           | 
+ gtrgm_union                               | CREATE OR REPLACE FUNCTION public.gtrgm_union(internal, internal)                                                                                                                                                       +
+                                           |  RETURNS gtrgm                                                                                                                                                                                                          +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$gtrgm_union$function$                                                                                                                                                                   +
+                                           | 
+ jsonb_to_vector                           | CREATE OR REPLACE FUNCTION public.jsonb_to_vector(embedding jsonb)                                                                                                                                                      +
+                                           |  RETURNS vector                                                                                                                                                                                                         +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  IMMUTABLE SECURITY DEFINER                                                                                                                                                                                             +
+                                           |  SET search_path TO 'pg_catalog, pg_temp'                                                                                                                                                                               +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | BEGIN                                                                                                                                                                                                                   +
+                                           |     RETURN embedding::text::vector;                                                                                                                                                                                     +
+                                           | END;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ match_papers                              | CREATE OR REPLACE FUNCTION public.match_papers(query_embedding vector, match_threshold double precision DEFAULT 0.3, match_count integer DEFAULT 10, min_year integer DEFAULT 2005, max_year integer DEFAULT 2026)      +
+                                           |  RETURNS TABLE(id text, title text, year integer, abstract text, methodology text, similarity double precision, authors jsonb)                                                                                          +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SET statement_timeout TO '60s'                                                                                                                                                                                         +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | begin                                                                                                                                                                                                                   +
+                                           |   return query                                                                                                                                                                                                          +
+                                           |   select p.id, p.title, p.year, p.abstract, p.methodology,                                                                                                                                                              +
+                                           |     (1 - (pe.embedding_large <=> query_embedding))::float as similarity,                                                                                                                                                +
+                                           |     (select jsonb_agg(jsonb_build_object(                                                                                                                                                                               +
+                                           |         'name', pa.name, 'institution', pa.institution_normalized,                                                                                                                                                      +
+                                           |         'position', pa.position_normalized, 'order', pa.author_order                                                                                                                                                    +
+                                           |       ) order by pa.author_order)                                                                                                                                                                                       +
+                                           |       from paper_authors pa where pa.paper_id = p.id                                                                                                                                                                    +
+                                           |     ) as authors                                                                                                                                                                                                        +
+                                           |   from paper_embeddings pe                                                                                                                                                                                              +
+                                           |   join papers p on pe.paper_id = p.id                                                                                                                                                                                   +
+                                           |   where (1 - (pe.embedding_large <=> query_embedding))::float > match_threshold                                                                                                                                         +
+                                           |     and p.year >= min_year and p.year <= max_year                                                                                                                                                                       +
+                                           |   order by pe.embedding_large <=> query_embedding                                                                                                                                                                       +
+                                           |   limit match_count;                                                                                                                                                                                                    +
+                                           | end;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ match_papers_small                        | CREATE OR REPLACE FUNCTION public.match_papers_small(query_embedding vector, match_threshold double precision DEFAULT 0.3, match_count integer DEFAULT 10, min_year integer DEFAULT 2005, max_year integer DEFAULT 2026)+
+                                           |  RETURNS TABLE(id text, title text, year integer, abstract text, methodology text, similarity double precision, authors jsonb)                                                                                          +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | begin                                                                                                                                                                                                                   +
+                                           |   return query                                                                                                                                                                                                          +
+                                           |   select                                                                                                                                                                                                                +
+                                           |     p.id, p.title, p.year, p.abstract, p.methodology,                                                                                                                                                                   +
+                                           |     (1 - (pe.embedding_small <=> query_embedding))::float as similarity,                                                                                                                                                +
+                                           |     (select jsonb_agg(jsonb_build_object(                                                                                                                                                                               +
+                                           |         'name', pa.name, 'institution', pa.institution_normalized,                                                                                                                                                      +
+                                           |         'position', pa.position_normalized, 'order', pa.author_order                                                                                                                                                    +
+                                           |       ) order by pa.author_order)                                                                                                                                                                                       +
+                                           |       from paper_authors pa where pa.paper_id = p.id                                                                                                                                                                    +
+                                           |     ) as authors                                                                                                                                                                                                        +
+                                           |   from paper_embeddings pe                                                                                                                                                                                              +
+                                           |   join papers p on pe.paper_id = p.id                                                                                                                                                                                   +
+                                           |   where (1 - (pe.embedding_small <=> query_embedding))::float > match_threshold                                                                                                                                         +
+                                           |     and p.year >= min_year and p.year <= max_year                                                                                                                                                                       +
+                                           |   order by pe.embedding_small <=> query_embedding                                                                                                                                                                       +
+                                           |   limit match_count;                                                                                                                                                                                                    +
+                                           | end;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ prepare_papers_for_embedding              | CREATE OR REPLACE FUNCTION public.prepare_papers_for_embedding(max_papers integer DEFAULT 100)                                                                                                                          +
+                                           |  RETURNS TABLE(paper_id text, combined_text text)                                                                                                                                                                       +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SECURITY DEFINER                                                                                                                                                                                                       +
+                                           |  SET search_path TO '$user', 'public', 'extensions'                                                                                                                                                                     +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | BEGIN                                                                                                                                                                                                                   +
+                                           |   RETURN QUERY                                                                                                                                                                                                          +
+                                           |   SELECT                                                                                                                                                                                                                +
+                                           |     p.paper_id,                                                                                                                                                                                                         +
+                                           |     p.title || ' ' || p.abstract AS combined_text                                                                                                                                                                       +
+                                           |   FROM                                                                                                                                                                                                                  +
+                                           |     public.papers p                                                                                                                                                                                                     +
+                                           |   WHERE                                                                                                                                                                                                                 +
+                                           |     p.title IS NOT NULL AND p.abstract IS NOT NULL                                                                                                                                                                      +
+                                           |   AND                                                                                                                                                                                                                   +
+                                           |     NOT EXISTS (                                                                                                                                                                                                        +
+                                           |       SELECT 1 FROM public.paper_embeddings e                                                                                                                                                                           +
+                                           |       WHERE e.paper_id = p.paper_id                                                                                                                                                                                     +
+                                           |     )                                                                                                                                                                                                                   +
+                                           |   LIMIT max_papers;                                                                                                                                                                                                     +
+                                           | END;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_authors_by_name                    | CREATE OR REPLACE FUNCTION public.search_authors_by_name(query_text text, match_count integer DEFAULT 20)                                                                                                               +
+                                           |  RETURNS TABLE(author_id integer, author_name text, name_similarity real, total_papers integer, institutions jsonb, years jsonb, variants jsonb)                                                                        +
+                                           |  LANGUAGE sql                                                                                                                                                                                                           +
+                                           |  STABLE                                                                                                                                                                                                                 +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           |   SELECT                                                                                                                                                                                                                +
+                                           |     id,                                                                                                                                                                                                                 +
+                                           |     name,                                                                                                                                                                                                               +
+                                           |     similarity(name, query_text),                                                                                                                                                                                       +
+                                           |     total_papers,                                                                                                                                                                                                       +
+                                           |     institutions,                                                                                                                                                                                                       +
+                                           |     years,                                                                                                                                                                                                              +
+                                           |     variants                                                                                                                                                                                                            +
+                                           |   FROM authors                                                                                                                                                                                                          +
+                                           |   WHERE name % query_text                                                                                                                                                                                               +
+                                           |     AND is_canonical = true                                                                                                                                                                                             +
+                                           |   ORDER BY similarity(name, query_text) DESC                                                                                                                                                                            +
+                                           |   LIMIT match_count;                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_papers_bm25                        | CREATE OR REPLACE FUNCTION public.search_papers_bm25(query_text text, match_count integer, min_year integer DEFAULT 0, max_year integer DEFAULT 9999)                                                                   +
+                                           |  RETURNS TABLE(id text, title text, year integer, abstract text, format text, similarity double precision, authors jsonb)                                                                                               +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SET search_path TO 'public'                                                                                                                                                                                            +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | begin                                                                                                                                                                                                                   +
+                                           |   return query                                                                                                                                                                                                          +
+                                           |   select                                                                                                                                                                                                                +
+                                           |     p.id,                                                                                                                                                                                                               +
+                                           |     p.title,                                                                                                                                                                                                            +
+                                           |     p.year,                                                                                                                                                                                                             +
+                                           |     p.abstract,                                                                                                                                                                                                         +
+                                           |     p.format,                                                                                                                                                                                                           +
+                                           |     ts_rank(p.fts, websearch_to_tsquery('english', query_text))::float as similarity,                                                                                                                                   +
+                                           |     (                                                                                                                                                                                                                   +
+                                           |       select jsonb_agg(                                                                                                                                                                                                 +
+                                           |         jsonb_build_object(                                                                                                                                                                                             +
+                                           |           'name', pa.name,                                                                                                                                                                                              +
+                                           |           'institution', pa.institution,                                                                                                                                                                                +
+                                           |           'rank', pa.author_order                                                                                                                                                                                       +
+                                           |         ) order by pa.author_order                                                                                                                                                                                      +
+                                           |       )                                                                                                                                                                                                                 +
+                                           |       from paper_authors pa                                                                                                                                                                                             +
+                                           |       where pa.paper_id = p.id                                                                                                                                                                                          +
+                                           |     ) as authors                                                                                                                                                                                                        +
+                                           |   from papers p                                                                                                                                                                                                         +
+                                           |   where p.fts @@ websearch_to_tsquery('english', query_text)                                                                                                                                                            +
+                                           |   and (p.year >= min_year and p.year <= max_year)                                                                                                                                                                       +
+                                           |   order by similarity desc                                                                                                                                                                                              +
+                                           |   limit match_count;                                                                                                                                                                                                    +
+                                           | end;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_papers_by_embedding                | CREATE OR REPLACE FUNCTION public.search_papers_by_embedding(query_embedding vector, similarity_threshold double precision, match_count integer, filter_year integer DEFAULT NULL::integer)                             +
+                                           |  RETURNS TABLE(paper_id text, title text, abstract text, similarity double precision)                                                                                                                                   +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | BEGIN                                                                                                                                                                                                                   +
+                                           |   RETURN QUERY                                                                                                                                                                                                          +
+                                           |   SELECT                                                                                                                                                                                                                +
+                                           |     p.id as paper_id,                                                                                                                                                                                                   +
+                                           |     p.title,                                                                                                                                                                                                            +
+                                           |     p.abstract,                                                                                                                                                                                                         +
+                                           |     1 - (e.embedding <=> query_embedding) AS similarity                                                                                                                                                                 +
+                                           |   FROM                                                                                                                                                                                                                  +
+                                           |     public.paper_embeddings e                                                                                                                                                                                           +
+                                           |     JOIN public.papers p ON e.paper_id = p.id                                                                                                                                                                           +
+                                           |   WHERE                                                                                                                                                                                                                 +
+                                           |     (filter_year IS NULL OR p.year = filter_year) AND                                                                                                                                                                   +
+                                           |     1 - (e.embedding <=> query_embedding) > similarity_threshold                                                                                                                                                        +
+                                           |   ORDER BY                                                                                                                                                                                                              +
+                                           |     similarity DESC                                                                                                                                                                                                     +
+                                           |   LIMIT                                                                                                                                                                                                                 +
+                                           |     match_count;                                                                                                                                                                                                        +
+                                           | END;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_papers_by_institution              | CREATE OR REPLACE FUNCTION public.search_papers_by_institution(query_text text, match_count integer DEFAULT 20, min_year integer DEFAULT 2005, max_year integer DEFAULT 2026)                                           +
+                                           |  RETURNS TABLE(id text, title text, year integer, abstract text, methodology text, institution_name text, authors jsonb)                                                                                                +
+                                           |  LANGUAGE sql                                                                                                                                                                                                           +
+                                           |  STABLE                                                                                                                                                                                                                 +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           |   WITH matched_inst AS (                                                                                                                                                                                                +
+                                           |     SELECT DISTINCT canonical_name,                                                                                                                                                                                     +
+                                           |            similarity(canonical_name, query_text) AS sim                                                                                                                                                                +
+                                           |     FROM institution_mappings                                                                                                                                                                                           +
+                                           |     WHERE canonical_name % query_text                                                                                                                                                                                   +
+                                           |     ORDER BY sim DESC                                                                                                                                                                                                   +
+                                           |     LIMIT 5                                                                                                                                                                                                             +
+                                           |   )                                                                                                                                                                                                                     +
+                                           |   SELECT                                                                                                                                                                                                                +
+                                           |     p.id,                                                                                                                                                                                                               +
+                                           |     p.title,                                                                                                                                                                                                            +
+                                           |     p.year,                                                                                                                                                                                                             +
+                                           |     p.abstract,                                                                                                                                                                                                         +
+                                           |     p.methodology,                                                                                                                                                                                                      +
+                                           |     mi.canonical_name AS institution_name,                                                                                                                                                                              +
+                                           |     (                                                                                                                                                                                                                   +
+                                           |       SELECT jsonb_agg(                                                                                                                                                                                                 +
+                                           |         jsonb_build_object(                                                                                                                                                                                             +
+                                           |           'name', pa.name,                                                                                                                                                                                              +
+                                           |           'institution', pa.institution,                                                                                                                                                                                +
+                                           |           'rank', pa.author_order                                                                                                                                                                                       +
+                                           |         ) ORDER BY pa.author_order                                                                                                                                                                                      +
+                                           |       )                                                                                                                                                                                                                 +
+                                           |       FROM paper_authors pa                                                                                                                                                                                             +
+                                           |       WHERE pa.paper_id = p.id                                                                                                                                                                                          +
+                                           |     ) AS authors                                                                                                                                                                                                        +
+                                           |   FROM matched_inst mi                                                                                                                                                                                                  +
+                                           |   JOIN paper_authors pa2                                                                                                                                                                                                +
+                                           |     ON pa2.institution_normalized = mi.canonical_name                                                                                                                                                                   +
+                                           |     AND pa2.author_order = 1                                                                                                                                                                                            +
+                                           |   JOIN papers p ON p.id = pa2.paper_id                                                                                                                                                                                  +
+                                           |   WHERE p.year BETWEEN min_year AND max_year                                                                                                                                                                            +
+                                           |   ORDER BY mi.sim DESC, p.year DESC                                                                                                                                                                                     +
+                                           |   LIMIT match_count;                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_papers_fulltext                    | CREATE OR REPLACE FUNCTION public.search_papers_fulltext(search_query text, max_results integer DEFAULT 1000, min_rank real DEFAULT 0.01)                                                                               +
+                                           |  RETURNS TABLE(paper_id text, year text, title text, abstract text, format text, link text, rank real)                                                                                                                  +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SET search_path TO 'public'                                                                                                                                                                                            +
+                                           | AS $function$\r                                                                                                                                                                                                         +
+                                           | BEGIN\r                                                                                                                                                                                                                 +
+                                           |     RETURN QUERY\r                                                                                                                                                                                                      +
+                                           |     SELECT\r                                                                                                                                                                                                            +
+                                           |         p.paper_id,\r                                                                                                                                                                                                   +
+                                           |         p.year,\r                                                                                                                                                                                                       +
+                                           |         p.title,\r                                                                                                                                                                                                      +
+                                           |         p.abstract,\r                                                                                                                                                                                                   +
+                                           |         p.format,\r                                                                                                                                                                                                     +
+                                           |         p.link,\r                                                                                                                                                                                                       +
+                                           |         ts_rank(\r                                                                                                                                                                                                      +
+                                           |             to_tsvector('english', COALESCE(p.title, '') || ' ' || COALESCE(p.abstract, '')),\r                                                                                                                         +
+                                           |             to_tsquery('english', search_query)\r                                                                                                                                                                       +
+                                           |         ) AS rank\r                                                                                                                                                                                                     +
+                                           |     FROM papers p\r                                                                                                                                                                                                     +
+                                           |     WHERE\r                                                                                                                                                                                                             +
+                                           |         to_tsvector('english', COALESCE(p.title, '') || ' ' || COALESCE(p.abstract, ''))\r                                                                                                                              +
+                                           |         @@ to_tsquery('english', search_query)\r                                                                                                                                                                        +
+                                           |         AND ts_rank(\r                                                                                                                                                                                                  +
+                                           |             to_tsvector('english', COALESCE(p.title, '') || ' ' || COALESCE(p.abstract, '')),\r                                                                                                                         +
+                                           |             to_tsquery('english', search_query)\r                                                                                                                                                                       +
+                                           |         ) >= min_rank\r                                                                                                                                                                                                 +
+                                           |     ORDER BY rank DESC\r                                                                                                                                                                                                +
+                                           |     LIMIT max_results;\r                                                                                                                                                                                                +
+                                           | END;\r                                                                                                                                                                                                                  +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ search_papers_keyword                     | CREATE OR REPLACE FUNCTION public.search_papers_keyword(query_text text, match_count integer, min_year integer DEFAULT 0, max_year integer DEFAULT 9999)                                                                +
+                                           |  RETURNS TABLE(id text, title text, year integer, abstract text, format text, similarity double precision, authors jsonb)                                                                                               +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SET search_path TO 'public'                                                                                                                                                                                            +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | begin                                                                                                                                                                                                                   +
+                                           |   return query                                                                                                                                                                                                          +
+                                           |   select                                                                                                                                                                                                                +
+                                           |     p.id,                                                                                                                                                                                                               +
+                                           |     p.title,                                                                                                                                                                                                            +
+                                           |     p.year,                                                                                                                                                                                                             +
+                                           |     p.abstract,                                                                                                                                                                                                         +
+                                           |     p.format,                                                                                                                                                                                                           +
+                                           |     1.0::float as similarity,                                                                                                                                                                                           +
+                                           |     (                                                                                                                                                                                                                   +
+                                           |       select jsonb_agg(                                                                                                                                                                                                 +
+                                           |         jsonb_build_object(                                                                                                                                                                                             +
+                                           |           'name', pa.name,                                                                                                                                                                                              +
+                                           |           'institution', pa.institution,                                                                                                                                                                                +
+                                           |           'rank', pa.author_order                                                                                                                                                                                       +
+                                           |         ) order by pa.author_order                                                                                                                                                                                      +
+                                           |       )                                                                                                                                                                                                                 +
+                                           |       from paper_authors pa                                                                                                                                                                                             +
+                                           |       where pa.paper_id = p.id                                                                                                                                                                                          +
+                                           |     ) as authors                                                                                                                                                                                                        +
+                                           |   from papers p                                                                                                                                                                                                         +
+                                           |   where (p.title ILIKE '%' || query_text || '%' OR p.abstract ILIKE '%' || query_text || '%')                                                                                                                           +
+                                           |   and (p.year >= min_year and p.year <= max_year)                                                                                                                                                                       +
+                                           |   limit match_count;                                                                                                                                                                                                    +
+                                           | end;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ set_limit                                 | CREATE OR REPLACE FUNCTION public.set_limit(real)                                                                                                                                                                       +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STRICT                                                                                                                                                                                                                 +
+                                           | AS '$libdir/pg_trgm', $function$set_limit$function$                                                                                                                                                                     +
+                                           | 
+ show_limit                                | CREATE OR REPLACE FUNCTION public.show_limit()                                                                                                                                                                          +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$show_limit$function$                                                                                                                                                                    +
+                                           | 
+ show_trgm                                 | CREATE OR REPLACE FUNCTION public.show_trgm(text)                                                                                                                                                                       +
+                                           |  RETURNS text[]                                                                                                                                                                                                         +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$show_trgm$function$                                                                                                                                                                     +
+                                           | 
+ similarity                                | CREATE OR REPLACE FUNCTION public.similarity(text, text)                                                                                                                                                                +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$similarity$function$                                                                                                                                                                    +
+                                           | 
+ similarity_dist                           | CREATE OR REPLACE FUNCTION public.similarity_dist(text, text)                                                                                                                                                           +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$similarity_dist$function$                                                                                                                                                               +
+                                           | 
+ similarity_op                             | CREATE OR REPLACE FUNCTION public.similarity_op(text, text)                                                                                                                                                             +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$similarity_op$function$                                                                                                                                                                 +
+                                           | 
+ strict_word_similarity                    | CREATE OR REPLACE FUNCTION public.strict_word_similarity(text, text)                                                                                                                                                    +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$strict_word_similarity$function$                                                                                                                                                        +
+                                           | 
+ strict_word_similarity_commutator_op      | CREATE OR REPLACE FUNCTION public.strict_word_similarity_commutator_op(text, text)                                                                                                                                      +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$strict_word_similarity_commutator_op$function$                                                                                                                                          +
+                                           | 
+ strict_word_similarity_dist_commutator_op | CREATE OR REPLACE FUNCTION public.strict_word_similarity_dist_commutator_op(text, text)                                                                                                                                 +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$strict_word_similarity_dist_commutator_op$function$                                                                                                                                     +
+                                           | 
+ strict_word_similarity_dist_op            | CREATE OR REPLACE FUNCTION public.strict_word_similarity_dist_op(text, text)                                                                                                                                            +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$strict_word_similarity_dist_op$function$                                                                                                                                                +
+                                           | 
+ strict_word_similarity_op                 | CREATE OR REPLACE FUNCTION public.strict_word_similarity_op(text, text)                                                                                                                                                 +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$strict_word_similarity_op$function$                                                                                                                                                     +
+                                           | 
+ update_embedding_vector                   | CREATE OR REPLACE FUNCTION public.update_embedding_vector()                                                                                                                                                             +
+                                           |  RETURNS trigger                                                                                                                                                                                                        +
+                                           |  LANGUAGE plpgsql                                                                                                                                                                                                       +
+                                           |  SECURITY DEFINER                                                                                                                                                                                                       +
+                                           |  SET search_path TO 'pg_catalog, pg_temp'                                                                                                                                                                               +
+                                           | AS $function$                                                                                                                                                                                                           +
+                                           | BEGIN                                                                                                                                                                                                                   +
+                                           |     NEW.embedding_vector = jsonb_to_vector(NEW.embedding);                                                                                                                                                              +
+                                           |     RETURN NEW;                                                                                                                                                                                                         +
+                                           | END;                                                                                                                                                                                                                    +
+                                           | $function$                                                                                                                                                                                                              +
+                                           | 
+ word_similarity                           | CREATE OR REPLACE FUNCTION public.word_similarity(text, text)                                                                                                                                                           +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$word_similarity$function$                                                                                                                                                               +
+                                           | 
+ word_similarity_commutator_op             | CREATE OR REPLACE FUNCTION public.word_similarity_commutator_op(text, text)                                                                                                                                             +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$word_similarity_commutator_op$function$                                                                                                                                                 +
+                                           | 
+ word_similarity_dist_commutator_op        | CREATE OR REPLACE FUNCTION public.word_similarity_dist_commutator_op(text, text)                                                                                                                                        +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$word_similarity_dist_commutator_op$function$                                                                                                                                            +
+                                           | 
+ word_similarity_dist_op                   | CREATE OR REPLACE FUNCTION public.word_similarity_dist_op(text, text)                                                                                                                                                   +
+                                           |  RETURNS real                                                                                                                                                                                                           +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  IMMUTABLE PARALLEL SAFE STRICT                                                                                                                                                                                         +
+                                           | AS '$libdir/pg_trgm', $function$word_similarity_dist_op$function$                                                                                                                                                       +
+                                           | 
+ word_similarity_op                        | CREATE OR REPLACE FUNCTION public.word_similarity_op(text, text)                                                                                                                                                        +
+                                           |  RETURNS boolean                                                                                                                                                                                                        +
+                                           |  LANGUAGE c                                                                                                                                                                                                             +
+                                           |  STABLE PARALLEL SAFE STRICT                                                                                                                                                                                            +
+                                           | AS '$libdir/pg_trgm', $function$word_similarity_op$function$                                                                                                                                                            +
+                                           | 
+(44 rows)
+
+=== INDEX DEFINITIONS ===
+        tablename         |                indexname                 |                                                                    indexdef                                                                    
+--------------------------+------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------
+ author_canonical_mapping | author_canonical_mapping_pkey            | CREATE UNIQUE INDEX author_canonical_mapping_pkey ON public.author_canonical_mapping USING btree (id)
+ author_canonical_mapping | unique_author_mapping                    | CREATE UNIQUE INDEX unique_author_mapping ON public.author_canonical_mapping USING btree (author_id)
+ author_linkage_audit     | author_linkage_audit_pkey                | CREATE UNIQUE INDEX author_linkage_audit_pkey ON public.author_linkage_audit USING btree (id)
+ author_linkage_audit     | idx_author_linkage_audit_paper_author_id | CREATE INDEX idx_author_linkage_audit_paper_author_id ON public.author_linkage_audit USING btree (paper_author_id)
+ authors                  | authors_canonical_name_key               | CREATE UNIQUE INDEX authors_canonical_name_key ON public.authors USING btree (name)
+ authors                  | authors_canonical_pkey                   | CREATE UNIQUE INDEX authors_canonical_pkey ON public.authors USING btree (id)
+ authors                  | idx_authors_name_trgm                    | CREATE INDEX idx_authors_name_trgm ON public.authors USING gin (name gin_trgm_ops)
+ country_mappings         | country_mappings_pkey                    | CREATE UNIQUE INDEX country_mappings_pkey ON public.country_mappings USING btree (id)
+ country_mappings         | country_mappings_raw_name_key            | CREATE UNIQUE INDEX country_mappings_raw_name_key ON public.country_mappings USING btree (raw_name)
+ country_mappings         | idx_country_mappings_raw_name            | CREATE INDEX idx_country_mappings_raw_name ON public.country_mappings USING btree (raw_name)
+ fence_sync               | fence_sync_pkey                          | CREATE UNIQUE INDEX fence_sync_pkey ON public.fence_sync USING btree (house_id)
+ institution_mappings     | idx_inst_map_canonical_trgm              | CREATE INDEX idx_inst_map_canonical_trgm ON public.institution_mappings USING gin (canonical_name gin_trgm_ops)
+ institution_mappings     | idx_institution_mappings_institution_id  | CREATE INDEX idx_institution_mappings_institution_id ON public.institution_mappings USING btree (institution_id)
+ institution_mappings     | idx_institution_mappings_raw_name        | CREATE INDEX idx_institution_mappings_raw_name ON public.institution_mappings USING btree (raw_name)
+ institution_mappings     | institution_mappings_pkey                | CREATE UNIQUE INDEX institution_mappings_pkey ON public.institution_mappings USING btree (id)
+ institution_mappings     | institution_mappings_raw_name_key        | CREATE UNIQUE INDEX institution_mappings_raw_name_key ON public.institution_mappings USING btree (raw_name)
+ page_views               | idx_page_views_visited_at                | CREATE INDEX idx_page_views_visited_at ON public.page_views USING btree (visited_at DESC)
+ page_views               | page_views_pkey                          | CREATE UNIQUE INDEX page_views_pkey ON public.page_views USING btree (id)
+ paper_authors            | idx_paper_authors_author_id              | CREATE INDEX idx_paper_authors_author_id ON public.paper_authors USING btree (author_id)
+ paper_authors            | idx_paper_authors_canonical              | CREATE INDEX idx_paper_authors_canonical ON public.paper_authors USING btree (canonical_author_id)
+ paper_authors            | idx_paper_authors_institution_normalized | CREATE INDEX idx_paper_authors_institution_normalized ON public.paper_authors USING btree (institution_normalized)
+ paper_authors            | idx_paper_authors_paper_id               | CREATE INDEX idx_paper_authors_paper_id ON public.paper_authors USING btree (paper_id)
+ paper_authors            | paper_authors_pkey1                      | CREATE UNIQUE INDEX paper_authors_pkey1 ON public.paper_authors USING btree (id)
+ paper_embeddings         | idx_paper_embeddings_hnsw                | CREATE INDEX idx_paper_embeddings_hnsw ON public.paper_embeddings USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')
+ paper_embeddings         | idx_paper_embeddings_small_hnsw          | CREATE INDEX idx_paper_embeddings_small_hnsw ON public.paper_embeddings USING hnsw (embedding_small vector_cosine_ops)
+ paper_embeddings         | paper_embeddings_paper_id_key            | CREATE UNIQUE INDEX paper_embeddings_paper_id_key ON public.paper_embeddings USING btree (paper_id)
+ paper_embeddings         | paper_embeddings_pkey                    | CREATE UNIQUE INDEX paper_embeddings_pkey ON public.paper_embeddings USING btree (id)
+ paper_html_mappings      | idx_mapping_paper_id                     | CREATE INDEX idx_mapping_paper_id ON public.paper_html_mappings USING btree (paper_id)
+ paper_html_mappings      | paper_html_mappings_pkey                 | CREATE UNIQUE INDEX paper_html_mappings_pkey ON public.paper_html_mappings USING btree (html_path)
+ papers                   | papers_fts_idx                           | CREATE INDEX papers_fts_idx ON public.papers USING gin (fts)
+ papers                   | papers_pkey1                             | CREATE UNIQUE INDEX papers_pkey1 ON public.papers USING btree (id)
+ search_logs              | idx_search_logs_created                  | CREATE INDEX idx_search_logs_created ON public.search_logs USING btree (created_at)
+ search_logs              | idx_search_logs_type                     | CREATE INDEX idx_search_logs_type ON public.search_logs USING btree (search_type)
+ search_logs              | search_logs_pkey                         | CREATE UNIQUE INDEX search_logs_pkey ON public.search_logs USING btree (id)
+(34 rows)
+
+=== RLS POLICIES ===
+ schemaname |        tablename         |               policyname               | permissive |      roles      |  cmd   | qual | with_check 
+------------+--------------------------+----------------------------------------+------------+-----------------+--------+------+------------
+ public     | author_canonical_mapping | canonical_mapping_delete_authenticated | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | author_canonical_mapping | canonical_mapping_insert_authenticated | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | author_canonical_mapping | canonical_mapping_select_authenticated | PERMISSIVE | {authenticated} | SELECT | true | 
+ public     | author_canonical_mapping | canonical_mapping_update_authenticated | PERMISSIVE | {authenticated} | UPDATE | true | 
+ public     | author_linkage_audit     | audit_select_authenticated             | PERMISSIVE | {authenticated} | SELECT | true | 
+ public     | author_linkage_audit     | author_linkage_audit_delete_policy     | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | author_linkage_audit     | author_linkage_audit_insert_policy     | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | author_linkage_audit     | author_linkage_audit_update_policy     | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | authors                  | authors_delete_policy                  | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | authors                  | authors_insert_policy                  | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | authors                  | authors_select_policy                  | PERMISSIVE | {public}        | SELECT | true | 
+ public     | authors                  | authors_update_policy                  | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | country_mappings         | country_mappings_delete_policy         | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | country_mappings         | country_mappings_insert_policy         | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | country_mappings         | country_mappings_select_policy         | PERMISSIVE | {public}        | SELECT | true | 
+ public     | country_mappings         | country_mappings_update_policy         | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | fence_sync               | Allow anonymous read                   | PERMISSIVE | {anon}          | SELECT | true | 
+ public     | fence_sync               | Allow anonymous update                 | PERMISSIVE | {anon}          | UPDATE | true | true
+ public     | institution_mappings     | institution_mappings_delete_policy     | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | institution_mappings     | institution_mappings_insert_policy     | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | institution_mappings     | institution_mappings_select_policy     | PERMISSIVE | {public}        | SELECT | true | 
+ public     | institution_mappings     | institution_mappings_update_policy     | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | page_views               | Allow anonymous inserts                | PERMISSIVE | {anon}          | INSERT |      | true
+ public     | page_views               | Service role can read                  | PERMISSIVE | {service_role}  | SELECT | true | 
+ public     | paper_authors            | paper_authors_delete_policy            | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | paper_authors            | paper_authors_insert_policy            | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | paper_authors            | paper_authors_select_policy            | PERMISSIVE | {public}        | SELECT | true | 
+ public     | paper_authors            | paper_authors_update_policy            | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | paper_embeddings         | embeddings_select_public               | PERMISSIVE | {public}        | SELECT | true | 
+ public     | paper_embeddings         | paper_embeddings_delete_policy         | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | paper_embeddings         | paper_embeddings_insert_policy         | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | paper_embeddings         | paper_embeddings_update_policy         | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | paper_html_mappings      | html_mappings_select_authenticated     | PERMISSIVE | {authenticated} | SELECT | true | 
+ public     | papers                   | papers_delete_policy                   | PERMISSIVE | {authenticated} | DELETE | true | 
+ public     | papers                   | papers_insert_policy                   | PERMISSIVE | {authenticated} | INSERT |      | true
+ public     | papers                   | papers_select_policy                   | PERMISSIVE | {public}        | SELECT | true | 
+ public     | papers                   | papers_update_policy                   | PERMISSIVE | {authenticated} | UPDATE | true | true
+ public     | search_logs              | anon_insert                            | PERMISSIVE | {anon}          | INSERT |      | true
+(38 rows)
+
+=== RLS-ENABLED TABLES ===
+         relname          | relrowsecurity | relforcerowsecurity 
+--------------------------+----------------+---------------------
+ authors                  | t              | f
+ country_mappings         | t              | f
+ author_canonical_mapping | t              | f
+ page_views               | t              | f
+ papers                   | t              | f
+ paper_authors            | t              | f
+ paper_embeddings         | t              | f
+ author_linkage_audit     | t              | f
+ paper_html_mappings      | t              | f
+ institution_mappings     | t              | f
+ fence_sync               | t              | f
+ search_logs              | t              | f
+(12 rows)
+
+=== TRIGGERS ===
+ event_object_table | trigger_name | action_timing | event_manipulation 
+--------------------+--------------+---------------+--------------------
+(0 rows)
+
+=== VIEWS / MATVIEWS ===
+  table_name  | table_type 
+--------------+------------
+ paper_export | VIEW
+(1 row)
+
+ matviewname 
+-------------
+(0 rows)
+
+=== SEQUENCES ===
+          sequencename           | last_value 
+---------------------------------+------------
+ search_logs_id_seq              |        146
+ author_canonical_mapping_id_seq |        375
+ paper_authors_id_seq1           |     583350
+ authors_canonical_id_seq        |     129750
+ page_views_id_seq               |           
+ paper_embeddings_id_seq         |      79473
+ author_linkage_audit_id_seq     |        153
+ institution_mappings_id_seq     |       4605
+ country_mappings_id_seq         |        213
+(9 rows)
+
+=== NON-PUBLIC SURFACE: auth.users ===
+ auth_users 
+------------
+          1
+(1 row)
+
+=== NON-PUBLIC SURFACE: storage.buckets ===
+       id       |      name      | public 
+----------------+----------------+--------
+ fence-sync     | fence-sync     | f
+ fence-sync-app | fence-sync-app | t
+(2 rows)
+
+=== NON-PUBLIC SURFACE: storage object counts ===
+ bucket_id  | count 
+------------+-------
+ fence-sync |     1
+(1 row)
+
+=== NON-PUBLIC SURFACE: pg_cron jobs (errors harmlessly if absent) ===
+psql:migration/01_audit.sql:88: ERROR:  relation "cron.job" does not exist
+LINE 1: select * from cron.job;
+                      ^

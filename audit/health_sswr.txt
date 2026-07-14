@@ -1,0 +1,86 @@
+=== SSWR: PAPERS WITHOUT AUTHORS ===
+ papers_without_authors 
+------------------------
+                      2
+(1 row)
+
+=== SSWR: ORPHANED paper_authors ===
+ missing_paper | missing_author 
+---------------+----------------
+             0 |              0
+(1 row)
+
+=== SSWR: paper_authors WITHOUT author_id LINK (unresolved entities) ===
+ unlinked | pct 
+----------+-----
+        0 | 0.0
+(1 row)
+
+=== SSWR: ORPHANED html mappings ===
+ orphaned_mappings 
+-------------------
+                13
+(1 row)
+
+=== SSWR: PAPERS NOT COVERED BY html mapping ===
+ papers_without_html_source 
+----------------------------
+                         54
+(1 row)
+
+=== SSWR: DUPLICATE PAPER IDs BY (title, year) ===
+ dup_title_year_groups 
+-----------------------
+                     5
+(1 row)
+
+=== SSWR: NULL-RATE PROFILE (papers) ===
+ total | has_title | pct_title | has_abstract | pct_abstract | has_methodology | pct_methodology | has_fts | pct_fts 
+-------+-----------+-----------+--------------+--------------+-----------------+-----------------+---------+---------
+ 23793 |     23793 |     100.0 |        23793 |        100.0 |           23793 |           100.0 |   23793 |   100.0
+(1 row)
+
+=== SSWR: YEAR RANGE + DISTRIBUTION ===
+ min_year | max_year | out_of_expected_range 
+----------+----------+-----------------------
+     2005 |     2026 |                     0
+(1 row)
+
+=== SSWR: author_count FIELD CONSISTENCY vs ACTUAL LINKS ===
+ mismatched_author_count 
+-------------------------
+                       0
+(1 row)
+
+=== SSWR: CANONICAL AUTHOR MAPPING INTEGRITY ===
+ bad_author_fk | bad_canonical_fk 
+---------------+------------------
+             0 |                0
+(1 row)
+
+=== SSWR: EMBEDDING SHELL READY (0 rows, correct types) ===
+ embedding_rows 
+----------------
+              0
+(1 row)
+
+     attname     |       format_type        
+-----------------+--------------------------
+ id              | bigint
+ paper_id        | text
+ embedding       | vector(1536)
+ created_at      | timestamp with time zone
+ embedding_large | vector(3072)
+ embedding_small | vector(1536)
+ model_large     | text
+ model_small     | text
+(8 rows)
+
+=== SSWR: SEQUENCE HEALTH ===
+          t           |  seq   | max_id 
+----------------------+--------+--------
+ authors              | 129750 | 129750
+ paper_authors        | 583350 | 583350
+ institution_mappings |   4605 |   4605
+(3 rows)
+

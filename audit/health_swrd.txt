@@ -1,0 +1,124 @@
+=== SWRD: PAPERS WITHOUT AUTHORS ===
+ papers_without_authors 
+------------------------
+                   2709
+(1 row)
+
+=== SWRD: AUTHORS WITHOUT PAPERS ===
+ authors_without_papers 
+------------------------
+                  26890
+(1 row)
+
+=== SWRD: ORPHANED paper_authors ===
+ missing_paper | missing_author 
+---------------+----------------
+             0 |              0
+(1 row)
+
+=== SWRD: ORPHANED author_affiliations ===
+ missing_author | missing_org | missing_paper 
+----------------+-------------+---------------
+              0 |           0 |             0
+(1 row)
+
+=== SWRD: PAPERS WITH NULL JOURNAL ===
+ papers_null_journal 
+---------------------
+                   0
+(1 row)
+
+ papers_bad_journal_fk 
+-----------------------
+                     0
+(1 row)
+
+=== SWRD: DUPLICATE DOIs ===
+ duplicate_doi_groups 
+----------------------
+                    0
+(1 row)
+
+=== SWRD: DUPLICATE wos_uid / scopus_eid ===
+ dup_wos | dup_scopus 
+---------+------------
+       0 |          0
+(1 row)
+
+=== SWRD: EXACT-TITLE DUPLICATE CANDIDATES (same title+year) ===
+ dup_title_year_groups 
+-----------------------
+                  1375
+(1 row)
+
+=== SWRD: NULL-RATE PROFILE (papers) ===
+ total  | has_doi | pct_doi | has_abstract | pct_abstract | has_year | pct_year | has_journal | pct_journal | has_is_scientific | pct_classified 
+--------+---------+---------+--------------+--------------+----------+----------+-------------+-------------+-------------------+----------------
+ 110618 |   84213 |    76.1 |        68043 |         61.5 |   110617 |    100.0 |      110618 |       100.0 |             68074 |           61.5
+(1 row)
+
+=== SWRD: YEAR RANGE SANITY ===
+ min_year | max_year | out_of_range 
+----------+----------+--------------
+     1920 |     2025 |            0
+(1 row)
+
+=== SWRD: CITATION SANITY ===
+ min_cited | max_cited | negative 
+-----------+-----------+----------
+         0 |      1675 |        0
+(1 row)
+
+=== SWRD: DATA SOURCE DISTRIBUTION ===
+                                                         data_source                                                          | count 
+------------------------------------------------------------------------------------------------------------------------------+-------
+ WoS                                                                                                                          | 75418
+ Scopus                                                                                                                       | 17496
+ RDS                                                                                                                          |  4500
+ Digital Commons                                                                                                              |  2772
+ MISC.csv                                                                                                                     |  2330
+ DOAJ                                                                                                                         |  1625
+ REFL.csv                                                                                                                     |  1343
+ Affilia.csv                                                                                                                  |  1284
+ DOAJ_OAI_PMH                                                                                                                 |  1211
+ Manual Impor                                                                                                                 |   708
+ Sociological Abstracts                                                                                                       |   496
+ JSWVE.csv                                                                                                                    |   428
+ Sociological Abstracts, Sociology Database                                                                                   |   363
+ Education Research Index, Sociological Abstracts, Sociology Database                                                         |   147
+ Sociological Abstracts, Sociological Abstracts, Sociology Database                                                           |   140
+ CSW                                                                                                                          |   103
+ Education Research Index, ERIC, Sociological Abstracts                                                                       |    67
+ Education Research Index, ERIC, Education Research Index, Sociological Abstracts, Sociology Database                         |    59
+ misc_import                                                                                                                  |    46
+ ASW.csv                                                                                                                      |    37
+ Education Research Index, Sociological Abstracts, Sociology Database, Sociological Abstracts                                 |    16
+ APSW-OJS                                                                                                                     |    13
+ Education Research Index, ERIC                                                                                               |     9
+ Education Research Index, ERIC, Education Research Index, Sociological Abstracts, Sociology Database, Sociological Abstracts |     5
+ Education Research Index, ERIC, PTSDpubs                                                                                     |     1
+ Agricultural & Environmental Science Collection, Sociological Abstracts, Sociology Database                                  |     1
+(26 rows)
+
+=== SWRD: AUTHOR POSITION SANITY (papers with no position-1 author) ===
+ papers_missing_first_author 
+-----------------------------
+                         482
+(1 row)
+
+=== SWRD: DUPLICATE AUTHOR NAMES (entity-resolution signal, informational) ===
+ exact_name_dup_groups 
+-----------------------
+                 14955
+(1 row)
+
+=== SWRD: SEQUENCE HEALTH (last_value must be >= max id) ===
+          t          |  seq   | max_id 
+---------------------+--------+--------
+ papers              | 128503 | 128503
+ authors             | 166941 | 166941
+ organizations       |  43650 |  43650
+ journals            |    263 |    263
+ author_affiliations | 121102 | 121102
+(5 rows)
+

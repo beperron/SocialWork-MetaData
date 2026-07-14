@@ -1,0 +1,12 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Database dumps contain full data — never commit
+*.dump
+*.sql.gz
+migration/dumps/
+
+# OS noise
+.DS_Store
