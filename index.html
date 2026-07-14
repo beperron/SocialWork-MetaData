@@ -12,9 +12,9 @@
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body { margin: 0; background: #FFFFFF; color: #18181B; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-feature-settings: 'ss01','cv11'; }
   *, *::before, *::after { box-sizing: border-box; }
-  a { color: #00274C; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms cubic-bezier(0.2,0,0.2,1); }
+  a { color: #14424E; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 120ms cubic-bezier(0.2,0,0.2,1); }
   a:hover { border-bottom-color: currentColor; }
-  ::selection { background: #FFCB05; color: #00274C; }
+  ::selection { background: #E8B04B; color: #14424E; }
   @media (max-width: 880px) {
     .g-stats, .g-cards, .g-steps, .g-db, .g-split, .g-find, .g-poss { grid-template-columns: 1fr !important; }
     .g-stats > div, .g-steps > div { border-right: none !important; border-bottom: 1px solid #E7E5E0; padding-left: 0 !important; }
@@ -31,7 +31,7 @@
   <!-- ================= TOP BAR ================= -->
   <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.86); backdrop-filter:blur(8px); border-bottom:1px solid #E7E5E0;">
     <div style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); height:60px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
-      <a href="#" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#00274C; border:none;">Social Work Meta-Data</a>
+      <a href="#" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#14424E; border:none;">Social Work Meta-Data</a>
       <nav class="nav-links" style="display:flex; align-items:center; gap:28px;">
         <a class="nav-item" href="#databases" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Databases</a>
         <a class="nav-item" href="#access" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">AI access</a>
@@ -43,42 +43,43 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub</a>
       <iframe src="https://ghbtns.com/github-btn.html?user=beperron&repo=SocialWork-MetaData&type=star&count=true" frameborder="0" scrolling="0" width="92" height="20" title="Star SocialWork-MetaData on GitHub" style="margin-top:1px;"></iframe>
-      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#00274C; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
+      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#14424E; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- ================= HERO ================= -->
-  <section style="position:relative; overflow:hidden; background:radial-gradient(1200px 700px at 78% -10%, #1F3A5F 0%, #00274C 42%, #001A33 100%);">
+  <section style="position:relative; overflow:hidden; background:radial-gradient(1200px 700px at 78% -10%, #23606E 0%, #14424E 42%, #0A2830 100%);">
     <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1.4px); background-size:26px 26px; mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%); -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);"></div>
-    <div aria-hidden="true" style="position:absolute; top:88px; right:9%; width:6px; height:6px; border-radius:999px; background:#FFCB05; box-shadow:120px 40px 0 -1px rgba(255,203,5,0.55), 210px -30px 0 -2px rgba(255,203,5,0.35), 60px 150px 0 -1px rgba(255,203,5,0.4), -40px 80px 0 -2px rgba(255,203,5,0.3);"></div>
+    <div aria-hidden="true" style="position:absolute; top:88px; right:9%; width:6px; height:6px; border-radius:999px; background:#E8B04B; box-shadow:120px 40px 0 -1px rgba(232,176,75,0.55), 210px -30px 0 -2px rgba(232,176,75,0.35), 60px 150px 0 -1px rgba(232,176,75,0.4), -40px 80px 0 -2px rgba(232,176,75,0.3);"></div>
 
     <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(64px,8vw,104px) clamp(20px,3vw,32px) clamp(56px,6vw,80px);">
-      <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#FFCB05;">University of Michigan School of Social Work</p>
+      <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#E8B04B;">Open bibliographic data for social work scholarship</p>
       <h1 style="margin:0; max-width:16ch; font-size:clamp(38px,5.4vw,60px); line-height:1.04; font-weight:600; letter-spacing:-0.022em; color:#FFFFFF;">The Social Work Meta-Data Project</h1>
-      <p style="margin:22px 0 0; max-width:58ch; font-size:clamp(16px,1.9vw,19px); line-height:1.55; color:#C7D2E0;">Two curated bibliographic databases documenting the scholarly record of social work — the discipline's journal literature and two decades of conference scholarship — built as infrastructure for scientometric analysis and literature discovery.</p>
+      <p style="margin:22px 0 0; max-width:58ch; font-size:clamp(16px,1.9vw,19px); line-height:1.55; color:#C4D8D6;">Two curated bibliographic databases documenting the scholarly record of social work — the discipline's journal literature and two decades of conference scholarship — built as infrastructure for scientometric analysis and literature discovery.</p>
+      <p style="margin:24px 0 0; max-width:78ch; font-size:14px; line-height:1.8; color:#8FB0AD;"><a href="https://beperron.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Brian E. Perron, PhD</a> <span style="white-space:nowrap;">(University of Michigan)</span> &nbsp;·&nbsp; <a href="https://socialwork.wayne.edu/profile/fj8623" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Bryan G. Victor, PhD</a> <span style="white-space:nowrap;">(Wayne State University)</span> &nbsp;·&nbsp; <a href="https://ziaqi.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Zia Qi, MSW</a> <span style="white-space:nowrap;">(University of Michigan)</span></p>
 
       <div style="margin-top:34px; display:flex; flex-wrap:wrap; gap:14px;">
         <a href="#swrd" style="display:flex; align-items:center; gap:14px; padding:14px 20px 14px 16px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); border-radius:8px;">
-          <span style="width:3px; align-self:stretch; background:#FFCB05; border-radius:2px;"></span>
+          <span style="width:3px; align-self:stretch; background:#E8B04B; border-radius:2px;"></span>
           <span>
-            <span style="display:block; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8FA6BF;">SWRD</span>
+            <span style="display:block; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8FB0AD;">SWRD</span>
             <span style="display:block; font-size:15px; font-weight:500; color:#FFFFFF;">Social Work Research Database</span>
           </span>
         </a>
         <a href="#sswr" style="display:flex; align-items:center; gap:14px; padding:14px 20px 14px 16px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.14); border-radius:8px;">
-          <span style="width:3px; align-self:stretch; background:#FFCB05; border-radius:2px;"></span>
+          <span style="width:3px; align-self:stretch; background:#E8B04B; border-radius:2px;"></span>
           <span>
-            <span style="display:block; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8FA6BF;">SSWR</span>
+            <span style="display:block; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8FB0AD;">SSWR</span>
             <span style="display:block; font-size:15px; font-weight:500; color:#FFFFFF;">Conference Database</span>
           </span>
         </a>
       </div>
 
       <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C7D2E0;"><span style="width:6px; height:6px; border-radius:999px; background:#4ADE80;"></span>public read-only access</span>
-        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C7D2E0;">62,602 articles · 23,793 presentations</span>
-        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C7D2E0;">no account required</span>
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C4D8D6;"><span style="width:6px; height:6px; border-radius:999px; background:#4ADE80;"></span>public read-only access</span>
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C4D8D6;">62,602 articles · 23,793 presentations</span>
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:5px 12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.02em; color:#C4D8D6;">no account required</span>
       </div>
     </div>
   </section>
@@ -87,19 +88,19 @@
   <section style="border-bottom:1px solid #E7E5E0; background:#FAFAF9;">
     <div class="g-stats" style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(4,1fr);">
       <div style="padding:32px 24px 30px 0; border-right:1px solid #E7E5E0;">
-        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">62,602</div>
+        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#14424E; line-height:1;">62,602</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">research articles classified<br>on method &amp; document type</div>
       </div>
       <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
-        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">23,793</div>
+        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#14424E; line-height:1;">23,793</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">conference presentations,<br>every SSWR meeting 2005–2026</div>
       </div>
       <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
-        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">21,209</div>
+        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#14424E; line-height:1;">21,209</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">presenting authors resolved<br>to canonical identities</div>
       </div>
       <div style="padding:32px 0 30px 24px;">
-        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">91</div>
+        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#14424E; line-height:1;">91</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">disciplinary social work<br>journals, 1989–2025</div>
       </div>
     </div>
@@ -117,23 +118,23 @@
 
     <div class="g-cards" style="margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
       <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03); overflow:hidden;">
-        <div style="height:3px; background:#FFCB05;"></div>
+        <div style="height:3px; background:#E8B04B;"></div>
         <div style="padding:26px 26px 24px;">
           <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.06em; color:#71717A;">skills/swrd-database-skill.md</span>
           <h3 style="margin:10px 0 0; font-size:19px; font-weight:600; color:#18181B;">SWRD skill file</h3>
           <p style="margin:10px 0 0; font-size:14px; color:#3F3F46;">Equips an assistant to query the journal-article database — 62,602 research articles across 91 journals, 1989–2025.</p>
-          <a href="skills/swrd-database-skill.md" download="swrd-database-skill.md" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 18px; background:#00274C; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none;">Download skill file
+          <a href="skills/swrd-database-skill.md" download="swrd-database-skill.md" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 18px; background:#14424E; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none;">Download skill file
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
       <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03); overflow:hidden;">
-        <div style="height:3px; background:#00274C;"></div>
+        <div style="height:3px; background:#14424E;"></div>
         <div style="padding:26px 26px 24px;">
           <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.06em; color:#71717A;">skills/sswr-database-skill.md</span>
           <h3 style="margin:10px 0 0; font-size:19px; font-weight:600; color:#18181B;">SSWR skill file</h3>
           <p style="margin:10px 0 0; font-size:14px; color:#3F3F46;">Equips an assistant to query the conference database — 23,793 presentations with disambiguated authors, 2005–2026.</p>
-          <a href="skills/sswr-database-skill.md" download="sswr-database-skill.md" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 18px; background:#00274C; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none;">Download skill file
+          <a href="skills/sswr-database-skill.md" download="sswr-database-skill.md" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 18px; background:#14424E; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none;">Download skill file
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -168,13 +169,13 @@
       <h2 style="margin:0; max-width:24ch; font-size:clamp(26px,3.2vw,34px); font-weight:600; letter-spacing:-0.018em; color:#18181B; line-height:1.15;">Download the databases</h2>
       <p style="margin:16px 0 0; max-width:66ch; font-size:16px; color:#3F3F46;">Complete CSV exports of both databases — every record, ready for Excel, R, Python, or SPSS. No forms, no registration. Each download includes a README describing every file and the citation.</p>
       <div style="margin-top:26px; display:flex; flex-wrap:wrap; gap:14px;">
-        <a href="https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/swrd-database-csv.zip" style="display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px; background:#00274C; color:#FFFFFF; font-size:14.5px; font-weight:600; border-radius:6px; border:none;">
+        <a href="https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/swrd-database-csv.zip" style="display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px; background:#14424E; color:#FFFFFF; font-size:14.5px; font-weight:600; border-radius:6px; border:none;">
           ⬇ SWRD — journal articles (CSV, 27 MB)
         </a>
-        <a href="https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/sswr-database-csv.zip" style="display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px; background:#00274C; color:#FFFFFF; font-size:14.5px; font-weight:600; border-radius:6px; border:none;">
+        <a href="https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/sswr-database-csv.zip" style="display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px; background:#14424E; color:#FFFFFF; font-size:14.5px; font-weight:600; border-radius:6px; border:none;">
           ⬇ SSWR — conference presentations (CSV, 26 MB)
         </a>
-        <a href="https://github.com/beperron/SocialWork-MetaData/releases" style="display:inline-flex; align-items:center; height:44px; padding:0 18px; background:transparent; color:#00274C; font-size:14px; font-weight:600; border-radius:6px; border:1.5px solid #00274C;">All releases &amp; versions</a>
+        <a href="https://github.com/beperron/SocialWork-MetaData/releases" style="display:inline-flex; align-items:center; height:44px; padding:0 18px; background:transparent; color:#14424E; font-size:14px; font-weight:600; border-radius:6px; border:1.5px solid #14424E;">All releases &amp; versions</a>
       </div>
       <p style="margin:16px 0 0; font-size:13px; color:#71717A;">The SWRD download is exactly the 62,602-article corpus of the 2026 article, with the historical Supplement and linkage tables packaged alongside it.</p>
     </div>
@@ -195,7 +196,7 @@
 
         <article id="swrd" style="scroll-margin-top:80px; background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; padding:30px 30px 34px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03);">
           <div style="display:flex; align-items:center; gap:10px;">
-            <span style="width:8px; height:8px; border-radius:999px; background:#FFCB05;"></span>
+            <span style="width:8px; height:8px; border-radius:999px; background:#E8B04B;"></span>
             <span style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#71717A;">SWRD</span>
           </div>
           <h3 style="margin:12px 0 0; font-size:21px; font-weight:600; letter-spacing:-0.01em; color:#18181B;">Social Work Research Database</h3>
@@ -227,7 +228,7 @@
 
         <article id="sswr" style="scroll-margin-top:80px; background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; padding:30px 30px 34px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03);">
           <div style="display:flex; align-items:center; gap:10px;">
-            <span style="width:8px; height:8px; border-radius:999px; background:#00274C;"></span>
+            <span style="width:8px; height:8px; border-radius:999px; background:#14424E;"></span>
             <span style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#71717A;">SSWR</span>
           </div>
           <h3 style="margin:12px 0 0; font-size:21px; font-weight:600; letter-spacing:-0.01em; color:#18181B;">Conference Database</h3>
@@ -307,32 +308,32 @@
   </section>
 
   <!-- ================= SEMANTIC SEARCH ================= -->
-  <section id="search" style="background:#00274C; position:relative; overflow:hidden;">
+  <section id="search" style="background:#14424E; position:relative; overflow:hidden;">
     <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1.4px); background-size:26px 26px;"></div>
     <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(64px,7vw,96px) clamp(20px,3vw,32px);">
       <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.08em; color:#5E7794;">05</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.08em; color:#5F8783;">05</span>
         <span style="height:1px; flex:0 0 40px; background:rgba(255,255,255,0.25); align-self:center;"></span>
-        <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#8FA6BF;">Semantic search</span>
+        <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#8FB0AD;">Semantic search</span>
       </div>
       <h2 style="margin:0; max-width:24ch; font-size:clamp(26px,3.2vw,34px); font-weight:600; letter-spacing:-0.018em; color:#FFFFFF; line-height:1.15;">Retrieval by meaning, not just keywords</h2>
-      <p style="margin:16px 0 0; max-width:64ch; font-size:16px; color:#C7D2E0;">Every abstract is encoded with a text-embedding model that maps a passage to a numerical representation of its meaning. A query for <em style="font-style:italic; color:#FFFFFF;">kinship care</em> therefore retrieves work phrased as <em style="font-style:italic; color:#FFFFFF;">relative caregivers</em> — a class of misses to which keyword systems are systematically prone.</p>
+      <p style="margin:16px 0 0; max-width:64ch; font-size:16px; color:#C4D8D6;">Every abstract is encoded with a text-embedding model that maps a passage to a numerical representation of its meaning. A query for <em style="font-style:italic; color:#FFFFFF;">kinship care</em> therefore retrieves work phrased as <em style="font-style:italic; color:#FFFFFF;">relative caregivers</em> — a class of misses to which keyword systems are systematically prone.</p>
 
       <div class="g-find" style="margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
-          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8FA6BF;">01</span>
-          <p style="margin:8px 0 0; font-size:14.5px; color:#E4EAF1;">Every embedding model tested outperformed keyword retrieval on this corpus (preliminary results).</p>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8FB0AD;">01</span>
+          <p style="margin:8px 0 0; font-size:14.5px; color:#DFEBEA;">Every embedding model tested outperformed keyword retrieval on this corpus (preliminary results).</p>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
-          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8FA6BF;">02</span>
-          <p style="margin:8px 0 0; font-size:14.5px; color:#E4EAF1;">A lightweight "second look" reranking stage lifted the small model to the top of the preliminary leaderboard.</p>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8FB0AD;">02</span>
+          <p style="margin:8px 0 0; font-size:14.5px; color:#DFEBEA;">A lightweight "second look" reranking stage lifted the small model to the top of the preliminary leaderboard.</p>
         </div>
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
-          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#FFCB05;">03</span>
-          <p style="margin:8px 0 0; font-size:14.5px; color:#E4EAF1;"><strong style="color:#FFFFFF; font-weight:600;">EmbeddingGemma</strong> (Google, 300M) offered the standout quality-to-size ratio — small enough to run locally, at no cost, with no data leaving your machine — benchmarked head-to-head against eleven alternatives, entirely on local hardware, in <a href="https://beperron.github.io/SW-Embedding-Test/" style="color:#FFFFFF; text-decoration:underline; border:none;">our embedding study</a>.</p>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#E8B04B;">03</span>
+          <p style="margin:8px 0 0; font-size:14.5px; color:#DFEBEA;"><strong style="color:#FFFFFF; font-weight:600;">EmbeddingGemma</strong> (Google, 300M) offered the standout quality-to-size ratio — small enough to run locally, at no cost, with no data leaving your machine — benchmarked head-to-head against eleven alternatives, entirely on local hardware, in <a href="https://beperron.github.io/SW-Embedding-Test/" style="color:#FFFFFF; text-decoration:underline; border:none;">our embedding study</a>.</p>
         </div>
       </div>
-      <p style="margin:22px 0 0; font-size:13px; color:#8FA6BF;">All abstracts in both databases are already encoded — semantic retrieval requires no additional setup. Full benchmark: <a href="https://beperron.github.io/SW-Embedding-Test/" style="color:#C7D2E0;">the embeddings report</a>.</p>
+      <p style="margin:22px 0 0; font-size:13px; color:#8FB0AD;">All abstracts in both databases are already encoded — semantic retrieval requires no additional setup. Full benchmark: <a href="https://beperron.github.io/SW-Embedding-Test/" style="color:#C4D8D6;">the embeddings report</a>.</p>
     </div>
   </section>
 
@@ -385,17 +386,17 @@
       <h2 style="margin:0; font-size:clamp(26px,3.2vw,34px); font-weight:600; letter-spacing:-0.018em; color:#18181B; line-height:1.15;">If you use the data, please cite it</h2>
 
       <div style="margin-top:32px; display:flex; flex-direction:column; gap:16px;">
-        <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-left:3px solid #FFCB05; border-radius:6px; padding:22px 26px;">
+        <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-left:3px solid #E8B04B; border-radius:6px; padding:22px 26px;">
           <span style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#71717A;">The SWRD</span>
           <p style="margin:10px 0 0; font-size:14.5px; color:#18181B; line-height:1.6;">Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). Evolution of social work knowledge production over 35 years: An AI-enabled analysis of trends in empiricism, methodology, collaboration, citation patterns, and output. <em style="font-style:italic;">Research on Social Work Practice.</em></p>
-          <a href="https://doi.org/10.1177/10497315261416833" style="margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#00274C;">doi.org/10.1177/10497315261416833
+          <a href="https://doi.org/10.1177/10497315261416833" style="margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#14424E;">doi.org/10.1177/10497315261416833
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
           </a>
         </div>
-        <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-left:3px solid #00274C; border-radius:6px; padding:22px 26px;">
+        <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-left:3px solid #14424E; border-radius:6px; padding:22px 26px;">
           <span style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#71717A;">The SSWR Conference Database</span>
           <p style="margin:10px 0 0; font-size:14.5px; color:#18181B; line-height:1.6;">Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). AI-assisted curation of conference scholarship: Compiling, structuring, and analyzing two decades of presentations at the Society for Social Work and Research. <em style="font-style:italic;">arXiv</em> — in press, <em style="font-style:italic;">Journal of the Society for Social Work and Research.</em></p>
-          <a href="https://doi.org/10.48550/arXiv.2603.06814" style="margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#00274C;">doi.org/10.48550/arXiv.2603.06814
+          <a href="https://doi.org/10.48550/arXiv.2603.06814" style="margin-top:10px; display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#14424E;">doi.org/10.48550/arXiv.2603.06814
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
           </a>
         </div>
@@ -405,23 +406,23 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer style="background:#001A33; position:relative; overflow:hidden;">
+  <footer style="background:#0A2830; position:relative; overflow:hidden;">
     <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1.4px); background-size:26px 26px; mask-image:linear-gradient(180deg, transparent 0%, #000 100%); -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 100%);"></div>
     <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px) 44px;">
       <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; align-items:flex-start;">
         <div style="max-width:42ch;">
           <h3 style="margin:0; font-size:20px; font-weight:600; color:#FFFFFF; letter-spacing:-0.01em;">Access &amp; collaboration</h3>
-          <p style="margin:12px 0 0; font-size:14.5px; color:#8FA6BF;">Inquiries, collaboration proposals, and requests for data extracts tailored to a specific research question are welcome.</p>
-          <a href="mailto:beperron@umich.edu" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 20px; background:#FFCB05; color:#00274C; font-size:14px; font-weight:600; border-radius:6px; border:none;">beperron@umich.edu</a>
+          <p style="margin:12px 0 0; font-size:14.5px; color:#8FB0AD;">Inquiries, collaboration proposals, and requests for data extracts tailored to a specific research question are welcome.</p>
+          <a href="mailto:beperron@umich.edu" style="margin-top:20px; display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 20px; background:#E8B04B; color:#14424E; font-size:14px; font-weight:600; border-radius:6px; border:none;">beperron@umich.edu</a>
         </div>
         <div>
-          <span style="font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#5E7794;">Contact</span>
-          <p style="margin:14px 0 0; font-size:14px; color:#C7D2E0; line-height:1.7;"><a href="https://parallel42.ai" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Brian E. Perron</a><br>University of Michigan<br>School of Social Work<br>1080 South University Avenue<br>Ann Arbor, MI 48109</p>
+          <span style="font-size:11.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#5F8783;">Contact</span>
+          <p style="margin:14px 0 0; font-size:14px; color:#C4D8D6; line-height:1.9;"><a href="https://beperron.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Brian E. Perron, PhD</a> · University of Michigan<br><a href="https://socialwork.wayne.edu/profile/fj8623" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Bryan G. Victor, PhD</a> · Wayne State University<br><a href="https://ziaqi.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Zia Qi, MSW</a> · University of Michigan</p>
         </div>
       </div>
       <div style="margin-top:48px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.12); display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center;">
-        <a href="https://parallel42.ai" style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#5E7794; border:none;">Brian Perron · parallel42.ai</a>
-        <a href="docs/TECHNICAL_OVERVIEW.md" style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#5E7794; border:none;">Technical documentation → docs/TECHNICAL_OVERVIEW.md</a>
+        <a href="https://parallel42.ai" style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#5F8783; border:none;">Brian Perron · parallel42.ai</a>
+        <a href="docs/TECHNICAL_OVERVIEW.md" style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#5F8783; border:none;">Technical documentation → docs/TECHNICAL_OVERVIEW.md</a>
       </div>
     </div>
   </footer>

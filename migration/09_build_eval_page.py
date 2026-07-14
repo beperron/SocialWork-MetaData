@@ -87,7 +87,7 @@ for cat in cat_order:
     qblocks = []
     for i in idxs:
         db = "SWRD" if "SWRD" in qs[i] else "SSWR"
-        dbc = "#B45309" if db == "SWRD" else "#00274C"
+        dbc = "#B45309" if db == "SWRD" else "#14424E"
         icons = "".join(f'<span title="{html.escape(short[m[0]])}" style="color:{mark(m[0], i)[1]}; font-weight:700; padding:0 3px;">{mark(m[0], i)[0]}</span>' for m in MODELS)
         mrows = []
         for key, name, *_ in MODELS:
@@ -175,17 +175,17 @@ page = f'''<!DOCTYPE html>
 
 <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.86); backdrop-filter:blur(8px); border-bottom:1px solid #E7E5E0;">
   <div style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); height:60px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
-    <a href="index.html" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#00274C; border:none;">Social Work Meta-Data</a>
+    <a href="index.html" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#14424E; border:none;">Social Work Meta-Data</a>
     <nav class="nav-links" style="display:flex; align-items:center; gap:28px;">
       <a class="nav-item" href="index.html#databases" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Databases</a>
       <a class="nav-item" href="index.html#access" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">AI access</a>
       <a class="nav-item" href="index.html#download" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Download</a>
-      <a class="nav-item" href="demonstrations.html" style="font-size:13.5px; font-weight:600; color:#00274C; border:none;">Demonstrations</a>
+      <a class="nav-item" href="demonstrations.html" style="font-size:13.5px; font-weight:600; color:#14424E; border:none;">Demonstrations</a>
       <a href="https://github.com/beperron/SocialWork-MetaData" style="display:inline-flex; align-items:center; gap:7px; height:34px; padding:0 14px; border:1.5px solid #E7E5E0; border-radius:6px; font-size:13.5px; font-weight:600; color:#18181B;" title="View the repository on GitHub">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub</a>
       <iframe src="https://ghbtns.com/github-btn.html?user=beperron&repo=SocialWork-MetaData&type=star&count=true" frameborder="0" scrolling="0" width="92" height="20" title="Star SocialWork-MetaData on GitHub" style="margin-top:1px;"></iframe>
-      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#00274C; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
+      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#14424E; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
     </nav>
   </div>
 </header>
@@ -196,6 +196,7 @@ page = f'''<!DOCTYPE html>
     <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#C9B6FF;">Demonstrations · Report 01 · Text-to-SQL · {N} questions · {len(MODELS)} models · {today}</p>
     <h1 style="margin:0; max-width:22ch; font-size:clamp(32px,4.4vw,48px); line-height:1.08; font-weight:600; letter-spacing:-0.022em; color:#FFFFFF;">Text-to-SQL with Small Local Models</h1>
     <p style="margin:22px 0 0; max-width:62ch; font-size:clamp(15px,1.8vw,18px); line-height:1.55; color:#CFC8EC;">Can free, locally-run language models query these databases? We gave {len(MODELS)} open-weight models — 3&thinsp;B to 36&thinsp;B parameters — the same instructions any assistant gets and {N} research questions across six task categories, executing their SQL verbatim against the live databases through the public endpoint. <strong style="color:#FFFFFF;">Everything ran locally on a single MacBook Pro (Apple M5)</strong> — no cloud AI involved.</p>
+    <p style="margin:20px 0 0; font-size:14px; color:#A79FDA;"><a href="https://beperron.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Brian E. Perron, PhD</a> <span style="white-space:nowrap;">(University of Michigan)</span></p>
   </div>
 </section>
 
@@ -223,7 +224,7 @@ page = f'''<!DOCTYPE html>
     <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Method</span>
   </div>
   <h2 style="margin:0; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em;">Blind questions, six task categories, pre-registered answers</h2>
-  <p style="margin:16px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Each model ran locally through <a href="https://ollama.com">Ollama</a> at temperature 0 on a MacBook Pro (Apple M5) and was prompted with the project's two <a href=\"index.html#access\" style=\"color:#00274C;\">published skill files, verbatim</a> — the exact documents any user downloads — plus a one-line output-format instruction. It answered {N} questions, one at a time, in six categories of increasing demand: <strong>A</strong> simple retrieval &amp; counts · <strong>B</strong> vocabulary &amp; schema fidelity · <strong>C</strong> joins &amp; relational reasoning · <strong>D</strong> aggregation &amp; trends · <strong>E</strong> search-function usage · <strong>F</strong> complex analytical queries. Questions are balanced across the SWRD and SSWR databases. Each model's SQL was executed <em>verbatim</em> through the same public read-only endpoint available to everyone and compared with a reference answer computed before the run; all reference queries were verified deterministic. A <strong>strict pass</strong> (✓) reproduces the reference value; inspected failures that rest on a defensible alternative reading of the question — such as a different but legitimate denominator — are marked <strong>defensible</strong> (△); genuine mistakes are ✗.</p>
+  <p style="margin:16px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Each model ran locally through <a href="https://ollama.com">Ollama</a> at temperature 0 on a MacBook Pro (Apple M5) and was prompted with the project's two <a href=\"index.html#access\" style=\"color:#14424E;\">published skill files, verbatim</a> — the exact documents any user downloads — plus a one-line output-format instruction. It answered {N} questions, one at a time, in six categories of increasing demand: <strong>A</strong> simple retrieval &amp; counts · <strong>B</strong> vocabulary &amp; schema fidelity · <strong>C</strong> joins &amp; relational reasoning · <strong>D</strong> aggregation &amp; trends · <strong>E</strong> search-function usage · <strong>F</strong> complex analytical queries. Questions are balanced across the SWRD and SSWR databases. Each model's SQL was executed <em>verbatim</em> through the same public read-only endpoint available to everyone and compared with a reference answer computed before the run; all reference queries were verified deterministic. A <strong>strict pass</strong> (✓) reproduces the reference value; inspected failures that rest on a defensible alternative reading of the question — such as a different but legitimate denominator — are marked <strong>defensible</strong> (△); genuine mistakes are ✗.</p>
   <p style="margin:12px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;"><strong>The feedback loop.</strong> A pilot round with a hand-condensed prompt surfaced recurring failure patterns — models reaching into the wrong database's tables, calling search functions without SELECT, treating the relevance score as a row position, and forgetting that authorship tables carry no year column. Each pattern became an explicit rule in the skill files ("SQL rules that prevent the most common errors"), and this final round was run against those hardened skills. That loop — evaluate, harden, re-evaluate — is the recommended way to maintain the skills as models and questions evolve. This round surfaced the next candidate: nearly every remaining error is a model joining a search function's output on <span class="mono">journal_id</span> when the function already returns <span class="mono">journal_name</span> directly — the search functions' return columns are the next thing the skills will spell out more forcefully.</p>
 
   <h3 style="margin:36px 0 14px; font-size:17px; font-weight:600;">The models</h3>
