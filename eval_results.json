@@ -2,173 +2,996 @@
  "questions": [
   "How many research articles with abstracts does the SWRD contain from 1989 onward? (research articles = flagged scientific)",
   "Which journal has published the most articles in the SWRD (1989 onward), and how many?",
-  "How many SWRD articles from 1989 onward mention 'kinship care' in the title or abstract?",
-  "How many empirical articles in the SWRD used qualitative methods?",
+  "How many SWRD articles from 1989 onward mention 'kinship care' in the title or abstract? (simple case-insensitive substring match)",
+  "How many articles in the SWRD, across all years, are flagged empirical with research_method 'Qualitative'?",
   "How many presentations were given at the 2024 SSWR conference?",
   "How many SSWR presentations used mixed methods?",
   "Who are the three most prolific presenters in the SSWR database, by total presentations?",
-  "Using the SSWR keyword search function, what is the id of the top-ranked presentation about 'opioid overdose'?"
+  "Using the SSWR keyword search function, what is the id of the top-ranked presentation about 'opioid overdose'?",
+  "How many records does the SWRD papers table contain in total, across all years including the historical supplement?",
+  "How many journals are in the SWRD's journal list?",
+  "How many SWRD articles, across all years, were published in the journal named 'Social Work Research'?",
+  "How many SWRD articles from 1989 onward are flagged open access?",
+  "List the exact distinct values of the research_method field in the SWRD.",
+  "How many articles in the SWRD, across all years, have research_method 'Review'?",
+  "How many SWRD records are from before 1989?",
+  "Which single institution had the most first-authored SSWR presentations between 2020 and 2026, using the normalized institution field? Give the institution and the count.",
+  "How many presentations at the 2010 SSWR conference used quantitative methods?",
+  "How many distinct canonical authors are linked to presentations at the 2015 SSWR conference?",
+  "Using the SSWR keyword search function with match_count 20, how many of the top 20 results for 'food insecurity' are from year 2020 or later?",
+  "What is the earliest SSWR conference year with more than 1,000 presentations?"
  ],
  "models": {
   "granite4.1:3b": {
-   "score": 6,
-   "total": 8,
+   "score": 16,
+   "total": 20,
    "answers": [
     {
      "ok": true,
      "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 \n  AND is_scientific = TRUE \n  AND abstract IS NOT NULL",
      "detail": "correct",
-     "secs": 2.2
+     "secs": 2.7,
+     "rows": [
+      {
+       "count": 62602
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT j.name,\n       COUNT(p.id) AS article_count\nFROM swrd.papers p\nJOIN swrd.journals j ON p.journal_id = j.id\nWHERE p.publication_year >= 1989\nGROUP BY j.name\nORDER BY article_count DESC\nLIMIT 1",
      "detail": "correct",
-     "secs": 0.7
-    },
-    {
-     "ok": false,
-     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 \n  AND (title LIKE '%kinship care%' OR abstract LIKE '%kinship care%')",
-     "detail": "expected one of ['239'], got ['218']",
-     "secs": 0.8
+     "secs": 0.8,
+     "rows": [
+      {
+       "name": "British Journal of Social Work",
+       "article_count": 5931
+      }
+     ]
     },
     {
      "ok": true,
-     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE is_scientific = true \n  AND is_empirical = true \n  AND research_method = 'Qualitative'",
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 \n  AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
      "detail": "correct",
-     "secs": 0.5
+     "secs": 1.8,
+     "rows": [
+      {
+       "count": 239
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE is_empirical = true \n  AND research_method = 'Qualitative'",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 15164
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT COUNT(*) \nFROM sswr.papers \nWHERE year = 2024",
      "detail": "correct",
-     "secs": 0.4
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 1516
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT COUNT(*) \nFROM sswr.papers \nWHERE methodology = 'mixed_methods'",
      "detail": "correct",
-     "secs": 0.4
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 2172
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT name \nFROM sswr.authors \nORDER BY total_papers DESC \nLIMIT 3",
      "detail": "correct",
-     "secs": 0.4
+     "secs": 0.4,
+     "rows": [
+      {
+       "name": "Mark E. Courtney"
+      },
+      {
+       "name": "Eric Rice"
+      },
+      {
+       "name": "Kimberly A. Bender"
+      }
+     ]
     },
     {
      "ok": false,
      "sql": "sswr.search_papers_keyword('opioid overdose', 1)",
      "detail": "SQL error: syntax error at or near \")\"",
-     "secs": 0.4
+     "secs": 0.4,
+     "rows": {
+      "error": "syntax error at or near \")\""
+     }
+    },
+    {
+     "ok": false,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = true AND abstract IS NOT NULL",
+     "detail": "expected one of ['110618'], got ['62602']",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 62602
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.journals",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 91
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers AS p\nJOIN swrd.journals AS j ON p.journal_id = j.id\nWHERE j.name = 'Social Work Research'",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 945
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year >= 1989 AND open_access = TRUE",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 8462
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT DISTINCT research_method FROM swrd.papers",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "research_method": "Mixed-Methods"
+      },
+      {
+       "research_method": "Qualitative"
+      },
+      {
+       "research_method": "Quantitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE research_method = 'Review'",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 706
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM swrd.papers \nWHERE publication_year < 1989",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 23288
+      }
+     ]
+    },
+    {
+     "ok": false,
+     "sql": "SELECT institution_normalized, COUNT(*) AS count \nFROM sswr.paper_authors \nWHERE author_order = 1 \n  AND year BETWEEN 2020 AND 2026 \nGROUP BY institution_normalized \nORDER BY count DESC \nLIMIT 1",
+     "detail": "SQL error: column \"year\" does not exist",
+     "secs": 0.6,
+     "rows": {
+      "error": "column \"year\" does not exist"
+     }
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM sswr.papers \nWHERE year = 2010 AND methodology = 'quantitative'",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 400
+      }
+     ]
+    },
+    {
+     "ok": false,
+     "sql": "SELECT COUNT(DISTINCT author_id) \nFROM sswr.paper_authors \nWHERE year = 2015",
+     "detail": "SQL error: column \"year\" does not exist",
+     "secs": 0.4,
+     "rows": {
+      "error": "column \"year\" does not exist"
+     }
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) \nFROM sswr.search_papers_keyword('food insecurity', 20) \nWHERE year >= 2020",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 9
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT MIN(year) \nFROM sswr.papers \nGROUP BY year \nHAVING COUNT(*) > 1000",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "min": 2018
+      },
+      {
+       "min": 2024
+      },
+      {
+       "min": 2021
+      }
+     ]
     }
    ]
   },
   "gemma4:e4b-mlx": {
-   "score": 6,
-   "total": 8,
+   "score": 18,
+   "total": 20,
    "answers": [
     {
      "ok": true,
      "sql": "SELECT count(*) FROM swrd.papers WHERE is_scientific IS TRUE AND abstract IS NOT NULL AND publication_year >= 1989",
      "detail": "correct",
-     "secs": 3.7
+     "secs": 4.9,
+     "rows": [
+      {
+       "count": 62602
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT swrd.journals.name FROM swrd.papers JOIN swrd.journals ON swrd.papers.journal_id = swrd.journals.id WHERE swrd.papers.publication_year >= 1989 AND swrd.papers.is_scientific = TRUE AND swrd.papers.abstract IS NOT NULL GROUP BY swrd.journals.name ORDER BY COUNT(swrd.papers.id) DESC LIMIT 1",
      "detail": "correct",
-     "secs": 1.2
+     "secs": 1.2,
+     "rows": [
+      {
+       "name": "British Journal of Social Work"
+      }
+     ]
     },
     {
      "ok": false,
-     "sql": "SELECT count(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
+     "sql": "SELECT count(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = true AND abstract IS NOT NULL AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
      "detail": "expected one of ['239'], got ['224']",
-     "secs": 1.9
+     "secs": 1.9,
+     "rows": [
+      {
+       "count": 224
+      }
+     ]
     },
     {
-     "ok": false,
-     "sql": "SELECT count(id) FROM swrd.papers WHERE is_empirical = TRUE AND research_method = 'Qualitative' AND publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL",
-     "detail": "expected one of ['15164'], got ['14921']",
-     "secs": 0.8
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE is_empirical = true AND research_method = 'Qualitative'",
+     "detail": "correct",
+     "secs": 0.8,
+     "rows": [
+      {
+       "count": 15164
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT COUNT(id) FROM sswr.papers WHERE year = 2024",
      "detail": "correct",
-     "secs": 1.4
+     "secs": 1.4,
+     "rows": [
+      {
+       "count": 1516
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT count(*) FROM sswr.papers WHERE methodology = 'mixed_methods'",
      "detail": "correct",
-     "secs": 0.6
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 2172
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT T1.name FROM sswr.authors AS T1 ORDER BY T1.total_papers DESC LIMIT 3",
      "detail": "correct",
-     "secs": 0.6
+     "secs": 0.6,
+     "rows": [
+      {
+       "name": "Mark E. Courtney"
+      },
+      {
+       "name": "Eric Rice"
+      },
+      {
+       "name": "Kimberly A. Bender"
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 1)",
      "detail": "correct",
-     "secs": 0.4
+     "secs": 0.5,
+     "rows": [
+      {
+       "id": "2021-P-0475"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 110618
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.journals",
+     "detail": "correct",
+     "secs": 0.3,
+     "rows": [
+      {
+       "count": 91
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE journal_id = (SELECT id FROM swrd.journals WHERE name = 'Social Work Research')",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 945
+      }
+     ]
+    },
+    {
+     "ok": false,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL AND open_access = TRUE",
+     "detail": "expected one of ['8462'], got ['5809']",
+     "secs": 0.6,
+     "rows": [
+      {
+       "count": 5809
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT DISTINCT research_method FROM swrd.papers",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "research_method": "Mixed-Methods"
+      },
+      {
+       "research_method": "Qualitative"
+      },
+      {
+       "research_method": "Quantitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE research_method = 'Review'",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 706
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers WHERE publication_year < 1989",
+     "detail": "correct",
+     "secs": 0.4,
+     "rows": [
+      {
+       "count": 23288
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT paper_authors.institution_normalized, COUNT(paper_authors.paper_id) FROM sswr.paper_authors JOIN sswr.papers ON paper_authors.paper_id = sswr.papers.id WHERE sswr.papers.year BETWEEN 2020 AND 2026 AND paper_authors.author_order = 1 GROUP BY 1 ORDER BY 2 DESC LIMIT 1",
+     "detail": "correct",
+     "secs": 1.1,
+     "rows": [
+      {
+       "count": 290,
+       "institution_normalized": "Washington University in St. Louis"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(id) FROM sswr.papers WHERE methodology = 'quantitative' AND year = 2010",
+     "detail": "correct",
+     "secs": 0.5,
+     "rows": [
+      {
+       "count": 400
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(DISTINCT T1.author_id) FROM sswr.paper_authors AS T1 JOIN sswr.papers AS T2 ON T1.paper_id = T2.id WHERE T2.year = '2015'",
+     "detail": "correct",
+     "secs": 3.0,
+     "rows": [
+      {
+       "count": 2089
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM sswr.search_papers_keyword('food insecurity', 20) WHERE year >= 2020",
+     "detail": "correct",
+     "secs": 0.6,
+     "rows": [
+      {
+       "count": 9
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT MIN(T1.year) FROM sswr.papers AS T1 GROUP BY T1.year HAVING COUNT(T1.id) > 1000",
+     "detail": "correct",
+     "secs": 2.1,
+     "rows": [
+      {
+       "min": 2018
+      },
+      {
+       "min": 2024
+      },
+      {
+       "min": 2021
+      }
+     ]
     }
    ]
   },
   "gpt-oss:20b": {
-   "score": 5,
-   "total": 8,
+   "score": 18,
+   "total": 20,
    "answers": [
     {
      "ok": true,
      "sql": "SELECT COUNT(*) AS count FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific = true AND abstract IS NOT NULL",
      "detail": "correct",
-     "secs": 7.9
+     "secs": 8.2,
+     "rows": [
+      {
+       "count": 62602
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT j.name AS JournalName, COUNT(*) AS ArticleCount\nFROM swrd.papers p\nJOIN swrd.journals j ON p.journal_id = j.id\nWHERE p.publication_year >= 1989 AND p.is_scientific\nGROUP BY j.name\nORDER BY ArticleCount DESC\nLIMIT 1",
      "detail": "correct",
-     "secs": 4.7
+     "secs": 6.0,
+     "rows": [
+      {
+       "journalname": "British Journal of Social Work",
+       "articlecount": 3565
+      }
+     ]
     },
     {
      "ok": false,
      "sql": "SELECT COUNT(*) AS count\nFROM swrd.papers\nWHERE publication_year >= 1989\n  AND is_scientific\n  AND abstract IS NOT NULL\n  AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
      "detail": "expected one of ['239'], got ['224']",
-     "secs": 4.7
-    },
-    {
-     "ok": false,
-     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE is_empirical = TRUE AND research_method = 'Qualitative' AND publication_year >= 1989 AND is_scientific = TRUE AND abstract IS NOT NULL",
-     "detail": "expected one of ['15164'], got ['14921']",
-     "secs": 4.5
+     "secs": 5.2,
+     "rows": [
+      {
+       "count": 224
+      }
+     ]
     },
     {
      "ok": true,
-     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2024",
+     "sql": "SELECT COUNT(*) AS count FROM swrd.papers WHERE is_empirical = true AND research_method = 'Qualitative'",
      "detail": "correct",
-     "secs": 2.9
+     "secs": 4.3,
+     "rows": [
+      {
+       "count": 15164
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS \"Number of Presentations\" FROM sswr.papers WHERE year = 2024",
+     "detail": "correct",
+     "secs": 2.4,
+     "rows": [
+      {
+       "Number of Presentations": 1516
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT COUNT(*) FROM sswr.papers WHERE methodology = 'mixed_methods'",
      "detail": "correct",
-     "secs": 2.3
+     "secs": 2.2,
+     "rows": [
+      {
+       "count": 2172
+      }
+     ]
     },
     {
      "ok": true,
      "sql": "SELECT name, total_papers FROM sswr.authors ORDER BY total_papers DESC LIMIT 3",
      "detail": "correct",
-     "secs": 3.6
+     "secs": 4.4,
+     "rows": [
+      {
+       "name": "Mark E. Courtney",
+       "total_papers": 113
+      },
+      {
+       "name": "Eric Rice",
+       "total_papers": 110
+      },
+      {
+       "name": "Kimberly A. Bender",
+       "total_papers": 103
+      }
+     ]
     },
     {
      "ok": false,
-     "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 10) ORDER BY rank ASC LIMIT 1",
-     "detail": "expected one of ['2021-p-0475'], got ['2026-p-0810']",
-     "secs": 4.3
+     "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 100) ORDER BY rank ASC LIMIT 1",
+     "detail": "expected one of ['2021-p-0475'], got ['2024-p-0094']",
+     "secs": 5.1,
+     "rows": [
+      {
+       "id": "2024-P-0094"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS total_records FROM swrd.papers",
+     "detail": "correct",
+     "secs": 2.9,
+     "rows": [
+      {
+       "total_records": 110618
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS total_journals FROM swrd.journals",
+     "detail": "correct",
+     "secs": 1.8,
+     "rows": [
+      {
+       "total_journals": 91
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers p JOIN swrd.journals j ON p.journal_id = j.id WHERE j.name = 'Social Work Research'",
+     "detail": "correct",
+     "secs": 3.5,
+     "rows": [
+      {
+       "count": 945
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS count FROM swrd.papers WHERE publication_year >= 1989 AND open_access = true",
+     "detail": "correct",
+     "secs": 3.0,
+     "rows": [
+      {
+       "count": 8462
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT DISTINCT research_method FROM swrd.papers",
+     "detail": "correct",
+     "secs": 1.4,
+     "rows": [
+      {
+       "research_method": "Mixed-Methods"
+      },
+      {
+       "research_method": "Qualitative"
+      },
+      {
+       "research_method": "Quantitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) AS review_count FROM swrd.papers WHERE research_method = 'Review'",
+     "detail": "correct",
+     "secs": 3.0,
+     "rows": [
+      {
+       "review_count": 706
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year < 1989",
+     "detail": "correct",
+     "secs": 2.4,
+     "rows": [
+      {
+       "count": 23288
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT pa.institution_normalized AS Institution, COUNT(*) AS Count FROM sswr.paper_authors pa JOIN sswr.papers p ON pa.paper_id = p.id WHERE pa.author_order = 1 AND p.year BETWEEN 2020 AND 2026 GROUP BY pa.institution_normalized ORDER BY Count DESC LIMIT 1",
+     "detail": "correct",
+     "secs": 4.8,
+     "rows": [
+      {
+       "count": 290,
+       "institution": "Washington University in St. Louis"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2010 AND methodology = 'quantitative'",
+     "detail": "correct",
+     "secs": 2.8,
+     "rows": [
+      {
+       "count": 400
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(DISTINCT a.id) FROM sswr.papers p JOIN sswr.paper_authors pa ON p.id = pa.paper_id JOIN sswr.authors a ON pa.author_id = a.id WHERE p.year = 2015",
+     "detail": "correct",
+     "secs": 5.0,
+     "rows": [
+      {
+       "count": 2089
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.search_papers_keyword('food insecurity',20) AS s(id, title, abstract, year, methodology, rank, authors) WHERE s.year >= 2020",
+     "detail": "correct",
+     "secs": 5.5,
+     "rows": [
+      {
+       "count": 9
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT year FROM sswr.papers GROUP BY year HAVING COUNT(*) > 1000 ORDER BY year ASC LIMIT 1",
+     "detail": "correct",
+     "secs": 4.2,
+     "rows": [
+      {
+       "year": 2015
+      }
+     ]
+    }
+   ]
+  },
+  "qwen3.6:latest": {
+   "score": 20,
+   "total": 20,
+   "answers": [
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year >= 1989 AND is_scientific AND abstract IS NOT NULL",
+     "detail": "correct",
+     "secs": 26.8,
+     "rows": [
+      {
+       "count": 62602
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT j.name, COUNT(p.id) AS count FROM swrd.papers p JOIN swrd.journals j ON p.journal_id = j.id WHERE p.publication_year >= 1989 GROUP BY j.id, j.name ORDER BY count DESC LIMIT 1",
+     "detail": "correct",
+     "secs": 20.0,
+     "rows": [
+      {
+       "name": "British Journal of Social Work",
+       "count": 5931
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year >= 1989 AND (title ILIKE '%kinship care%' OR abstract ILIKE '%kinship care%')",
+     "detail": "correct",
+     "secs": 29.1,
+     "rows": [
+      {
+       "count": 239
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE is_empirical = TRUE AND research_method = 'Qualitative'",
+     "detail": "correct",
+     "secs": 11.4,
+     "rows": [
+      {
+       "count": 15164
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2024",
+     "detail": "correct",
+     "secs": 3.3,
+     "rows": [
+      {
+       "count": 1516
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE methodology = 'mixed_methods'",
+     "detail": "correct",
+     "secs": 10.9,
+     "rows": [
+      {
+       "count": 2172
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT id, name, total_papers FROM sswr.authors ORDER BY total_papers DESC LIMIT 3",
+     "detail": "correct",
+     "secs": 3.9,
+     "rows": [
+      {
+       "id": 108172,
+       "name": "Mark E. Courtney",
+       "total_papers": 113
+      },
+      {
+       "id": 111415,
+       "name": "Eric Rice",
+       "total_papers": 110
+      },
+      {
+       "id": 109018,
+       "name": "Kimberly A. Bender",
+       "total_papers": 103
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT id FROM sswr.search_papers_keyword('opioid overdose', 1)",
+     "detail": "correct",
+     "secs": 12.5,
+     "rows": [
+      {
+       "id": "2021-P-0475"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers",
+     "detail": "correct",
+     "secs": 9.8,
+     "rows": [
+      {
+       "count": 110618
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.journals",
+     "detail": "correct",
+     "secs": 3.6,
+     "rows": [
+      {
+       "count": 91
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM swrd.papers JOIN swrd.journals ON swrd.papers.journal_id = swrd.journals.id WHERE swrd.journals.name = 'Social Work Research'",
+     "detail": "correct",
+     "secs": 14.6,
+     "rows": [
+      {
+       "count": 945
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year >= 1989 AND open_access",
+     "detail": "correct",
+     "secs": 17.6,
+     "rows": [
+      {
+       "count": 8462
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT DISTINCT research_method FROM swrd.papers",
+     "detail": "correct",
+     "secs": 4.2,
+     "rows": [
+      {
+       "research_method": "Mixed-Methods"
+      },
+      {
+       "research_method": "Qualitative"
+      },
+      {
+       "research_method": "Quantitative"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE research_method = 'Review'",
+     "detail": "correct",
+     "secs": 4.2,
+     "rows": [
+      {
+       "count": 706
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM swrd.papers WHERE publication_year < 1989",
+     "detail": "correct",
+     "secs": 7.6,
+     "rows": [
+      {
+       "count": 23288
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT institution_normalized, COUNT(*) AS count\nFROM sswr.papers\nJOIN sswr.paper_authors ON sswr.papers.id = sswr.paper_authors.paper_id\nWHERE year BETWEEN 2020 AND 2026\n  AND author_order = 1\nGROUP BY institution_normalized\nORDER BY count DESC\nLIMIT 1",
+     "detail": "correct",
+     "secs": 22.9,
+     "rows": [
+      {
+       "count": 290,
+       "institution_normalized": "Washington University in St. Louis"
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(*) FROM sswr.papers WHERE year = 2010 AND methodology = 'quantitative'",
+     "detail": "correct",
+     "secs": 19.0,
+     "rows": [
+      {
+       "count": 400
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT COUNT(DISTINCT pa.author_id) FROM sswr.papers p JOIN sswr.paper_authors pa ON p.id = pa.paper_id WHERE p.year = 2015",
+     "detail": "correct",
+     "secs": 24.8,
+     "rows": [
+      {
+       "count": 2089
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT count(*) FROM sswr.search_papers_keyword('food insecurity', 20) AS t WHERE year >= 2020",
+     "detail": "correct",
+     "secs": 9.8,
+     "rows": [
+      {
+       "count": 9
+      }
+     ]
+    },
+    {
+     "ok": true,
+     "sql": "SELECT year FROM sswr.papers GROUP BY year HAVING COUNT(*) > 1000 ORDER BY year ASC LIMIT 1",
+     "detail": "correct",
+     "secs": 5.2,
+     "rows": [
+      {
+       "year": 2015
+      }
+     ]
     }
    ]
   }

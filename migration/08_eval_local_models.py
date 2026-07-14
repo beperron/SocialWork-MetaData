@@ -31,13 +31,14 @@ DATABASE 2 — sswr (conference presentations; schema-qualify: sswr.papers):
 Rules: single SELECT only; no semicolon; use the exact label capitalizations shown."""
 
 QUESTIONS = [
+  # --- original 8 ---
   {"q": "How many research articles with abstracts does the SWRD contain from 1989 onward? (research articles = flagged scientific)",
    "truth_sql": "select count(*) as n from swrd.papers where publication_year >= 1989 and is_scientific and abstract is not null"},
   {"q": "Which journal has published the most articles in the SWRD (1989 onward), and how many?",
    "truth_sql": "select j.name, count(*) as n from swrd.papers p join swrd.journals j on j.id=p.journal_id where p.publication_year>=1989 group by 1 order by 2 desc limit 1"},
-  {"q": "How many SWRD articles from 1989 onward mention 'kinship care' in the title or abstract?",
+  {"q": "How many SWRD articles from 1989 onward mention 'kinship care' in the title or abstract? (simple case-insensitive substring match)",
    "truth_sql": "select count(*) as n from swrd.papers where publication_year >= 1989 and (title ilike '%kinship care%' or abstract ilike '%kinship care%')"},
-  {"q": "How many empirical articles in the SWRD used qualitative methods?",
+  {"q": "How many articles in the SWRD, across all years, are flagged empirical with research_method 'Qualitative'?",
    "truth_sql": "select count(*) as n from swrd.papers where is_empirical and research_method = 'Qualitative'"},
   {"q": "How many presentations were given at the 2024 SSWR conference?",
    "truth_sql": "select count(*) as n from sswr.papers where year = 2024"},
@@ -47,6 +48,31 @@ QUESTIONS = [
    "truth_sql": "select name from sswr.authors order by total_papers desc limit 3"},
   {"q": "Using the SSWR keyword search function, what is the id of the top-ranked presentation about 'opioid overdose'?",
    "truth_sql": "select id from sswr.search_papers_keyword('opioid overdose', 1)"},
+  # --- expanded set ---
+  {"q": "How many records does the SWRD papers table contain in total, across all years including the historical supplement?",
+   "truth_sql": "select count(*) as n from swrd.papers"},
+  {"q": "How many journals are in the SWRD's journal list?",
+   "truth_sql": "select count(*) as n from swrd.journals"},
+  {"q": "How many SWRD articles, across all years, were published in the journal named 'Social Work Research'?",
+   "truth_sql": "select count(*) as n from swrd.papers p join swrd.journals j on j.id=p.journal_id where j.name = 'Social Work Research'"},
+  {"q": "How many SWRD articles from 1989 onward are flagged open access?",
+   "truth_sql": "select count(*) as n from swrd.papers where publication_year >= 1989 and open_access"},
+  {"q": "List the exact distinct values of the research_method field in the SWRD.",
+   "truth_sql": "select distinct research_method from swrd.papers where research_method is not null"},
+  {"q": "How many articles in the SWRD, across all years, have research_method 'Review'?",
+   "truth_sql": "select count(*) as n from swrd.papers where research_method = 'Review'"},
+  {"q": "How many SWRD records are from before 1989?",
+   "truth_sql": "select count(*) as n from swrd.papers where publication_year < 1989"},
+  {"q": "Which single institution had the most first-authored SSWR presentations between 2020 and 2026, using the normalized institution field? Give the institution and the count.",
+   "truth_sql": "select pa.institution_normalized, count(*) as n from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where pa.author_order = 1 and p.year between 2020 and 2026 group by 1 order by 2 desc limit 1"},
+  {"q": "How many presentations at the 2010 SSWR conference used quantitative methods?",
+   "truth_sql": "select count(*) as n from sswr.papers where year = 2010 and methodology = 'quantitative'"},
+  {"q": "How many distinct canonical authors are linked to presentations at the 2015 SSWR conference?",
+   "truth_sql": "select count(distinct pa.author_id) as n from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id where p.year = 2015"},
+  {"q": "Using the SSWR keyword search function with match_count 20, how many of the top 20 results for 'food insecurity' are from year 2020 or later?",
+   "truth_sql": "select count(*) as n from sswr.search_papers_keyword('food insecurity', 20) where year >= 2020"},
+  {"q": "What is the earliest SSWR conference year with more than 1,000 presentations?",
+   "truth_sql": "select min(year) as y from (select year, count(*) as c from sswr.papers group by 1) t where c > 1000"},
 ]
 
 def run_sql(q):
@@ -100,7 +126,7 @@ def main():
                     detail = "correct" if ok else f"expected one of {sorted(truths[i])[:3]}, got {sorted(got)[:3]}"
             except Exception as e:
                 sql, ok, detail = "", False, f"harness error: {e}"
-            per_q.append({"ok": ok, "sql": sql, "detail": detail, "secs": round(time.time()-t0, 1)})
+            per_q.append({"ok": ok, "sql": sql, "detail": detail, "secs": round(time.time()-t0, 1), "rows": (rows[:3] if isinstance(rows, list) else rows)})
             print(f"[{model}] Q{i+1} {'PASS' if ok else 'FAIL'} ({per_q[-1]['secs']}s) {detail[:100]}", flush=True)
         score = sum(1 for r in per_q if r["ok"])
         results["models"][model] = {"score": score, "total": len(QUESTIONS), "answers": per_q}
