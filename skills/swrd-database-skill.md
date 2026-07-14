@@ -111,6 +111,7 @@ Tips: single SELECT statements only (no semicolons, no writes — both are rejec
 5. **Qualify every column with a table alias in any join** (`p.id`, `pa.paper_id`) — unqualified ids are ambiguous.
 6. **Corpus filters are conditional.** Apply `publication_year >= 1989 and is_scientific and abstract is not null` when the question concerns the research corpus; when a question says "in total", "all years", or asks for raw record counts, do NOT add these filters.
 7. **Answer the quantity asked** — if the question says "how many", return a count, not a list of rows.
+8. **Search functions already return the columns you usually need — use them directly, don't re-join.** Every SWRD search function (`search_papers_keyword`, `search_papers_semantic`, `search_papers_hybrid`) returns exactly: `id, title, abstract, publication_year, journal_name` plus its score column(s). There is NO `journal_id` or `paper_id` in the output — `select journal_name from swrd.search_papers_keyword('…', 1)` is correct; joining the output to `swrd.journals` on `journal_id` is an error. If you need a column the function doesn't return (e.g., `research_method`), join `swrd.papers p on p.id = s.id` using the returned `id`.
 
 ## 5. Semantic search (find studies by meaning)
 

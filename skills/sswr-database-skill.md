@@ -114,6 +114,7 @@ Tips: single SELECT statements only (no semicolons, no writes — both are rejec
 4. **Search results arrive pre-sorted, best match first.** The `rank` column is a relevance *score* (a float), not a position — never `where rank = 1` and never re-sort ascending; take the top row(s) with the function's match_count or LIMIT.
 5. **Qualify every column with a table alias in any join** (`p.id`, `pa.paper_id`) — unqualified ids are ambiguous.
 6. **Answer the quantity asked** — if the question says "how many", return a count, not a list of rows.
+7. **Search functions already return the columns you usually need — use them directly, don't re-join.** Every SSWR search function (`search_papers_keyword`, `search_papers_semantic`, `search_papers_hybrid`) returns exactly: `id, title, abstract, year, methodology, authors` (a JSONB array of author names) plus its score column(s). The exact function name matters — there is no `search_articles_keyword`. If you need a column the function doesn't return, join `sswr.papers p on p.id = s.id` using the returned `id`.
 
 ## 5. Semantic search (find presentations by meaning)
 
