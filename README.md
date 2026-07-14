@@ -1,16 +1,8 @@
-# 📚 The Social Work Research Databases
+# 📚 The Social Work Meta-Data Project
 
-**A plain-language guide. No technical background needed.**
+The Social Work Meta-Data Project maintains two curated bibliographic databases documenting the scholarly record of social work: the **Social Work Research Database (SWRD)**, covering the discipline's journal literature, and the **SSWR Conference Database**, covering presentations at the Society for Social Work and Research annual conference. Together they provide an infrastructure for scientometric analysis, literature discovery, and the study of knowledge production in the discipline.
 
-This page describes two large, carefully organized collections of information about social work research — one for **journal articles**, one for **conference presentations**. They were built for social work researchers, educators, and students.
-
-> [!NOTE]
-> **First time on GitHub?** GitHub is simply a website where researchers share their work. This page is just a document to read — nothing to install, no account needed.
-
-> [!TIP]
-> **Two words worth knowing.**
-> 📇 A **database** is an organized, searchable collection of information — like a library's card catalog, but electronic.
-> 🗂️ A **record** is one entry in that catalog: the key information *about* one study (title, abstract, authors, year) — not the full paper itself.
+Each database consists of structured records — title, abstract, authors and affiliations, publication venue, year, and classification labels — rather than full texts. Records link to source articles through their DOIs.
 
 ---
 
@@ -18,136 +10,115 @@ This page describes two large, carefully organized collections of information ab
 
 | | 📗 **The SWRD** | 📘 **SSWR Conference Database** |
 |---|---|---|
-| **What it covers** | Articles from social work journals | Presentations at the SSWR annual conference |
-| **Years** | 1989–2025 (plus an older supplement) | 2005–2026, every conference |
-| **Size** | 62,602 research articles with abstracts | 23,793 presentations |
-| **Special strength** | Every article labeled by study type | Every researcher name-matched across years |
+| **Coverage** | Articles in disciplinary social work journals | Presentations at the SSWR annual conference |
+| **Years** | 1989–2025 (plus a historical supplement) | 2005–2026, all conferences |
+| **Core corpus** | 62,602 research articles with abstracts | 23,793 presentations |
+| **Distinguishing feature** | Document-type and methodology classification on every abstract | Author identities resolved across all years |
 
 ---
 
 ## 📗 The Social Work Research Database (SWRD)
 
-The SWRD holds records for articles published in **91 social work journals from 1989 through 2025** — the journals our discipline itself publishes, from *Social Work* to the *British Journal of Social Work* to *Research on Social Work Practice*.
+The SWRD contains article records from **91 disciplinary social work journals, 1989–2025**, compiled through multi-source integration and deduplication as described in Perron, Victor, and Qi (2026) — the authoritative account of the database's construction, sources, and validation.
 
-**At its heart are 62,602 research articles with abstracts.** Every one of them carries two labels:
+Its analytic core is **62,602 research articles with abstracts**, each classified on two dimensions:
 
-- 🔬 **Is it a research study?** — as opposed to an editorial, book review, or letter
-- 📊 **What kind?** — quantitative (numbers and statistics), qualitative (interviews, observations, texts), mixed methods, or a review that synthesizes other studies
+- 🔬 **Scientific communication** — original research contributions, distinguished from editorials, book reviews, letters, and other content
+- 📊 **Methodology** — quantitative, qualitative, mixed methods, or systematic/other review
 
-The labels were applied by a carefully supervised computer program and accepted only after its judgments were checked against trained human readers and found to agree at a high level.
+Classification was performed with a supervised language-model procedure validated against human raters (κ ≥ .85 required for each task). Surrounding this core are additional records from the same journals and period — **87,329 in all** — including articles whose abstracts were never digitized by any indexing service.
 
-Around those labeled articles sit more records from the same journals and years — **87,329 in all** — including articles whose abstracts were never digitized.
+The database also stores per-article citation counts (via CrossRef) and open-access status.
 
-The SWRD, and exactly how it was assembled, is fully described in a 2026 article in *Research on Social Work Practice* — the citation is at the bottom of this page. That article is the authoritative account of where every record came from.
+### 🕰️ The SWRD Supplement
 
-### 🕰️ The SWRD Supplement — a window into the field's past
+A separate historical collection holds **23,289 records from the same journal population, 1920–1988**. Coverage in this period is substantially incomplete — abstracts and author details are frequently absent, reflecting the limits of retrospective digitization rather than the publication record itself. The Supplement supports historical inquiry, with the caveat that counts from this era should be interpreted as lower bounds.
 
-Alongside the SWRD sits a separate historical collection: **23,289 records from the same journals, reaching back to 1920**.
-
-These older records are kept apart for an honest reason: **they are much less complete.** Many are missing abstracts or author details — not because anyone was careless, but because that information was never digitized. They remain genuinely useful for historical questions (*when did our journals first publish about foster care? about evidence-based practice?*). Just treat counts from those early decades as a floor, not a full accounting.
-
-| Collection | Years | Records | Completeness |
+| Collection | Years | Records | Coverage |
 |---|---|---|---|
-| 📗 The SWRD | 1989–2025 | 87,329 | Carefully compiled |
-| 🕰️ The SWRD Supplement | 1920–1988 | 23,289 | Partial — use with care |
+| 📗 The SWRD | 1989–2025 | 87,329 | Systematically compiled and validated |
+| 🕰️ The SWRD Supplement | 1920–1988 | 23,289 | Partial; interpret counts as lower bounds |
 
 ---
 
 ## 📘 The SSWR Conference Database
 
-The second collection covers the **Society for Social Work and Research annual conference** — the field's largest research meeting. It holds **all 23,793 presentations from every conference, 2005 through 2026**: papers, posters, and symposia alike.
+The SSWR Conference Database contains **all 23,793 presentations — papers, posters, and symposia — from every SSWR annual conference, 2005 through 2026**, compiled from official conference programs (Perron, Victor, & Qi, 2026, in press).
 
-- 📄 **Every record has the full abstract** and a research-method label
-- 🧑‍🤝‍🧑 **All 21,209 presenters have been name-matched across years** — if someone presented as "M. Smith" in 2008 and "Mary Smith" in 2019, the database knows they're the same person
-- 📈 That means you can follow a scholar's, a topic's, or a school's full trajectory across two decades of conferences
+- 📄 Every record includes the full abstract and a research-method classification
+- 🧑‍🤝‍🧑 The **21,209 presenting authors have been disambiguated across years**, with name variants resolved to canonical identities
+- 📈 Author-level disambiguation supports longitudinal analyses of individual scholars, institutions, and topics across two decades of the field's principal research meeting
 
 ---
 
-## 🗂️ What one record contains
+## 🗂️ Record structure
 
-Every record in both collections follows the same tidy structure:
+Records in both databases share a common structure:
 
-| Field | What it holds |
+| Field | Contents |
 |---|---|
-| 📌 **Title** | The study's full title |
-| 🧑‍🤝‍🧑 **Authors** | Every author, in order, with their institution |
-| 📓 **Where & when** | Journal (or conference), year, volume/issue/pages |
-| 📝 **Abstract** | The full abstract, when one exists |
-| 🏷️ **Study type** | Research study or not; quantitative / qualitative / mixed / review |
-| 🔗 **Impact & link** | How often it's been cited, and its permanent web link (called a **DOI**) |
-
-The full papers themselves are not stored — records describe and point to them, the way a catalog card points to a book.
+| 📌 **Title** | Full title |
+| 🧑‍🤝‍🧑 **Authors** | All authors in order, with institutional affiliations |
+| 📓 **Venue** | Journal (or conference), year, volume/issue/pages |
+| 📝 **Abstract** | Full abstract, where available |
+| 🏷️ **Classification** | Scientific/non-scientific; methodology category |
+| 🔗 **Impact & identifiers** | Citation count; DOI |
 
 ---
 
-## 🤝 A few honest notes
+## 🤝 Known limitations
 
-Every real dataset has quirks. These are the ones worth knowing, in plain terms:
-
-- **SWRD author names appear exactly as the journals printed them.** No name-matching has been done there yet — "J. Garcia" and "Jennifer Garcia" may be separate entries even if they're the same person. Counting *articles* is reliable; counting *unique people* is not, yet. (The SSWR collection **is** name-matched.)
-- **Not every SWRD article has an abstract.** About seven in ten records from 1989 onward include one; older and smaller journals are thinner. Study-type labels exist only where an abstract exists.
-- **The Supplement undercounts its era.** Records from 1920–1988 reflect what survived digitization, not everything that was published.
+- **SWRD author names are preserved as published.** Author disambiguation has not yet been performed in the SWRD; name variants (e.g., "J. Garcia" and "Jennifer Garcia") may appear as distinct entries. Article-level analyses are unaffected; author-level counts in the SWRD should be treated with caution. The SSWR database *is* disambiguated.
+- **Abstract coverage is uneven.** Roughly 72% of SWRD records from 1989 onward include abstracts; older publications and smaller journals are less complete. Classification labels exist only where abstracts exist.
+- **The Supplement undercounts its era**, reflecting what has survived digitization rather than the full publication record.
 
 ---
 
-## ❓ What kinds of questions can these answer?
+## ❓ Analytic possibilities
 
-| If you're wondering… | The databases can show you… |
+| Research question | What the databases support |
 |---|---|
-| *What has the field published on kinship care?* | Every matching article and presentation, across decades — including ones that used different wording |
-| *Is social work research becoming more empirical?* | Yes — research studies rose from 43% of publications in the 1990s to 72% in the 2020s, one of many trends you can trace |
-| *How has a scholar's work evolved?* | Their full run of SSWR presentations, year by year |
-| *What's understudied?* | Topics, populations, and journals where the record runs thin — the gaps are as visible as the trends |
+| Topical literature mapping | Retrieval of all matching articles and presentations across decades, robust to terminological variation |
+| Disciplinary trends | E.g., empirical work rose from 43% of publications in the 1990s to 72% in the 2020s; mean authors per article grew from 1.85 to 3.35 |
+| Scholar and institutional trajectories | Longitudinal records of SSWR presentation activity, supported by author disambiguation |
+| Gap identification | Under-studied topics, populations, venues, and periods |
 
-*A friendly, step-by-step guide to using the data yourself is coming soon. In the meantime, a slice of the data for your question is easy to share — see the contact below.*
-
----
-
-## 🔍 The search tool inside, gently explained
-
-Both collections include a newer kind of search that finds studies by their **meaning**, not just their exact words.
-
-> [!TIP]
-> **What is an "embedding model"?** A small computer program that *reads* text and gives it a kind of **meaning fingerprint**. Two passages about the same idea get similar fingerprints — even if they share no words. That's the whole trick. It never writes anything, never chats, and never makes anything up. It only reads and compares.
-
-**Why it matters:** traditional keyword search — what most library databases still use — matches only the exact words you type. Search *"kinship care"* and it can silently miss an excellent study that said *"relative caregivers"* instead. Meaning-based search finds it anyway, because it recognizes the idea, not just the letters.
-
-**How we chose the tool.** Before settling on one, we tested more than a dozen of these programs head-to-head on tens of thousands of social work abstracts. Three findings, simply put:
-
-1. 🥇 **Every meaning-based tool beat old-style keyword search** — none of them did worse.
-2. 💵 **The free tools matched or outperformed the paid subscription services** on social work literature.
-3. 🪶 **The best fit was also one of the smallest: EmbeddingGemma**, a free tool released by Google.
-
-**About EmbeddingGemma, in plain terms.** Its size is described as "300M" — 300 million internal settings — which sounds enormous but is *tiny* in this field (popular chatbots are thousands of times larger). Being tiny is the point:
-
-- 💻 It runs on an ordinary laptop — no special equipment, no subscription
-- 🔒 It runs privately — nothing is sent to any company
-- 💰 It is free — permanently
-
-Every abstract in both collections has already been read and fingerprinted this way, so meaning-based search is simply **ready, built in**.
+*A guide to working with the data directly is forthcoming. Extracts tailored to a specific research question are available on request.*
 
 ---
 
-## 📖 How to cite these databases
+## 🔍 Semantic search
 
-If these data contribute to your work, please cite the article describing the collection you used.
+Both databases support retrieval by **meaning** in addition to conventional keyword matching. Each abstract has been encoded with a text-embedding model — a model that maps a passage to a numerical representation of its semantics, such that passages about the same construct receive similar representations regardless of surface vocabulary. A query for *kinship care* therefore retrieves relevant work phrased as *relative caregivers*, a class of misses to which keyword systems are systematically prone.
 
-**For the SWRD (journal articles):**
+The embedding model was selected through benchmarking of more than a dozen candidates on this corpus (Perron et al., manuscript in preparation). Three results informed the choice:
+
+1. Every embedding model outperformed keyword retrieval.
+2. Open-weight models matched or exceeded commercial embedding services on social work literature.
+3. **EmbeddingGemma** (Google; 300M parameters) offered the strongest quality-to-size ratio.
+
+Its small size is a deliberate advantage: the model runs locally on standard hardware, at no cost, with no data transmitted to external services — relevant wherever queries or corpora are sensitive. All abstracts in both databases are already encoded, so semantic retrieval requires no additional setup.
+
+---
+
+## 📖 Citing the databases
+
+**The SWRD:**
 
 > Perron, B. E., Victor, B. G., & Qi, Z. (2026). Evolution of social work knowledge production over 35 years: An AI-enabled analysis of trends in empiricism, methodology, collaboration, citation patterns, and output. *Research on Social Work Practice*. https://doi.org/10.1177/10497315261416833
 
-**For the SSWR Conference Database:**
+**The SSWR Conference Database:**
 
 > Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation of conference scholarship: Compiling, structuring, and analyzing two decades of presentations at the Society for Social Work and Research. *arXiv*. https://doi.org/10.48550/arXiv.2603.06814 — in press, *Journal of the Society for Social Work and Research*.
 
-*(The SWRD's original version, covering 1989–2013, was introduced in Perron et al., 2017, Research on Social Work Practice, 27(7), 802–812.)*
+The SWRD's original version (1989–2013) was introduced in Perron, B. E., Victor, B. G., Hodge, D. R., Salas-Wright, C. P., Vaughn, M. G., & Taylor, R. J. (2017). Laying the foundations for scientometric research: A data science approach. *Research on Social Work Practice, 27*(7), 802–812. https://doi.org/10.1177/1049731515624966
 
 ---
 
-## ✉️ Questions, ideas, and access
+## ✉️ Access and collaboration
 
-This is a living resource, and collaboration is genuinely welcome — whether you want to explore the data, request a slice of it for a project, or talk through whether it fits a study you have in mind.
+Inquiries, collaboration proposals, and requests for data extracts are welcome.
 
 **Brian Perron** · University of Michigan School of Social Work · **beperron@umich.edu**
 
-<sub>Technically inclined? Documentation for working with the databases directly lives in the [docs folder](docs/TECHNICAL_OVERVIEW.md).</sub>
+<sub>Technical documentation for working with the databases directly is in the [docs folder](docs/TECHNICAL_OVERVIEW.md).</sub>
