@@ -9,9 +9,10 @@ NAVY = "#1a2744"; BLUE = "#2c6fad"; GREEN = "#1e8a4a"; ORANGE = "#d9880e"
 GRAY = "#5c6b7a"; MUTED = "#8a97a5"; INK = "#2f3b4c"
 PANEL_BLUE = "#eef3fa"; PANEL_GREEN = "#eaf6ee"; PANEL_AMBER = "#fdf3e3"; PANEL_GRAY = "#f4f6f8"
 EDGE_BLUE = "#c9d9ec"; EDGE_GREEN = "#c4e2cf"; EDGE_AMBER = "#f0ddb8"; EDGE_GRAY = "#dde3e9"
+OUT = "/Users/beperron/Documents/GitHub/SocialWork-MetaData/assets/"
 
-def card(w, h):
-    fig = plt.figure(figsize=(w, h), dpi=200)
+def card():
+    fig = plt.figure(figsize=(9.6, 9.6), dpi=200)
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 100); ax.set_ylim(0, 100); ax.axis("off")
     fig.patch.set_facecolor("white")
     return fig, ax
@@ -20,109 +21,144 @@ def panel(ax, x, y, w, h, fc, ec):
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.6",
                                 fc=fc, ec=ec, lw=1.2, mutation_aspect=0.55))
 
+def bar(ax, x, y, w, h, fc):
+    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=0.55",
+                                fc=fc, ec="none", mutation_aspect=0.55))
+
 def eyebrow(ax, text, y=95.5):
-    ax.text(4, y, text, fontsize=15, fontweight="bold", color=BLUE,
-            ha="left", va="center", fontfamily="DejaVu Sans")
+    ax.text(4, y, text, fontsize=15, fontweight="bold", color=BLUE, ha="left", va="center")
 
 def title(ax, parts, y=89.5, size=31):
     x = 4
     for text, color in parts:
-        t = ax.text(x, y, text, fontsize=size, fontweight="bold", color=color,
-                    ha="left", va="center", fontfamily="DejaVu Sans")
+        t = ax.text(x, y, text, fontsize=size, fontweight="bold", color=color, ha="left", va="center")
         bbox = t.get_window_extent(ax.figure.canvas.get_renderer())
         x += bbox.width / ax.figure.get_window_extent().width * 100
 
-# ============================== CARD 1: what's inside ==============================
-fig, ax = card(9.6, 9.6)
-eyebrow(ax, "T W O   D A T A B A S E S   ·   O N E   H O M E   ·   B U I L T   F O R   R E S E A R C H E R S")
+# ============================ CARD A: what's inside ============================
+fig, ax = card()
+eyebrow(ax, "T W O   C O L L E C T I O N S   ·   O N E   H O M E   ·   F R E E   F O R   R E S E A R C H E R S")
 title(ax, [("What's ", NAVY), ("inside", GREEN), (" the databases", NAVY)])
-ax.text(4, 84, "Two curated collections covering social work scholarship — every record has its title,\n"
-               "abstract (when available), authors, and the links between them, ready to search.",
+ax.text(4, 84, "Two large, carefully organized collections of information about social work research —\n"
+               "each record holds a study's title, abstract, authors, and year, ready to explore.",
         fontsize=15.5, color=GRAY, ha="left", va="top", linespacing=1.45)
 
-# left panel — SSWR
+# left — SSWR
 panel(ax, 4, 37, 44.5, 40, PANEL_BLUE, EDGE_BLUE)
 ax.text(7, 73.2, "SSWR CONFERENCE DATABASE", fontsize=14.5, fontweight="bold", color=BLUE)
 ax.text(7, 66.5, "23,793", fontsize=42, fontweight="bold", color=NAVY)
-ax.text(7, 61.2, "conference presentations", fontsize=15.5, color=INK)
-for i, (n, lbl) in enumerate([("2005–2026", "every annual conference"),
+ax.text(7, 61.4, "conference presentations", fontsize=15.5, color=INK)
+ax.text(7, 57.8, "from every SSWR annual conference", fontsize=12.5, color=MUTED)
+for i, (n, lbl) in enumerate([("2005–2026", "22 years of meetings"),
                               ("21,209", "researchers, name-matched"),
                               ("100%", "abstracts + method labels")]):
-    yy = 54.5 - i * 5.6
+    yy = 52 - i * 5.4
     ax.text(7, yy, n, fontsize=15, fontweight="bold", color=BLUE)
     ax.text(23, yy, lbl, fontsize=13, color=INK)
 
-# right panel — SWRD
+# right — SWRD
 panel(ax, 51.5, 37, 44.5, 40, PANEL_GREEN, EDGE_GREEN)
 ax.text(54.5, 73.2, "SWRD · JOURNAL ARTICLE DATABASE", fontsize=14.5, fontweight="bold", color=GREEN)
-ax.text(54.5, 66.5, "87,329", fontsize=42, fontweight="bold", color=NAVY)
-ax.text(54.5, 61.2, "journal article records, 1989–2025", fontsize=15.5, color=INK)
+ax.text(54.5, 66.5, "62,602", fontsize=42, fontweight="bold", color=NAVY)
+ax.text(54.5, 61.4, "research articles with abstracts", fontsize=15.5, color=INK)
+ax.text(54.5, 57.8, "within 87,329 records overall, 1989–2025", fontsize=12.5, color=MUTED)
 for i, (n, lbl) in enumerate([("91", "social work journals"),
-                              ("62,602", "research articles w/ abstracts"),
-                              ("1989–2025", "described in a 2026 article")]):
-    yy = 54.5 - i * 5.6
+                              ("100%", "labeled by study type"),
+                              ("2026", "described in a new article")]):
+    yy = 52 - i * 5.4
     ax.text(54.5, yy, n, fontsize=15, fontweight="bold", color=GREEN)
     ax.text(70.5, yy, lbl, fontsize=13, color=INK)
 
-# SWRD vs Supplement strip
-panel(ax, 4, 16.2, 92, 17.8, PANEL_GRAY, EDGE_GRAY)
-ax.text(7, 30.4, "PLUS A HISTORICAL SUPPLEMENT — OLDER, FAR LESS COMPLETE, BUT PRESERVED",
-        fontsize=13.5, fontweight="bold", color=NAVY)
-bar_x, bar_w, bar_y, bar_h = 7, 86, 24.6, 3.4
-prim_w = bar_w * 87329 / 110618
-ax.add_patch(FancyBboxPatch((bar_x, bar_y), prim_w, bar_h, boxstyle="round,pad=0,rounding_size=0.55",
-                            fc=GREEN, ec="none", mutation_aspect=0.55))
-ax.add_patch(FancyBboxPatch((bar_x + prim_w + 0.4, bar_y), bar_w - prim_w - 0.4, bar_h,
-                            boxstyle="round,pad=0,rounding_size=0.55", fc=MUTED, ec="none", mutation_aspect=0.55))
-ax.text(bar_x + 1.5, bar_y + bar_h / 2, "THE SWRD  ·  87,329 records (1989–2025)",
-        fontsize=12.5, fontweight="bold", color="white", va="center")
-ax.text(bar_x + prim_w + 0.4 + (bar_w - prim_w - 0.4) / 2, bar_y + bar_h / 2, "23,289",
-        fontsize=12, fontweight="bold", color="white", va="center", ha="center")
-ax.text(7, 20.6, "Gray = the SWRD Supplement: journal records from 1920–1988. Many are missing abstracts or details,\n"
-                 "so treat them as a starting point for historical questions rather than a complete record.",
-        fontsize=12.2, color=INK, va="top", linespacing=1.45)
-
-# footer
-ax.text(4, 11.6, "Both databases are described in peer-reviewed publications — see “How to cite” in the README.",
+# supplement strip
+panel(ax, 4, 18, 92, 15.5, PANEL_GRAY, EDGE_GRAY)
+ax.text(7, 29.4, "AND A HISTORICAL SUPPLEMENT — KEPT SEPARATE, ON PURPOSE", fontsize=13.5,
+        fontweight="bold", color=NAVY)
+ax.text(7, 25.8, "The SWRD also preserves 23,289 much older journal records (1920–1988). They are far\n"
+                 "less complete — many are missing abstracts or author details — but they are valuable\n"
+                 "for historical questions. The timeline below shows how coverage changes over time.",
+        fontsize=12.8, color=INK, va="top", linespacing=1.5)
+ax.text(4, 12.5, "Both collections are described in peer-reviewed publications — see “How to cite these databases.”",
         fontsize=13, color=GRAY)
-ax.text(4, 7.2, "SWRD: Perron, Victor, & Qi (2026), Research on Social Work Practice", fontsize=12, color=MUTED)
-ax.text(4, 4.0, "SSWR: Perron, Victor, & Qi (2026), in press, J. of the Society for Social Work & Research",
+ax.text(4, 7.8, "SWRD: Perron, Victor, & Qi (2026), Research on Social Work Practice", fontsize=12, color=MUTED)
+ax.text(4, 4.5, "SSWR: Perron, Victor, & Qi (2026), in press, J. of the Society for Social Work & Research",
         fontsize=12, color=MUTED)
-fig.savefig("/Users/beperron/Documents/GitHub/SocialWork-MetaData/assets/whats_inside_the_databases.png",
-            bbox_inches="tight", facecolor="white")
+fig.savefig(OUT + "whats_inside_the_databases.png", bbox_inches="tight", facecolor="white")
 plt.close(fig)
 
-# ============================== CARD 2: how to use ==============================
-fig, ax = card(9.6, 9.6)
-eyebrow(ax, "G E T T I N G   S T A R T E D   ·   F R E E   ·   N O   S P E C I A L   S O F T W A R E   T O   B R O W S E")
-title(ax, [("Three ways to ", NAVY), ("use", GREEN), (" the data", NAVY)])
-ax.text(4, 84, "Pick the path that matches your comfort level — they all reach the same two databases.",
-        fontsize=15.5, color=GRAY, ha="left", va="top")
+# ============================ CARD B: what's in a record ============================
+fig, ax = card()
+eyebrow(ax, "N O   F U L L   P A P E R S   ·   J U S T   T H E   E S S E N T I A L S ,   O R G A N I Z E D")
+title(ax, [("Each record is like a ", NAVY), ("catalog card", GREEN)])
+ax.text(4, 84, "A record isn't the paper itself — it's everything about the paper, in one tidy entry.\n"
+               "Here's what one looks like (an invented example, shown the way the database stores it):",
+        fontsize=15.5, color=GRAY, ha="left", va="top", linespacing=1.45)
 
-ways = [
-    (PANEL_BLUE, EDGE_BLUE, BLUE, "1 · ASK & BROWSE", "No coding",
-     "Ask for a slice of the data —\n“all SWRD articles on kinship\ncare since 2015” — and get a\nspreadsheet you can open in\nExcel. Any collaborator with\naccess can pull this for you\nin minutes."),
-    (PANEL_GREEN, EDGE_GREEN, GREEN, "2 · SEARCH BY MEANING", "Plain questions",
-     "Type a question in everyday\nlanguage. The built-in AI search\nfinds studies about your idea\neven when the authors used\ncompletely different words —\nno more guessing keywords."),
-    (PANEL_AMBER, EDGE_AMBER, ORANGE, "3 · ANALYZE & BUILD", "For data-savvy folks",
-     "Connect R, Python, SPSS, or a\nweb app directly to the live\ndatabase. Ready-made views\n(publication trends, author\nstats, collaborations) mean\nthe common questions are\none query away."),
+panel(ax, 4, 21, 92, 56, "white", EDGE_GRAY)
+ax.text(93, 73.5, "ILLUSTRATIVE EXAMPLE", fontsize=11.5, fontweight="bold", color=MUTED, ha="right")
+
+rows = [
+    ("TITLE", BLUE, "Kinship care and placement stability: A ten-year follow-up of\nchildren placed with relative caregivers", 71.5),
+    ("AUTHORS", BLUE, "T. Rivera (Univ. of Michigan) · J. Chen (Wayne State) · M. Okafor\n(Univ. of Texas) — in the order they appeared on the paper", 62.5),
+    ("PUBLISHED IN", BLUE, "Child & Family Social Work · 2019 · volume, issue, and pages", 53.8),
+    ("ABSTRACT", BLUE, "“This study followed 412 children placed in kinship foster care to\nexamine placement stability over ten years. Results indicate…”\n(the full abstract is stored)", 47.3),
+    ("STUDY TYPE", GREEN, "", 35.2),
+    ("IMPACT", ORANGE, "Cited by 42 later articles · permanent web link (DOI) included", 28.6),
 ]
-for i, (fc, ec, accent, head, tag, body) in enumerate(ways):
-    x = 4 + i * 31.4
-    panel(ax, x, 33, 29.2, 44, fc, ec)
-    ax.text(x + 2.5, 73, head, fontsize=14, fontweight="bold", color=accent)
-    ax.text(x + 2.5, 69, tag, fontsize=12.5, fontweight="bold", color=NAVY,
-            bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=ec, lw=1))
-    ax.text(x + 2.5, 64.5, body, fontsize=12.8, color=INK, va="top", linespacing=1.5)
+for label, color, content, y in rows:
+    ax.text(7, y, label, fontsize=12.5, fontweight="bold", color=color)
+    if content:
+        ax.text(26, y, content, fontsize=13, color=INK, va="top", linespacing=1.45)
+for j, chip in enumerate(["Research study", "Quantitative methods"]):
+    ax.text(26 + j * 22, 35.2, chip, fontsize=12, fontweight="bold", color=GREEN, va="top",
+            bbox=dict(boxstyle="round,pad=0.45", fc=PANEL_GREEN, ec=EDGE_GREEN, lw=1.1))
 
-panel(ax, 4, 14.5, 92, 14, PANEL_GRAY, EDGE_GRAY)
-ax.text(7, 24.7, "EVERYTHING STAYS SIMPLE ON PURPOSE", fontsize=13.5, fontweight="bold", color=NAVY)
-ax.text(7, 21.2, "One database in the cloud · two clearly named collections (sswr and swrd) · no website to maintain,\n"
-                 "no accounts to manage — and the AI search runs on a small, free model (Google's EmbeddingGemma)\n"
-                 "that an ordinary laptop can handle.",
-        fontsize=13.2, color=INK, va="top", linespacing=1.5)
-ax.text(4, 8.5, "Questions or access requests: Brian Perron · beperron@umich.edu", fontsize=12.5, color=MUTED)
-fig.savefig("/Users/beperron/Documents/GitHub/SocialWork-MetaData/assets/three_ways_to_use.png",
-            bbox_inches="tight", facecolor="white")
+ax.text(4, 15.5, "Every one of the 134,411 records across both collections follows this same structure —",
+        fontsize=13, color=GRAY)
+ax.text(4, 11.8, "which is what makes them searchable, countable, and comparable across decades.",
+        fontsize=13, color=GRAY)
+fig.savefig(OUT + "whats_in_a_record.png", bbox_inches="tight", facecolor="white")
 plt.close(fig)
-print("rendered 2 cards")
+
+# ============================ CARD C: coverage over time ============================
+fig, ax = card()
+eyebrow(ax, "1 9 2 0   →   2 0 2 6   ·   H O W   F A R   B A C K   T H E   R E C O R D S   G O")
+title(ax, [("What ", NAVY), ("years", GREEN), (" are covered", NAVY)])
+ax.text(4, 84, "Each colored bar shows the years a collection covers. The further left, the older —\n"
+               "and the thinner the surviving information gets.",
+        fontsize=15.5, color=GRAY, ha="left", va="top", linespacing=1.45)
+
+def yr(v):  # map year → x
+    return 7 + 86 * (v - 1920) / 106.0
+
+# SWRD row
+ax.text(7, 68.5, "JOURNAL ARTICLES (SWRD)", fontsize=13.5, fontweight="bold", color=NAVY)
+ax.text(7, 64.8, "SUPPLEMENT · 1920–1988 · 23,289 records", fontsize=12, fontweight="bold", color=GRAY)
+ax.text(93, 54, "THE SWRD · 1989–2025 · 87,329 records", fontsize=12, fontweight="bold", color=GREEN, ha="right")
+bar(ax, yr(1920), 57.5, yr(1988) - yr(1920) - 0.3, 5, MUTED)
+bar(ax, yr(1989), 57.5, yr(2025) - yr(1989), 5, GREEN)
+ax.text((yr(1920) + yr(1988)) / 2, 60, "older · less complete", fontsize=11.5, fontweight="bold",
+        color="white", ha="center", va="center")
+ax.text((yr(1989) + yr(2025)) / 2, 60, "carefully compiled", fontsize=11.5, fontweight="bold",
+        color="white", ha="center", va="center")
+
+# SSWR row
+ax.text(7, 47.5, "CONFERENCE PRESENTATIONS (SSWR)", fontsize=13.5, fontweight="bold", color=NAVY)
+ax.text(93, 43.8, "2005–2026 · 23,793 presentations · complete", fontsize=12, fontweight="bold", color=BLUE, ha="right")
+bar(ax, yr(2005), 36.5, yr(2026) - yr(2005), 5, BLUE)
+ax.text((yr(2005) + yr(2026)) / 2, 39, "complete", fontsize=11.5, fontweight="bold",
+        color="white", ha="center", va="center")
+
+# shared year ticks
+for v in [1920, 1950, 1980, 1989, 2005, 2026]:
+    ax.plot([yr(v), yr(v)], [30.5, 32], color=EDGE_GRAY, lw=1.4)
+    ax.text(yr(v), 27.8, str(v), fontsize=12, color=GRAY, ha="center")
+
+panel(ax, 4, 5.5, 92, 15, PANEL_GRAY, EDGE_GRAY)
+ax.text(7, 16.4, "WHY THE SPLIT MATTERS", fontsize=13.5, fontweight="bold", color=NAVY)
+ax.text(7, 12.9, "If your question is about research from 1989 onward, the SWRD gives you a thorough, well-\n"
+                 "documented picture. For earlier decades, the Supplement is a helpful starting point — just\n"
+                 "know that many older records are missing pieces, so counts from that era run low.",
+        fontsize=12.8, color=INK, va="top", linespacing=1.5)
+fig.savefig(OUT + "coverage_over_time.png", bbox_inches="tight", facecolor="white")
+plt.close(fig)
+print("rendered 3 cards")
