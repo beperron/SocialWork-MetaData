@@ -3,7 +3,9 @@ name: swrd-database
 description: Query the Social Work Research Database (SWRD) — 110,618 journal-article records from 91 social work journals (1920–2025) with study-type classifications and semantic search. Use when the user asks about social work journal literature, publication trends, methodology patterns, or wants to find studies on a topic.
 ---
 
-# SWRD — Social Work Research Database: Agent Skill
+# SWRD — Social Work Research Database: Agent Skill (Quickstart)
+
+> This is the self-contained quickstart. A fuller skill with the complete data catalog, tested SQL recipes, and search guides lives in [`swrd-database/`](swrd-database/SKILL.md). End-to-end examples: [`../cookbook/`](../cookbook/).
 
 You (the agent) can query a hosted database of social work journal-article records. Everything works over plain HTTPS with the public key below — **no password, no account, no database driver**. All access is read-only. Semantic search additionally uses a small local embedding model (§5).
 
@@ -39,6 +41,8 @@ The key is intentionally public and grants read-only access. Writes are rejected
 | `swrd.organizations` | 34,967 | `id`, `name`, `country` |
 | `swrd.author_affiliations` | 113,646 | `author_id`, `organization_id`, `paper_id` |
 | `swrd.title_abstract_embeddings` | 110,618 | `paper_id`, `embedding` (768-dim vector), `model` |
+
+**Search API** (identical on both databases): `search_papers_semantic(query_embedding, match_count, min_year, max_year)` · `search_papers_keyword(query_text, match_count, min_year, max_year)` — ranked full-text · `search_papers_hybrid(query_text, query_embedding, match_count, rrf_k, min_year, max_year)` — reciprocal-rank fusion of both, **the recommended default for topic questions**.
 
 Convenience views: `swrd.swrd_papers` (1989–2025 only), `swrd.swrd_supplement_papers` (pre-1989), `swrd.papers_with_journals` (papers joined to journal names), `swrd.publication_trends` (per-year aggregates), `swrd.author_publication_stats`, `swrd.highly_cited_papers` (>50 citations), `swrd.database_summary`, `swrd.database_info` (citation + counts).
 
@@ -155,7 +159,23 @@ curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_sema
   -d "{\"query_embedding\": $QVEC, \"match_count\": 10}"
 ```
 
-Interpretation: `similarity` runs 0–1 (cosine); on this corpus, results above ~0.55 are usually on-topic and above ~0.65 strongly so. The function signature is `search_papers_semantic(query_embedding, match_count, min_year, max_year)` — add `"min_year": 2015` etc. to restrict the period. Combine semantic results with SQL (§4) using the returned `id`s.
+Interpretation: `similarity` runs 0–1 (cosine); ≥ ~0.55 usually on-topic, ≥ ~0.65 strongly so.
+
+### Hybrid search (recommended default for topic questions)
+
+Fuses the semantic and keyword rankings (reciprocal-rank fusion), so results strong in *either* meaning or exact terms surface, and results strong in both rise to the top. Pass the plain question as `query_text` and its embedding as `query_embedding`:
+
+```python
+hits = requests.post(
+    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_hybrid",
+    headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+             "Content-Profile": "swrd", "Content-Type": "application/json"},
+    json={"query_text": question, "query_embedding": emb, "match_count": 15},
+).json()
+# extra fields: rrf_score, semantic_rank, keyword_rank (NULL = not in that arm's top 60)
+```
+
+No Ollama available? `rpc/search_papers_keyword` (`{"query_text": "...", "match_count": 10}`) needs no embedding and no setup. Combine any search's returned `id`s with SQL (§4).
 
 ## 6. Simple filtered queries (REST shorthand)
 

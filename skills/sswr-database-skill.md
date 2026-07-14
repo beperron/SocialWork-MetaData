@@ -3,7 +3,9 @@ name: sswr-database
 description: Query the SSWR Conference Database — 23,793 presentations from every Society for Social Work and Research annual conference (2005–2026), with disambiguated authors, method labels, full abstracts, and semantic search. Use when the user asks about social work conference research, scholar trajectories, institutional activity, or wants to find presentations on a topic.
 ---
 
-# SSWR Conference Database: Agent Skill
+# SSWR Conference Database: Agent Skill (Quickstart)
+
+> This is the self-contained quickstart. A fuller skill with the complete data catalog, tested SQL recipes, and search guides lives in [`sswr-database/`](sswr-database/SKILL.md). End-to-end examples: [`../cookbook/`](../cookbook/).
 
 You (the agent) can query a hosted database of SSWR conference-presentation records. Everything works over plain HTTPS with the public key below — **no password, no account, no database driver**. All access is read-only. Semantic search additionally uses a small local embedding model (§5).
 
@@ -37,13 +39,16 @@ The key is intentionally public and grants read-only access. Writes are rejected
 
 Convenience views: `sswr.paper_export` (flat, one row per paper with author arrays — easiest for exports), `sswr.database_info` (citation + counts).
 
-Search functions (§5 for semantic):
-- `sswr.match_papers(query_embedding, match_threshold, match_count, min_year, max_year)` — semantic
-- `sswr.search_papers_bm25(query_text, match_count, min_year, max_year)` — ranked full-text
-- `sswr.search_papers_keyword(query_text, match_count, min_year, max_year)` — substring match
-- `sswr.search_authors_by_name(query_text, match_count)` — fuzzy author lookup
-- `sswr.search_papers_by_institution(query_text, match_count, min_year, max_year)` — by institution
+**Search API** (identical on both databases):
+- `sswr.search_papers_semantic(query_embedding, match_count, min_year, max_year)`
+- `sswr.search_papers_keyword(query_text, match_count, min_year, max_year)` — ranked full-text
+- `sswr.search_papers_hybrid(query_text, query_embedding, match_count, rrf_k, min_year, max_year)` — reciprocal-rank fusion, **recommended default for topic questions**
+
+Helper functions:
+- `sswr.search_authors_by_name(query_text, match_count)` — fuzzy author lookup (start scholar analyses here)
+- `sswr.search_papers_by_institution(query_text, match_count, min_year, max_year)`
 - `sswr.autocomplete_institutions(prefix, limit_count)`
+- `sswr.match_papers`, `sswr.search_papers_bm25` — legacy aliases; prefer the aligned API above
 
 ## 4. SQL queries (over HTTPS — no database client needed)
 
@@ -90,7 +95,7 @@ where pa.author_id = 108089    -- id from the lookup above
 order by p.year
 
 -- Ranked full-text topic search
-select id, title, year from sswr.search_papers_bm25('kinship care', 10)
+select id, title, year, rank from sswr.search_papers_keyword('kinship care', 10)
 
 -- Most active institutions in a period (first authors)
 select institution_normalized, count(*)
@@ -135,13 +140,27 @@ emb = requests.post("http://localhost:11434/api/embed", json={
 }).json()["embeddings"][0]                      # 768 floats
 
 hits = requests.post(
-    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/match_papers",
+    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_semantic",
     headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
              "Content-Profile": "sswr", "Content-Type": "application/json"},
     json={"query_embedding": emb, "match_count": 10},
 ).json()
 for h in hits:
     print(round(h["similarity"], 3), h["year"], h["title"])
+```
+
+### Hybrid search (recommended default for topic questions)
+
+Fuses semantic and keyword rankings (reciprocal-rank fusion). Pass the plain question and its embedding:
+
+```python
+hits = requests.post(
+    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_hybrid",
+    headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+             "Content-Profile": "sswr", "Content-Type": "application/json"},
+    json={"query_text": question, "query_embedding": emb, "match_count": 15},
+).json()
+# extra fields: rrf_score, semantic_rank, keyword_rank (NULL = not in that arm's top 60)
 ```
 
 Same thing with curl:
@@ -151,14 +170,14 @@ QVEC=$(curl -s http://localhost:11434/api/embed \
   -d '{"model":"embeddinggemma:300m","input":["task: search result | query: interventions for children in kinship foster care"]}' \
   | python3 -c "import json,sys; print(json.dumps(json.load(sys.stdin)['embeddings'][0]))")
 
-curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/match_papers" \
+curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_semantic" \
   -H "apikey: sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5" \
   -H "Authorization: Bearer sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5" \
   -H "Content-Profile: sswr" -H "Content-Type: application/json" \
   -d "{\"query_embedding\": $QVEC, \"match_count\": 10}"
 ```
 
-Interpretation: `similarity` runs 0–1 (cosine); results above ~0.55 are usually on-topic. `match_papers` returns each paper's full author list as JSON, so one call gives you a complete answer. For hybrid search, also run `search_papers_bm25` with the same question and merge.
+Interpretation: `similarity` runs 0–1 (cosine); ≥ ~0.55 usually on-topic. All search functions return the full author list as JSON. No Ollama available? `rpc/search_papers_keyword` needs no embedding and no setup.
 
 ## 6. REST queries (no SQL client required)
 
