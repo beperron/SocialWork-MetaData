@@ -6,6 +6,19 @@ Each database consists of structured records — title, abstract, authors and af
 
 ---
 
+## 🤖 Instant access for AI assistants: the skill files
+
+The fastest way to work with these data is to hand one of these two files to an AI assistant (Claude, ChatGPT, or any comparable system — they are platform-agnostic):
+
+| | |
+|---|---|
+| 📗 **[SWRD skill file](skills/swrd-database-skill.md)** | Equips an assistant to query the journal-article database |
+| 📘 **[SSWR skill file](skills/sswr-database-skill.md)** | Equips an assistant to query the conference database |
+
+Each file is a self-contained instruction set. Once an assistant has read it, it can immediately: run any read-only analysis query, search the literature **by meaning** (with a one-time, free local setup it will walk through), and pull filtered slices of records — all with the built-in public access key. **No password, no account, and no software installation is required for querying**; every command in these files has been tested against the live databases. Simply download the file and attach or paste it into your AI assistant's conversation.
+
+---
+
 ## At a glance
 
 | | 📗 **The SWRD** | 📘 **SSWR Conference Database** |

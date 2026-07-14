@@ -5,7 +5,7 @@ description: Query the SSWR Conference Database — 23,793 presentations from ev
 
 # SSWR Conference Database: Agent Skill
 
-You (the agent) can query a hosted PostgreSQL database of SSWR conference-presentation records. This file gives you everything needed: connection details, schema reference, plain SQL access, REST access, and a local semantic-search pipeline. All access is **read-only**.
+You (the agent) can query a hosted database of SSWR conference-presentation records. Everything works over plain HTTPS with the public key below — **no password, no account, no database driver**. All access is read-only. Semantic search additionally uses a small local embedding model (§5).
 
 ## 1. What this database is
 
@@ -19,13 +19,11 @@ Citation to report when the user publishes with these data: *Perron, B. E., Vict
 
 | What | Value |
 |---|---|
-| REST base URL | `https://kcffctxedcscvvposypb.supabase.co/rest/v1` |
-| REST API key (public, read-only) | `sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5` |
-| REST schema header | `Accept-Profile: sswr` on GET; `Content-Profile: sswr` on POST |
-| SQL (read-only login) | `postgresql://metadata_reader.kcffctxedcscvvposypb:SocialWorkData2026@aws-0-ca-central-1.pooler.supabase.com:5432/postgres` |
-| SQL schema | Tables live in the `sswr` schema (qualify names: `sswr.papers`) |
+| Base URL | `https://kcffctxedcscvvposypb.supabase.co/rest/v1` |
+| API key (public, read-only) | `sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5` |
+| Required headers | `apikey: <KEY>` and `Authorization: Bearer <KEY>` on every request, plus `Accept-Profile: sswr` on GET or `Content-Profile: sswr` on POST |
 
-The REST key and SQL login are intentionally public and read-only (30-second statement timeout, SELECT-only). Writes will be rejected.
+The key is intentionally public and grants read-only access. Writes are rejected at the database level.
 
 ## 3. Schema reference
 
@@ -47,20 +45,34 @@ Search functions (§5 for semantic):
 - `sswr.search_papers_by_institution(query_text, match_count, min_year, max_year)` — by institution
 - `sswr.autocomplete_institutions(prefix, limit_count)`
 
-## 4. SQL queries
+## 4. SQL queries (over HTTPS — no database client needed)
+
+POST any read-only SQL to the `run_sql` endpoint. Results return as JSON. Limits: SELECT-only privileges, 30-second timeout, **1,000 rows max per call** (paginate with `offset`/`limit` or aggregate server-side).
 
 ```bash
-psql "postgresql://metadata_reader.kcffctxedcscvvposypb:SocialWorkData2026@aws-0-ca-central-1.pooler.supabase.com:5432/postgres" \
-  -c "select methodology, count(*) from sswr.papers group by 1 order by 2 desc limit 10;"
+KEY="sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
+curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql" \
+  -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+  -H "Content-Profile: sswr" -H "Content-Type: application/json" \
+  -d '{"query": "select methodology, count(*) as n from sswr.papers group by 1 order by 2 desc"}'
 ```
 
 ```python
-# pip install psycopg2-binary
-import psycopg2
-conn = psycopg2.connect("postgresql://metadata_reader.kcffctxedcscvvposypb:SocialWorkData2026@aws-0-ca-central-1.pooler.supabase.com:5432/postgres")
-cur = conn.cursor()
-cur.execute("select year, count(*) from sswr.papers group by 1 order by 1")
-rows = cur.fetchall()
+# pip install requests
+import requests
+
+KEY = "sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
+def run_sql(query: str):
+    r = requests.post(
+        "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql",
+        headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+                 "Content-Profile": "sswr", "Content-Type": "application/json"},
+        json={"query": query},
+    )
+    r.raise_for_status()
+    return r.json()          # list of row dicts
+
+rows = run_sql("select year, count(*) as n from sswr.papers group by 1 order by 1")
 ```
 
 Example queries the user commonly wants:
@@ -68,26 +80,26 @@ Example queries the user commonly wants:
 ```sql
 -- Finding a scholar: ALWAYS start with fuzzy lookup (canonical names are stored
 -- as "First Last", sometimes with credentials, e.g. "Brian Perron, PhD")
-select author_id, author_name, total_papers from sswr.search_authors_by_name('michael vaughn', 5);
+select author_id, author_name, total_papers from sswr.search_authors_by_name('michael vaughn', 5)
 
 -- Then pull their full presentation history by the returned author_id
 select p.year, p.title, pa.author_order
 from sswr.paper_authors pa
 join sswr.papers p on p.id = pa.paper_id
 where pa.author_id = 108089    -- id from the lookup above
-order by p.year;
+order by p.year
 
 -- Ranked full-text topic search
-select id, title, year from sswr.search_papers_bm25('kinship care', 10);
+select id, title, year from sswr.search_papers_bm25('kinship care', 10)
 
 -- Most active institutions in a period (first authors)
 select institution_normalized, count(*)
 from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id
 where pa.author_order = 1 and p.year between 2020 and 2026
-group by 1 order by 2 desc limit 10;
+group by 1 order by 2 desc limit 10
 ```
 
-Note: queries have a 30s timeout; use `limit` and year filters for heavy joins.
+Tips: single SELECT statements only (no semicolons, no writes — both are rejected). Use `limit` and year filters for heavy joins.
 
 ## 5. Semantic search (find presentations by meaning)
 
@@ -111,27 +123,28 @@ curl -s http://localhost:11434/api/version   # verify the server is running
 ### Recipe
 
 ```python
-# pip install requests psycopg2-binary
-import requests, psycopg2, json
+# pip install requests
+import requests
 
+KEY = "sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
 question = "interventions for children in kinship foster care"
+
 emb = requests.post("http://localhost:11434/api/embed", json={
     "model": "embeddinggemma:300m",
     "input": [f"task: search result | query: {question}"],
 }).json()["embeddings"][0]                      # 768 floats
 
-conn = psycopg2.connect("postgresql://metadata_reader.kcffctxedcscvvposypb:SocialWorkData2026@aws-0-ca-central-1.pooler.supabase.com:5432/postgres")
-cur = conn.cursor()
-cur.execute(
-    "select id, title, year, similarity "
-    "from sswr.match_papers(%s::extensions.vector, 0.3, %s)",
-    (json.dumps(emb), 10),
-)
-for row in cur.fetchall():
-    print(row)
+hits = requests.post(
+    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/match_papers",
+    headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+             "Content-Profile": "sswr", "Content-Type": "application/json"},
+    json={"query_embedding": emb, "match_count": 10},
+).json()
+for h in hits:
+    print(round(h["similarity"], 3), h["year"], h["title"])
 ```
 
-Or over REST (no Postgres client needed):
+Same thing with curl:
 
 ```bash
 QVEC=$(curl -s http://localhost:11434/api/embed \
@@ -169,10 +182,11 @@ curl -s "$BASE/rpc/search_papers_bm25" -H "$H1" -H "$H2" -H "Content-Profile: ss
 
 | Symptom | Fix |
 |---|---|
-| REST: `Could not find the table 'public.papers'` | You forgot the `Accept-Profile: sswr` header |
-| SQL: `relation "papers" does not exist` | Qualify with the schema: `sswr.papers` |
-| SQL: `permission denied` | You attempted a write — the login is SELECT-only |
-| SQL: `type "vector" does not exist` | Cast as `::extensions.vector` |
+| `Could not find the table 'public.papers'` | You forgot the `Accept-Profile: sswr` (GET) or `Content-Profile: sswr` (POST) header |
+| `run_sql`: `relation "papers" does not exist` | Qualify with the schema: `sswr.papers` |
+| `run_sql`: `syntax error` on a valid statement | Remove trailing semicolons; only a single SELECT is accepted |
+| `run_sql`: `permission denied` | You attempted a write — access is read-only |
+| Exactly 1,000 rows returned | You hit the per-call cap; paginate with `offset`/`limit` or aggregate |
 | Semantic results look random | You embedded the query without the `task: search result | query: ` prefix, or used a different model than `embeddinggemma:300m` |
 | Ollama connection refused | Start it: `ollama serve` (or launch the Ollama app), then retry |
 | Query cancelled after 30s | Narrow the query (year filter, limit) |
