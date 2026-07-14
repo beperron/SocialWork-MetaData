@@ -1,143 +1,83 @@
-# SocialWork-MetaData
+# The Social Work Research Databases
 
-A consolidated research metadata platform for social work scholarship, hosted on a single Supabase (PostgreSQL) project with two isolated schemas:
+**Two carefully built collections of information *about* social work research — every conference presentation from SSWR since 2005, and decades of journal articles from the field's own journals — organized in one place so researchers can explore them.**
 
-| Schema | Dataset | Scale |
-|---|---|---|
-| **`sswr`** | Society for Social Work and Research (SSWR) annual conference metadata, 2005–2026 | 23,793 papers · 21,209 canonical authors · 69,924 authorship records |
-| **`swrd`** | Social Work Research Database (SWRD) — article records from the population of disciplinary social work journals | 110,618 papers · 164,549 authors · 91 journals · 241,766 authorship records · 113,646 author–organization affiliations |
+You don't need any technical background to understand what's here. This page explains, in plain language, what the data are, where they came from, and what you might do with them. If you have questions or would like access, just email **Brian Perron** (beperron@umich.edu).
 
-## Citing these databases
+![What's inside the databases](assets/whats_inside_the_databases.png)
 
-**SWRD** — the database is defined by, and should be cited as:
+## The two databases, in plain terms
 
-> Perron, B. E., Victor, B. G., Hodge, D. R., Salas-Wright, C. P., Vaughn, M. G., & Taylor, R. J. (2017). Laying the foundations for scientometric research: A data science approach. *Research on Social Work Practice, 27*(7), 802–812. https://doi.org/10.1177/1049731515624966
+Think of each database as a very large, very well-organized filing cabinet. Each drawer holds **records** — not the full papers themselves, but everything *about* each paper: its title, its abstract, who wrote it, when, and where it appeared.
 
-**SSWR** — the conference metadata database is described in:
+### 1 · The SSWR Conference Database
 
-> Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation of conference scholarship: Compiling, structuring, and analyzing two decades of presentations at the Society for Social Work and Research. *arXiv*. https://doi.org/10.48550/arXiv.2603.06814 — **in press, *Journal of the Society for Social Work and Research***.
+Every presentation from the **Society for Social Work and Research annual conference, 2005 through 2026** — 23,793 in all. Each record includes:
 
-Both citations are also embedded in the database itself: `select * from swrd.database_info;` / `select * from sswr.database_info;`, and as `COMMENT ON SCHEMA`.
+- the **title and full abstract** of the presentation
+- **every author**, in order, with their institution at the time
+- the **research method** used (labeled for every single record)
+- the year and format (oral presentation, poster, symposium, and so on)
 
-## The SWRD: core corpus and supplemental extensions
+One thing that makes this collection special: the **21,209 researchers have been carefully name-matched across years**. If someone presented in 2008 as "M. Smith" and in 2019 as "Mary Smith," the database knows they're the same person. That means you can trace a scholar's — or a topic's — full trajectory across two decades of conferences.
 
-The **core SWRD** is the corpus established by Perron et al. (2017): a comprehensive population list of **90 disciplinary social work journals** (built from Hodge & Lacasse, 2011, with team-reviewed additions), with **33,330 unique article records from 80 of those journals covering 1989–2013**, harvested via EBSCOhost and ProQuest across 35 databases, restricted to journal articles (editorials, book reviews, letters, and obituaries excluded), restructured into uniform records with the open-source *BibWrangleR* R package, and coverage-validated against Scopus. It was, at publication, the largest stand-alone collection of article records from disciplinary social work journals — and the first fully reproducible study published in a social work journal.
+### 2 · The Social Work Research Database (SWRD)
 
-Everything else in the `swrd` schema is a **supplemental extension** of that core, added in later phases of the project:
+The SWRD covers the **published journal literature**: article records from **91 disciplinary social work journals from 1989 through 2025** — 87,329 records, including **62,602 research articles with abstracts**. The database and how it was built are fully described in a 2026 article in *Research on Social Work Practice* (citation below).
 
-- **Temporal extensions** — historical backfill to 1920 and ongoing updates through 2025, bringing the core window's coverage from 33,330 to 50,924 records (later harvesting filled indexing gaps identified in the original extraction) within a 110,618-record total.
-- **Additional sources** — Web of Science and Scopus API harvests, DOAJ, Digital Commons, and journal-archive imports, deduplicated against the core on DOI/WoS/Scopus identifiers (4,500 records still carry the original harvest's source tag).
-- **Enrichment** — LLM-based classification of papers with abstracts (`is_scientific`, `is_empirical`, `research_method`), and 768-dim semantic embeddings.
+Each record includes the article's title, abstract (when the journal made one available), authors and their affiliations, journal, year, and citation count. Research articles have also been **labeled by type**: whether the work is empirical, and whether the methods were quantitative, qualitative, mixed, or a review.
 
-The schema encodes this distinction directly: **`swrd.core_papers`** (1989–2013 window, currently 50,924 rows) and **`swrd.supplemental_papers`** (59,694 rows) views sit alongside the full `swrd.papers` table, so analyses can target the citable core corpus, the extensions, or both. The current `journals` table holds 91 titles against the paper's population of 90 (one post-publication addition after historical-title consolidation).
+Two honest things to know about the SWRD:
 
-Both datasets carry full-text search (Postgres `tsvector`), trigram author/institution matching (`pg_trgm`), and 768-dimensional semantic embeddings (`pgvector`, EmbeddingGemma-300m) for hybrid retrieval.
+- **Author names appear exactly as the journals published them.** Unlike the SSWR database, no name-matching has been done yet — so "J. Garcia" and "Jennifer Garcia" may be separate entries even if they're the same person. Counting *papers* is reliable; counting *unique people* is not, yet.
+- **Abstracts aren't universal.** About seven in ten records from 1989 onward have them; older articles and smaller journals are less complete.
 
-This repository contains the migration tooling, audit trail, verification reports, and operational documentation for the platform. **It contains no data and no credentials** — the data lives in Supabase; credentials live in a gitignored `.env`.
+### 3 · The SWRD Supplement
 
-## Why this exists
+Alongside the main SWRD sits a **historical supplement: 23,289 records from the same journals reaching back to 1920**. These older records are **much less complete** — many are missing abstracts or author details, simply because that information was never digitized. We keep them because they're still valuable for historical questions ("when did social work journals first publish about X?"), but they should be treated as a starting point, not a complete accounting of the era.
 
-The two datasets previously lived in separate Supabase projects, doubling hosting costs for closely related work. In July 2026 both were consolidated into one Pro project (`kcffctxedcscvvposypb`, AWS ca-central-1) with schema-level isolation — each dataset keeps its own tables, functions, row-level-security policies, and API surface, addressable independently through PostgREST schema profiles.
+## What these data can be used for
 
-Two different migration philosophies were used deliberately:
+A few examples of the kinds of questions these collections can help answer — no special software required, just a research question:
 
-- **SSWR — exact 1:1 copy.** The source database was in excellent shape (100% title/abstract/methodology coverage, fully resolved author entities, zero orphans). Every table, index, RLS policy, and RPC function was carried over verbatim, then rewritten to live in the `sswr` schema.
-- **SWRD — clean rebuild.** The source had accreted 42 tables of backups, migration scaffolding, and staging debris around 9 essential tables. Only the essential core was migrated: `papers`, `journals`, `authors`, `organizations`, `paper_authors`, `author_affiliations`, embedding-tracking tables, and 6 analytics views. Everything else stayed behind in the retired project.
+- **Literature mapping** — What has the field published on kinship care, and how has that changed since the 1990s?
+- **Trends in the discipline** — Is empirical work growing? (It is: from 43% to 72% of publications since 1989.) Are teams getting bigger? (Also yes: from fewer than 2 authors per paper to more than 3.)
+- **Scholar and program histories** — Trace a researcher's conference presentations across 20 years, or see which institutions present most in a given area.
+- **Teaching** — Real, well-organized disciplinary data for research methods and doctoral courses.
+- **Finding the road not taken** — Spot understudied topics, journals, or populations.
 
-Embeddings were **not** migrated. Both schemas were re-embedded from scratch with a single consistent model (see below), replacing three incompatible legacy embedding sets (768/1536/3072-dim from different providers).
+*A friendly step-by-step guide to actually using the data is coming soon.*
 
-## Database architecture
+## The search understands what you mean
 
-### `sswr` schema
-- `papers` — text PK (`YYYY-TYPE-NNNN`), title, abstract, format, methodology (+ LLM classification variants), `fts` tsvector
-- `authors` — canonical author entities (name variants, institutions, active years as JSONB)
-- `paper_authors` — authorship instances: position, degree, institution (raw + normalized), geo fields, FK to canonical author
-- `paper_html_mappings` — provenance bridge to original conference HTML files
-- `institution_mappings` / `country_mappings` / `author_canonical_mapping` / `author_linkage_audit` — entity-resolution infrastructure
-- `paper_embeddings` — one 768-dim vector per paper (`embeddinggemma:300m`), HNSW-indexed
-- `search_logs` / `page_views` — app telemetry
-- RPCs: `match_papers` (semantic), `search_papers_bm25`, `search_papers_keyword`, `search_authors_by_name` (trigram), `search_papers_by_institution`, `autocomplete_institutions`, and more
-- `paper_export` — flat denormalized view for analysis exports
+Most library databases only match the exact words you type — search "kinship care" and they can miss an excellent study that said "relative caregivers" instead. These databases include a newer kind of search that works from **meaning**, so related studies are found even when the vocabulary differs.
 
-### `swrd` schema
-- `papers` — integer PK, DOI/WoS/Scopus identifiers, journal FK, citations, OA flag, volume/issue/pages, plus supplemental LLM-enrichment fields: `is_scientific`, `is_empirical`, `research_method`, stage confidences/justifications
-- `core_papers` / `supplemental_papers` — views separating the citable core corpus (1989–2013, per Perron et al., 2017) from the supplemental extensions
-- `journals`, `authors` (ORCID/WoS/Scopus ids), `organizations`, `paper_authors` (position, corresponding flag), `author_affiliations`
-- `title_abstract_embeddings` — one 768-dim vector per paper, HNSW-indexed (supplemental)
-- `embedding_models` / `embedding_runs` — embedding provenance tracking
-- Views: `database_info` (citation + core/supplemental counts), `papers_with_journals`, `author_publication_stats`, `publication_trends`, `highly_cited_papers`, `database_summary`, `organization_collaborations`
+![What embedding models are](assets/whatareembeddingmodels.png)
 
-### Semantic embeddings
-All embeddings are generated locally via [Ollama](https://ollama.com) with **`embeddinggemma:300m`** (Google EmbeddingGemma, 768 dims), using the model's document prompt convention:
+There's no chatbot involved and nothing is generated — this tool simply *reads* text and recognizes when two passages are about the same idea. We tested many of these tools head-to-head on tens of thousands of social work abstracts before choosing one:
 
-```
-title: {title} | text: {abstract or "none"}
-```
+![Free vs paid search tools](assets/freevspaidsearchtools.png)
 
-Queries should use the matching query convention: `task: search result | query: {question}`. Cosine distance, HNSW indexes.
+Based on that testing, the databases use **EmbeddingGemma** — a small, free model from Google. It matched or beat the paid commercial options on our own literature, and it's small enough to run on an ordinary laptop, which means the search can work **privately, at no cost, with nothing sent to any company**. Every abstract in both databases has been indexed this way.
 
-## Repository layout
+## How to cite
 
-```
-migration/
-  01_audit.sql               read-only source-database audit (sizes, counts, DDL, RLS, vectors)
-  02_rename_and_grants.sql   schema rename + role grants applied after each restore
-  04_health_check_swrd.sql   data-quality checks for swrd
-  05_health_check_sswr.sql   data-quality checks for sswr
-  06_embed_pipeline.py       resumable Ollama → pgvector embedding pipeline
-  dumps/                     local working dir for pg_dump output (gitignored — dumps are never committed)
-audit/                       raw audit snapshots + captured view/function DDL
-docs/
-  PHASE1_AUDIT_SUMMARY.md    what the source databases actually contained
-  VERIFICATION_REPORT.md     full parity verification (all checks passed)
-  HEALTH_CHECK_REPORT.md     data-quality review + SWRD cleanup roadmap
-  RECONNECTION_GUIDE.md      how to point apps/scripts at the new schemas
-.env.example                 connection-string template (real .env is gitignored)
-```
+If you use these data in your work, please cite the article that describes the database you used:
 
-## Migration method (summary)
+**SWRD (journal articles):**
+> Perron, B. E., Victor, B. G., & Qi, Z. (2026). Evolution of social work knowledge production over 35 years: An AI-enabled analysis of trends in empiricism, methodology, collaboration, citation patterns, and output. *Research on Social Work Practice*. https://doi.org/10.1177/10497315261416833
 
-1. **Read-only audit** of both live sources: exact row counts, per-table sizes, extension placement, vector dimensions, full function DDL (several RPCs existed only in the live DBs), indexes, RLS policies, triggers, and non-`public` surfaces (auth/storage/cron).
-2. **Three-section `pg_dump`** per source (`pre-data` / `data` / `post-data`, `--no-owner --no-privileges`), excluding embedding-table rows and out-of-scope tables. SWRD used a selective `-t` table list.
-3. **Targeted DDL patching** — both sources had extensions installed in `public` (`vector` in SWRD, `pg_trgm` in SSWR); dumped references were rewritten to the `extensions` schema, where the target installs them.
-4. **Restore into `public` → `ALTER SCHEMA public RENAME TO sswr/swrd`** — the rename is a catalog operation, so tables, indexes, sequences, defaults, and RLS policies follow automatically and data is never touched by text substitution. Repeated for the second source with a fresh `public` between.
-5. **Function fixup** — bodies rewritten from `public.` references, and every function pinned with `SET search_path = <schema>, extensions, pg_temp`.
-6. **PostgREST exposure + grants** — both schemas exposed through the Data API; deliberately tighter-than-default grants (`service_role` full; `anon`/`authenticated` read + execute only, with narrow write exceptions).
-7. **Verification** — exact row-count parity, column-level `information_schema` diffs (99 + 110 columns identical), aggregate data parity (null-rates, citation sums, distinct linkage counts), byte-identical author-linkage chains for sampled papers, index/policy/sequence parity, per-schema REST tests with leakage checks.
-8. **Health check** — referential integrity, duplicate detection, null-rate profiling, range sanity. Results and a prioritized SWRD cleanup roadmap are in `docs/HEALTH_CHECK_REPORT.md`.
+**SSWR (conference presentations):**
+> Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation of conference scholarship: Compiling, structuring, and analyzing two decades of presentations at the Society for Social Work and Research. *arXiv*. https://doi.org/10.48550/arXiv.2603.06814 — in press, *Journal of the Society for Social Work and Research*.
 
-## Connecting
+The original SWRD (version 1.0, covering 1989–2013) was introduced in: Perron, B. E., Victor, B. G., Hodge, D. R., Salas-Wright, C. P., Vaughn, M. G., & Taylor, R. J. (2017). Laying the foundations for scientometric research: A data science approach. *Research on Social Work Practice, 27*(7), 802–812. https://doi.org/10.1177/1049731515624966
 
-Clients must name the schema explicitly (nothing lives in `public`):
+## Questions, ideas, access
 
-```ts
-// supabase-js
-const supabase = createClient(url, key, { db: { schema: 'sswr' } })
-const { data } = await supabase.schema('swrd').from('papers_with_journals').select('*')
-```
+This is a living resource, and collaboration is welcome. If you'd like to explore the data, request a slice of it for a project, or talk through whether it fits a study you have in mind:
 
-```python
-# supabase-py
-supabase = create_client(url, key, options=ClientOptions(schema="swrd"))
-```
-
-```bash
-# raw REST — Accept-Profile (reads) / Content-Profile (writes, RPC)
-curl ".../rest/v1/papers?limit=5" -H "apikey: $KEY" -H "Accept-Profile: swrd"
-```
-
-Full recipes, the grants model, and re-embedding notes: [`docs/RECONNECTION_GUIDE.md`](docs/RECONNECTION_GUIDE.md).
-
-## Data quality at a glance
-
-- **sswr**: production-quality. 100% title/abstract/methodology coverage, fully linked author entities, zero orphans.
-- **swrd**: structurally sound (zero duplicate DOIs/WoS/Scopus ids, perfect FK integrity) with known content debt inherited from its assembly history: ~2.4% of papers lack author records, 16% of author rows are unreferenced, author entity resolution is still to-do, and `data_source` needs normalization (26 messy values). See the [health check report](docs/HEALTH_CHECK_REPORT.md) for the full roadmap.
-
-## Provenance
-
-- **SSWR** (`sswr`): compiled and entity-resolved from official SSWR conference programs (2005–2026) using AI-assisted curation; methodology in Perron, Victor, & Qi (2026, arXiv:2603.06814; in press, *JSSWR*). See the SSWR-History project.
-- **SWRD** (`swrd`): core corpus per Perron et al. (2017) — EBSCOhost/ProQuest harvest of the social work journal population, 1989–2013, BibWrangleR-processed, Scopus-validated. Supplemental extensions aggregate Web of Science, Scopus, DOAJ, Digital Commons, and journal-archive exports (deduplicated on DOI/WoS/Scopus identifiers), plus LLM-based scientific/empirical/method classification on papers with abstracts (61.5% coverage).
-- The original source Supabase projects remain intact (read-only reference) until formally retired.
+**Brian Perron** · University of Michigan School of Social Work · beperron@umich.edu
 
 ---
-*Maintained by Brian Perron (University of Michigan School of Social Work). Migration and verification performed July 2026.*
+
+<sub>For technically minded collaborators: schema details, data-quality reports, and connection instructions live in the [`docs/`](docs/) folder, starting with the [technical overview](docs/TECHNICAL_OVERVIEW.md).</sub>
