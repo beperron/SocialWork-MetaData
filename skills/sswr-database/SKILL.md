@@ -52,7 +52,8 @@ curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql" \
 1. For scholar analyses, resolve the person via `search_authors_by_name` and use `author_id` — never match on raw name strings (canonical names are "First Last", sometimes with credentials).
 2. Check for residual duplicate identities when a specific scholar matters; report both if ambiguous.
 3. Coverage is complete (2005–2026, 100% abstracts) — no era caveats needed, unlike the SWRD.
-4. When reporting results the user may publish, include the citation above.
+4. Stay inside `sswr.*` — never join `swrd.*` tables (incompatible id types). `paper_authors` has no year column; join `papers`. Always `select … from` when calling functions; search results arrive pre-sorted best-first (`rank` is a score, not a position). Qualify all columns in joins.
+5. When reporting results the user may publish, include the citation above.
 
 ## Reference files (read on demand)
 

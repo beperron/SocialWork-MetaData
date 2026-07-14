@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embedding Models for Social Work Literature — The Social Work Meta-Data Project</title>
+<meta name="description" content="A benchmark of open-weight embedding models and cross-encoder rerankers for semantic search over social work research abstracts — the study behind this project's semantic search.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #18181B; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  *, *::before, *::after { box-sizing: border-box; }
+  a { color: #00274C; text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: currentColor; }
+  ::selection { background: #FFCB05; color: #00274C; }
+  table.results { width: 100%; border-collapse: collapse; }
+  table.results th, table.results td { text-align: left; padding: 11px 14px; border-bottom: 1px solid #E7E5E0; font-size: 13.5px; }
+  table.results th { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #71717A; background: #FAFAF9; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .bar { height: 14px; background: #1E8A4A; border-radius: 3px; display: inline-block; vertical-align: middle; }
+  @media (max-width: 880px) { .g2, .g3 { grid-template-columns: 1fr !important; } .nav-links a.nav-item { display: none; } }
+</style>
+</head>
+<body>
+
+<header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.86); backdrop-filter:blur(8px); border-bottom:1px solid #E7E5E0;">
+  <div style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); height:60px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+    <a href="index.html" style="font-size:15px; font-weight:700; letter-spacing:-0.01em; color:#00274C; border:none;">Social Work Meta-Data</a>
+    <nav class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a class="nav-item" href="index.html#databases" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Databases</a>
+      <a class="nav-item" href="index.html#access" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">AI access</a>
+      <a class="nav-item" href="index.html#download" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Download</a>
+      <a class="nav-item" href="demonstrations.html" style="font-size:13.5px; font-weight:600; color:#00274C; border:none;">Demonstrations</a>
+      <a href="mailto:beperron@umich.edu" style="display:inline-flex; align-items:center; height:34px; padding:0 16px; background:#00274C; color:#FFFFFF; font-size:13.5px; font-weight:600; border-radius:6px; border:none;">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section style="position:relative; overflow:hidden; background:radial-gradient(1200px 700px at 78% -10%, #1F3A5F 0%, #00274C 42%, #001A33 100%);">
+  <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1.4px); background-size:26px 26px; mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%); -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);"></div>
+  <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#FFCB05;">Demonstrations · Report 02 · Word embeddings · study in progress</p>
+    <h1 style="margin:0; max-width:24ch; font-size:clamp(32px,4.4vw,48px); line-height:1.08; font-weight:600; letter-spacing:-0.022em; color:#FFFFFF;">Which embedding model best searches social work literature?</h1>
+    <p style="margin:22px 0 0; max-width:62ch; font-size:clamp(15px,1.8vw,18px); line-height:1.55; color:#C7D2E0;">A head-to-head benchmark of twelve open-weight embedding models — plus cross-encoder rerankers — for semantic retrieval over the SWRD's research abstracts, entirely on local hardware. This is the study behind the semantic search built into these databases. The full write-up is a manuscript in preparation; this page summarizes the design and the current state of results, with preliminary figures labeled as such.</p>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid #E7E5E0; background:#FAFAF9;">
+  <div class="g3" style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(3,1fr);">
+    <div style="padding:32px 24px 30px 0; border-right:1px solid #E7E5E0;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">68,043</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">abstract-bearing SWRD records<br>in the retrieval corpus</div>
+    </div>
+    <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">12 + 4</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">open-weight embedding models,<br>plus cross-encoder rerankers</div>
+    </div>
+    <div style="padding:32px 0 30px 24px;">
+      <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">100%</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">local — every model, query, and<br>judgment run on Apple Silicon</div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+  <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+    <span class="mono" style="font-size:12px; color:#A1A1AA;">01</span>
+    <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+    <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Why this study exists</span>
+  </div>
+  <h2 style="margin:0; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em;">Semantic search without the subscription</h2>
+  <p style="margin:16px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Strong semantic retrieval has typically depended on paid, proprietary embedding APIs — a problem for cost, privacy, and reproducibility in research settings. Social work adds a further wrinkle: domain vocabulary ("kinship care" vs "relative caregivers") that generic search handles poorly. This study asks whether <strong>open-weight models that run on ordinary hardware</strong> can deliver research-grade semantic search over the discipline's own literature — and at what computational cost. It extends the local-first agenda in social work AI research from classification tasks to retrieval.</p>
+
+  <h3 style="margin:36px 0 10px; font-size:17px; font-weight:600;">Design</h3>
+  <div class="g2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+      <h4 style="margin:0; font-size:14px; font-weight:600; color:#00274C;">Corpus &amp; queries</h4>
+      <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">All 68,043 SWRD records with abstracts (title + abstract as document text; sources include Web of Science, Scopus, DOAJ, Digital Commons). 300 natural-language queries generated by a local language model from 150 sampled seed papers — two queries each — mimicking how researchers actually phrase questions.</p>
+    </div>
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+      <h4 style="margin:0; font-size:14px; font-weight:600; color:#00274C;">Judging &amp; metrics</h4>
+      <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">Candidate results are graded 0–3 for relevance by a separate local model (a different family than the query generator, to avoid circularity), with a 150-pair human-expert validation sample. Primary metric: nDCG@10 with bootstrap confidence intervals. A keyword-search (BM25) baseline anchors every comparison.</p>
+    </div>
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+      <h4 style="margin:0; font-size:14px; font-weight:600; color:#00274C;">Two-stage retrieval</h4>
+      <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">Beyond single-model search, the study tests a "careful second look": a cross-encoder reranker that re-reads the top candidates side-by-side with the query and reorders them — slower per query, potentially more precise.</p>
+    </div>
+    <div style="border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+      <h4 style="margin:0; font-size:14px; font-weight:600; color:#00274C;">Cost as a first-class outcome</h4>
+      <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">Every model's indexing throughput and peak memory are measured on the same machine (Apple M5-class, 64 GB), because for a lab or library the practical question is a quality-versus-cost frontier, not a single leaderboard winner.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:#FAFAF9; border-top:1px solid #E7E5E0; border-bottom:1px solid #E7E5E0;">
+  <div style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+      <span class="mono" style="font-size:12px; color:#A1A1AA;">02</span>
+      <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+      <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Preliminary quality results</span>
+    </div>
+    <h2 style="margin:0 0 6px; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em;">Every embedding model beats keyword search</h2>
+    <div style="margin:14px 0 22px; border:1px solid #FDE68A; border-left:3px solid #B45309; border-radius:6px; background:#FFFBEB; padding:14px 18px; max-width:76ch;">
+      <p style="margin:0; font-size:13.5px; color:#3F3F46;"><strong style="color:#B45309;">Preliminary.</strong> Relevance judging is complete for 45 of 300 queries, using the local-model judge (human validation pending). Figures below are computed from the committed run data at that stage and will move as judging completes. The manuscript's final numbers may differ.</p>
+    </div>
+    <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; overflow-x:auto; box-shadow:0 1px 2px rgba(24,24,27,0.04);">
+      <table class="results">
+        <tr><th>System</th><th>Size</th><th>nDCG@10 (preliminary)</th><th></th></tr>
+        <tr><td><strong>EmbeddingGemma + BGE reranker</strong> <span style="color:#71717A;">(two-stage, best overall)</span></td><td>300M + 568M</td><td class="mono"><strong>0.766</strong></td><td><span class="bar" style="width:153px; background:#0F6A38;"></span></td></tr>
+        <tr><td>Qwen3-Embedding-8B</td><td>8B</td><td class="mono">0.752</td><td><span class="bar" style="width:150px;"></span></td></tr>
+        <tr><td>Qwen3-Embedding-4B</td><td>4B</td><td class="mono">0.751</td><td><span class="bar" style="width:150px;"></span></td></tr>
+        <tr><td><strong>EmbeddingGemma</strong> <span style="color:#71717A;">(the model these databases use)</span></td><td>300M</td><td class="mono"><strong>0.730</strong></td><td><span class="bar" style="width:146px;"></span></td></tr>
+        <tr><td>BGE-large-en</td><td>335M</td><td class="mono">0.712</td><td><span class="bar" style="width:142px;"></span></td></tr>
+        <tr><td>Qwen3-Embedding-0.6B</td><td>0.6B</td><td class="mono">0.706</td><td><span class="bar" style="width:141px;"></span></td></tr>
+        <tr><td>Nomic-v1.5</td><td>137M</td><td class="mono">0.684</td><td><span class="bar" style="width:137px;"></span></td></tr>
+        <tr><td>ModernBERT-embed</td><td>150M</td><td class="mono">0.680</td><td><span class="bar" style="width:136px;"></span></td></tr>
+        <tr><td>BGE-small-en</td><td>33M</td><td class="mono">0.679</td><td><span class="bar" style="width:136px;"></span></td></tr>
+        <tr><td>mE5-large</td><td>560M</td><td class="mono">0.677</td><td><span class="bar" style="width:135px;"></span></td></tr>
+        <tr><td>MPNet-base</td><td>110M</td><td class="mono">0.664</td><td><span class="bar" style="width:133px;"></span></td></tr>
+        <tr><td>BGE-M3</td><td>568M</td><td class="mono">0.659</td><td><span class="bar" style="width:132px;"></span></td></tr>
+        <tr><td>MiniLM-L6</td><td>22M</td><td class="mono">0.629</td><td><span class="bar" style="width:126px;"></span></td></tr>
+        <tr><td style="color:#71717A;">Keyword search (BM25 baseline)</td><td>—</td><td class="mono" style="color:#71717A;">0.589</td><td><span class="bar" style="width:118px; background:#8A97A5;"></span></td></tr>
+      </table>
+    </div>
+    <div class="g2" style="margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+        <h4 style="margin:0; font-size:14px; font-weight:600; color:#1E8A4A;">What holds up so far</h4>
+        <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">All twelve embedding models beat the keyword baseline. <strong>EmbeddingGemma (300M) is the standout for quality-per-size</strong> — within a few points of models 25× larger — and pairing it with the BGE cross-encoder reranker currently tops the board. That combination of quality, size, and zero cost is why this project's databases are encoded with it.</p>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; padding:22px;">
+        <h4 style="margin:0; font-size:14px; font-weight:600; color:#B45309;">Notable negative results</h4>
+        <p style="margin:8px 0 0; font-size:13.5px; color:#3F3F46;">Reranking is not automatically better: one heavily-promoted reranker (mxbai-rerank-large-v2) consistently <em>degraded</em> results on this corpus, and another was roughly neutral. And bigger isn't uniformly better among embedders either — several mid-size models trail smaller ones. Domain fit matters more than parameter count.</p>
+      </div>
+    </div>
+    <p style="margin:18px 0 0; font-size:13px; color:#71717A;">A comparison against commercial embedding APIs (e.g., OpenAI's) is deferred to the completed study.</p>
+  </div>
+</section>
+
+<section style="max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+  <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+    <span class="mono" style="font-size:12px; color:#A1A1AA;">03</span>
+    <span style="height:1px; flex:0 0 40px; background:#D4D4D0; align-self:center;"></span>
+    <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Measured cost — real numbers</span>
+  </div>
+  <h2 style="margin:0 0 6px; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em;">A hundred-fold spread in indexing cost</h2>
+  <p style="margin:12px 0 22px; max-width:72ch; font-size:15px; color:#3F3F46;">Indexing throughput and peak memory, measured on the same Apple Silicon machine (M5-class, 64 GB). These are final measurements, not placeholders — and they are why "which model" is an operational decision, not just a quality one.</p>
+  <div style="border:1px solid #E7E5E0; border-radius:8px; overflow-x:auto; box-shadow:0 1px 2px rgba(24,24,27,0.04);">
+    <table class="results">
+      <tr><th>Model</th><th>Indexing speed (docs/sec)</th><th>Peak memory</th></tr>
+      <tr><td>MiniLM-L6 (22M)</td><td class="mono">~920</td><td class="mono">~1.9 GB</td></tr>
+      <tr><td>BGE-small-en (33M)</td><td class="mono">~134</td><td class="mono">~2.4 GB</td></tr>
+      <tr><td>MPNet-base (110M)</td><td class="mono">~120</td><td class="mono">~2.2 GB</td></tr>
+      <tr><td><strong>EmbeddingGemma (300M, via Ollama)</strong></td><td class="mono"><strong>~105</strong></td><td class="mono">Ollama-served</td></tr>
+      <tr><td>BGE-M3 (568M)</td><td class="mono">~73</td><td class="mono">~4.4 GB</td></tr>
+      <tr><td>ModernBERT-embed (150M)</td><td class="mono">~36</td><td class="mono">~2.8 GB</td></tr>
+      <tr><td>Qwen3-Embedding-0.6B</td><td class="mono">~34</td><td class="mono">~4.4 GB</td></tr>
+      <tr><td>mE5-large (560M)</td><td class="mono">~32</td><td class="mono">~4.3 GB</td></tr>
+      <tr><td>BGE-large-en (335M)</td><td class="mono">~29</td><td class="mono">~2.8 GB</td></tr>
+      <tr><td>Nomic-v1.5 (137M)</td><td class="mono">~24</td><td class="mono">~2.0 GB</td></tr>
+      <tr><td>Qwen3-Embedding-4B</td><td class="mono">~9</td><td class="mono">~17 GB</td></tr>
+      <tr><td>Qwen3-Embedding-8B</td><td class="mono">~8</td><td class="mono">~30 GB</td></tr>
+    </table>
+  </div>
+  <p style="margin:18px 0 0; max-width:72ch; font-size:14.5px; color:#3F3F46;">The top quality models (Qwen3 4B/8B) index at ~8–9 documents per second and want 17–30 GB of memory; EmbeddingGemma indexes ~105/second in a fraction of that — over an order of magnitude cheaper for a few points of nDCG that a reranker recovers anyway. At 68k documents, no approximate-nearest-neighbor index was even needed: exact search suffices at this scale.</p>
+</section>
+
+<section style="background:#00274C; position:relative; overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1.4px); background-size:26px 26px;"></div>
+  <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
+    <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:8px;">
+      <span class="mono" style="font-size:12px; color:#5E7794;">04</span>
+      <span style="height:1px; flex:0 0 40px; background:rgba(255,255,255,0.25); align-self:center;"></span>
+      <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#8FA6BF;">Status &amp; source</span>
+    </div>
+    <h2 style="margin:0; max-width:26ch; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#FFFFFF;">A study in progress, in the open</h2>
+    <div class="g2" style="margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
+        <p style="margin:0; font-size:14.5px; color:#E4EAF1;"><strong style="color:#FFFFFF;">Done:</strong> corpus construction, 300-query set, all embedding and reranking runs, complete cost measurements, evaluation infrastructure with bootstrap CIs and significance testing.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
+        <p style="margin:0; font-size:14.5px; color:#E4EAF1;"><strong style="color:#FFFFFF;">In progress:</strong> relevance judging (45/300 queries), the 150-pair human validation, the commercial-API comparison, and the manuscript itself (in preparation).</p>
+      </div>
+    </div>
+    <p style="margin:22px 0 0; font-size:13px; color:#8FA6BF;">Working draft: <em>Benchmarking Open-Weight Embedding Models and Cross-Encoder Rerankers for Semantic Retrieval Over a Social Work Research Database</em> (manuscript in preparation). Code, configuration, runs, and judgments: <a href="https://github.com/beperron/SW-Embedding-Test" style="color:#C7D2E0;">github.com/beperron/SW-Embedding-Test</a>.</p>
+  </div>
+</section>
+
+<footer style="background:#001A33;">
+  <div style="max-width:1180px; margin:0 auto; padding:36px clamp(20px,3vw,32px); display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center;">
+    <a href="demonstrations.html" class="mono" style="font-size:11.5px; color:#5E7794; border:none;">← All demonstrations</a>
+    <a href="https://parallel42.ai" class="mono" style="font-size:11.5px; color:#5E7794; border:none;">Brian Perron · parallel42.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>

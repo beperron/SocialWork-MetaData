@@ -102,6 +102,16 @@ where pa.paper_id = 12345 order by pa.position   -- replace 12345 with a real pa
 
 Tips: single SELECT statements only (no semicolons, no writes — both are rejected). Stay fast with year filters, `limit`, and the indexed columns (`journal_id`, `publication_year`, `doi`, `is_scientific`, `research_method`).
 
+## SQL rules that prevent the most common errors
+
+1. **Stay inside one database's schema.** For SWRD questions use ONLY `swrd.*` tables; never join `sswr.*` tables (the id types are incompatible: SWRD ids are integers, SSWR ids are text like `2019-O-0142`).
+2. **Where the year lives:** `swrd.papers.publication_year`. `swrd.paper_authors` has NO year column — join `swrd.papers` when filtering by year.
+3. **Calling functions:** always `select <columns> from swrd.search_papers_keyword(...)` — a bare function call without SELECT…FROM is a syntax error.
+4. **Search results arrive pre-sorted, best match first.** The `rank` column is a relevance *score* (a float), not a position — never `where rank = 1` and never re-sort ascending; take the top row(s) with the function's match_count or LIMIT.
+5. **Qualify every column with a table alias in any join** (`p.id`, `pa.paper_id`) — unqualified ids are ambiguous.
+6. **Corpus filters are conditional.** Apply `publication_year >= 1989 and is_scientific and abstract is not null` when the question concerns the research corpus; when a question says "in total", "all years", or asks for raw record counts, do NOT add these filters.
+7. **Answer the quantity asked** — if the question says "how many", return a count, not a list of rows.
+
 ## 5. Semantic search (find studies by meaning)
 
 Semantic search needs a query "fingerprint" from the same model the abstracts were embedded with: **EmbeddingGemma 300M via Ollama, 768 dimensions**. This runs locally.

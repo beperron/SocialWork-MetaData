@@ -106,6 +106,15 @@ group by 1 order by 2 desc limit 10
 
 Tips: single SELECT statements only (no semicolons, no writes — both are rejected). Use `limit` and year filters for heavy joins.
 
+## SQL rules that prevent the most common errors
+
+1. **Stay inside one database's schema.** For SSWR questions use ONLY `sswr.*` tables; never join `swrd.*` tables (the id types are incompatible: SSWR ids are text like `2019-O-0142`, SWRD ids are integers).
+2. **Where the year lives:** `sswr.papers.year`. `sswr.paper_authors` has NO year column — join `sswr.papers` when filtering by year.
+3. **Calling functions:** always `select <columns> from sswr.search_papers_keyword(...)` — a bare function call without SELECT…FROM is a syntax error.
+4. **Search results arrive pre-sorted, best match first.** The `rank` column is a relevance *score* (a float), not a position — never `where rank = 1` and never re-sort ascending; take the top row(s) with the function's match_count or LIMIT.
+5. **Qualify every column with a table alias in any join** (`p.id`, `pa.paper_id`) — unqualified ids are ambiguous.
+6. **Answer the quantity asked** — if the question says "how many", return a count, not a list of rows.
+
 ## 5. Semantic search (find presentations by meaning)
 
 Semantic search needs a query "fingerprint" from the same model the abstracts were embedded with: **EmbeddingGemma 300M via Ollama, 768 dimensions**. This runs locally.

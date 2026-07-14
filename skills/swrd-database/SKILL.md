@@ -55,7 +55,9 @@ curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql" \
 2. Do not count "unique authors" — names aren't disambiguated. Count articles, or caveat heavily.
 3. Classification labels exist only where abstracts exist (~72% of 1989+ records); condition on `is_scientific`/`is_empirical` explicitly rather than assuming NULL = no.
 4. `data_source` is messy provenance, not a clean category — don't group by it for substantive claims.
-5. When reporting results to the user, include the article citation above if they intend to publish.
+5. Stay inside `swrd.*` — never join `sswr.*` tables (incompatible id types). `paper_authors` has no year column; join `papers`. Always `select … from` when calling functions; search results arrive pre-sorted best-first (`rank` is a score, not a position). Qualify all columns in joins.
+6. Corpus filters (rule 1) apply to research-corpus questions only — never add them to "in total"/"all years" counts.
+7. When reporting results to the user, include the article citation above if they intend to publish.
 
 ## Reference files (read on demand)
 
