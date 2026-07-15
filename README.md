@@ -25,7 +25,7 @@ Going deeper: the [skills folder](skills/) also holds full per-database skills w
 
 ## ⬇️ Download the data
 
-Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration. **Current data release: v1.0 (July 2026).** The data are versioned: corrections and additions are published as new numbered releases (see [Reporting data problems](#reporting-data-problems) below), and every prior version remains available on the [releases page](https://github.com/beperron/SocialWork-MetaData/releases).
+Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration. **Current data release: v1.0 (July 2026).** The data are versioned: corrections and additions are published as new numbered releases (see [Reporting data problems](#reporting-data-problems) below), and every prior version remains available on the [releases page](https://github.com/beperron/SocialWork-MetaData/releases). What changed in each version is recorded in the [data changelog](docs/DATA_CHANGELOG.md).
 
 | | |
 |---|---|
