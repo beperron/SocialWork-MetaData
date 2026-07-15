@@ -49,7 +49,7 @@ Each zip includes a README describing every file, the join keys, and the citatio
 
 ## 📗 The Social Work Research Database (SWRD)
 
-The SWRD contains article records from **91 disciplinary social work journals, 1989–2025**, compiled through multi-source integration and deduplication as described in Perron, Victor, and Qi (2026) — the authoritative account of the database's construction, sources, and validation.
+The SWRD contains article records from **88 disciplinary social work journals, 1989–2025**, compiled through multi-source integration and deduplication as described in Perron, Victor, and Qi (2026) — the authoritative account of the database's construction, sources, and validation.
 
 Its analytic core is **62,602 research articles with abstracts**, each classified on two dimensions:
 

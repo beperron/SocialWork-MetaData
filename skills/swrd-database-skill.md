@@ -1,6 +1,6 @@
 ---
 name: swrd-database
-description: Query the Social Work Research Database (SWRD) — 110,618 journal-article records from 91 social work journals (1920–2025) with study-type classifications and semantic search. Use when the user asks about social work journal literature, publication trends, methodology patterns, or wants to find studies on a topic.
+description: Query the Social Work Research Database (SWRD) — 110,618 journal-article records from 88 social work journals (1920–2025) with study-type classifications and semantic search. Use when the user asks about social work journal literature, publication trends, methodology patterns, or wants to find studies on a topic.
 ---
 
 # SWRD — Social Work Research Database: Agent Skill (Quickstart)
@@ -11,7 +11,7 @@ You (the agent) can query a hosted database of social work journal-article recor
 
 ## 1. What this database is
 
-The SWRD contains records (title, abstract, authors, affiliations, journal, year, DOI) for articles in **91 disciplinary social work journals**:
+The SWRD contains records (title, abstract, authors, affiliations, journal, year, DOI) for articles in **88 disciplinary social work journals** (the `swrd.journals` table carries 91 rows: two contain no articles and one journal appears under two ids):
 
 - **The SWRD proper:** 87,329 records, **1989–2025**, systematically compiled and validated. Within it, **62,602 research articles with abstracts**, each classified: `is_scientific` (research vs editorial/review/letter), `is_empirical`, and `research_method` (values: `Quantitative`, `Qualitative`, `Mixed-Methods`, `Review` — note the exact capitalization).
 - **The SWRD Supplement:** 23,289 records, **1920–1988**, substantially incomplete (missing abstracts/details). Treat pre-1989 counts as lower bounds. **Default analyses to `publication_year >= 1989` unless the user asks for historical data.**
@@ -44,7 +44,7 @@ The key is intentionally public and grants read-only access. Writes are rejected
 
 **Search API** (identical on both databases): `search_papers_semantic(query_embedding, match_count, min_year, max_year)` · `search_papers_keyword(query_text, match_count, min_year, max_year)` — ranked full-text · `search_papers_hybrid(query_text, query_embedding, match_count, rrf_k, min_year, max_year)` — reciprocal-rank fusion of both, **the recommended default for topic questions**.
 
-Convenience views: `swrd.swrd_papers` (1989–2025 only), `swrd.swrd_supplement_papers` (pre-1989), `swrd.papers_with_journals` (papers joined to journal names), `swrd.publication_trends` (per-year aggregates), `swrd.author_publication_stats`, `swrd.highly_cited_papers` (>50 citations), `swrd.database_summary`, `swrd.database_info` (citation + counts).
+Convenience views: `swrd.swrd_papers` (1989–2025 only), `swrd.swrd_supplement_papers` (pre-1989), `swrd.papers_with_journals` (papers joined to journal names), `swrd.publication_trends` (per-year aggregates), `swrd.author_publication_stats`, `swrd.organization_collaborations`, `swrd.database_summary`, `swrd.database_info` (citation + counts).
 
 ## 4. SQL queries (over HTTPS — no database client needed)
 

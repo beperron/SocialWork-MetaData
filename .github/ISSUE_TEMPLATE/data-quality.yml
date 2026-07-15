@@ -1,0 +1,42 @@
+name: Data quality report
+description: Report an error in the SWRD or SSWR databases — a wrong field, duplicate record, name variant, misclassification, or missing data.
+title: "[Data] "
+labels: ["data-quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the databases. Scientific meta-data are inherently messy, and reports like this one are how the data get better. Every report is reviewed.
+  - type: dropdown
+    id: database
+    attributes:
+      label: Which database?
+      options:
+        - SWRD (journal articles)
+        - SSWR (conference presentations)
+        - Both / not sure
+    validations:
+      required: true
+  - type: input
+    id: record
+    attributes:
+      label: Which record(s)?
+      description: A DOI, paper id, title, or anything that identifies the affected record(s). Leave blank if the problem is systematic rather than record-specific.
+      placeholder: "e.g., doi 10.1177/…, swrd paper id 48210, or the article title"
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Describe the problem — wrong value, duplicate, misclassification, missing field, author name variant, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it be? (optional)
+      description: If you know the correct value, or a source that documents it, include it here.
+  - type: input
+    id: source
+    attributes:
+      label: How did you find it? (optional)
+      placeholder: "e.g., SQL query, CSV download, semantic search result"
