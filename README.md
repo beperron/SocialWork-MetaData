@@ -25,7 +25,7 @@ Going deeper: the [skills folder](skills/) also holds full per-database skills w
 
 ## ⬇️ Download the data
 
-Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration:
+Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration. **Current data release: v1.0 (July 2026).** The data are versioned: corrections and additions are published as new numbered releases (see [Reporting data problems](#reporting-data-problems) below), and every prior version remains available on the [releases page](https://github.com/beperron/SocialWork-MetaData/releases).
 
 | | |
 |---|---|
@@ -101,6 +101,10 @@ Records in both databases share a common structure:
 - **SWRD author names are preserved as published.** Author disambiguation has not yet been performed in the SWRD; name variants (e.g., "J. Garcia" and "Jennifer Garcia") may appear as distinct entries. Article-level analyses are unaffected; author-level counts in the SWRD should be treated with caution. The SSWR database *is* disambiguated.
 - **Abstract coverage is uneven.** Roughly 72% of SWRD records from 1989 onward include abstracts; older publications and smaller journals are less complete. Classification labels exist only where abstracts exist.
 - **The Supplement undercounts its era**, reflecting what has survived digitization rather than the full publication record.
+
+## 🛠️ Reporting data problems
+
+Scientific meta-data are inherently messy: name variants, duplicate records, missing fields, and misclassifications survive even careful curation. If you find a problem, please [open a data-quality issue](https://github.com/beperron/SocialWork-MetaData/issues/new?template=data-quality.yml) and include a link that documents the correct value — for SWRD records, the article's DOI or publisher page; for SSWR records, the official conference program, which every SSWR record must ultimately match. Every report is reviewed, and accepted corrections are published as new numbered data releases.
 
 ---
 

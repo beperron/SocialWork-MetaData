@@ -6,7 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping improve the databases. Scientific meta-data are inherently messy, and reports like this one are how the data get better. Every report is reviewed.
+        Thank you for helping improve the databases. Scientific meta-data are inherently messy, and reports like this one are how the data get better. Every report is reviewed, and accepted corrections are published in versioned data releases.
+
+        **A documenting link is required.** Corrections are only applied against a verifiable source: for **SWRD** records, the article's DOI or the publisher's page; for **SSWR** records, the official conference program — every SSWR record must ultimately match the original record online.
   - type: dropdown
     id: database
     attributes:
@@ -23,6 +25,14 @@ body:
       label: Which record(s)?
       description: A DOI, paper id, title, or anything that identifies the affected record(s). Leave blank if the problem is systematic rather than record-specific.
       placeholder: "e.g., doi 10.1177/…, swrd paper id 48210, or the article title"
+  - type: input
+    id: link
+    attributes:
+      label: Link documenting the correct value (required)
+      description: "SWRD: the article's DOI or publisher page. SSWR: the official conference program listing the presentation. For systematic problems, link an example record."
+      placeholder: "https://…"
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:
@@ -34,7 +44,7 @@ body:
     id: correction
     attributes:
       label: What should it be? (optional)
-      description: If you know the correct value, or a source that documents it, include it here.
+      description: If you know the correct value, include it here.
   - type: input
     id: source
     attributes:

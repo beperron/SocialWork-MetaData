@@ -86,7 +86,7 @@
 
   <!-- ================= STATS STRIP ================= -->
   <section style="border-bottom:1px solid #E7E5E0; background:#FAFAF9;">
-    <div class="g-stats" style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(4,1fr);">
+    <div class="g-stats" style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(3,1fr);">
       <div style="padding:32px 24px 30px 0; border-right:1px solid #E7E5E0;">
         <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">62,602</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">research articles classified<br>on method &amp; document type</div>
@@ -94,10 +94,6 @@
       <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
         <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">23,793</div>
         <div style="margin-top:8px; font-size:13px; color:#71717A;">conference presentations,<br>every SSWR meeting 2005–2026</div>
-      </div>
-      <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
-        <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">21,209</div>
-        <div style="margin-top:8px; font-size:13px; color:#71717A;">presenting authors resolved<br>to canonical identities</div>
       </div>
       <div style="padding:32px 0 30px 24px;">
         <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#00274C; line-height:1;">88</div>
@@ -168,6 +164,7 @@
       </div>
       <h2 style="margin:0; max-width:24ch; font-size:clamp(26px,3.2vw,34px); font-weight:600; letter-spacing:-0.018em; color:#18181B; line-height:1.15;">Download the databases</h2>
       <p style="margin:16px 0 0; max-width:66ch; font-size:16px; color:#3F3F46;">Complete CSV exports of both databases: every record, ready for Excel, R, Python, or SPSS. No forms, no registration. Each download includes a README describing every file and the citation.</p>
+      <p style="margin:12px 0 0; font-size:14px; color:#3F3F46;"><span style="display:inline-flex; align-items:center; height:26px; padding:0 12px; background:#FFFFFF; border:1px solid #FDE68A; border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:600; color:#B45309;">Data release v1.0 · July 2026</span>&ensp;The data are versioned: corrections and additions are published as new numbered releases, and every prior version remains available under All releases &amp; versions.</p>
       <div style="margin-top:26px; display:flex; flex-wrap:wrap; gap:14px;">
         <a href="https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.0/swrd-database-csv.zip" style="display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 22px; background:#00274C; color:#FFFFFF; font-size:14.5px; font-weight:600; border-radius:6px; border:none;">
           ⬇ SWRD · journal articles (CSV, 27 MB)
@@ -476,7 +473,7 @@
     <div style="margin-top:16px; border:1px solid #E7E5E0; border-radius:6px; background:#FFFFFF; padding:24px 28px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:18px;">
       <div style="max-width:62ch;">
         <h3 style="margin:0; font-size:16px; font-weight:600; color:#18181B;">Found a problem in the data?</h3>
-        <p style="margin:8px 0 0; font-size:14px; color:#3F3F46;">Scientific meta-data are inherently messy: name variants, duplicate records, missing fields, and misclassifications survive even careful curation. If you spot one, please report it. Every report is reviewed, and corrections benefit everyone who uses the databases.</p>
+        <p style="margin:8px 0 0; font-size:14px; color:#3F3F46;">Scientific meta-data are inherently messy: name variants, duplicate records, missing fields, and misclassifications survive even careful curation. If you spot one, please open an issue and include a link that documents the correct value: for SWRD records, the article's DOI or publisher page; for SSWR records, the official conference program, which every SSWR record must ultimately match. Every report is reviewed, and corrections are published in versioned data releases so they reach everyone who uses the databases.</p>
       </div>
       <a href="https://github.com/beperron/SocialWork-MetaData/issues/new?template=data-quality.yml" style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 20px; background:#00274C; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none; flex-shrink:0;">Report a data problem</a>
     </div>
