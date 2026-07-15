@@ -133,14 +133,14 @@ cat_tot = {cat: sum(stats(m[0], [i for i, c in enumerate(cats) if c == cat])[0] 
 per_cat = len(MODELS) * (N // len(cat_order))
 narrative = ("Accuracy by category: " + " · ".join(
     f"{c.split('·')[1].strip()} {cat_tot[c]}/{per_cat}" for c in cat_order) +
-    ". The gradient is the story: simple retrieval and vocabulary questions are near-ceiling for every size, while joins, nested search-function calls, and multi-step analytical queries separate the models — this is where parameter count (and training focus) earns its keep.")
+    ". The gradient is the story: simple retrieval and vocabulary questions are near-ceiling for every size, while joins, nested search-function calls, and multi-step analytical queries separate the models. This is where the models genuinely differ.")
 
 page = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Text-to-SQL with Small Local Models — The Social Work Meta-Data Project</title>
+<title>Text-to-SQL with Small Local Models · The Social Work Meta-Data Project</title>
 <meta name="description" content="A {N}-question, {len(MODELS)}-model empirical evaluation of whether small local language models can query the Social Work Meta-Data databases. Performed entirely on a MacBook Pro (Apple M5).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,7 +194,7 @@ page = f'''<!DOCTYPE html>
   <div style="position:relative; max-width:1180px; margin:0 auto; padding:clamp(56px,6vw,80px) clamp(20px,3vw,32px);">
     <p style="margin:0 0 20px; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#C9B6FF;">Demonstrations · Report 01 · Text-to-SQL · {N} questions · {len(MODELS)} models · {today}</p>
     <h1 style="margin:0; max-width:22ch; font-size:clamp(32px,4.4vw,48px); line-height:1.08; font-weight:600; letter-spacing:-0.022em; color:#FFFFFF;">Text-to-SQL with Small Local Models</h1>
-    <p style="margin:22px 0 0; max-width:62ch; font-size:clamp(15px,1.8vw,18px); line-height:1.55; color:#CFC8EC;">Can free, locally-run language models query these databases? We gave {len(MODELS)} open-weight models — 3&thinsp;B to 36&thinsp;B parameters — the same instructions any assistant gets and {N} research questions across six task categories, executing their SQL verbatim against the live databases through the public endpoint. <strong style="color:#FFFFFF;">Everything ran locally on a single MacBook Pro (Apple M5)</strong> — no cloud AI involved.</p>
+    <p style="margin:22px 0 0; max-width:62ch; font-size:clamp(15px,1.8vw,18px); line-height:1.55; color:#CFC8EC;">Can free, locally-run language models query these databases? We gave {len(MODELS)} open-weight models, 26&thinsp;B to 36&thinsp;B parameters, the same instructions any assistant gets and {N} research questions across six task categories, executing their SQL verbatim against the live databases through the public endpoint. <strong style="color:#FFFFFF;">Everything ran locally on a single MacBook Pro (Apple M5)</strong>, with no cloud AI involved.</p>
     <p style="margin:20px 0 0; font-size:14px; color:#A79FDA;"><a href="https://beperron.github.io" style="color:#FFFFFF; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.35);">Brian E. Perron, PhD</a> <span style="white-space:nowrap;">· University of Michigan</span></p>
   </div>
 </section>
@@ -203,7 +203,7 @@ page = f'''<!DOCTYPE html>
   <div class="g3" style="max-width:1180px; margin:0 auto; padding:0 clamp(20px,3vw,32px); display:grid; grid-template-columns:repeat(3,1fr);">
     <div style="padding:32px 24px 30px 0; border-right:1px solid #E7E5E0;">
       <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#312A6E; line-height:1;">{tot_s} / {tot_cells}</div>
-      <div style="margin-top:8px; font-size:13px; color:#71717A;">strict passes across all models<br>({tot_d}/{tot_cells} correct or defensibly stricter)</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">strict passes across all models<br>({tot_d}/{tot_cells} correct or defensible)</div>
     </div>
     <div style="padding:32px 24px 30px 24px; border-right:1px solid #E7E5E0;">
       <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#312A6E; line-height:1;">{best_line}</div>
@@ -211,7 +211,7 @@ page = f'''<!DOCTYPE html>
     </div>
     <div style="padding:32px 0 30px 24px;">
       <div style="font-size:clamp(28px,3.4vw,38px); font-weight:600; letter-spacing:-0.02em; color:#312A6E; line-height:1;">1 laptop</div>
-      <div style="margin-top:8px; font-size:13px; color:#71717A;">MacBook Pro, Apple M5 —<br>models pulled, run, and purged in place</div>
+      <div style="margin-top:8px; font-size:13px; color:#71717A;">MacBook Pro (Apple M5) ·<br>models pulled, run, and purged in place</div>
     </div>
   </div>
 </section>
@@ -223,9 +223,30 @@ page = f'''<!DOCTYPE html>
     <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Method</span>
   </div>
   <h2 style="margin:0; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em;">Blind questions, six task categories, pre-registered answers</h2>
-  <p style="margin:16px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Every model ran on a MacBook Pro (Apple M5) through <a href="https://ollama.com">Ollama</a>, at temperature 0 so runs are reproducible. Each model was given exactly two things: the project's two <a href=\"index.html#access\" style=\"color:#00274C;\">published skill files</a> — word for word, the same documents any user downloads — and a one-line instruction to reply with a single SQL statement. It then answered {N} research questions, one at a time, split evenly between the SWRD and SSWR databases and grouped into six categories of increasing difficulty: <strong>A</strong> simple retrieval &amp; counts · <strong>B</strong> vocabulary &amp; schema fidelity · <strong>C</strong> joins &amp; relational reasoning · <strong>D</strong> aggregation &amp; trends · <strong>E</strong> search-function usage · <strong>F</strong> complex analytical queries.</p>
-  <p style="margin:12px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Each model's SQL was executed exactly as written against the live databases, through the same public read-only endpoint available to everyone. The result was compared with a reference answer computed before the run; every reference query was verified to return a stable, deterministic answer. Scoring is three-way: <strong>✓ strict pass</strong> — the model's result matches the reference. <strong>△ defensible</strong> — the result differs, but inspection shows the model applied a legitimate alternative reading of the question (for example, a different but reasonable denominator). <strong>✗ error</strong> — a genuine mistake.</p>
-  <p style="margin:12px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;"><strong>The feedback loop.</strong> The skill files are not written once and frozen — they are maintained by testing. A pilot round exposed four recurring mistakes: models reaching into the wrong database's tables, calling search functions without a SELECT, treating the relevance score as a row position, and filtering authorship tables by a year column they don't have. Each mistake became a plainly stated rule in the skill files ("SQL rules that prevent the most common errors"), and the scores on this page come from running against those hardened files. The same loop then caught the next pattern: nearly every remaining error was a model joining a search function's output on <span class="mono">journal_id</span>, a column the output doesn't contain — the functions return <span class="mono">journal_name</span> directly. The published skill files now state each search function's exact return columns, so the version you download today already includes that fix. Evaluate, harden, re-evaluate: that is how these skills keep improving as models and questions evolve.</p>
+  <p style="margin:16px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Every model ran on a MacBook Pro (Apple M5) through <a href="https://ollama.com">Ollama</a>, at temperature 0 so runs are reproducible. Each model was given exactly two things: the project's two <a href=\"index.html#access\" style=\"color:#00274C;\">published skill files</a> (word for word, the same documents any user downloads) and a one-line instruction to reply with a single SQL statement.</p>
+  <p style="margin:12px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Each model answered {N} research questions, one at a time, split evenly between the SWRD and SSWR databases. The questions fall into six categories of increasing difficulty:</p>
+  <ul style="margin:10px 0 0; max-width:72ch; padding-left:22px; font-size:14.5px; color:#3F3F46; line-height:1.6; display:flex; flex-direction:column; gap:6px;">
+    <li><strong>A · Simple retrieval &amp; counts.</strong> Single-table lookups and totals.</li>
+    <li><strong>B · Vocabulary &amp; schema fidelity.</strong> Questions that fail unless the model uses the exact documented values and column names.</li>
+    <li><strong>C · Joins &amp; relational reasoning.</strong> Linking papers, authors, and journals across tables.</li>
+    <li><strong>D · Aggregation &amp; trends.</strong> Grouping, proportions, and change over time.</li>
+    <li><strong>E · Search-function usage.</strong> Calling the databases' built-in keyword-search functions correctly.</li>
+    <li><strong>F · Complex analytical queries.</strong> Multi-step questions that combine several of the skills above.</li>
+  </ul>
+  <p style="margin:14px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">Each model's SQL was executed exactly as written against the live databases, through the same public read-only endpoint available to everyone. The result was compared with a reference answer computed before the run; every reference query was verified to return a stable, deterministic answer. Each answer receives one of three marks:</p>
+  <ul style="margin:10px 0 0; max-width:72ch; padding-left:22px; font-size:14.5px; color:#3F3F46; line-height:1.6; display:flex; flex-direction:column; gap:6px;">
+    <li><strong>✓ Strict pass.</strong> The model's result matches the reference answer.</li>
+    <li><strong>△ Defensible.</strong> The result differs, but inspection shows the model applied a legitimate alternative reading of the question (for example, a different but reasonable denominator).</li>
+    <li><strong>✗ Error.</strong> A genuine mistake.</li>
+  </ul>
+  <p style="margin:20px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;"><strong>How the skill files improve: the feedback loop.</strong> The skill files are not written once and frozen. They are maintained by testing, in a simple cycle:</p>
+  <ol style="margin:10px 0 0; max-width:72ch; padding-left:24px; font-size:14.5px; color:#3F3F46; line-height:1.6; display:flex; flex-direction:column; gap:6px;">
+    <li>Run the benchmark.</li>
+    <li>Inspect every error and look for a recurring pattern.</li>
+    <li>State each pattern as a plain rule in the skill files.</li>
+    <li>Run the benchmark again with the improved files.</li>
+  </ol>
+  <p style="margin:14px 0 0; max-width:72ch; font-size:15.5px; color:#3F3F46;">A pilot round produced four rules this way: stay inside one database's tables, always call search functions with SELECT, treat the relevance score as a score rather than a row position, and join the papers table when filtering authorship by year. The scores on this page come from the second pass, run against those improved files. That pass caught one more pattern (models asking a search function's output for a <span class="mono">journal_id</span> column it does not have; the functions return <span class="mono">journal_name</span> directly), and the published skill files now state each search function's exact return columns. The skill files you download today include every rule.</p>
 
   <h3 style="margin:36px 0 14px; font-size:17px; font-weight:600;">The models</h3>
   <div style="border:1px solid #E7E5E0; border-radius:8px; overflow-x:auto; box-shadow:0 1px 2px rgba(24,24,27,0.04);">
@@ -274,16 +295,16 @@ page = f'''<!DOCTYPE html>
       <span style="height:1px; flex:0 0 40px; background:rgba(255,255,255,0.25); align-self:center;"></span>
       <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#A79FDA;">Honest limits &amp; reproduction</span>
     </div>
-    <h2 style="margin:0; max-width:26ch; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#FFFFFF;">What this shows — and how to rerun it</h2>
+    <h2 style="margin:0; max-width:26ch; font-size:clamp(24px,3vw,32px); font-weight:600; letter-spacing:-0.018em; color:#FFFFFF;">What this shows, and how to rerun it</h2>
     <div class="g2" style="margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
-        <p style="margin:0; font-size:14.5px; color:#E6E2F7;"><strong style="color:#FFFFFF;">It shows</strong> that free, local models can reliably answer routine research questions against these databases, that precise skill files carry small models a long way, and that model scale principally buys reliability on joins, tool calls, and multi-step queries.</p>
+        <p style="margin:0; font-size:14.5px; color:#E6E2F7;"><strong style="color:#FFFFFF;">It shows</strong> that free, locally run models can reliably answer routine research questions against these databases, that precise skill files carry compact models a long way, and that the errors that remain concentrate in search-function usage and complex analytical queries.</p>
       </div>
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:24px;">
-        <p style="margin:0; font-size:14.5px; color:#E6E2F7;"><strong style="color:#FFFFFF;">It doesn't show</strong> multi-turn analysis, semantic-search orchestration, or robustness across phrasings — single-turn questions, one run each, temperature 0. A structured existence proof, not a leaderboard.</p>
+        <p style="margin:0; font-size:14.5px; color:#E6E2F7;"><strong style="color:#FFFFFF;">It doesn't show</strong> multi-turn analysis, semantic-search orchestration, or robustness across phrasings: the benchmark is single-turn, one run per question, at temperature 0. It is a structured existence proof, not a leaderboard.</p>
       </div>
     </div>
-    <p style="margin:22px 0 0; font-size:13px; color:#A79FDA;">Reproduce with any Ollama model: <span class="mono">python migration/08_eval_local_models.py &lt;model&gt; …</span> — harness, questions, reference queries, and raw outputs are in the <a href="https://github.com/beperron/SocialWork-MetaData" style="color:#CFC8EC;">repository</a>.</p>
+    <p style="margin:22px 0 0; font-size:13px; color:#A79FDA;">Reproduce with any Ollama model: <span class="mono">python migration/08_eval_local_models.py &lt;model&gt; …</span>. The harness, questions, reference queries, and raw outputs are in the <a href="https://github.com/beperron/SocialWork-MetaData" style="color:#CFC8EC;">repository</a>.</p>
   </div>
 </section>
 
