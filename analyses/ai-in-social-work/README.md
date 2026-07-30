@@ -27,9 +27,13 @@ Each verified item was assigned one of three categories:
 ## Files
 
 **data/**
-- `journal_corpus_verified.json` — all 296 verified journal records with source, year, title, abstract, and label.
+
+The Web of Science supplement is kept strictly separate from the SWRD database records: nothing here modifies or merges into the versioned SWRD release. The supplement is an analysis-level layer that sits alongside it.
+
+- `journal_corpus_swrd_verified.json` — the 183 verified AI articles drawn from SWRD v1.0, with year, title, abstract, and label.
+- `wos_supplement_2024_2026.json` — the raw Web of Science export records (2024–2026) used to extend the analysis window.
+- `wos_supplement_verified_labels.json` — the 113 verified, labeled supplement articles (24 late-indexed 2025; 89 provisional 2026). Combined with the SWRD file at analysis time, these form the 296-article corpus.
 - `conference_corpus_verified.json` — all reader-verified SSWR records with labels (off-topic retained and marked).
-- `wos_supplement_2024_2026.json` — the raw Web of Science supplement records used to backfill and extend SWRD.
 - `journal_venues.json` — verified AI articles per journal with per-label counts.
 - `journal_author_network.json`, `conference_author_network.json` — disambiguated author counts, orientation mixes, and co-authorship edges.
 - `facts_groundtruth.md` — the computed ground-truth numbers used for internal consistency checks.
