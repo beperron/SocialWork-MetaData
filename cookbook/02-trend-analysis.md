@@ -4,7 +4,20 @@
 
 **Skills used:** `swrd-database` (its `references/queries.md` has more variants).
 
-## Step 1 — Establish the analyzable corpus
+
+## Do this with Claude or Codex
+
+This one is SQL-only, so any assistant with web access can run it; no local install of anything.
+
+Copy, edit the bracketed parts, and paste:
+
+> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the SWRD database skill from the site and connect. Describe how social work scholarship changed from 1989 to 2023: articles per year, percent empirical over time, methodology mix by decade, and team size trends. Exclude 2024-2025 from trend claims because publisher indexing is incomplete, and state that caveat in your summary. Give me a short written summary plus one chart.
+
+**What to check when it finishes.** The assistant should volunteer the incomplete-recent-years caveat without being reminded twice, and its percentages should be within-decade shares, not raw counts. Ask it to re-run one number a second way if anything looks off.
+
+## Under the hood — the steps the assistant runs
+
+### Step 1 — Establish the analyzable corpus
 
 ```python
 import requests
@@ -20,7 +33,7 @@ run_sql("select count(*) as total, count(*) filter (where abstract is not null) 
 
 State in the report: classifications exist only where abstracts exist; analysis of methodology is therefore of the abstract-bearing scientific corpus (62,602 records), per Perron, Victor, & Qi (2026).
 
-## Step 2 — Volume and empiricism over time
+### Step 2 — Volume and empiricism over time
 
 ```sql
 select publication_year as year,
@@ -34,7 +47,7 @@ group by 1 order by 1
 
 (The 2026 article excludes 2024–2025 from trend analysis for exactly this reason — mirror that choice.)
 
-## Step 3 — Methodological composition by decade
+### Step 3 — Methodological composition by decade
 
 ```sql
 select (publication_year/10)*10 as decade, research_method, count(*) as n
@@ -45,7 +58,7 @@ group by 1,2 order by 1,2
 
 Compute within-decade percentages when presenting; raw counts conflate growth with composition.
 
-## Step 4 — Collaboration trend (article-level, safe despite no author disambiguation)
+### Step 4 — Collaboration trend (article-level, safe despite no author disambiguation)
 
 ```sql
 select (p.publication_year/10)*10 as decade, round(avg(a.n),2) as mean_authors,
@@ -56,7 +69,7 @@ where p.publication_year between 1989 and 2023
 group by 1 order by 1
 ```
 
-## Step 5 — Cross-validate against the conference record
+### Step 5 — Cross-validate against the conference record
 
 Run the same questions against SSWR (`Content-Profile: sswr`; `methodology` values are lowercase there). Agreement between the two independent corpora strengthens any trend claim — the 2026 article does exactly this comparison.
 

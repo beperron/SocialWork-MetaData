@@ -4,11 +4,24 @@
 
 **Skills used:** `ollama-embeddings`, `swrd-database` (add SSWR the same way for gray-literature breadth).
 
-## Strategy
+
+## Do this with Claude or Codex
+
+For systematic or scoping reviews. Tell the assistant your research question and insist on recall over precision; screening comes later, in your review tool.
+
+Copy, edit the bracketed parts, and paste:
+
+> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the skills from the site and connect to SWRD (add SSWR too for conference gray literature). Build a high-recall screening corpus for a review of [RESEARCH QUESTION]. Search with my question, with 2-3 rephrasings using different vocabulary, and with a keyword OR-sweep of the established synonyms; union everything, dedupe by ID, and export a CSV with title, year, journal, DOI, and abstract. Do not filter aggressively: recall matters more than precision here.
+
+**What to check when it finishes.** Ask how many records each pass contributed and how many were unique to the rephrasings; if the rephrasings added nothing, they were too similar. Spot-check 10 random rows of the CSV against the databases.
+
+## Under the hood — the steps the assistant runs
+
+### Strategy
 
 Union three retrieval passes, then dedupe by id: (1) hybrid search with the research question, (2) hybrid search with 2–3 *rephrasings* (vocabulary variants recall different neighborhoods), (3) a keyword OR-sweep of established synonyms. Cast wide; screening removes false positives later.
 
-## Step 1 — Multiple hybrid passes
+### Step 1 — Multiple hybrid passes
 
 ```python
 import requests
@@ -33,7 +46,7 @@ for ph in phrasings:
         candidates.setdefault(h["id"], h)
 ```
 
-## Step 2 — Keyword OR-sweep for synonyms the embeddings might rank low
+### Step 2 — Keyword OR-sweep for synonyms the embeddings might rank low
 
 ```python
 def run_sql(q): return requests.post(f"{BASE}/rpc/run_sql", headers=H, json={"query": q}).json()
@@ -51,7 +64,7 @@ for r in kw:
 print(len(candidates), "unique candidates")
 ```
 
-## Step 3 — Attach screening metadata and export
+### Step 3 — Attach screening metadata and export
 
 ```python
 ids = ",".join(str(i) for i in candidates)
@@ -68,6 +81,6 @@ with open("screening_corpus.csv", "w", newline="") as f:
 
 (If the id list exceeds ~1,000, chunk it across multiple `run_sql` calls.)
 
-## Step 4 — Document the retrieval for the methods section
+### Step 4 — Document the retrieval for the methods section
 
 Record: the phrasings used, the keyword query, `match_count` per pass, retrieval date, and the database citation (Perron, Victor, & Qi, 2026, doi:10.1177/10497315261416833). Note that records lacking abstracts (~28% of 1989+ records) are under-retrieved by the semantic arm — the keyword sweep partially compensates, and a journal/year census (`references/queries.md`) can bound what the search could not see.

@@ -4,7 +4,20 @@
 
 **Skills used:** `sswr-database`.
 
-## Step 1 — Resolve the person (never skip this)
+
+## Do this with Claude or Codex
+
+Works for any scholar with an SSWR presentation history. The one step that matters: make the assistant resolve the person to a database ID before counting anything.
+
+Copy, edit the bracketed parts, and paste:
+
+> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the SSWR database skill from the site and connect. Trace the conference trajectory of [SCHOLAR NAME]: first resolve the name with the fuzzy author lookup and show me the candidate IDs before proceeding (include duplicates if any). Then give me their presentations by year, main topics over time, most frequent collaborators, and institutional moves visible in the record.
+
+**What to check when it finishes.** If the lookup returns more than one plausible ID, decide yourself which is the right person (or say include both); do not let the assistant guess silently. Totals should match the per-year list it prints.
+
+## Under the hood — the steps the assistant runs
+
+### Step 1 — Resolve the person (never skip this)
 
 Canonical names are "First Last," sometimes with credentials, and a few residual duplicates exist. Always start with fuzzy lookup:
 
@@ -22,7 +35,7 @@ run_sql("select author_id, author_name, total_papers from sswr.search_authors_by
 
 If near-duplicates appear, either include both ids or report the ambiguity. Everything below uses `author_id`, never name strings.
 
-## Step 2 — The presentation record
+### Step 2 — The presentation record
 
 ```sql
 select p.year, p.title, p.methodology, pa.author_order,
@@ -32,7 +45,7 @@ where pa.author_id = 108089
 order by p.year, p.id
 ```
 
-## Step 3 — Activity shape
+### Step 3 — Activity shape
 
 ```sql
 select p.year, count(*) as presentations,
@@ -41,7 +54,7 @@ from sswr.paper_authors pa join sswr.papers p on p.id = pa.paper_id
 where pa.author_id = 108089 group by 1 order by 1
 ```
 
-## Step 4 — Collaboration network
+### Step 4 — Collaboration network
 
 ```sql
 select a2.name, count(*) as joint, min(p.year) as first_together, max(p.year) as last_together
@@ -53,7 +66,7 @@ where pa1.author_id = 108089
 group by 1 order by 2 desc limit 15
 ```
 
-## Step 5 — Institutional history
+### Step 5 — Institutional history
 
 ```sql
 select p.year, pa.institution_normalized, count(*) as n
@@ -64,7 +77,7 @@ group by 1,2 order by 1
 
 Affiliation changes across years show institutional moves as reflected in conference bylines.
 
-## Step 6 — Topical evolution (optional; needs Ollama)
+### Step 6 — Topical evolution (optional; needs Ollama)
 
 Pull the scholar's titles by era and compare, or run `search_papers_semantic` seeded with an abstract of theirs from each era to find their nearest intellectual neighbors over time.
 
