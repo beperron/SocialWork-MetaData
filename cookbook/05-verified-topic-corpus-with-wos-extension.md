@@ -1,8 +1,8 @@
 # 05 · A Verified Topical Corpus, Extended Past the Release Date
 
-**Goal:** build a defensible corpus of every article on a topic (here: artificial intelligence), verify every record by reading, audit recall semantically, and extend the analysis window past SWRD's versioned release with a Web of Science supplement that stays separate from the database.
+**Goal:** build a defensible corpus of every article on a topic (here: artificial intelligence), verify every record by reading, audit recall with expanded vocabulary, and extend the analysis window past SWRD's versioned release with a Web of Science supplement that stays separate from the database.
 
-**Skills used:** `swrd-database`, `ollama-embeddings` (for the recall audit only).
+**Reference:** [`llms.txt`](../llms.txt) (connection + schema). Nothing to install.
 
 
 ## Do this with Claude or Codex
@@ -11,7 +11,9 @@ This is the full verified-corpus workflow behind the AI-in-social-work analysis 
 
 Copy, edit the bracketed parts, and paste:
 
-> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the skills from the site and connect to SWRD. Build a verified corpus of every article on [YOUR TOPIC]: cast a wide keyword net including historical vocabulary, then read every match and remove false positives, naming each false-positive class and reporting the arithmetic stepwise (raw, removed by class, kept). Then run a semantic recall audit with the embeddings to catch what the keywords missed. I will also give you a Web of Science export for recent years [attach it]: screen it the same way, deduplicate against SWRD by DOI, and keep it as a separate supplement file; do not merge it into the database records. Give me the labeled corpus as JSON plus a summary I can audit.
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, and schema. Build a verified corpus from the swrd database of every article on [YOUR TOPIC]: cast a wide keyword net including historical vocabulary, then read every match and remove false positives, naming each false-positive class and reporting the arithmetic stepwise (raw, removed by class, kept). Then run a recall audit: harvest recurring vocabulary from the abstracts you kept, run additional keyword sweeps with those terms and with 2-3 rephrasings of the topic, and read any new matches. I will also give you a Web of Science export for recent years [attach it]: screen it the same way, deduplicate against SWRD by DOI, and keep it as a separate supplement file; do not merge it into the database records. Give me the labeled corpus as JSON plus a summary I can audit. Use the built-in search and SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
+
+*If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
 **What to check when it finishes.** The arithmetic must add up exactly (raw minus removed equals kept) and every 100 percent of removals should be itemized. Ask what the recall audit recovered; zero recoveries on a broad topic is suspicious.
 
@@ -36,9 +38,15 @@ Word-boundary anchors matter: an unanchored `ai` matches "AI/AN" (American India
 
 Every match gets read. Do not sample. Name each false-positive class as you remove it, because the classes are reusable: pedagogical "deep learning," qualitative "clinical data mining," neurobiological "neural network," sociological "expert systems," acronym collisions. Report the arithmetic stepwise (raw N, removed N by class, kept N) so a reader can audit it.
 
-### Step 3 — Audit recall with embeddings, then distrust both directions
+### Step 3 — Audit recall with expanded vocabulary
 
-Keywords establish precision, not recall. Embed two or three natural-language statements of the corpus definition, pull the ~300 nearest abstracts per query, and read every high-similarity record the keywords missed. In our AI corpus this recovered seven in-scope articles, each from a nameable vocabulary gap ("decision support," tree studies that never say "machine learning"). Below the similarity band where precision collapses, stop: embeddings cannot replace keyword screening either.
+Keywords establish precision, not recall: the net misses papers that describe the topic in words you did not think to search. Audit for them three ways, then read every new match with the same discipline as Step 2:
+
+1. **Harvest the corpus's own vocabulary.** Skim the kept abstracts for recurring terms that were not in the net (in our AI corpus: "decision support," "predictive analytics," specific algorithm names) and sweep each one.
+2. **Rephrase the topic** two or three ways in different registers — practitioner language, older terminology, adjacent-field terms — and run the ranked keyword search (`search_papers_keyword`) with each phrasing.
+3. **Follow the false-positive classes backward.** A class you removed (pedagogical "deep learning") often names a nearby literature whose genuine members use vocabulary worth one sweep.
+
+In our AI corpus, an audit of this kind recovered a handful of in-scope articles, each traceable to a nameable vocabulary gap — tree-model studies that never say "machine learning," decision-support papers that never say "AI." When a sweep stops yielding anything new, stop: recall auditing has diminishing returns, and the honest report states the vocabulary actually searched.
 
 ### Step 4 — Extend past the release with a supplement that stays separate
 

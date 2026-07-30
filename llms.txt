@@ -1,0 +1,220 @@
+# Social Work Meta-Data Project — Agent Connection Guide
+
+This one file is everything an AI assistant needs to query the project's two
+hosted research databases. Plain HTTPS, public read-only key, no account, no
+installation, no database driver. If you (the assistant) were given this file
+or its URL, connect as described below and start querying — there is nothing
+to download or set up.
+
+Site: https://beperron.github.io/SocialWork-MetaData/
+Repository: https://github.com/beperron/SocialWork-MetaData
+Worked examples (cookbook): https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook
+
+## Connect (one endpoint, two databases)
+
+Base URL:  https://kcffctxedcscvvposypb.supabase.co/rest/v1
+API key:   sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5
+           (intentionally public; grants read-only access; writes are rejected
+           at the database level)
+
+"Connecting" here means nothing more than sending HTTPS requests as shown
+below. There is NO MCP server, no SDK, no client library, and no login step —
+do not look for one.
+
+Every request needs BOTH key headers, plus a profile header naming the database:
+
+- `apikey: <KEY>` and `Authorization: Bearer <KEY>`
+- `Content-Profile: swrd` or `Content-Profile: sswr` on POST
+  (`Accept-Profile: ...` on GET)
+
+`swrd` = journal articles. `sswr` = SSWR conference presentations.
+
+Run any read-only SQL by POSTing to `rpc/run_sql`; results return as JSON.
+Preferred pattern (Python — avoids all shell-quoting pitfalls):
+
+```python
+import requests   # or urllib from the stdlib
+KEY = "sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
+def run_sql(query, schema="swrd"):
+    r = requests.post(
+        "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql",
+        headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+                 "Content-Profile": schema, "Content-Type": "application/json"},
+        json={"query": query})
+    r.raise_for_status()
+    return r.json()   # list of row dicts
+```
+
+curl works too, but beware: SQL contains single quotes, and nesting
+SQL-inside-JSON-inside-shell-quotes is easy to mangle (the symptom is
+`PGRST102: Empty or invalid json`). If you use curl, write the JSON body to a
+file and pass `-d @body.json`, or let Python build the request instead:
+
+```bash
+KEY="sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
+printf '%s' '{"query": "select publication_year, count(*) from swrd.papers where publication_year >= 1989 group by 1 order by 1"}' > body.json
+curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql" \
+  -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+  -H "Content-Profile: swrd" -H "Content-Type: application/json" \
+  -d @body.json
+```
+
+Limits: single SELECT statements only (no semicolons, no writes), 30-second
+timeout, 1,000 rows max per call (paginate with offset/limit or aggregate
+server-side).
+
+## The two databases
+
+**SWRD (`swrd`) — journal articles.** 110,618 records (title, abstract,
+authors, affiliations, journal, year, DOI) from 88 disciplinary social work
+journals. Core corpus 1989–2025 (87,329 records, systematically compiled);
+within it 62,602 research articles with abstracts, each classified:
+`is_scientific`, `is_empirical`, `research_method` (exact values:
+`Quantitative`, `Qualitative`, `Mixed-Methods`, `Review`; null for
+non-empirical articles). A pre-1989
+Supplement (23,289 records, 1920–1988) is substantially incomplete — treat
+pre-1989 counts as lower bounds and default analyses to
+`publication_year >= 1989`. The most recent years (2024–2025) are also
+incomplete because publisher indexing lags — exclude them from trend claims
+and say so. CRITICAL: author names are stored exactly as
+published, with NO disambiguation — never report unique-author counts from
+SWRD as fact; caveat them. A small number of articles are double-indexed
+under two journal ids — when building a corpus, dedupe on DOI or title, not
+just `id`.
+
+| Table | Rows | Key columns |
+|---|---|---|
+| `swrd.papers` | 110,618 | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id`, `doi`, `document_type` (inconsistently cased legacy strings — use `is_scientific` to define research articles, not this), `is_scientific`, `is_empirical`, `research_method`, `fts` (tsvector over title+abstract) |
+| `swrd.journals` | 91 | `id`, `name`, `publisher` |
+| `swrd.authors` | 164,549 | `id`, `name` (as published), `orcid` |
+| `swrd.paper_authors` | 241,766 | `paper_id`, `author_id`, `position` (1 = first), `is_corresponding` |
+| `swrd.organizations` | 34,967 | `id`, `name` |
+| `swrd.author_affiliations` | 113,646 | `author_id`, `organization_id`, `paper_id` |
+
+Views: `swrd.papers_with_journals`, `swrd.publication_trends`,
+`swrd.database_info` (citation + counts).
+
+**SSWR (`sswr`) — conference presentations.** All 23,793 presentations at the
+Society for Social Work and Research annual conference, 2005–2026, every one
+with a full abstract and a method label. Distinguishing feature: authors ARE
+disambiguated — 21,209 canonical identities — so author-level and longitudinal
+analyses are reliable here. Always start scholar analyses with the fuzzy
+lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
+
+| Table | Rows | Key columns |
+|---|---|---|
+| `sswr.papers` | 23,793 | `id` (text PK, e.g. `2019-O-0142`), `title`, `abstract`, `year`, `format`, `methodology` (lowercase: `quantitative`, `qualitative`, `mixed_methods`, `review`, `other`), `author_count`, `fts` (tsvector over title+abstract) |
+| `sswr.authors` | 21,209 | `id` (int PK), `name` (canonical), `variants`, `institutions`, `years`, `total_papers` |
+| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized`, `country_normalized` |
+| `sswr.paper_export` | view | flat, one row per paper with author arrays — easiest for exports |
+
+## Search (built in — no setup, no local models)
+
+Ranked full-text search over titles+abstracts, same API in both schemas.
+Call from SQL (always `select ... from`, never a bare call):
+
+```sql
+-- top matches, best first (rank is a relevance score, NOT a position);
+-- select abstract up front if you plan to read matches — saves a round trip
+select id, title, abstract, publication_year, rank
+from swrd.search_papers_keyword('kinship care', 20)
+```
+
+Rank scores are relative to their own query — never compare or merge raw
+ranks across different query strings. When unioning results from several
+phrasings, dedupe by `id` and note which phrasing(s) found each record; to
+present a merged top-N, order by the primary phrasing's ranking and annotate
+which rephrasings also matched each item.
+
+```sql
+select id, title, year, methodology, rank
+from sswr.search_papers_keyword('kinship care', 20)
+```
+
+IMPORTANT: pass short topical phrases (2–4 content words), never full
+sentences. The search AND-matches terms, so a long research question returns
+zero rows — "housing instability among youth aging out of foster care" finds
+nothing, while "foster youth housing" and "foster care homelessness" each find
+dozens. Distill a question into several short phrases and union the results.
+
+SSWR helpers: `sswr.search_authors_by_name(query_text, match_count)` — fuzzy
+scholar lookup, start here for any author question. Returns `author_id,
+author_name, variants, institutions, years, total_papers, name_similarity`.
+Do NOT blindly take the highest-similarity row: residual duplicate identities
+exist (e.g. an inverted-name variant with a handful of papers can outrank the
+canonical entry holding the full record). Compare candidates on
+`total_papers`, `years`, and `institutions`; when a small entry is plainly
+the same person as a large one, analyze both ids together and say so.
+Also: `sswr.search_papers_by_institution(query_text, match_count, min_year,
+max_year)`; institution strings in `paper_authors.institution_normalized`
+retain some spelling variants ("St. Louis" vs "Saint Louis") — group with
+care.
+
+For high recall on a topic, combine three angles:
+1. `search_papers_keyword` with the question itself;
+2. the same function with 2–3 rephrasings in different vocabulary
+   (e.g. "custodial grandparents", "kinship caregivers");
+3. a SQL sweep with `websearch_to_tsquery` or an anchored regex:
+
+```sql
+select p.year, count(*) as n
+from sswr.papers p
+cross join websearch_to_tsquery('english', 'grandparents grandchildren') q
+where p.fts @@ q
+group by 1 order by 1
+```
+
+`websearch_to_tsquery` accepts quoted phrases and `or` — e.g.
+`'"parental imprisonment" or "incarcerated mother" or "children of inmates"'`
+— which is the pattern for a broad OR-sweep of synonyms.
+
+```sql
+select count(*) from swrd.papers
+where publication_year >= 1989
+  and (coalesce(title,'') || ' ' || coalesce(abstract,'')) ~* '\mkinship care\M'
+```
+
+(The databases also support semantic/vector search, but it requires a local
+embedding model; nothing in the cookbook needs it. If asked to use it, see
+the full skill files below rather than installing anything on your own.)
+
+## Rules that prevent the most common errors
+
+1. Stay inside one schema per query. Never join `swrd.*` with `sswr.*` —
+   id types are incompatible (SWRD int vs SSWR text like `2019-O-0142`).
+2. Year columns: `swrd.papers.publication_year`, `sswr.papers.year`. The
+   `paper_authors` tables have NO year column — join `papers` to filter by year.
+3. Search functions: always `select <cols> from schema.search_papers_keyword(...)`.
+   Results arrive pre-sorted, best first; `rank` is a float score — never
+   `where rank = 1`, never re-sort ascending.
+4. Search functions already return the useful columns
+   (SWRD: `id, title, abstract, publication_year, journal_name` + score;
+   SSWR: `id, title, abstract, year, methodology, authors` + score).
+   There is no `journal_id`/`paper_id` in their output; if you need another
+   column (e.g. `doi`, `research_method`), join `papers p on p.id = s.id`
+   via the returned `id`.
+5. Qualify every column with a table alias in joins (`p.id`, `pa.paper_id`).
+6. SWRD research-corpus questions: filter
+   `publication_year >= 1989 and is_scientific and abstract is not null` —
+   but NOT when the question asks for totals or raw record counts.
+7. If the question says "how many", return a count, not a listing.
+8. Trailing semicolons cause syntax errors in `run_sql`; send one bare SELECT.
+
+Troubleshooting: `Could not find the table 'public.papers'` → you forgot the
+profile header. `relation "papers" does not exist` → schema-qualify
+(`swrd.papers` / `sswr.papers`). `permission denied` → you attempted a write.
+Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
+
+## Citations to report when the user publishes with these data
+
+- SWRD: Perron, B. E., Victor, B. G., & Qi, Z. (2026). Evolution of social
+  work knowledge production over 35 years. Research on Social Work Practice.
+  https://doi.org/10.1177/10497315261416833
+- SSWR: Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation
+  of conference scholarship. arXiv. https://doi.org/10.48550/arXiv.2603.06814
+
+## Fuller documentation
+
+- SWRD skill file: https://beperron.github.io/SocialWork-MetaData/skills/swrd-database-skill.md
+- SSWR skill file: https://beperron.github.io/SocialWork-MetaData/skills/sswr-database-skill.md
+- Cookbook (worked examples): https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook

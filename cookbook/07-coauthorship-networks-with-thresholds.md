@@ -2,7 +2,7 @@
 
 **Goal:** turn a verified topical corpus into a legible co-authorship network with disambiguated names, an explicit inclusion threshold, and node coloring that describes each author's work without scoring it.
 
-**Skills used:** `swrd-database` (journal authors), `sswr-database` (its `canonical_author_id` gives conference disambiguation for free).
+**Reference:** [`llms.txt`](../llms.txt) (connection + schema); SSWR's `canonical_author_id` gives conference disambiguation for free. Nothing to install.
 
 
 ## Do this with Claude or Codex
@@ -11,7 +11,9 @@ Run this on a verified corpus. The two things worth insisting on in the prompt: 
 
 Copy, edit the bracketed parts, and paste:
 
-> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/), and I have a verified corpus of [TOPIC] items [attach or reference it]. Build a co-authorship network of the frequent authors: disambiguate names first (SSWR has canonical author IDs; for journals merge by surname plus given-name compatibility), then include only authors above an explicit frequency threshold, stated in the caption, chosen so about 20-30 authors appear. Color each node along a continuum of the author's work from commentary to empirical, with verbal labels and no numeric score, put each author's counts in a key beside the graph, make sure no nodes overlap, and outline nodes in black. Tell me which authors form connected groups and which work alone.
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install; connection guide at https://beperron.github.io/SocialWork-MetaData/llms.txt — fetch it if you need database access), and I have a verified corpus of [TOPIC] items [attach or reference it]. Build a co-authorship network of the frequent authors: disambiguate names first (SSWR has canonical author IDs; for journals merge by surname plus given-name compatibility), then include only authors above an explicit frequency threshold, stated in the caption, chosen so about 20-30 authors appear. Color each node along a continuum of the author's work from commentary to empirical, with verbal labels and no numeric score, put each author's counts in a key beside the graph, make sure no nodes overlap, and outline nodes in black. Tell me which authors form connected groups and which work alone.
+
+*If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
 **What to check when it finishes.** Confirm the threshold sentence appears in the caption and that the author key's counts sum sensibly against the corpus. If you are in the network yourself, the writeup should say so.
 

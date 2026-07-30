@@ -2,7 +2,7 @@
 
 **Goal:** assemble a high-recall candidate set for a systematic/scoping review — every record plausibly about the topic, exported with identifiers for screening. Recall matters more than precision here.
 
-**Skills used:** `ollama-embeddings`, `swrd-database` (add SSWR the same way for gray-literature breadth).
+**Reference:** [`llms.txt`](../llms.txt) (connection + schema). Works on SWRD; add SSWR the same way for conference gray literature. Nothing to install.
 
 
 ## Do this with Claude or Codex
@@ -11,7 +11,9 @@ For systematic or scoping reviews. Tell the assistant your research question and
 
 Copy, edit the bracketed parts, and paste:
 
-> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the skills from the site and connect to SWRD (add SSWR too for conference gray literature). Build a high-recall screening corpus for a review of [RESEARCH QUESTION]. Search with my question, with 2-3 rephrasings using different vocabulary, and with a keyword OR-sweep of the established synonyms; union everything, dedupe by ID, and export a CSV with title, year, journal, DOI, and abstract. Do not filter aggressively: recall matters more than precision here.
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, schema, and search functions. Build a high-recall screening corpus from the swrd database (add sswr too for conference gray literature) for a review of [RESEARCH QUESTION]. Distill my question into 4-6 short keyword phrases of 2-4 content words each, covering different vocabulary (the search AND-matches terms, so full sentences return nothing); run the built-in keyword search with each phrase, plus a full-text SQL OR-sweep of the established synonyms; union everything, dedupe by ID, and export a CSV with title, year, journal, DOI, and abstract. Do not filter aggressively: recall matters more than precision here. Use the built-in search and SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
+
+*If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
 **What to check when it finishes.** Ask how many records each pass contributed and how many were unique to the rephrasings; if the rephrasings added nothing, they were too similar. Spot-check 10 random rows of the CSV against the databases.
 
@@ -19,9 +21,11 @@ Copy, edit the bracketed parts, and paste:
 
 ### Strategy
 
-Union three retrieval passes, then dedupe by id: (1) hybrid search with the research question, (2) hybrid search with 2–3 *rephrasings* (vocabulary variants recall different neighborhoods), (3) a keyword OR-sweep of established synonyms. Cast wide; screening removes false positives later.
+Union two retrieval families, then dedupe by id: (1) ranked keyword search with several *short phrases* distilled from the research question — different vocabulary recalls different neighborhoods; (2) a full-text OR-sweep of established synonyms. Cast wide; screening removes false positives later.
 
-### Step 1 — Multiple hybrid passes
+The one mechanical rule that matters: **the search AND-matches terms, so phrases must be short** (2–4 content words). The full question "housing instability among youth aging out of foster care" returns zero rows; "foster youth housing" returns dozens.
+
+### Step 1 — Multiple ranked-search passes with short phrases
 
 ```python
 import requests
@@ -29,28 +33,26 @@ KEY  = "sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
 BASE = "https://kcffctxedcscvvposypb.supabase.co/rest/v1"
 H = {"apikey": KEY, "Authorization": f"Bearer {KEY}",
      "Content-Profile": "swrd", "Content-Type": "application/json"}
+def run_sql(q): return requests.post(f"{BASE}/rpc/run_sql", headers=H, json={"query": q}).json()
 
+# the research question, distilled into short phrases with varied vocabulary
 phrasings = [
-    "housing instability among youth aging out of foster care",
-    "homelessness after leaving the child welfare system",
-    "housing outcomes for transition-age foster youth",
+    "foster youth housing",
+    "aging out foster care housing",
+    "foster care homelessness",
+    "transition age youth homeless",
 ]
 candidates = {}
 for ph in phrasings:
-    emb = requests.post("http://localhost:11434/api/embed", json={
-        "model": "embeddinggemma:300m",
-        "input": [f"task: search result | query: {ph}"]}).json()["embeddings"][0]
-    hits = requests.post(f"{BASE}/rpc/search_papers_hybrid", headers=H,
-        json={"query_text": ph, "query_embedding": emb, "match_count": 60}).json()
+    hits = run_sql(f"select id, title, abstract, publication_year "
+                   f"from swrd.search_papers_keyword('{ph}', 60)")
     for h in hits:
         candidates.setdefault(h["id"], h)
 ```
 
-### Step 2 — Keyword OR-sweep for synonyms the embeddings might rank low
+### Step 2 — OR-sweep for synonyms the ranked search might rank low
 
 ```python
-def run_sql(q): return requests.post(f"{BASE}/rpc/run_sql", headers=H, json={"query": q}).json()
-
 kw = run_sql("""
   select id, title, abstract, publication_year from swrd.papers
   cross join websearch_to_tsquery('english',
@@ -83,4 +85,4 @@ with open("screening_corpus.csv", "w", newline="") as f:
 
 ### Step 4 — Document the retrieval for the methods section
 
-Record: the phrasings used, the keyword query, `match_count` per pass, retrieval date, and the database citation (Perron, Victor, & Qi, 2026, doi:10.1177/10497315261416833). Note that records lacking abstracts (~28% of 1989+ records) are under-retrieved by the semantic arm — the keyword sweep partially compensates, and a journal/year census (`references/queries.md`) can bound what the search could not see.
+Record: the phrasings used, the keyword query, `match_count` per pass, retrieval date, and the database citation (Perron, Victor, & Qi, 2026, doi:10.1177/10497315261416833). Note that records lacking abstracts (~28% of 1989+ records) can match only on their titles — include terms likely to appear in titles when phrasing the sweeps, and a journal/year census (`references/queries.md`) can bound what the search could not see.

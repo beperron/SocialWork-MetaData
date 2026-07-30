@@ -1,8 +1,8 @@
 # 03 · A Scholar's Twenty-Year Arc
 
-**Goal:** trace one researcher's conference activity across two decades — topics, collaborators, institutional moves. Uses the SSWR database's disambiguated authors. SQL only; no Ollama needed.
+**Goal:** trace one researcher's conference activity across two decades — topics, collaborators, institutional moves. Uses the SSWR database's disambiguated authors. SQL only; nothing to install.
 
-**Skills used:** `sswr-database`.
+**Reference:** [`llms.txt`](../llms.txt) (connection + schema).
 
 
 ## Do this with Claude or Codex
@@ -11,7 +11,9 @@ Works for any scholar with an SSWR presentation history. The one step that matte
 
 Copy, edit the bracketed parts, and paste:
 
-> I'm using the Social Work Meta-Data Project (https://beperron.github.io/SocialWork-MetaData/). Download the SSWR database skill from the site and connect. Trace the conference trajectory of [SCHOLAR NAME]: first resolve the name with the fuzzy author lookup and show me the candidate IDs before proceeding (include duplicates if any). Then give me their presentations by year, main topics over time, most frequent collaborators, and institutional moves visible in the record.
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, and schema. Using the sswr database, trace the conference trajectory of [SCHOLAR NAME]: first resolve the name with the fuzzy author lookup (search_authors_by_name) and show me the candidate IDs before proceeding (include duplicates if any). Then give me their presentations by year, main topics over time, most frequent collaborators, and institutional moves visible in the record. Use SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
+
+*If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
 **What to check when it finishes.** If the lookup returns more than one plausible ID, decide yourself which is the right person (or say include both); do not let the assistant guess silently. Totals should match the per-year list it prints.
 
@@ -77,9 +79,9 @@ group by 1,2 order by 1
 
 Affiliation changes across years show institutional moves as reflected in conference bylines.
 
-### Step 6 — Topical evolution (optional; needs Ollama)
+### Step 6 — Topical evolution
 
-Pull the scholar's titles by era and compare, or run `search_papers_semantic` seeded with an abstract of theirs from each era to find their nearest intellectual neighbors over time.
+Pull the scholar's titles and abstracts by era (early / middle / recent thirds of their record) and read them: the shift in problems, populations, and methods is usually visible directly. `search_papers_keyword` seeded with their recurring topic terms can then locate the neighboring literature in each era.
 
 ## Reporting notes
 
