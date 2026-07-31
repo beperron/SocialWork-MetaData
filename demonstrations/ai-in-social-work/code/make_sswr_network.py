@@ -32,7 +32,7 @@ FIGS = os.path.join(HERE, "..", "figures")
 MIN_PRESENTATIONS = 3
 MIN_LINKS         = 3
 
-EMP, REC, COM = "#4a3aa7", "#eb6834", "#1baf7a"
+RAMP = ["#EDE8FB", "#CFC2F2", "#A896E4", "#7C67CE", "#5A48B4", "#3E3191"]
 INK, INK2, MUT, EDGE, SURF = "#18181B", "#3F3F46", "#71717A", "#C9C7C0", "#FFFFFF"
 plt.rcParams.update({"svg.fonttype": "none", "font.family": "sans-serif",
                      "font.sans-serif": ["IBM Plex Sans", "system-ui", "Arial"], "text.color": INK})
@@ -67,8 +67,14 @@ def main():
         for a in ns:
             if a in nodes and lab:
                 mix[a][lab] += 1
-    col = {"empirical": EMP, "reception": REC, "commentary": COM}
-    colour = {a: col[mix[a].most_common(1)[0][0]] for a in nodes}
+    def orient(a):
+        m = mix[a]; e, r_, c = m.get("empirical", 0), m.get("reception", 0), m.get("commentary", 0)
+        t = e + r_ + c
+        return (e + 0.5 * r_) / t if t else 0.5
+    score = {a: orient(a) for a in nodes}
+    colour = {a: RAMP[min(len(RAMP) - 1, max(0, round(score[a] * (len(RAMP) - 1))))] for a in nodes}
+    split = {a: (mix[a].get("empirical", 0), mix[a].get("reception", 0), mix[a].get("commentary", 0))
+             for a in nodes}
 
     G = nx.Graph(); G.add_nodes_from(nodes)
     for (x, y), n in edges.items():
@@ -102,22 +108,29 @@ def main():
         ax.scatter([P[a][0]], [P[a][1]], s=330 + 74 * counts[a], color=colour[a],
                    edgecolors="#111", linewidths=1.2, zorder=3)
         ax.text(P[a][0], P[a][1], str(num[a]), ha="center", va="center", fontsize=10,
-                color="#fff" if colour[a] != COM else "#06301e", fontweight="bold", zorder=4)
+                color="#fff" if score[a] >= 0.55 else "#241E38", fontweight="bold", zorder=4)
     ax.margins(0.12)
 
     lg = fig.add_axes([0.605, 0.02, 0.395, 0.86]); lg.axis("off")
     lg.set_xlim(0, 1); lg.set_ylim(0, 1)
-    lg.text(0, 1.0, "Node colour — the author's most common category",
+    lg.text(0, 1.0, "Node colour — the orientation of that author's work",
             fontsize=9.2, fontweight="bold", va="top", color=INK)
-    for i, (lab, c) in enumerate((("empirical", EMP), ("reception", REC), ("commentary", COM))):
-        lg.scatter([0.022], [0.955 - i * 0.045], s=100, color=c, edgecolors="#111", linewidths=1)
-        lg.text(0.07, 0.955 - i * 0.045, lab, fontsize=9, color=INK2, va="center")
+    for i, c in enumerate(RAMP):
+        lg.add_patch(plt.Rectangle((0.02 + i * 0.083, 0.925), 0.083, 0.036,
+                                   facecolor=c, edgecolor="none", clip_on=False))
+    lg.add_patch(plt.Rectangle((0.02, 0.925), 0.083 * len(RAMP), 0.036,
+                               facecolor="none", edgecolor="#C9C7C0", lw=0.8, clip_on=False))
+    lg.text(0.02, 0.905, "commentary", fontsize=8, color=MUT, va="top", ha="left")
+    lg.text(0.02 + 0.083 * len(RAMP) / 2, 0.905, "study of AI", fontsize=8, color=MUT, va="top", ha="center")
+    lg.text(0.02 + 0.083 * len(RAMP), 0.905, "empirical", fontsize=8, color=MUT, va="top", ha="right")
     lg.text(0, 0.775, "Authors, by verified presentations", fontsize=9.2,
             fontweight="bold", va="top", color=INK)
     for row, a in enumerate(order):
         y = 0.725 - row * 0.052
         lg.text(0, y, f"{num[a]}.", fontsize=9, color=MUT, va="center")
-        lg.text(0.055, y, f"{names[str(a)]} ({counts[a]})", fontsize=9, color=INK2, va="center")
+        e, r_, c = split[a]
+        lg.text(0.055, y, f"{names[str(a)]} — {counts[a]} ({e}/{r_}/{c})",
+                fontsize=8.8, color=INK2, va="center")
 
     fig.text(0.008, 0.985, "The conference collaborating core",
              fontsize=13.5, fontweight="bold", color=INK, va="top")

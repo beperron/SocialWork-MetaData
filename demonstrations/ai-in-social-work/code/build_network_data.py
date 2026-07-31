@@ -11,7 +11,16 @@ from collections import Counter, defaultdict
 
 HERE = os.path.dirname(__file__)
 D    = os.path.join(HERE, "..", "data")
-EMP, REC, COM = "#4a3aa7", "#eb6834", "#1baf7a"
+# Sequential ramp: light = commentary, dark = empirical. Node colour places an
+# author on a continuum of work orientation (commentary -> study of AI ->
+# empirical) from the mix of their own items, exactly as the published figures
+# do, rather than flattening them to one dominant category.
+RAMP = ["#EDE8FB", "#CFC2F2", "#A896E4", "#7C67CE", "#5A48B4", "#3E3191"]
+
+def ramp_colour(score):
+    """score 0 = wholly commentary, 0.5 = wholly study of AI, 1 = wholly empirical"""
+    i = min(len(RAMP) - 1, max(0, int(round(score * (len(RAMP) - 1)))))
+    return RAMP[i]
 
 def kcore(pc, counts, min_items, min_links):
     keep = {a for a, c in counts.items() if c >= min_items}
@@ -42,10 +51,16 @@ def build(pc, counts, labels, names, min_items, min_links, venue):
                 mix[a][lab] += 1
     order = sorted(nodes, key=lambda a: (-counts[a], names.get(str(a), str(a))))
     idx = {a: i for i, a in enumerate(order)}
-    col = {"empirical": EMP, "reception": REC, "commentary": COM}
-    out_nodes = [{"i": idx[a], "num": idx[a] + 1, "name": names.get(str(a), str(a)),
-                  "n": counts[a], "cat": mix[a].most_common(1)[0][0] if mix[a] else "empirical",
-                  "color": col[mix[a].most_common(1)[0][0]] if mix[a] else EMP} for a in order]
+    out_nodes = []
+    for a in order:
+        m = mix[a]
+        e, r_, c = m.get("empirical", 0), m.get("reception", 0), m.get("commentary", 0)
+        tot = e + r_ + c
+        score = (e + 0.5 * r_) / tot if tot else 0.5
+        out_nodes.append({"i": idx[a], "num": idx[a] + 1, "name": names.get(str(a), str(a)),
+                          "n": counts[a], "split": [e, r_, c], "score": round(score, 3),
+                          "color": ramp_colour(score),
+                          "dark": score >= 0.55})
     out_links = [{"s": idx[x], "t": idx[y], "w": n} for (x, y), n in edges.items()]
     return {"venue": venue, "min_items": min_items, "min_links": min_links,
             "total_authors": len(counts), "nodes": out_nodes, "links": out_links}
