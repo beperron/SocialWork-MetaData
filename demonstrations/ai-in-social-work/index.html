@@ -248,6 +248,25 @@
   </div>
 </section>
 
+<section class="alt">
+  <div class="wide">
+    <h2>Who works with whom</h2>
+    <p class="lede">A co-authorship network of the recurring authors, with the inclusion rule stated rather than tuned until it looked good.</p>
+    <figure>
+      <img src="figures/network.svg" alt="Co-authorship network of 34 authors and 86 collaborations. One large connected group of 24 authors dominates the centre, with two smaller separate groups of five and four authors. Nodes are numbered and keyed to a legend listing each author and their item count; colour marks each author's most common category.">
+      <figcaption>Authors appearing on 2 or more corpus items <em>and</em> holding at least 3 co-author links inside the resulting graph — 34 of the 677 authors in the corpus. Pruning is iterative: dropping an author removes their links, which can push a collaborator below the threshold, so the rule is applied repeatedly until every node shown really has three links. Node size and the legend number give the author's item count; edge width is joint items. Position carries no meaning beyond connectivity.</figcaption>
+    </figure>
+
+    <p>The structure is <strong>one core plus satellites</strong>: a 24-author component holds most of the recurring names, with two small separate teams (five and four authors) working entirely apart from it. This is a young literature — the largest single output is 17 items and most recurring authors have two — so the network describes an emerging collaborative core rather than an established invisible college.</p>
+
+    <p>Colour marks each author's dominant category, and it reveals a division of labour: the empirical authors cluster with each other, the commentary-leaning authors sit toward the periphery of the core, and reception researchers appear mostly on the edges. Authors tend to specialize toward one end rather than mixing.</p>
+
+    <div class="note">
+      <p><strong>Read author counts as approximate.</strong> The journal database stores author names exactly as published, with <strong>no disambiguation</strong>, so identity here is surname plus first initial. Two different people who share both will be merged, and one person who published under different name forms may split. This is the one place in the demonstration where the underlying data cannot support a precise claim — the conference database, by contrast, carries canonical author IDs and would support one.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>Data and methods</h2>
@@ -298,6 +317,7 @@
       <li><a href="data/ai_corpus_labeled.json">data/ai_corpus_labeled.json</a> — all 278 verified records: year, title, journal, DOI, final label, each independent system's vote, and a flag on the eight hand-decided cases.</li>
       <li><a href="data/candidates_raw.json">data/candidates_raw.json</a> — the 373 raw keyword matches before screening, so you can see exactly what was rejected and re-screen it yourself.</li>
       <li><a href="data/stats.json">data/stats.json</a> — every count on this page, in machine-readable form.</li>
+      <li><a href="data/coauthorship.json">data/coauthorship.json</a> — author lists per item and disambiguated author counts, the input to the network figure.</li>
     </ul>
 
     <h3>Code</h3>
@@ -305,7 +325,8 @@
       <li><a href="code/fetch_candidates.py">fetch_candidates.py</a> — casts the era-spanning keyword net over the database and writes the candidate set. No credentials, no install: <code>python3 fetch_candidates.py</code>.</li>
       <li><a href="code/semantic_audit.py">semantic_audit.py</a> — the embedding-based recall audit; documents the exact model and prefix convention, and checks your setup before running.</li>
       <li><a href="code/compute_stats.py">compute_stats.py</a> — recomputes every number on this page from the released labels.</li>
-      <li><a href="code/make_figures.py">make_figures.py</a> — regenerates all three figures.</li>
+      <li><a href="code/make_figures.py">make_figures.py</a> — regenerates the growth, era, and outlet figures.</li>
+      <li><a href="code/make_network.py">make_network.py</a> — builds the co-authorship network; the two thresholds are constants at the top of the file, so you can redraw it at your own cutoffs.</li>
     </ul>
     <p>Only the screening and labeling steps are not scripted, because they are the steps that require reading. That is the honest boundary of automation here: the machine retrieves and proposes; a person decides.</p>
 

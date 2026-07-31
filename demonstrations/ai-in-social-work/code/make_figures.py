@@ -18,9 +18,9 @@ HERE = os.path.dirname(__file__)
 CORPUS = os.path.join(HERE, "..", "data", "ai_corpus_labeled.json")
 FIGS   = os.path.join(HERE, "..", "figures")
 
-# data colors validated for colour-vision deficiency; navy/maize are brand chrome
-EMP, REC, COM = "#2a78d6", "#eb6834", "#1baf7a"
-NAVY, MAIZE   = "#00274C", "#FFCB05"
+# palette validated for colour-vision deficiency (all pairs, light surface)
+EMP, REC, COM = "#4a3aa7", "#eb6834", "#1baf7a"   # empirical / reception / commentary
+CORE, SUPP    = "#4a3aa7", "#e87ba4"              # database core / WoS supplement
 INK, INK2, MUT, GRID, BASE, SURF = "#18181B", "#3F3F46", "#71717A", "#E7E5E0", "#C3C2B7", "#FFFFFF"
 ERAS = [("Expert systems", 1989, 1998), ("Machine learning", 1999, 2022), ("Generative AI", 2023, 2026)]
 
@@ -39,13 +39,18 @@ def main():
     yrs = list(range(1989, 2027))
     fig, ax = plt.subplots(figsize=(10, 4.3)); fig.patch.set_facecolor(SURF); ax.set_facecolor(SURF)
     b1 = [sw.get(y, 0) for y in yrs]; b2 = [wo.get(y, 0) for y in yrs]
-    ax.bar(yrs, b1, color=NAVY, label="SWRD database (verified)", width=.74, zorder=3)
-    ax.bar(yrs, b2, bottom=b1, color=MAIZE, edgecolor="#E0AE00",
+    ax.bar(yrs, b1, color=CORE, label="SWRD database (verified)", width=.74, zorder=3)
+    ax.bar(yrs, b2, bottom=b1, color=SUPP, linewidth=0,
            label="Web of Science supplement (kept separate)", width=.74, zorder=3)
-    ax.annotate("SWRD indexing\nincomplete 2024–25", (2019.2, 58), fontsize=8.5, color=MUT)
-    ax.annotate("", xy=(2024.3, 40), xytext=(2021.6, 57), arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1))
-    ax.annotate("2026 is supplement-only\n(past the database release)", (2013.2, 84), fontsize=8.5, color=MUT)
-    ax.annotate("", xy=(2025.6, 84), xytext=(2019.3, 87), arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1))
+    # text is right-aligned so its right edge is known; the arrow starts clear of it
+    ax.annotate("SWRD indexing\nincomplete 2024–25", (2022.6, 50), fontsize=8.5, color=MUT,
+                ha="right", va="center")
+    ax.annotate("", xy=(2024.55, 39), xytext=(2022.95, 49),
+                arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1, shrinkA=0, shrinkB=3))
+    ax.annotate("2026 is supplement-only\n(past the database release)", (2024.15, 88), fontsize=8.5,
+                color=MUT, ha="right", va="center")
+    ax.annotate("", xy=(2025.75, 84.5), xytext=(2024.5, 87.6),
+                arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1, shrinkA=0, shrinkB=3))
     ax.grid(axis="y", color=GRID, lw=.8, zorder=0)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
     ax.spines["left"].set_color(BASE); ax.spines["bottom"].set_color(BASE)
@@ -91,8 +96,8 @@ def main():
     names = [t[0] for t in top][::-1]
     a = [src[j]["swrd"] for j, _ in top][::-1]; b = [src[j]["wos"] for j, _ in top][::-1]
     yy = list(range(len(names)))
-    ax.barh(yy, a, color=NAVY, height=.66, zorder=3, label="SWRD database")
-    ax.barh(yy, b, left=a, color=MAIZE, edgecolor="#E0AE00", height=.66, zorder=3, label="WoS supplement")
+    ax.barh(yy, a, color=CORE, height=.66, zorder=3, label="SWRD database")
+    ax.barh(yy, b, left=a, color=SUPP, linewidth=0, height=.66, zorder=3, label="WoS supplement")
     for i, (x1, x2) in enumerate(zip(a, b)):
         ax.text(x1 + x2 + .8, i, str(x1 + x2), va="center", fontsize=9, color=INK2, fontweight="bold")
     ax.set_yticks(yy); ax.set_yticklabels(names, fontsize=9.2, color=INK)
@@ -107,3 +112,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ---------------------------------------------------------------------------
+# Co-authorship network (run separately: python3 make_network.py)
+# ---------------------------------------------------------------------------
