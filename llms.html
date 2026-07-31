@@ -1,6 +1,25 @@
-# Social Work Meta-Data Project — Agent Connection Guide
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Connection Guide (llms.txt mirror) — Social Work Meta-Data Project</title>
+<meta name="description" content="HTML mirror of llms.txt: everything an AI assistant needs to query the Social Work Meta-Data Project databases. Canonical plain-text version at /llms.txt.">
+<link rel="alternate" type="text/plain" href="llms.txt">
+<meta name="robots" content="index,follow">
+<style>
+ body{margin:0;background:#FAFAF9;color:#18181B;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+ .note{max-width:900px;margin:0 auto;padding:14px 18px 0;font-family:system-ui,sans-serif;font-size:13.5px;color:#52525B}
+ .note a{color:#00274C}
+ pre{max-width:900px;margin:10px auto 40px;padding:18px;background:#fff;border:1px solid #E7E5E0;border-radius:8px;
+      white-space:pre-wrap;word-wrap:break-word;font-size:13px;line-height:1.55;overflow-x:auto}
+</style>
+</head>
+<body>
+<p class="note">This page is an exact HTML mirror of <a href="llms.txt">llms.txt</a> for tools that cannot retrieve plain-text files. The content between the markers below is the complete guide; treat it as the file.</p>
+<pre># Social Work Meta-Data Project — Agent Connection Guide
 
-This one file is everything an AI assistant needs to query the project's two
+This one file is everything an AI assistant needs to query the project&#x27;s two
 hosted research databases. Plain HTTPS, public read-only key, no account, no
 installation, no database driver. If you (the assistant) were given this file
 or its URL, connect as described below and start querying — there is nothing
@@ -18,13 +37,13 @@ API key:   sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5
            (intentionally public; grants read-only access; writes are rejected
            at the database level)
 
-"Connecting" here means nothing more than sending HTTPS requests as shown
+&quot;Connecting&quot; here means nothing more than sending HTTPS requests as shown
 below. There is NO MCP server, no SDK, no client library, and no login step —
 do not look for one.
 
 Every request needs BOTH key headers, plus a profile header naming the database:
 
-- `apikey: <KEY>` and `Authorization: Bearer <KEY>`
+- `apikey: &lt;KEY&gt;` and `Authorization: Bearer &lt;KEY&gt;`
 - `Content-Profile: swrd` or `Content-Profile: sswr` on POST
   (`Accept-Profile: ...` on GET)
 
@@ -35,13 +54,13 @@ Preferred pattern (Python — avoids all shell-quoting pitfalls):
 
 ```python
 import requests   # or urllib from the stdlib
-KEY = "sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
-def run_sql(query, schema="swrd"):
+KEY = &quot;sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5&quot;
+def run_sql(query, schema=&quot;swrd&quot;):
     r = requests.post(
-        "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql",
-        headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
-                 "Content-Profile": schema, "Content-Type": "application/json"},
-        json={"query": query})
+        &quot;https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql&quot;,
+        headers={&quot;apikey&quot;: KEY, &quot;Authorization&quot;: f&quot;Bearer {KEY}&quot;,
+                 &quot;Content-Profile&quot;: schema, &quot;Content-Type&quot;: &quot;application/json&quot;},
+        json={&quot;query&quot;: query})
     r.raise_for_status()
     return r.json()   # list of row dicts
 ```
@@ -52,11 +71,11 @@ SQL-inside-JSON-inside-shell-quotes is easy to mangle (the symptom is
 file and pass `-d @body.json`, or let Python build the request instead:
 
 ```bash
-KEY="sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5"
-printf '%s' '{"query": "select publication_year, count(*) from swrd.papers where publication_year >= 1989 group by 1 order by 1"}' > body.json
-curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql" \
-  -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-  -H "Content-Profile: swrd" -H "Content-Type: application/json" \
+KEY=&quot;sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5&quot;
+printf &#x27;%s&#x27; &#x27;{&quot;query&quot;: &quot;select publication_year, count(*) from swrd.papers where publication_year &gt;= 1989 group by 1 order by 1&quot;}&#x27; &gt; body.json
+curl -s &quot;https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql&quot; \
+  -H &quot;apikey: $KEY&quot; -H &quot;Authorization: Bearer $KEY&quot; \
+  -H &quot;Content-Profile: swrd&quot; -H &quot;Content-Type: application/json&quot; \
   -d @body.json
 ```
 
@@ -78,7 +97,7 @@ use the 1989+ corpus, not the raw table total.
 The `swrd.papers` table physically holds 110,618 rows because it also stores
 a pre-1989 Supplement (23,289 records, 1920–1988) that is substantially
 incomplete — many records lack abstracts and details. ALWAYS filter
-`publication_year >= 1989` unless the user explicitly asks for the historical
+`publication_year &gt;= 1989` unless the user explicitly asks for the historical
 supplement, and treat any pre-1989 counts as lower bounds. The most recent
 years (2024–2025) are also incomplete because publisher indexing lags —
 exclude them from trend claims and say so.
@@ -115,7 +134,7 @@ lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
 |---|---|---|
 | `sswr.papers` | 23,793 | `id` (text PK, e.g. `2019-O-0142`), `title`, `abstract`, `year`, `format`, `methodology` (lowercase: `quantitative`, `qualitative`, `mixed_methods`, `review`, `other`), `author_count`, `fts` (tsvector over title+abstract) |
 | `sswr.authors` | 21,209 | `id` (int PK), `name` (canonical), `variants`, `institutions`, `years`, `total_papers` |
-| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly 'unknown' before 2011), `country_normalized` |
+| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly &#x27;unknown&#x27; before 2011), `country_normalized` |
 | `sswr.paper_export` | view | flat, one row per paper with author arrays — easiest for exports |
 
 ## Search (built in — no setup, no local models)
@@ -127,32 +146,32 @@ Call from SQL (always `select ... from`, never a bare call):
 -- top matches, best first (rank is a relevance score, NOT a position);
 -- select abstract up front if you plan to read matches — saves a round trip
 select id, title, abstract, publication_year, rank
-from swrd.search_papers_keyword('kinship care', 20)
+from swrd.search_papers_keyword(&#x27;kinship care&#x27;, 20)
 ```
 
 Rank scores are relative to their own query — never compare or merge raw
 ranks across different query strings. When unioning results from several
 phrasings, dedupe by `id` and note which phrasing(s) found each record; to
-present a merged top-N, order by the primary phrasing's ranking and annotate
+present a merged top-N, order by the primary phrasing&#x27;s ranking and annotate
 which rephrasings also matched each item.
 
 All search functions accept optional `min_year`/`max_year` after
 `match_count`. `match_count` caps the returned rows and reports no total —
 to size a topic, run a SQL count with an fts sweep (below), not a search
-call. When claiming search "missed" something, distinguish true vocabulary
+call. When claiming search &quot;missed&quot; something, distinguish true vocabulary
 misses (the phrase is absent from title+abstract — check with `fts @@
 phraseto_tsquery(...)` per id) from ranking misses (present but below your
 top-N cutoff).
 
 ```sql
 select id, title, year, methodology, rank
-from sswr.search_papers_keyword('kinship care', 20)
+from sswr.search_papers_keyword(&#x27;kinship care&#x27;, 20)
 ```
 
 IMPORTANT: pass short topical phrases (2–4 content words), never full
 sentences. The search AND-matches terms, so a long research question returns
-zero rows — "housing instability among youth aging out of foster care" finds
-nothing, while "foster youth housing" and "foster care homelessness" each find
+zero rows — &quot;housing instability among youth aging out of foster care&quot; finds
+nothing, while &quot;foster youth housing&quot; and &quot;foster care homelessness&quot; each find
 dozens. Distill a question into several short phrases and union the results.
 
 SSWR helpers: `sswr.search_authors_by_name(query_text, match_count)` — fuzzy
@@ -165,31 +184,31 @@ canonical entry holding the full record). Compare candidates on
 the same person as a large one, analyze both ids together and say so.
 Also: `sswr.search_papers_by_institution(query_text, match_count, min_year,
 max_year)`; institution strings in `paper_authors.institution_normalized`
-retain some spelling variants ("St. Louis" vs "Saint Louis") — group with
+retain some spelling variants (&quot;St. Louis&quot; vs &quot;Saint Louis&quot;) — group with
 care.
 
 For high recall on a topic, combine three angles:
 1. `search_papers_keyword` with the question itself;
 2. the same function with 2–3 rephrasings in different vocabulary
-   (e.g. "custodial grandparents", "kinship caregivers");
+   (e.g. &quot;custodial grandparents&quot;, &quot;kinship caregivers&quot;);
 3. a SQL sweep with `websearch_to_tsquery` or an anchored regex:
 
 ```sql
 select p.year, count(*) as n
 from sswr.papers p
-cross join websearch_to_tsquery('english', 'grandparents grandchildren') q
+cross join websearch_to_tsquery(&#x27;english&#x27;, &#x27;grandparents grandchildren&#x27;) q
 where p.fts @@ q
 group by 1 order by 1
 ```
 
 `websearch_to_tsquery` accepts quoted phrases and `or` — e.g.
-`'"parental imprisonment" or "incarcerated mother" or "children of inmates"'`
+`&#x27;&quot;parental imprisonment&quot; or &quot;incarcerated mother&quot; or &quot;children of inmates&quot;&#x27;`
 — which is the pattern for a broad OR-sweep of synonyms.
 
 ```sql
 select count(*) from swrd.papers
-where publication_year >= 1989
-  and (coalesce(title,'') || ' ' || coalesce(abstract,'')) ~* '\mkinship care\M'
+where publication_year &gt;= 1989
+  and (coalesce(title,&#x27;&#x27;) || &#x27; &#x27; || coalesce(abstract,&#x27;&#x27;)) ~* &#x27;\mkinship care\M&#x27;
 ```
 
 ## Semantic search (optional — needs a one-time local model setup)
@@ -197,33 +216,33 @@ where publication_year >= 1989
 Cookbook recipes 01–07 never need this; recipes 08–09 use it. Every abstract
 also carries a 768-dim meaning vector, searchable once you can embed the
 query locally with **EmbeddingGemma 300M via Ollama** — the exact model the
-databases were built with; no other model's vectors are comparable. Setup is
+databases were built with; no other model&#x27;s vectors are comparable. Setup is
 a check-install-verify script (ask the user before installing; ~620 MB once):
 https://beperron.github.io/SocialWork-MetaData/skills/ollama-embeddings/SKILL.md
 
 ```python
-emb = requests.post("http://localhost:11434/api/embed", json={
-    "model": "embeddinggemma:300m",
-    "input": ["task: search result | query: " + question]}).json()["embeddings"][0]
+emb = requests.post(&quot;http://localhost:11434/api/embed&quot;, json={
+    &quot;model&quot;: &quot;embeddinggemma:300m&quot;,
+    &quot;input&quot;: [&quot;task: search result | query: &quot; + question]}).json()[&quot;embeddings&quot;][0]
 # same headers as run_sql above (Content-Profile picks swrd or sswr)
 hits = requests.post(
-    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_semantic",
-    headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
-             "Content-Profile": "swrd", "Content-Type": "application/json"},
-    json={"query_embedding": emb, "match_count": 20}).json()
+    &quot;https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_semantic&quot;,
+    headers={&quot;apikey&quot;: KEY, &quot;Authorization&quot;: f&quot;Bearer {KEY}&quot;,
+             &quot;Content-Profile&quot;: &quot;swrd&quot;, &quot;Content-Type&quot;: &quot;application/json&quot;},
+    json={&quot;query_embedding&quot;: emb, &quot;match_count&quot;: 20}).json()
 ```
 
 The `task: search result | query: ` prefix is REQUIRED — without it results
 degrade badly. `search_papers_semantic(query_embedding, match_count,
 min_year, max_year)` returns the same columns as keyword search plus
-`similarity` (cosine 0–1; >= ~0.55 usually on-topic, >= ~0.65 strongly so).
+`similarity` (cosine 0–1; &gt;= ~0.55 usually on-topic, &gt;= ~0.65 strongly so).
 Note: the function returns at most ~40 rows regardless of `match_count`, so
-"pull the top 300" is not achievable in one call — to retrieve a deeper
+&quot;pull the top 300&quot; is not achievable in one call — to retrieve a deeper
 neighborhood, embed several distinct phrasings of the topic and union their
 top-40s (each phrasing probes a different semantic direction).
 `search_papers_hybrid(query_text, query_embedding, match_count)` fuses the
 semantic and keyword rankings (reciprocal-rank fusion; extra fields
-`rrf_score`, `semantic_rank`, `keyword_rank` — NULL means not in that arm's
+`rrf_score`, `semantic_rank`, `keyword_rank` — NULL means not in that arm&#x27;s
 top 60, a fixed pool depth independent of `match_count`) and is the best
 default when both arms are available.
 
@@ -233,7 +252,7 @@ default when both arms are available.
    id types are incompatible (SWRD int vs SSWR text like `2019-O-0142`).
 2. Year columns: `swrd.papers.publication_year`, `sswr.papers.year`. The
    `paper_authors` tables have NO year column — join `papers` to filter by year.
-3. Search functions: always `select <cols> from schema.search_papers_keyword(...)`.
+3. Search functions: always `select &lt;cols&gt; from schema.search_papers_keyword(...)`.
    Results arrive pre-sorted, best first; `rank` is a float score — never
    `where rank = 1`, never re-sort ascending.
 4. Search functions already return the useful columns
@@ -244,22 +263,22 @@ default when both arms are available.
    via the returned `id`.
 5. Qualify every column with a table alias in joins (`p.id`, `pa.paper_id`).
 6. SWRD research-corpus questions: filter
-   `publication_year >= 1989 and is_scientific and abstract is not null` —
+   `publication_year &gt;= 1989 and is_scientific and abstract is not null` —
    but NOT when the question asks for totals or raw record counts.
-7. If the question says "how many", return a count, not a listing.
+7. If the question says &quot;how many&quot;, return a count, not a listing.
 8. Trailing semicolons cause syntax errors in `run_sql`; send one bare SELECT.
 
-Troubleshooting: `Could not find the table 'public.papers'` → you forgot the
-profile header. `relation "papers" does not exist` → schema-qualify
+Troubleshooting: `Could not find the table &#x27;public.papers&#x27;` → you forgot the
+profile header. `relation &quot;papers&quot; does not exist` → schema-qualify
 (`swrd.papers` / `sswr.papers`). `permission denied` → you attempted a write.
 Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 
 ## Citations to report when the user publishes with these data
 
-- SWRD: Perron, B. E., Victor, B. G., & Qi, Z. (2026). Evolution of social
+- SWRD: Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). Evolution of social
   work knowledge production over 35 years. Research on Social Work Practice.
   https://doi.org/10.1177/10497315261416833
-- SSWR: Perron, B. E., Victor, B. G., & Qi, Z. (2026). AI-assisted curation
+- SSWR: Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). AI-assisted curation
   of conference scholarship. arXiv. https://doi.org/10.48550/arXiv.2603.06814
 
 ## Fuller documentation
@@ -268,3 +287,6 @@ Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 - SSWR skill file: https://beperron.github.io/SocialWork-MetaData/skills/sswr-database-skill.md
 - Embedding setup (semantic search): https://beperron.github.io/SocialWork-MetaData/skills/ollama-embeddings/SKILL.md
 - Cookbook (worked examples): https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook
+</pre>
+</body>
+</html>
