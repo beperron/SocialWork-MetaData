@@ -177,9 +177,25 @@
 </section>
 
 <section>
-  <div class="wrap">
-    <h2>How each article was classified</h2>
+  <div class="wide">
+    <h2>Growth</h2>
+    <p class="lede">Attention is real, uneven, and much older than the current wave.</p>
+    <figure>
+      <img src="figures/growth.svg" alt="Stacked bar chart of verified AI articles per year from 1989 to 2026. A cluster of about 3 to 7 articles per year from 1989 to 1994, near-zero through the 2000s and 2010s, then rapid growth from 2018 reaching 34 in 2024, 35 in the database plus 21 in the supplement in 2025, and 82 supplement-only records in 2026.">
+      <figcaption>Verified articles per publication year. The darker bars are the SWRD database corpus; the lighter bars are the Web of Science supplement, which is stored and reported separately rather than merged. Two caveats sit on the right-hand end: the 2024–25 database counts are lower bounds because publisher indexing lags, and 2026 is both supplement-only and a partial year, covering January to July. Its 82 articles in seven months work out to roughly 141 across a full year, which is an arithmetic annualisation rather than a forecast — it assumes the rest of the year matches the pace so far, and because indexing itself lags, even the seven-month figure is a lower bound.</figcaption>
+    </figure>
+
+    <p>Three features are worth naming. First, an early cluster: 22 articles appeared between 1989 and 1994, when expert systems were a live methodological project in human services. Second, a long trough: from 1995 through 2016 the topic nearly disappears from disciplinary journals, averaging under one article a year even as neural-network methods advanced elsewhere. Third, the surge: growth resumes around 2018 and accelerates sharply after the public release of ChatGPT in late 2022, with 2023–2026 alone accounting for 192 of the 278 articles — and 2026 is only seven months of data.</p>
+
+    <p>The trough is the interesting part. It does not mean the field stopped thinking about computation; it means the disciplinary journals were not where that thinking was published. Read alongside the early cluster, the pattern suggests the field's engagement with AI is episodic and technology-triggered rather than cumulative.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>What the literature does — the classification and its results</h2>
     <p class="lede">The classification asks what a study <em>does</em>, not what it is about. Keyword topic alone cannot separate a team that built and tested a model from a team that surveyed practitioners' opinions about models, yet those are different kinds of knowledge. Every abstract was read and assigned to exactly one of three categories.</p>
+
 
     <div class="def" style="--c:#4a3aa7">
       <h4><i></i>Empirical work</h4>
@@ -200,28 +216,9 @@
     </div>
 
     <p>The hard boundary in practice is between the first two. A study in which researchers prompt ChatGPT with case vignettes and then judge the answers is doing something to a system and measuring the result, so it is coded empirical even when the framing is evaluative. Eight articles produced genuinely split judgments and were decided by hand; they are marked in the released data.</p>
-  </div>
-</section>
 
-<section class="alt">
-  <div class="wide">
-    <h2>Growth</h2>
-    <p class="lede">Attention is real, uneven, and much older than the current wave.</p>
-    <figure>
-      <img src="figures/growth.svg" alt="Stacked bar chart of verified AI articles per year from 1989 to 2026. A cluster of about 3 to 7 articles per year from 1989 to 1994, near-zero through the 2000s and 2010s, then rapid growth from 2018 reaching 34 in 2024, 35 in the database plus 21 in the supplement in 2025, and 82 supplement-only records in 2026.">
-      <figcaption>Verified articles per publication year. The darker bars are the SWRD database corpus; the lighter bars are the Web of Science supplement, which is stored and reported separately rather than merged. Two caveats sit on the right-hand end: the 2024–25 database counts are lower bounds because publisher indexing lags, and 2026 is both supplement-only and a partial year, covering January to July. Its 82 articles in seven months work out to roughly 141 across a full year, which is an arithmetic annualisation rather than a forecast — it assumes the rest of the year matches the pace so far, and because indexing itself lags, even the seven-month figure is a lower bound.</figcaption>
-    </figure>
-
-    <p>Three features are worth naming. First, an early cluster: 22 articles appeared between 1989 and 1994, when expert systems were a live methodological project in human services. Second, a long trough: from 1995 through 2016 the topic nearly disappears from disciplinary journals, averaging under one article a year even as neural-network methods advanced elsewhere. Third, the surge: growth resumes around 2018 and accelerates sharply after the public release of ChatGPT in late 2022, with 2023–2026 alone accounting for 192 of the 278 articles — and 2026 is only seven months of data.</p>
-
-    <p>The trough is the interesting part. It does not mean the field stopped thinking about computation; it means the disciplinary journals were not where that thinking was published. Read alongside the early cluster, the pattern suggests the field's engagement with AI is episodic and technology-triggered rather than cumulative.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <h2>What the literature does, by era</h2>
-    <p class="lede">Composition shifts across the three waves, and the shift is not the one people expect.</p>
+    <h3 style="margin-top:34px">The results, by technological era</h3>
+    <p>Applying those three definitions across the corpus shows composition shifting with each wave — and the shift is not the one people expect.</p>
     <figure>
       <img src="figures/eras.svg" alt="Three horizontal 100 percent stacked bars. Expert systems era 1989 to 1998, N equals 24: 75 percent commentary, 25 percent empirical. Machine learning era 1999 to 2022, N equals 62: 61 percent empirical, 34 percent commentary, 5 percent reception. Generative AI era 2023 to 2026, N equals 192: 40 percent empirical, 37 percent commentary, 23 percent reception.">
       <figcaption>Within-era composition. Percentages are shares of each era's articles; the expert-systems era rests on only 24 articles, so its split can move several points on a handful of recoding decisions.</figcaption>
@@ -245,7 +242,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wide">
     <h2>Where this work appears</h2>
     <p class="lede">278 articles spread across 58 journals, with a long tail: 23 outlets carry exactly one article.</p>
@@ -276,7 +273,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wide">
     <h2>The conference record</h2>
     <p class="lede">Journals are only half the picture. The same search and screening was run against the Society for Social Work and Research conference database, which holds every presentation from 2005 to 2026 — and the two venues turn out to publish very different things.</p>
@@ -310,7 +307,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wide">
     <h2>Who works with whom</h2>
     <p class="lede">Co-authorship among the recurring authors in each venue. Drag any node to pull the layout apart — the rest of the graph settles around it — and hover to highlight an author in the key.</p>
@@ -346,7 +343,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <h2>Data and methods</h2>
 
@@ -386,7 +383,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <h2>Get the data and the code</h2>
     <p class="lede">Everything behind this page is in the folder it is served from — the labels, the raw candidate set, and four scripts that reproduce the analysis end to end.</p>
