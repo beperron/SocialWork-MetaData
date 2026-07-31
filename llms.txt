@@ -65,27 +65,34 @@ server-side).
 
 ## The two databases
 
-**SWRD (`swrd`) — journal articles.** 110,618 records (title, abstract,
-authors, affiliations, journal, year, DOI) from 88 disciplinary social work
-journals. Core corpus 1989–2025 (87,329 records, systematically compiled);
-within it 62,602 research articles with abstracts, each classified:
-`is_scientific`, `is_empirical`, `research_method` (exact values:
+**SWRD (`swrd`) — journal articles, 1989–2025.** The corpus for analysis is
+**87,329 systematically compiled records from 1989 onward** (title, abstract,
+authors, affiliations, journal, year, DOI) across 88 disciplinary social work
+journals; within it, 62,602 research articles with abstracts are each
+classified: `is_scientific`, `is_empirical`, `research_method` (exact values:
 `Quantitative`, `Qualitative`, `Mixed-Methods`, `Review`; null for
-non-empirical articles). A pre-1989
-Supplement (23,289 records, 1920–1988) is substantially incomplete — treat
-pre-1989 counts as lower bounds and default analyses to
-`publication_year >= 1989`. The most recent years (2024–2025) are also
-incomplete because publisher indexing lags — exclude them from trend claims
-and say so. CRITICAL: author names are stored exactly as
-published, with NO disambiguation — never report unique-author counts from
-SWRD as fact; caveat them. A small number of articles are double-indexed
-under two journal ids — when building a corpus, dedupe on normalized title
-(double-indexed pairs usually have differing or null DOIs, so DOI alone
-misses them).
+non-empirical articles). When describing this database or reporting from it,
+use the 1989+ corpus, not the raw table total.
+
+The `swrd.papers` table physically holds 110,618 rows because it also stores
+a pre-1989 Supplement (23,289 records, 1920–1988) that is substantially
+incomplete — many records lack abstracts and details. ALWAYS filter
+`publication_year >= 1989` unless the user explicitly asks for the historical
+supplement, and treat any pre-1989 counts as lower bounds. The most recent
+years (2024–2025) are also incomplete because publisher indexing lags —
+exclude them from trend claims and say so.
+
+Author records: 164,549 `swrd.authors` rows and 241,766 `swrd.paper_authors`
+links (212,249 of them on 1989+ papers). CRITICAL: author names are stored
+exactly as published, with NO disambiguation — never report unique-author
+counts from SWRD as fact; caveat them. A small number of articles are
+double-indexed under two journal ids — when building a corpus, dedupe on
+normalized title (double-indexed pairs usually have differing or null DOIs,
+so DOI alone misses them).
 
 | Table | Rows | Key columns |
 |---|---|---|
-| `swrd.papers` | 110,618 | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id`, `doi`, `document_type` (inconsistently cased legacy strings — use `is_scientific` to define research articles, not this), `is_scientific`, `is_empirical`, `research_method`, `fts` (tsvector over title+abstract) |
+| `swrd.papers` | 110,618 (87,329 are the 1989+ corpus) | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id`, `doi`, `document_type` (inconsistently cased legacy strings — use `is_scientific` to define research articles, not this), `is_scientific`, `is_empirical`, `research_method`, `fts` (tsvector over title+abstract) |
 | `swrd.journals` | 91 | `id`, `name`, `publisher` |
 | `swrd.authors` | 164,549 | `id`, `name` (as published), `orcid` |
 | `swrd.paper_authors` | 241,766 | `paper_id`, `author_id`, `position` (1 = first), `is_corresponding` |
