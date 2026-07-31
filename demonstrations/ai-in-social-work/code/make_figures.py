@@ -55,7 +55,7 @@ def main():
     ax.legend(frameon=False, fontsize=9, loc="upper left", labelcolor=INK2)
     ax.set_title("Growth of the AI literature in social work, 1989–2026",
                  fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
-    fig.savefig(f"{FIGS}/growth.svg", bbox_inches="tight", facecolor=SURF); plt.close(fig)
+    fig.savefig(f"{FIGS}/growth.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
 
     # ---- eras ----
     fig, ax = plt.subplots(figsize=(9.6, 3.4)); fig.patch.set_facecolor(SURF); ax.set_facecolor(SURF)
@@ -80,7 +80,7 @@ def main():
     ax.spines["bottom"].set_color(BASE); ax.tick_params(colors=MUT, labelsize=9)
     ax.set_title("What the literature does, by technological era",
                  fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
-    fig.savefig(f"{FIGS}/eras.svg", bbox_inches="tight", facecolor=SURF); plt.close(fig)
+    fig.savefig(f"{FIGS}/eras.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
 
     # ---- outlets ----
     jc = Counter(r["journal"] for r in C if r.get("journal"))
@@ -103,7 +103,7 @@ def main():
     ax.set_xlim(0, 66); ax.legend(frameon=False, fontsize=9, loc="lower right", labelcolor=INK2)
     ax.set_title(f"Where this work appears — top 10 outlets of {len(jc)}",
                  fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
-    fig.savefig(f"{FIGS}/outlets.svg", bbox_inches="tight", facecolor=SURF); plt.close(fig)
+    fig.savefig(f"{FIGS}/outlets.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
     print("wrote growth.svg, eras.svg, outlets.svg")
 
 if __name__ == "__main__":

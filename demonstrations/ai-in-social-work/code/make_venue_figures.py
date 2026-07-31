@@ -28,17 +28,18 @@ def main():
             markeredgecolor=SURF, markeredgewidth=1.2, label="Journal articles", zorder=3)
     ax.plot(yrs, [cy.get(y, 0) for y in yrs], color=CONF, lw=2.4, marker="o", ms=4.6,
             markeredgecolor=SURF, markeredgewidth=1.2, label="Conference presentations", zorder=3)
-    ax.text(2025.9, cy.get(2026, 0) + 3, "conference", color=CONF, fontsize=9.5,
-            fontweight="bold", ha="right")
-    ax.text(2025.0, jy.get(2025, 0) + 12, "journals", color=JRN, fontsize=9.5, fontweight="bold", ha="right")
+    # legend sits in the empty upper-left quadrant: it can neither clip nor collide
+    ax.legend(frameon=False, fontsize=9.5, loc="upper left", labelcolor=INK2,
+              handlelength=1.6, borderaxespad=0.6)
     ax.grid(axis="y", color=GRID, lw=.8, zorder=0)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
     ax.spines["left"].set_color(BASE); ax.spines["bottom"].set_color(BASE)
-    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(2004.6, 2026.6); ax.set_ylim(0, 95)
+    ax.set_xticks(list(range(2005, 2027, 3)))
+    ax.set_xticklabels([str(y) for y in range(2005, 2027, 3)])
+    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(2004.3, 2026.7); ax.set_ylim(0, 92)
     ax.set_ylabel("verified items", fontsize=9.5, color=INK2)
-    ax.legend(frameon=False, fontsize=9, loc="upper left", labelcolor=INK2)
     ax.set_title("Two venues, 2005–2026", fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
-    fig.savefig(f"{FIGS}/venue_growth.svg", bbox_inches="tight", facecolor=SURF); plt.close(fig)
+    fig.savefig(f"{FIGS}/venue_growth.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
 
     # --- venue composition ---
     fig, ax = plt.subplots(figsize=(9.6, 2.8)); fig.patch.set_facecolor(SURF); ax.set_facecolor(SURF)
@@ -63,7 +64,7 @@ def main():
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
     ax.spines["bottom"].set_color(BASE); ax.tick_params(colors=MUT, labelsize=9)
     ax.set_title("What each venue publishes", fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
-    fig.savefig(f"{FIGS}/venues.svg", bbox_inches="tight", facecolor=SURF); plt.close(fig)
+    fig.savefig(f"{FIGS}/venues.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
     print("wrote venue_growth.svg, venues.svg")
 
 if __name__ == "__main__":

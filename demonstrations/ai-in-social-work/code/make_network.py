@@ -133,8 +133,8 @@ def main():
              f"connectivity. Names are surname + first initial: the journal database does not disambiguate "
              f"authors, so same-initial namesakes merge.",
              fontsize=7.9, color=MUT, va="bottom")
-    fig.savefig(f"{FIGS}/network.svg", bbox_inches="tight", facecolor=SURF)
-    fig.savefig("/tmp/_network_check.png", dpi=155, bbox_inches="tight", facecolor=SURF)
+    fig.savefig(f"{FIGS}/network.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF)
+    fig.savefig("/tmp/_network_check.png", dpi=155, bbox_inches="tight", pad_inches=0.28, facecolor=SURF)
     print(f"wrote network.svg — {len(nodes)} nodes, {len(edges)} edges "
           f"(every node has >= {MIN_LINKS} links within the graph)")
     comps = [c for c in nx.connected_components(G) if len(c) > 1]
