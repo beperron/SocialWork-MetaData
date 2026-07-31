@@ -37,7 +37,6 @@
         <a class="nav-item" href="#databases" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Databases</a>
         <a class="nav-item" href="#access" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">AI access</a>
         <a class="nav-item" href="#search" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Semantic search</a>
-        <a class="nav-item" href="demonstrations/" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Demonstrations</a>
         <a class="nav-item" href="#download" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Download</a>
         <a class="nav-item" href="demonstrations.html" style="font-size:13.5px; font-weight:500; color:#3F3F46; border:none;">Demonstrations</a>
         <a class="nav-item" href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook" style="font-size:13.5px; font-weight:600; color:#00274C; border:none;">Cookbook</a>
@@ -126,7 +125,24 @@
       <span style="font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#71717A;">Start here</span>
     </div>
     <h2 style="margin:0; max-width:22ch; font-size:clamp(26px,3.2vw,34px); font-weight:600; letter-spacing:-0.018em; color:#18181B; line-height:1.15;">Instant access for AI assistants</h2>
-    <p style="margin:16px 0 0; max-width:66ch; font-size:16px; color:#3F3F46;">The fastest way to work with the data is to hand one of two skill files to an AI assistant, such as Claude, ChatGPT, or any comparable system. Each file is a self-contained instruction set. Once read, an assistant can run read-only analysis queries, search the literature by meaning, and pull filtered slices of records, using a built-in public access key. <strong style="font-weight:600; color:#18181B;">No password, account, or installation required.</strong></p>
+    <p style="margin:16px 0 0; max-width:66ch; font-size:16px; color:#3F3F46;">An AI assistant — Claude, ChatGPT, or any comparable system — can query these databases directly, running read-only analysis queries, searching the literature by meaning, and pulling filtered slices of records with a built-in public access key. No password, account, or installation is required. There are two ways in.</p>
+
+    <div style="margin-top:34px; background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03); overflow:hidden;">
+      <div style="height:3px; background:#4C3E8F;"></div>
+      <div style="padding:26px 28px 24px;">
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.06em; color:#71717A;">OPTION 1 · EASIEST</span>
+        <h3 style="margin:10px 0 0; font-size:19px; font-weight:600; color:#18181B;">Just give your assistant one link</h3>
+        <p style="margin:10px 0 0; max-width:66ch; font-size:15px; color:#3F3F46;">Tell your assistant to fetch <a href="llms.txt" style="font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:#00274C; font-weight:600;">llms.txt</a> — one plain-text file carrying the connection details, both schemas, the search functions, and the query rules. One fetch and it can start querying; nothing to download, install, or configure. Paste this:</p>
+        <p style="margin:14px 0 0; padding:14px 16px; background:#FAFAF9; border:1px solid #E7E5E0; border-radius:6px; font-family:'IBM Plex Mono',monospace; font-size:13px; color:#18181B; line-height:1.6;">Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes, then answer my question using those databases.</p>
+        <p style="margin:14px 0 0; max-width:66ch; font-size:14px; color:#3F3F46;">The <a href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook" style="color:#00274C; font-weight:600;">Cookbook</a> holds ready-made prompts built this way, and the <a href="demonstrations.html" style="color:#00274C; font-weight:600;">Demonstrations</a> show complete analyses with their data and code.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.06em; color:#71717A;">OPTION 2 · FOR HEAVIER WORK</span>
+      <h3 style="margin:10px 0 0; font-size:19px; font-weight:600; color:#18181B;">Hand it a full skill file</h3>
+      <p style="margin:10px 0 0; max-width:66ch; font-size:15px; color:#3F3F46;">Each skill file is a deeper, self-contained instruction set for one database: the complete data catalog, tested SQL recipes, semantic-search guidance, and the caveats that keep analyses honest. Attach one when the work is sustained enough to be worth the extra context, or when your assistant cannot fetch URLs and you would rather paste a file.</p>
+    </div>
 
     <div class="g-cards" style="margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:20px;">
       <div style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03); overflow:hidden;">
@@ -156,7 +172,7 @@
     <div class="g-steps" style="margin-top:20px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid #E7E5E0; border-radius:8px; overflow:hidden; background:#FAFAF9;">
       <div style="padding:22px 24px; border-right:1px solid #E7E5E0;">
         <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#A1A1AA;">step 1</span>
-        <p style="margin:6px 0 0; font-size:14px; color:#3F3F46;">Download a skill file and attach or paste it into your assistant's conversation.</p>
+        <p style="margin:6px 0 0; font-size:14px; color:#3F3F46;">Download a skill file and attach or paste it into your assistant&#39;s conversation.</p>
       </div>
       <div style="padding:22px 24px; border-right:1px solid #E7E5E0;">
         <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#A1A1AA;">step 2</span>
@@ -168,7 +184,6 @@
       </div>
     </div>
 
-    <p style="margin:20px 0 0; font-size:14px; color:#3F3F46;">Even simpler: tell your assistant to fetch <a href="llms.txt" style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#00274C; font-weight:600;">llms.txt</a> — one plain-text file with the connection details, both schemas, and the query rules. The <a href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook" style="color:#00274C; font-weight:600;">Cookbook</a> prompts do exactly that, and the <a href="demonstrations/" style="color:#00274C; font-weight:600;">Demonstrations</a> show complete analyses with their data and code.</p>
   </section>
 
 

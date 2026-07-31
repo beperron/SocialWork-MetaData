@@ -42,19 +42,15 @@ def main():
     ax.bar(yrs, b1, color=CORE, label="SWRD database (verified)", width=.74, zorder=3)
     ax.bar(yrs, b2, bottom=b1, color=SUPP, linewidth=0,
            label="Web of Science supplement (kept separate)", width=.74, zorder=3)
-    # text is right-aligned so its right edge is known; the arrow starts clear of it
-    ax.annotate("SWRD indexing\nincomplete 2024–25", (2022.6, 50), fontsize=8.5, color=MUT,
-                ha="right", va="center")
-    ax.annotate("", xy=(2024.55, 39), xytext=(2022.95, 49),
-                arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1, shrinkA=0, shrinkB=3))
-    ax.annotate("2026 is supplement-only\n(past the database release)", (2024.15, 88), fontsize=8.5,
-                color=MUT, ha="right", va="center")
-    ax.annotate("", xy=(2025.75, 84.5), xytext=(2024.5, 87.6),
-                arrowprops=dict(arrowstyle="-|>", color=MUT, lw=1, shrinkA=0, shrinkB=3))
+    # direct labels above the bars they describe — no arrows to collide with text
+    ax.text(2024.5, 60, "2024–25\nindexing\nincomplete", fontsize=8, color=MUT,
+            ha="center", va="bottom", linespacing=1.35)
+    ax.text(2026, 86, "2026:\nsupplement\nonly", fontsize=8, color=MUT,
+            ha="center", va="bottom", linespacing=1.35)
     ax.grid(axis="y", color=GRID, lw=.8, zorder=0)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
     ax.spines["left"].set_color(BASE); ax.spines["bottom"].set_color(BASE)
-    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(1988.2, 2026.8); ax.set_ylim(0, 100)
+    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(1988.2, 2027.6); ax.set_ylim(0, 108)
     ax.set_ylabel("verified items", fontsize=9.5, color=INK2)
     ax.legend(frameon=False, fontsize=9, loc="upper left", labelcolor=INK2)
     ax.set_title("Growth of the AI literature in social work, 1989–2026",

@@ -1,0 +1,2602 @@
+[
+ {
+  "source": "sswr",
+  "id": "2015-O-0759",
+  "year": 2015,
+  "title": "Predicting Recurrent Maltreatment in Child Welfare Systems: The Potential for Neural Network Models",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2015-P-0384",
+  "year": 2015,
+  "title": "The National Housing Trust Fund Act of 2007: Using Supervised Machine Learning to Test Policy Process Theory in a Social Welfare Context",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2016-U-0475",
+  "year": 2016,
+  "title": "Words Can Hurt: Examining the Association Between the Prevalence of Latino Threat Narrative and Anti-Hispanic Hate Crime",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2016-U-0514",
+  "year": 2016,
+  "title": "Efficient Homelessness Prevention through Better Targeting: Using Machine Learning to Predict Homelessness Among Unstably Housed Veterans",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2017-P-0679",
+  "year": 2017,
+  "title": "Leveraging Big Data for Social Good: Examining Moral Values in Immigration Discussions in News Media",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-P-0144",
+  "year": 2018,
+  "title": "Have You Heard?: Development of a Social Network Peer Leader HIV Prevention Intervention for Homeless Youth",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-P-0191",
+  "year": 2018,
+  "title": "Restoring Opportunity for Disadvantaged Youth in the Face of Income and Education Inequality",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-P-0323",
+  "year": 2018,
+  "title": "Creating a Child & Elder Abuse Thesaurus Using Natural Language Processing Methodology",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-P-0448",
+  "year": 2018,
+  "title": "PTSD Symptoms Among a Sample of Homeless Former Foster Youth: A Predictive Approach Using Artificial Intelligence (AI)",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0194",
+  "year": 2018,
+  "title": "Neighborhood Online Networks, Disadvantage and Psychological Distress: Harnessing Big Data on Social Media to Examine Neighborhood Effects",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0278",
+  "year": 2018,
+  "title": "Using Artificial Intelligence to Maximize the Spread of Sexual Health Information in a Multimodal Communication Network of Young Black Women",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0477",
+  "year": 2018,
+  "title": "The Digital Urban Violence Analysis Approach (DUVAA): Analyzing Social Media Data for Gang Violence Prevention",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "off_topic",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0478",
+  "year": 2018,
+  "title": "The Perils and Promises of Unsupervised Machine Learning in Social Work Research: Comparing Human Coders to Computer-Led Topic Modeling",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0480",
+  "year": 2018,
+  "title": "Using Social Media to Evaluate Grassroots Campaigns in Real-Time: A Case Study of Twitter Users' Response Following a Social Protest",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0553",
+  "year": 2018,
+  "title": "A Distinct Profile of Health Problems in the Five Years before Death in Autism Spectrum Disorder",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2018-U-0566",
+  "year": 2018,
+  "title": "Predicting Risk of Child Maltreatment at Birth: A Comparison of the Classification Accuracy of Machine Learning Techniques",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-G-0006",
+  "year": 2019,
+  "title": "Accommodating Grief on Twitter: An Analysis of Expressions of Grief Among Gang Involved Youth in Chicago Using Qualitative Analysis and Natural Language Processing",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-G-0007",
+  "year": 2019,
+  "title": "Artificial Intelligence and Inclusion: Formerly Gang-Involved Youth As Domain Experts for Analyzing Unstructured Twitter Data",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-P-0134",
+  "year": 2019,
+  "title": "Systematic Review Management Software: An Exploration of Core Functionality and Risks of Automation Bias",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-P-0227",
+  "year": 2019,
+  "title": "Typologies and Future Signals of School Bullying Using Social Big Data Analysis",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-P-0238",
+  "year": 2019,
+  "title": "Natural Language Processing & Image Recognition Systems for Gang Violence Prevention",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-P-0239",
+  "year": 2019,
+  "title": "Smartphone-Based Intelligent System: Using AI and Motion Sensors for Real-Time Intervention during Heavy Alcohol Consumption Events",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0009",
+  "year": 2019,
+  "title": "Are There Gender, Racial, or Religious Denominational Differences in Religiosity's Effect on Alcohol Use and Binge Drinking Among Youth in the U.S.? a Propensity Score Weighting Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0171",
+  "year": 2019,
+  "title": "Unpacking the Black Box, Predicting Risk of Severe Harm",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0255",
+  "year": 2019,
+  "title": "Predictive Risk Modeling for First Time Investigations",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0315",
+  "year": 2019,
+  "title": "Launching a Computational Social Welfare Lab: Reflecting on the Benefits and Obstacles Identified in the Grand Challenge",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0318",
+  "year": 2019,
+  "title": "Effects of Personal, Social, and Environmental Characteristics on Negative Health Outcomes Among Older Adults in China",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0352",
+  "year": 2019,
+  "title": "Leveraging Methods of Data Science to Examine the Role of Gender and Psychological Distress in Hypertension",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0353",
+  "year": 2019,
+  "title": "A Comparison of Classification Tree and Logistic Regression Modeling to Predict Educational Involvement for Youth Aging out of Foster Care",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0355",
+  "year": 2019,
+  "title": "Fairness, Accountability and Transparency: Decision-Making Algorithms and the Provision of Human Services",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2019-U-0643",
+  "year": 2019,
+  "title": "Exploration in Predictive Analyses and Potential Implications",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-P-0559",
+  "year": 2020,
+  "title": "Suicide Risk Prediction Among Youth Experiencing Homelessness: A Machine Learning-Based Decision-Tree Analysis",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0310",
+  "year": 2020,
+  "title": "Predicting the Most Important Factors Involved in Supportive Adult Relationships for Youth Experiencing Homelessness",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0316",
+  "year": 2020,
+  "title": "Development and Validation of Text Mining and Machine Learning Models to Maximize the Research Value of Narrative Summaries in Administrative Child Welfare Records",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0367",
+  "year": 2020,
+  "title": "Trends in Non-Profit Sectors: A Predictive Analysis of Agency Longevity in the US",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0386",
+  "year": 2020,
+  "title": "Do Gender Quotas Foster Democratic Accountability in Post-Authoritarian Regimes? Lessons from Council Meetings in Albania",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0551",
+  "year": 2020,
+  "title": "Algorithmic Solutions to Improve Suicide Prevention Gatekeeper Training Among Youth Experiencing Homelessness: Seeking Equity without Compromising Coverage",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0591",
+  "year": 2020,
+  "title": "Empirically Derived Landlord Typology Informs Advocacy to Reduce Healthy Housing Disparities",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0669",
+  "year": 2020,
+  "title": "Using Computational Social Science to Assess Optimal Methods for HIV Prevention Information Diffusion",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0708",
+  "year": 2020,
+  "title": "Community Organizing in the Digital Age: An Exploratory Analysis of the 2017 #Womensmarch Using Deep Neural Networks (DNNs)",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2020-U-0717",
+  "year": 2020,
+  "title": "Wysa",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-P-0251",
+  "year": 2021,
+  "title": "How Nonprofits React to Economic Downturn after the 2008 Recession? Analysis By Natural Language Processing",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-P-0259",
+  "year": 2021,
+  "title": "What to Do with Those Open-Ended Questions? Analyzing Textual Data Using Structural Topic Modeling to Understand How Parents Cope during Coronavirus(COVID-19) Stay-Home Orders in Singapore",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-P-0262",
+  "year": 2021,
+  "title": "History and Future of Artificial Intelligence Related Health Care Research: A Bibliometric Analysis",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-P-0264",
+  "year": 2021,
+  "title": "Predictors of Depression Among Chinese Older Adults with Neurodegenerative Diseases: Evidence from Decision Tree Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-P-0371",
+  "year": 2021,
+  "title": "#Socialworkeducation: A Computational Analysis of Social Work Schools and Programs Using Twitter",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-U-0080",
+  "year": 2021,
+  "title": "Using Text Mining to Find Meaning in Father Narratives",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-U-0186",
+  "year": 2021,
+  "title": "Using Artificial Intelligence to Augment Network-Based, HIV Prevention for Youth Experiencing Homelessness: Results from a Large Community-Based Trial",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-U-0280",
+  "year": 2021,
+  "title": "Automated Identification of Domestic Violence in Written Child Welfare Records: A Mixed Methods Approach Using Text Mining and Machine Learning",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-U-0608",
+  "year": 2021,
+  "title": "Nothing to Show for It: Non-Degreed Debt and the Financial Conditions Associated with It",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "off_topic",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-U-0630",
+  "year": 2021,
+  "title": "Social Media Detection and Monitoring of Suicidal Risk Among Adolescents",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2021-X-0040",
+  "year": 2021,
+  "title": "Using Deep Learning to Evaluate the Distribution of Community Development Aid",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0041",
+  "year": 2022,
+  "title": "Mechanism of Underutilization of Lung Cancer Screening: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0135",
+  "year": 2022,
+  "title": "The Intersectionality of Gambling Addiction Recovery and Mental Illness: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0201",
+  "year": 2022,
+  "title": "Using Machine Learning to Identify Factors Associated with Mammography Adherence in Korean American Immigrant Women",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0207",
+  "year": 2022,
+  "title": "Predictors of Suicidal Ideation Among South Korean Adolescents: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0270",
+  "year": 2022,
+  "title": "Using Machine Learning to Code Immigrant-Serving Organizations",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0290",
+  "year": 2022,
+  "title": "Social Work Practice and Innovation through Technology and Artificial Intelligence: Systematic Literature Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0297",
+  "year": 2022,
+  "title": "(Converted as ePoster, See Poster Gallery) Predicting School Dropout Among South Korean Adolescents:  A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0394",
+  "year": 2022,
+  "title": "College Students of Asian Descents' Depressive Symptoms and Racial Microaggressions:  A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-P-0486",
+  "year": 2022,
+  "title": "Parental Gender Identity and Its Relationships to Racial Socialization Self-Efficacy, Beliefs, and Perceptions in Transracial Adoption: Using a Machine Learning Decision Tree Model",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0181",
+  "year": 2022,
+  "title": "Perceived Vulnerability to Disease (PVD), Resilience, and Mental Health Outcome of Korean Immigrants amid the COVID-19 Pandemic: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0474",
+  "year": 2022,
+  "title": "Forecasting Residential Displacement in Buffalo, NY",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0564",
+  "year": 2022,
+  "title": "Predicting Youth at High Risk of Aging out of Foster Care Using Machine Learning Methods",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0660",
+  "year": 2022,
+  "title": "Changes in the Risk Levels of Child Protection Reports during the COVID-19 Pandemic",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0688",
+  "year": 2022,
+  "title": "Using Predicted Risk to Assess Disparities in the Utilization and Delivery of Community-Based Services",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2022-U-0690",
+  "year": 2022,
+  "title": "Fairness Analysis of a Risk Stratification Model Developed to Support Child Welfare Supervisors",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-O-0005",
+  "year": 2023,
+  "title": "Harnessing Natural Language Processing to Measure Person-Centered Care in Behavioral Health Settings",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0229",
+  "year": 2023,
+  "title": "(see Poster Gallery) Effect of Juvenile Justice Financial Sanctions and Fee Repeal on Recidivism",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0310",
+  "year": 2023,
+  "title": "Predictors of Offline and Online Delinquency: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0311",
+  "year": 2023,
+  "title": "Predictors of Adolescents on Probation in South Korea: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0399",
+  "year": 2023,
+  "title": "Behavioral Health Needs of Older Adults Living in Poverty: Machine Learning-Based Predictive Models",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0408",
+  "year": 2023,
+  "title": "Intersection of Disability, School Climate, and School Violence in Inclusive Settings",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0579",
+  "year": 2023,
+  "title": "A Machine Learning Analysis of Social Work Job Advertisements in the Post-Pandemic Era",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0617",
+  "year": 2023,
+  "title": "Prediction of Subjective Wellbeing and Eudaimonia of Korean Youths and Identification of Their Primary Features Using Tree-Based Machine Learning Algorithms",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-P-0717",
+  "year": 2023,
+  "title": "Homeless Population Modeling and Trend Prediction through Identifying Key Factors and Employing Machine Learning Methods",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0156",
+  "year": 2023,
+  "title": "Using Twitter to Capture Racism in the Air: Integrating Macro and Micro-Level Factors to Predict Asian American Well-Being during the COVID-19 Pandemic",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0445",
+  "year": 2023,
+  "title": "Ethical and Methodological Concerns with Machine Learning Predicting Cognitive Functioning Among Hispanics, Blacks, and Whites in Later Life: Implications for Equity Research and Big Data",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0446",
+  "year": 2023,
+  "title": "Young Adults with the Mental Health and Criminal Justice System Involvement",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0562",
+  "year": 2023,
+  "title": "Effects of a Three-Group Social Network Intervention on Sexual Health Conversations Among Young Adults Experiencing Homelessness",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0610",
+  "year": 2023,
+  "title": "A Case Study of Algorithmic Decision-Making in Child Welfare Agencies: Frontline Practitioner Experiences and Perspectives",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0705",
+  "year": 2023,
+  "title": "Applying Machine Learning to Understand the Cause and Cost of Eviction",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0711",
+  "year": 2023,
+  "title": "A Computational Social Science Approach to Understanding Predictors of Chafee Service Receipt",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0800",
+  "year": 2023,
+  "title": "The Evidence for Risk Assessment Tools Used in CPS Investigations: A Scoping Review",
+  "label": "commentary",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0802",
+  "year": 2023,
+  "title": "Risk, Race, and Community-Based Service Referrals in Los Angeles County, California",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0803",
+  "year": 2023,
+  "title": "Developing and Implementing a Predictive Risk Model to Support Child Protection Supervisors: Results from Los Angeles County Risk Stratification Pilot",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2023-U-0819",
+  "year": 2023,
+  "title": "Predicting Health Outcomes through Machine Learning in Pediatric Heart Transplantation: Use of National Data from the United Network for Organ Sharing",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0052",
+  "year": 2024,
+  "title": "Unpacking Neutrality Discourse in Social Work: Exploring Twitter Responses to Anti-Trans Legislation",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0153",
+  "year": 2024,
+  "title": "The Ethical Implications of the Digital Welfare State for People with Disabilities: Balancing Inclusion and Discrimination",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0331",
+  "year": 2024,
+  "title": "Future Signals of Adolescent Delinquency Using Social Big Data: Focusing on the Causes and Types of Adolescent Delinquency in South Korea",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0406",
+  "year": 2024,
+  "title": "Use of Machine Learning to Extract Predictors of Graduation from Social Networks in Therapeutic Communities",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0496",
+  "year": 2024,
+  "title": "Predicting the Long-Term Course of Drinking Among Military Veterans: A Data-Driven Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0499",
+  "year": 2024,
+  "title": "Preliminary Profiling Strategies Schools Use to Promote Social-Emotional Learner in and Outside of the Classroom",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-P-0696",
+  "year": 2024,
+  "title": "Why Are so Many People Who Experience Homelessness in a Canadian City from out of Town? a Report on a Preliminary Mixed Methods Study Using Machine Learning Models to Understand Migration and Homelessness",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0006",
+  "year": 2024,
+  "title": "Understanding Time Spent on Unpaid Care Work in India through a Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0029",
+  "year": 2024,
+  "title": "Applying Machine Learning to Human Resources Data: Predicting Job Turnover Among Community Mental Health Center Employees",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0036",
+  "year": 2024,
+  "title": "Feasibility and Acceptability of an Artificial Intelligence (AI-) Enabled Distress Monitoring Tool for Adolescents and Young Adults with Cancer: A Clinial Study",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0070",
+  "year": 2024,
+  "title": "Effects of Criminal Justice Financial Sanctions and Fee Repeal on Justice-Involved Individuals' Financial Burden and Recidivism",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0090",
+  "year": 2024,
+  "title": "Developing a Suicide Risk Forecasting Tool for Youth and Examining Potential Racial Biases in Algorithmic Prediction",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0118",
+  "year": 2024,
+  "title": "Democratizing Data Science Methods for Social Work Students: Report on Organizing the Summer Institute of Computational Social Science",
+  "label": "commentary",
+  "label_votes": "1/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "reception",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0125",
+  "year": 2024,
+  "title": "Predictors of Identity Fraud Victimization Among a Population-Based Cohort of Adolescent Youth in Foster Care",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0185",
+  "year": 2024,
+  "title": "Predicting Suicidal Ideation Among Native American High Schoolers in California",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0380",
+  "year": 2024,
+  "title": "The Importance of Migration-Related Cultural Stress in Classifying Depression and PTSD Among Hurricane Survivors: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0470",
+  "year": 2024,
+  "title": "Exploring Father-Adolescent Closeness: A Random Forest Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0559",
+  "year": 2024,
+  "title": "Examination of Fairness in Machine Learning Applied to Child Welfare Considering Intersectionality",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2024-U-0726",
+  "year": 2024,
+  "title": "Integrating APS Knowledge into an Algorithm to Identify Cases for MDT Review",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-G-0014",
+  "year": 2025,
+  "title": "Unraveling the Complexities of Detecting Implicit Anti-Asian and Pro-Asian Speech on Social Media: Challenges, Insights, and the Potential of Large Language Models",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-G-0015",
+  "year": 2025,
+  "title": "Analysis of Case Notes to Provide Insights into Racial Inequality and Patient Outcomes in Brazilian Hospitals",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-G-0021",
+  "year": 2025,
+  "title": "Machine Learning Insights into Mental Health Among Venezuelan Migrants in Colombia: Pre- and Post-Migration Stressors in Predicting Major Depressive Episodes",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0058",
+  "year": 2025,
+  "title": "Exploring the Use of Socially Assistive Robot Among Socially Isolated Korean American Older Adults",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0104",
+  "year": 2025,
+  "title": "Identifying Inquiries for an Artificial Intelligence-Based Informatic Chatbot Among Young Adult Survivors of Childhood Cancer Using a Topic Modeling Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0123",
+  "year": 2025,
+  "title": "Predicting Adolescent Suicidal Ideation: The Role of Physical Activity Evaluated through Machine Learning Models",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0141",
+  "year": 2025,
+  "title": "An Application of AI in the Systematic Review Process: A Comparative Analysis of Chatgpt's Abstract Screening Efficacy",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0166",
+  "year": 2025,
+  "title": "Exploring How Gpt-Based Chatbots Can Grow Students' Critical Thinking, Enhance Clinical Case Conceptualization, and Increase Awareness of Ethical Concerns/Biases",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "reception",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0280",
+  "year": 2025,
+  "title": "(SEE VIRTUAL POSTER GALLERY) Use of Chatgpt for Qualitative Data Analysis: Implication for Social Work Research",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0332",
+  "year": 2025,
+  "title": "AI Anxiety and Its Related Factors: A Scoping Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0373",
+  "year": 2025,
+  "title": "(SEE VIRTUAL POSTER GALLERY) Child Protection in the Digital Age in South Korea: Professionals' Perceptions on Artificial Intelligence (AI) and Big Data Efficacy and Ethical Challenges",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0700",
+  "year": 2025,
+  "title": "Using Geospatial Analyses of Socioeconomic Factors to Inform Racial and Ethnic Disproportionality in Child Welfare",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "off_topic",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0852",
+  "year": 2025,
+  "title": "Application of Artificial Intelligence in Social Work Qualitative Research",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-P-0897",
+  "year": 2025,
+  "title": "Contextualized Poverty Targeting through Multimodal Spatial Data and Machine Learning in Congo",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0056",
+  "year": 2025,
+  "title": "Development of an Ontology of Social Determinants of Health for Pediatrics",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0078",
+  "year": 2025,
+  "title": "The Loneliness Epidemic, Intersecting Risk Factors and Relations to Mental Health Help-Seeking: A Population-Based Study during COVID-19 Lockdown in Canada",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0131",
+  "year": 2025,
+  "title": "The Causal Effects of Foster Care: Why the Intensive Margins Matter",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0165",
+  "year": 2025,
+  "title": "Parent Information Seeking and Sharing: Using Unsupervised Machine Learning to Identify Common Parenting Issues",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0169",
+  "year": 2025,
+  "title": "Can Artificial Intelligence Write a Good Clinical Note? Using NLP Methods to Determine Clinic Note Quality",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0170",
+  "year": 2025,
+  "title": "Harnessing Data Science to Assess Racial, Ethnic, and Linguistic Diversity in the Clinical Social Worker Workforce",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0239",
+  "year": 2025,
+  "title": "Leveraging Artificial Intelligence As a Tool for Rendering Family-Centered Services: A Scoping Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0240",
+  "year": 2025,
+  "title": "Finding Understanding and Support: Navigating Online Communities to Share and Connect at the Intersection of Abuse and Foster Care Experiences",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0313",
+  "year": 2025,
+  "title": "Which Factors Contribute to the Dismissal of Eviction Filings? a Computational Analysis of Court Cases",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0352",
+  "year": 2025,
+  "title": "Ethical Integration of AI in Social Work Education: A Mixed-Methods Study",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0407",
+  "year": 2025,
+  "title": "Exploring Heterogeneity in Kinship Caregivers\u2019 Financial Hardship Experiences and Financial Capabilities",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0515",
+  "year": 2025,
+  "title": "Examining the Relationship of Risk for out of Home Placement in Early Childhood and Adolescent Placements in a California Cohort",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0551",
+  "year": 2025,
+  "title": "When Is Maltreatment Confirmed? Using Unsupervised Machine Learning to Advance Understanding of Child Protective Services Decisions",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0704",
+  "year": 2025,
+  "title": "A Scoping Review of the Use of Artificial Intelligence (AI) and Large Language Models (LLMs) Related to LGBTQ+ Health: Implications for Social Work Practice and Research",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0705",
+  "year": 2025,
+  "title": "A Method for Assessing and Ensuring the Quality of Artificial Intelligence (AI) Chatbots for LGBTQ+ Populations",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0707",
+  "year": 2025,
+  "title": "Leveraging the Unique and Essential Role of Participatory Social Work Research in Artificial Intelligence (AI) for LGBTQ+ Health",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0716",
+  "year": 2025,
+  "title": "Artificial Intelligence (AI) and Prompt Engineering: Applying the Risen Framework to Enhance Social Work Research and Practices within LGBTQ+ Communities",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0747",
+  "year": 2025,
+  "title": "The Machine in Propensity Scores: Comparison of Machine-Learning Models and Logistic Regression in Propensity Score Matching",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0823",
+  "year": 2025,
+  "title": "Machine Learning Approaches for Detecting and Preventing Financial Fraud: Synthesizing the Evidence",
+  "label": "commentary",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2025-U-0832",
+  "year": 2025,
+  "title": "Harnessing Community-Informed Geospatial Data to Identify Food Insecure Households",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-F-0009",
+  "year": 2026,
+  "title": "A Machine Learning Analysis of Socio-Ecological and Psychological Risk Factors for Suicide Among a Nationally Representative Sample of Ghanaian Junior High School Students",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-F-0016",
+  "year": 2026,
+  "title": "Enhancing Treatment Outcome Predictions in Substance Use Programs: A Comparative Study of a Gradient-Boosted Bootstrap Model and Logistic Regression",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-F-0110",
+  "year": 2026,
+  "title": "Natural Language Processing in Higher Education:  Advancing Admissions, Pedagogy, and Student Success",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-F-0149",
+  "year": 2026,
+  "title": "Artificial Intelligence and Environmental Justice: A Critical Review of Social Work Literature",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-G-0011",
+  "year": 2026,
+  "title": "Designing a Machine Learning\u00e2\u20ac\u2018Based Model Integrating Clinical Orders for Child Abuse and Neglect Identification with Focus on Reducing Socio\u00e2\u20ac\u2018Economic Bias",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-G-0012",
+  "year": 2026,
+  "title": "Empowering Social Work Research with Gpt: A Framework for Scalable, Ethical Thematic Analysis in Public Health Studies",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-G-0029",
+  "year": 2026,
+  "title": "A Citation Network Analysis of Social Work Scholarship: How the Grand Challenges for Social Work Aid Our Understanding of Interrelated Social Problems",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-O-0013",
+  "year": 2026,
+  "title": "Oral Health and Social Engagement of the Elderly",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0020",
+  "year": 2026,
+  "title": "Bridging the Digital Divide with AI: Conversational Analyses of Older Adults\u2019 Social Engagement with Socially Assistive Robots",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0085",
+  "year": 2026,
+  "title": "Predicting Adolescent Suicide Attempts: A Comparative Supervised Machine Learning Study",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0088",
+  "year": 2026,
+  "title": "Centering Voices: Culturally Responsive Support for Central and South Asian Newcomers Using AI and Fitness Trackers",
+  "label": "reception",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0092",
+  "year": 2026,
+  "title": "Deaf Community Members in the Dominican Republic: Exploring Needs and Potential Interventions",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0147",
+  "year": 2026,
+  "title": "Incorporating Machine Learning and Statistical Methods to Address Maternal Healthcare Disparities in the United States: A Systematic Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0210",
+  "year": 2026,
+  "title": "The Role of AI in Physical Activity Research Addressing Mental Health in Adolescents and Young Adults: A Scoping Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0229",
+  "year": 2026,
+  "title": "Artificial Intelligence-Assisted Intervention in Supporting Pepople Experiencing Homelessness: A Systematic Review",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0256",
+  "year": 2026,
+  "title": "From Thoughts to Actions: Predicting Suicidal Ideation and Attempts in Youth Using Sex-Based Machine Learning Models",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0317",
+  "year": 2026,
+  "title": "Leveraging Artificial Intelligence to Standardize Housing Interventions:  A Participatory Model Integrating Practice Wisdom, Lived Experience, and Policy",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0335",
+  "year": 2026,
+  "title": "Narratives of Adolescent Suicide in South Korea: A Text Mining Approach to Online Discussions",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0341",
+  "year": 2026,
+  "title": "Exploring Innovation in Nonprofit Organizations: Topic Modeling of Articles of Incorporation and Multilevel Analysis",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0386",
+  "year": 2026,
+  "title": "Comparing a Machine Learning Algorithm to Two Jails\u2019 Practice-As-Usual for Identifying Suicide Risk",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0446",
+  "year": 2026,
+  "title": "Constructing Old Age: A Historical Study of Framing, Tone, and Genre in Aging Discourse",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0486",
+  "year": 2026,
+  "title": "Using AI to Explore What Landlords Care about in Promoting Housing Stability",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0513",
+  "year": 2026,
+  "title": "Exploring AI-Driven Mobile Applications to Support Child Mental Health: A Systematic Review and Analysis",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0515",
+  "year": 2026,
+  "title": "Health Equity at Risk? a Systematic Review of AI-Powered Health Education Apps and Emerging Disparities",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0517",
+  "year": 2026,
+  "title": "Applications of Artificial Intelligence in Intimate Partner Violence Research: A Bibliometric Review and Systematic Analysis",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0581",
+  "year": 2026,
+  "title": "Conceptual Model of Refugee Family Dynamics: A Study with Sri Lankan Tamils",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0646",
+  "year": 2026,
+  "title": "Benchmarking Local Large Language Models for Child Welfare Text Analysis",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0690",
+  "year": 2026,
+  "title": "AI-Powered Deliberate Practice: Assessing Feedback Fidelity and Believability of the Chatbot in the Virtual Motivational Interviewing (VMI) App",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0747",
+  "year": 2026,
+  "title": "Using Machine Learning to Predict Depression Among Adolescents Living with HIV (ALWHIV) in Uganda",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0770",
+  "year": 2026,
+  "title": "Artificial Intelligence-Based Socially Assistive Robots in Dementia Care: A Systematic Review and Meta-Analysis",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0780",
+  "year": 2026,
+  "title": "Characterizing Online Activities Contributing to Suicide Mortality Among Youth",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-P-0817",
+  "year": 2026,
+  "title": "Discourses on Care Technologies for the Elderly and People with Disabilities",
+  "label": "reception",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0015",
+  "year": 2026,
+  "title": "Viral Solidarity: How Women Leverage Social Media for Gender-Based Violence Support and Change",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0088",
+  "year": 2026,
+  "title": "Forecasting Harm with Machine Learning and Causal Inference: The Impact of Anti-LGBTQ+ Legislation on Youth Suicidality",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0089",
+  "year": 2026,
+  "title": "Evaluating Mental Health Discourse in Black Online Communities: An Exploratory Analysis Using Topic Modeling and Emotion Recognition",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0091",
+  "year": 2026,
+  "title": "Use of Retrieval-Augmented Large Language Model for COVID-19 Fact-Checking",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0154",
+  "year": 2026,
+  "title": "Who Gets to Learn AI? Institutional and Socioeconomic Barriers Shaping Social Science Students' Literacy",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0155",
+  "year": 2026,
+  "title": "Understanding AI Integration in Child Welfare Practice: Experiences and Attitudes of Legal Professionals",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0156",
+  "year": 2026,
+  "title": "Perceived Utility and Knowledge As Predictors of Generative AI Use Among Emerging Social Workers",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0157",
+  "year": 2026,
+  "title": "Reframing AI Literacy through an Ethics- and Justice-Focused Lens: A Qualitative Analysis of Social Science Students' Experiences and Perspectives",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0232",
+  "year": 2026,
+  "title": "Evaluating Large Language Models for Mental Health",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0233",
+  "year": 2026,
+  "title": "Social Work Opportunities and Challenges with Generative AI: A Narrative Study at the Precipice of Automation or Intergration",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0234",
+  "year": 2026,
+  "title": "AI-Powered Documentation in Mental Health: Opportunities, Challenges, and Ethical Considerations",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0235",
+  "year": 2026,
+  "title": "Understanding Therapists Perspectives on Generative AI in Mental Health Contexts: A Social Media Analysis",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0261",
+  "year": 2026,
+  "title": "University Student Attitudes Towards and Intentions to Use Generative AI Use in the Classroom: A Pre- and Post-Semester Comparative Study",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0295",
+  "year": 2026,
+  "title": "Developing and Testing a Community-Level Predictive Model of Homelessness",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0403",
+  "year": 2026,
+  "title": "Discretion in Fidelity Practice: How Frontline Workers Navigate Artificial Intelligence While Meeting Federal Policy Compliance Demands",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0409",
+  "year": 2026,
+  "title": "AI in Combating Poverty and Economic Inequality",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0411",
+  "year": 2026,
+  "title": "AI in Supporting LGBTQ+ Communities",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0414",
+  "year": 2026,
+  "title": "AI in Eco-Social Work and Climate Change",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0420",
+  "year": 2026,
+  "title": "AI in International Social Work and Global Issues",
+  "label": "commentary",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "commentary",
+   "opus": "commentary",
+   "sonnet": "commentary"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0521",
+  "year": 2026,
+  "title": "Digital Pulse of Development: Constructing Poverty Metrics from Social Media Discourse",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0522",
+  "year": 2026,
+  "title": "A Machine Learning Approach to Social Work Intervention to Address High-Risk Problem Gambling",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0526",
+  "year": 2026,
+  "title": "Most Important Predictors of Father-Child Contact in the U.S. Child Welfare System: A Machine Learning Approach",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0615",
+  "year": 2026,
+  "title": "State Housing Policy Environments and Suicide Risk Among Households Experiencing Eviction and Foreclosure from 2011 to 2021",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0631",
+  "year": 2026,
+  "title": "Navigating the AI Frontier: Social Work Educators\u2019 Perspectives on Artificial Intelligence Integration in Higher Education",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0664",
+  "year": 2026,
+  "title": "Defining Affirmation: Generating an Affirmative Clinical Framework Utilizing Artificial Intelligence",
+  "label": "empirical",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "empirical"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0706",
+  "year": 2026,
+  "title": "Navigating Complexity and Cultivating Resilience: Human Service Providers\u2019 Perspectives on Afghan Refugee Resettlement in the U.S",
+  "label": "empirical",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "empirical",
+   "opus": "empirical",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0730",
+  "year": 2026,
+  "title": "Community Resistance Against Data Center Development in 'Data Center Alley'",
+  "label": "reception",
+  "label_votes": "2/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "off_topic"
+  }
+ },
+ {
+  "source": "sswr",
+  "id": "2026-U-0735",
+  "year": 2026,
+  "title": "Calculated Risks: The Power of Predictive Algorithms to Regulate Black Families in Child Welfare",
+  "label": "reception",
+  "label_votes": "3/3",
+  "model_votes": {
+   "fable": "reception",
+   "opus": "reception",
+   "sonnet": "reception"
+  }
+ }
+]
