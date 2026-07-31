@@ -296,7 +296,7 @@
     <div class="netwrap">
       <div class="netcanvas"><svg id="net" role="img" aria-label="Interactive co-authorship network; the same authors and counts are listed in the numbered key beside it."></svg></div>
       <aside class="netkey">
-        <h4>Node colour — the orientation of that author's work</h4>
+        <h4>Node colour: the orientation of that author's work</h4>
         <div class="rampbar"></div>
         <div class="ramplab"><span>commentary</span><span>study of AI</span><span>empirical</span></div>
         <h4 style="margin-top:15px">Authors, by number of corpus items</h4>
@@ -423,7 +423,7 @@ const NETDATA = {"journals": {"venue": "journals", "min_items": 2, "min_links": 
     links = g.links.map(l => Object.assign({}, l));
     meta.textContent = `${g.nodes.length} authors · ${g.links.length} collaborations`;
     document.getElementById("netthresh").innerHTML =
-      `THRESHOLD — showing only authors with <b>${g.min_items} or more</b> items `
+      `THRESHOLD: showing only authors with <b>${g.min_items} or more</b> items `
       + `<b>and ${g.min_links} or more</b> co-author links`;
     cap.innerHTML = `Inclusion: authors on <b>${g.min_items}+</b> corpus items holding <b>${g.min_links}+</b> `
       + `co-author links, applied repeatedly so every node shown really has that many links within the graph `
@@ -460,7 +460,7 @@ const NETDATA = {"journals": {"venue": "journals", "min_items": 2, "min_links": 
       t.setAttribute("pointer-events", "none");
       t.textContent = n.num;
       const ttl = document.createElementNS(NS, "title");
-      ttl.textContent = `${n.name} — ${n.n} items, ${n.cat}`;
+      ttl.textContent = `${n.name}: ${n.n} items (${n.split[0]} empirical / ${n.split[1]} study of AI / ${n.split[2]} commentary)`;
       g.appendChild(c); g.appendChild(t); g.appendChild(ttl);
       gNode.appendChild(g); n.el = g; n.circle = c;
     });
