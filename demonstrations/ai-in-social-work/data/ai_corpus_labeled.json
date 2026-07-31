@@ -1,0 +1,4690 @@
+[
+ {
+  "source": "swrd",
+  "id": 108662,
+  "year": 1989,
+  "title": "Prediction and decision making in child welfare.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v05n03_04",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108670,
+  "year": 1989,
+  "title": "First generation expert systems in social welfare.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v04n01_15",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108719,
+  "year": 1989,
+  "title": "Artificial intelligence: An aide in child protective service caseload control systems.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v04n01_14",
+  "label": "commentary",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54150,
+  "year": 1990,
+  "title": "EXPERT SYSTEMS AND THEIR POTENTIAL USES IN SOCIAL-WORK",
+  "journal": "Families in Society",
+  "doi": "10.1177/104438949007100404",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108524,
+  "year": 1990,
+  "title": "Partners in thinking and learning.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v07n03_01",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108631,
+  "year": 1990,
+  "title": "Computer assisted decision making.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v06n04_03",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108635,
+  "year": 1990,
+  "title": "Expert systems: New tools for professional decision-making.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v06n04_02",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108645,
+  "year": 1990,
+  "title": "The Continuum of Care System: A decision support system in human services.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v06n01_16",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108648,
+  "year": 1990,
+  "title": "Developing expert systems.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v06n04_04",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108651,
+  "year": 1990,
+  "title": "Teaching students by having them emulate an expert system.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v07n03_10",
+  "label": "commentary",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "commentary",
+   "Sonnet5": "empirical",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 121957,
+  "year": 1991,
+  "title": "Ethical dilemmas in applying second-wave information technology to social work practice.",
+  "journal": "Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108622,
+  "year": 1992,
+  "title": "A knowledge based system for assisting in differential diagnosis of chemically dependent/mentally ill patients.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v08n03_08",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108593,
+  "year": 1993,
+  "title": "Expert system development in ill-structured domains: The application of artificial intelligence technology to diagnosis and assessment in the human services.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v09n03_16",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108599,
+  "year": 1993,
+  "title": "Desktop expert systems: Applications for social services.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v09n03_17",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108602,
+  "year": 1993,
+  "title": "From rules to prototypes: Adapting expert systems to the nature of expertise in clinical information processing.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v09n03_15",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 108612,
+  "year": 1993,
+  "title": "DTREE, the electronic DSM-III\u2014R.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/J407v10n01_08",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 126789,
+  "year": 1993,
+  "title": "Ethical Dilemmas in Social Work with the Application of Computer Technology",
+  "journal": "Social Work-Maatskaplike Werk",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 34164,
+  "year": 1994,
+  "title": "UNDERSTANDING AND REPRESENTING HUMAN-SERVICES KNOWLEDGE - THE PROCESS OF DEVELOPING EXPERT-SYSTEMS",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1300/j079v19n01_07",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 84099,
+  "year": 1994,
+  "title": "Teaching applications of expert systems",
+  "journal": "Journal of Teaching in Social Work",
+  "doi": "10.1300/j067v09n01_04",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 106736,
+  "year": 1994,
+  "title": "Soft computing for soft technologies: artificial neural networks and fuzzy set theory for human services.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 106738,
+  "year": 1994,
+  "title": "Reliability of an automated decision support system for behavioral treatment planning: preliminary results from the mental retardation-expert.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 107052,
+  "year": 1994,
+  "title": "Using artificial intelligence to model juvenile recidivism patterns.",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 32744,
+  "year": 1997,
+  "title": "Computer technology in clinical practice: A critical analysis",
+  "journal": "Social Work & Social Sciences Review",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 85109,
+  "year": 1998,
+  "title": "Expert system for utilization review of alcohol and drug abuse cases",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 85074,
+  "year": 1999,
+  "title": "Spss neural connection 2.1",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/j017v16n04_05",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 85092,
+  "year": 1999,
+  "title": "The Application of Artificial Neural Networks for Outcome Prediction in a Cohort of Severely Mentally 111 Outpatients",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/j017v16n02_05",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 30934,
+  "year": 2001,
+  "title": "Predicting placement in foster care: A comparison of logistic regression and neural network analysis",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1300/j079v28n02_01",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 85021,
+  "year": 2002,
+  "title": "Building a Model to Predict Caseworker and Supervisor Turnover Using a Neural Network and Logistic Regression",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/j017v19v04_05",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 84955,
+  "year": 2003,
+  "title": "Predicting Child Physical Abuse Recurrence: Comparison of a Neural Network to Logistic Regression",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/j017v21n04_06",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 29023,
+  "year": 2005,
+  "title": "Thinking processes in social workers' use of a clinical decision support system: A qualitative study",
+  "journal": "Social Work Research",
+  "doi": "10.1093/swr/29.1.21",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 29086,
+  "year": 2005,
+  "title": "Social work and the new semantic information revolution",
+  "journal": "Administration in Social Work",
+  "doi": "10.1300/j147v29n04_02",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 26142,
+  "year": 2009,
+  "title": "MORAL MACHINES: TEACHING ROBOTS RIGHT FROM WRONG",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228830903093346",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 51867,
+  "year": 2009,
+  "title": "Child Welfare Workers' Adoption of Decision Support Technology",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228830902749039",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 46004,
+  "year": 2012,
+  "title": "Mark My Words: The Design of an Innovative Methodology to Detect and Analyze Interpersonal Health Conversations in Web and Social Media",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2012.743394",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 46517,
+  "year": 2012,
+  "title": "Computer-Tailored Intervention for Juvenile Offenders",
+  "journal": "Journal of Social Work Practice in the Addictions",
+  "doi": "10.1080/1533256x.2012.728107",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 40574,
+  "year": 2015,
+  "title": "Assessing the Effect of an Electronic Decision Support System on Children's Mental Health Service Outcomes",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2015.1039687",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 37692,
+  "year": 2016,
+  "title": "Predictive Risk Modelling to Prevent Child Maltreatment and Other Adverse Outcomes for Service Users: Inside the 'Black Box' of Machine Learning",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcv031",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 35278,
+  "year": 2017,
+  "title": "Comparison of Neurocognition and Social Cognition between Schizoaffective Disorder, Mood Disorders, and Schizophrenia",
+  "journal": "Social Work Research",
+  "doi": "10.1093/swr/svx009",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 36998,
+  "year": 2017,
+  "title": "Teaching NoteTeaching Student Interviewing Competencies Through Second Life",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2016.1198292",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 120110,
+  "year": 2017,
+  "title": "Review of <em>The Spirituality of Awe: Challenges to the Robotic Revolution</em>. Kirk J. Schneider. Reviewed by Daniel Liechty.",
+  "journal": "The Journal of Sociology & Social Welfare",
+  "doi": "oai:scholarworks.wmich.edu:jssw-4138",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 34589,
+  "year": 2018,
+  "title": "Machine Learning for Drug Overdose Surveillance",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1416511",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 34763,
+  "year": 2018,
+  "title": "Food for Thought: Analyzing Public Opinion on the Supplemental Nutrition Assistance Program",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1416514",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 69514,
+  "year": 2018,
+  "title": "Piloting the Use of Artificial Intelligence to Enhance HIV Prevention Interventions for Youth Experiencing Homelessness",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/701439",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 69544,
+  "year": 2018,
+  "title": "The Role of Social Worker in Promoting Immigrants' Integration",
+  "journal": "Social Work in Public Health",
+  "doi": "10.1080/19371918.2018.1546252",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 69643,
+  "year": 2018,
+  "title": "Predicting recidivism among youth offenders: Augmenting professional judgement with machine learning algorithms",
+  "journal": "Journal of Social Work",
+  "doi": "10.1177/1468017317743137",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 70185,
+  "year": 2018,
+  "title": "Predicting Movement of Homeless Young Adults: Artificial Neural Networks and Generalized Linear Models",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/696129",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 70348,
+  "year": 2018,
+  "title": "Themis-ml: A Fairness-Aware Machine Learning Interface for End-To-End Discrimination Discovery and Mitigation",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1416512",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 70407,
+  "year": 2018,
+  "title": "Can Machine Learning Create an Advocate for Foster Youth?",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1416513",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 70753,
+  "year": 2018,
+  "title": "Applications of Machine Learning Methods to Predict Readmission and Length-of-Stay for Homeless Families: The Case of Win Shelters in New York City",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1418703",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 70763,
+  "year": 2018,
+  "title": "Measuring the Unmeasurable-A Study of Domestic Violence Risk Prediction and Management",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2017.1417953",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 67780,
+  "year": 2019,
+  "title": "Predicting HCV Incidence in Latinos with High-Risk Substance Use: A Data Science Approach",
+  "journal": "Social Work in Public Health",
+  "doi": "10.1080/19371918.2019.1635948",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 67901,
+  "year": 2019,
+  "title": "E-social work and at-risk populations: technology and robotics in social intervention with elders. The case of Spain",
+  "journal": "European Journal of Social Work",
+  "doi": "10.1080/13691457.2018.1423550",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 69336,
+  "year": 2019,
+  "title": "Challenges in Using Big Data to Develop Decision Support Systems for Social Work in Germany",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2019.1614513",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 109134,
+  "year": 2019,
+  "title": "Technicist education: paving the way for the rise of the social work robots?",
+  "journal": "Critical and Radical Social Work",
+  "doi": "10.1332/204986019x15491042559718",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 110366,
+  "year": 2019,
+  "title": "THE ETHICS AND POLITICS OF HUMAN SERVICE TECHNOLOGY: THE CASE OF PREDICTIVE RISK MODELING IN NEW ZEALAND'S CHILD PROTECTION SYSTEM",
+  "journal": "Hong Kong Journal of Social Work",
+  "doi": "10.1142/S0219246219000044",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 64874,
+  "year": 2020,
+  "title": "Reasons for Social Work Referrals in an Urban Safety-Net Population: A Natural Language Processing and Market Basket Analysis Approach",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2020.1817834",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 65318,
+  "year": 2020,
+  "title": "Adapting 'Sunshine,' A Socially Assistive Chat Robot for Older Adults with Cognitive Impairment: A Pilot Study",
+  "journal": "Journal of Gerontological Social Work",
+  "doi": "10.1080/01634372.2020.1789256",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 66203,
+  "year": 2020,
+  "title": "The Development of Algorithmically Based Decision-Making Systems in Children's Protective Services: Is Administrative Data Good Enough?",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcz157",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 66614,
+  "year": 2020,
+  "title": "A Call to Action on Artificial Intelligence and Social Work Education: Lessons Learned from A Simulation Project Using Natural Language Processing",
+  "journal": "Journal of Teaching in Social Work",
+  "doi": "10.1080/08841233.2020.1813234",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "empirical",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 66966,
+  "year": 2020,
+  "title": "Understanding crime and demographic influence on non-motorized trips: Macro-level analysis",
+  "journal": "Journal of Human Behavior in the Social Environment",
+  "doi": "10.1080/10911359.2019.1676360",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61646,
+  "year": 2021,
+  "title": "Predictive risk modelling and the mistaken equation of socio-economic disadvantage with risk of maltreatment",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcaa182",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61676,
+  "year": 2021,
+  "title": "Automated Identification of Domestic Violence in Written Child Welfare Records: Leveraging Text Mining and Machine Learning to Enhance Social Work Research and Evaluation",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/712734",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 62520,
+  "year": 2021,
+  "title": "New media platform's understanding of Chinese social workers' anti-epidemic actions: an analysis of network public opinion based on COVID-19",
+  "journal": "Social Work in Public Health",
+  "doi": "10.1080/19371918.2021.1954127",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 62606,
+  "year": 2021,
+  "title": "Social Work and Artificial Intelligence: Into the Matrix",
+  "journal": "Social Work",
+  "doi": "10.1093/sw/swab028",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 63630,
+  "year": 2021,
+  "title": "Examining Impacts of a Peer-Based Mindfulness and Yoga Intervention to Reduce Interpersonal Violence Among Young Adults Experiencing Homelessness",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/712957",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 64157,
+  "year": 2021,
+  "title": "SOCIAL WORK 4.0? THE FOURTH INDUSTRIAL REVOLUTION AND SOCIAL WORK EDUCATION: A SOUTH AFRICAN PERSPECTIVE",
+  "journal": "Social Work-Maatskaplike Werk",
+  "doi": "10.15270/52-2-946",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 64233,
+  "year": 2021,
+  "title": "Role of the Health System in Combating Covid-19: Cross-Section Analysis and Artificial Neural Network Simulation for 124 Country Cases",
+  "journal": "Social Work in Public Health",
+  "doi": "10.1080/19371918.2020.1856750",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 65126,
+  "year": 2021,
+  "title": "Social work and technology: Text mining three decades of scholarly literature (1985-2018)",
+  "journal": "Journal of Social Work",
+  "doi": "10.1177/1468017320948333",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 94411,
+  "year": 2021,
+  "title": "Using Machine Learning in Burnout Prediction: A Survey",
+  "journal": "Child & Adolescent Social Work Journal",
+  "doi": "10.1007/s10560-020-00733-w",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 59200,
+  "year": 2022,
+  "title": "On the Frontlines: The Impact of the COVID-19 Pandemic on Social Workers' Well-Being",
+  "journal": "Social Work",
+  "doi": "10.1093/sw/swac050",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 60395,
+  "year": 2022,
+  "title": "Getting to the Root of the Problem: A Decision-Tree Analysis for Suicide Risk Among Young People Experiencing Homelessness",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/715211",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61151,
+  "year": 2022,
+  "title": "Unfolding Social Work Research to Address the COVID-19 Impact: A Text Mining literature Analysis",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcac025",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61153,
+  "year": 2022,
+  "title": "Predictive risk modeling to identify homeless clients at risk for prioritizing services using routinely collected data",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2022.2042461",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61204,
+  "year": 2022,
+  "title": "Text-Mining Open-Ended Survey Responses Using Structural Topic Modeling: A Practical Demonstration to Understand Parents' Coping Methods During the COVID-19 Pandemic in Singapore",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2022.2036301",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 61888,
+  "year": 2022,
+  "title": "Caregivers' use of robots and their effect on work environment - a scoping review",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2021.2000554",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 62200,
+  "year": 2022,
+  "title": "COVID-19 vaccine willingness and hesitancy among residents in Qatar: a quantitative analysis based on machine learning",
+  "journal": "Journal of Human Behavior in the Social Environment",
+  "doi": "10.1080/10911359.2021.1973642",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 62346,
+  "year": 2022,
+  "title": "Predicting Chronic Homelessness: The Importance of Comparing Algorithms using Client Histories",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2021.1972502",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 62497,
+  "year": 2022,
+  "title": "Problematising Artificial Intelligence in Social Work Education: Challenges, Issues and Possibilities",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcab168",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 63953,
+  "year": 2022,
+  "title": "Depression Prediction amongst Chinese Older Adults with Neurodegenerative Diseases: A Performance Comparison between Decision Tree Model and Logistic Regression Analysis",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcaa237",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 64713,
+  "year": 2022,
+  "title": "#SocialWorkEducation: A Computational Analysis of Social Work Programs on Twitter",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2020.1817821",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 73110,
+  "year": 2022,
+  "title": "Three roads to Rome? Comparative policy analysis of predictive tools in child protection services in Aotearoa New Zealand, England, &amp; Denmark",
+  "journal": "Nordic Social Work Research",
+  "doi": "10.1080/2156857x.2021.1999846",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 82318,
+  "year": 2022,
+  "title": "Social robots in pediatric oncology: Opinions of health care providers",
+  "journal": "Journal of Psychosocial Oncology",
+  "doi": "10.1097/or9.0000000000000073",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 100432,
+  "year": 2022,
+  "title": "Resist, Regulate, Reimagine, and Reinforce: How Social Workers can Advocate for Digital Inclusion",
+  "journal": "Columbia Social Work Review",
+  "doi": "10.52214/cswr.v20i1.9643",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 52202,
+  "year": 2023,
+  "title": "Social Work Research in the Age of Artificial Intelligence",
+  "journal": "Families in Society",
+  "doi": "10.1177/10443894231200811",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57532,
+  "year": 2023,
+  "title": "Technology Acceptance Models from Different Viewpoints of Caregiver, Receiver, and Care Facility Administrator: Lessons from Long-Term Implementation Using Baby-Like Interactive Robot for Nursing Home Residents with Dementia",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2023.2292058",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "2/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "reception",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57658,
+  "year": 2023,
+  "title": "The End of the World as We Know It? ChatGPT and Social Work",
+  "journal": "Social Work",
+  "doi": "10.1093/sw/swad044",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57949,
+  "year": 2023,
+  "title": "Artificial Intelligence and Implications for the Australian Social Work Journal",
+  "journal": "Australian Social Work",
+  "doi": "10.1080/0312407x.2023.2247833",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58431,
+  "year": 2023,
+  "title": "Developing a natural language-based AI-chatbot for social work training: an illustrative case study",
+  "journal": "China Journal of Social Work",
+  "doi": "10.1080/17525098.2023.2176901",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58512,
+  "year": 2023,
+  "title": "Comparing Naturalistic Mental Health Expressions on Student Loan Debts Using Reddit and Twitter",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2023.2202668",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58523,
+  "year": 2023,
+  "title": "AI Creates the Message: Integrating AI Language Learning Models into Social Work Education and Practice",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2023.2189878",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58636,
+  "year": 2023,
+  "title": "Time to Move Beyond the ASWB Licensing Exams: Can Generative Artificial Intelligence Offer a Way Forward for Social Work?",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315231166125",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58671,
+  "year": 2023,
+  "title": "Detecting Intensity of Anxiety in Language of Student Veterans with Social Anxiety Using Text Analysis",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2022.2163452",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58740,
+  "year": 2023,
+  "title": "Automated decision-making, discretion and public values: a case study of two municipalities and their case management of social assistance",
+  "journal": "European Journal of Social Work",
+  "doi": "10.1080/13691457.2023.2185875",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 59195,
+  "year": 2023,
+  "title": "Functions, Utilities and Limitations: A Scoping Study of Decision Support Algorithms in Social Work",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2022.2159777",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 60005,
+  "year": 2023,
+  "title": "Do people intend to use AI Voice Assistants? An empirical study in Vietnam",
+  "journal": "Journal of Human Behavior in the Social Environment",
+  "doi": "10.1080/10911359.2022.2106003",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 60751,
+  "year": 2023,
+  "title": "Social work education for the digital age: insight from information science",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2022.2057942",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 73934,
+  "year": 2023,
+  "title": "Recommendations for Social Work Researchers and Journal Editors on the Use of Generative AI and Large Language Models",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/726021",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 73936,
+  "year": 2023,
+  "title": "ChatGPT for Social Work Science: Ethical Challenges and Opportunities",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/726042",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 74994,
+  "year": 2023,
+  "title": "AI and social work",
+  "journal": "International Social Work",
+  "doi": "10.1177/00208728231199801",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 98020,
+  "year": 2023,
+  "title": "Racial Health Disparities and Black Heterogeneity in COVID-19: A Case Study of Miami Gardens",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1177/19367244221142565",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 98032,
+  "year": 2023,
+  "title": "Post-High School Outcomes of Adolescents with Learning Disabilities: Using Annual State Administrative Data and Predictive Analytics",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1177/19367244221133481",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 100436,
+  "year": 2023,
+  "title": "Digital Exclusion, Gender Oppression, and How Social Workers can Advocate for Digital Feminism in China",
+  "journal": "Columbia Social Work Review",
+  "doi": "10.52214/cswr.v21i1.11205",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 102043,
+  "year": 2023,
+  "title": "Forum: Incorporating the Use of Generative Artificial Intelligence and Large Language Models into Publication Standards: A Call for Editorial Policy Based on Social Work Values",
+  "journal": "International Journal of Social Work Values and Ethics",
+  "doi": "10.55521/10-020-210",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 895,
+  "year": 2024,
+  "title": "Configuring social assistance: conceptualizations and implications of the adoption of robotic process automation in the Swedish personal social services",
+  "journal": "European Journal of Social Work",
+  "doi": "10.1080/13691457.2024.2421879",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 986,
+  "year": 2024,
+  "title": "Navigating the Dilemma: Use of ChatGPT in Social Work Education",
+  "journal": "Journal of Teaching in Social Work",
+  "doi": "10.1080/08841233.2024.2408299",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 52131,
+  "year": 2024,
+  "title": "Hey Mama, We Hear You: An Analysis of Online Parenting Support Conversations on Reddit",
+  "journal": "Families in Society",
+  "doi": "10.1177/10443894241254128",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55719,
+  "year": 2024,
+  "title": "Moving Beyond ChatGPT: Local Large Language Models (LLMs) and the Secure Analysis of Confidential Unstructured Text Data in Social Work Research",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315241280686",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55815,
+  "year": 2024,
+  "title": "Implementing Algorithmic Decision-Making Tools in Child Welfare Systems: Practitioner Perspectives on Use and Usefulness",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2024.2402982",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55854,
+  "year": 2024,
+  "title": "Using Artificial Intelligence to Support Scientometric Analysis of Scholarly Literature: A Case Example of Research on Mainland China's Left-Behind Children",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/731613",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55970,
+  "year": 2024,
+  "title": "Designing, Developing and Examining the Effectiveness of a Machine Learning-Based Mobile Recommendation System for Parents' Digital Parenting Skills",
+  "journal": "Child & Family Social Work",
+  "doi": "10.1111/cfs.13218",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56409,
+  "year": 2024,
+  "title": "Introducing Generative Artificial Intelligence Into the MSW Curriculum: A Proposal for the 2029 Educational Policy and Accreditation Standards",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2024.2340931",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56548,
+  "year": 2024,
+  "title": "COVID-19 Research Trends in Social Work: LDA Topic Modeling Analysis in South Korea",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2024.2354528",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56566,
+  "year": 2024,
+  "title": "In the Echoes of Tomorrow: The Intersection of Social Work and Artificial Intelligence Through the Eyes of Turkish Students",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2024.2354930",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56644,
+  "year": 2024,
+  "title": "Can Socially Assistive Robots Be Accepted by Older People Living Alone in the Community?: Empirical Findings from a Social Work Project in China",
+  "journal": "Journal of Gerontological Social Work",
+  "doi": "10.1080/01634372.2024.2339992",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56693,
+  "year": 2024,
+  "title": "Social Workers' Perspectives on Socially Isolated Older Adults Living with a Robot Companion",
+  "journal": "Journal of Gerontological Social Work",
+  "doi": "10.1080/01634372.2024.2339974",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56721,
+  "year": 2024,
+  "title": "AyudaMujer: A Mobile Application for the Treatment of Violence Against Women in Peru",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2024.2343694",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56753,
+  "year": 2024,
+  "title": "Late Life Cognitive Function Trajectory Among the Chinese Oldest-Old Population-A Machine Learning Approach",
+  "journal": "Journal of Gerontological Social Work",
+  "doi": "10.1080/01634372.2024.2339982",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56820,
+  "year": 2024,
+  "title": "Beyond Plagiarism: ChatGPT as the Vanguard of Technological Revolution in Research and Citation",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315241243310",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56967,
+  "year": 2024,
+  "title": "Who is behind the robot? The role of public social workers in implementing robotic eldercare program in South Korea",
+  "journal": "Social Work in Health Care",
+  "doi": "10.1080/00981389.2024.2324849",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57097,
+  "year": 2024,
+  "title": "Pandemics, Income Inequality, and Refugees: The Case of COVID-19",
+  "journal": "Social Work in Public Health",
+  "doi": "10.1080/19371918.2024.2318372",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57126,
+  "year": 2024,
+  "title": "Predictive analytics and early intervention in healthcare social work: a scoping review",
+  "journal": "Social Work in Health Care",
+  "doi": "10.1080/00981389.2024.2316700",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57295,
+  "year": 2024,
+  "title": "Cultural Entrepreneurship and Rural Revitalization: Mapping China's Development Strategy",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2024.2305146",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 57914,
+  "year": 2024,
+  "title": "Use of case studies in social work assessments - ChatGPT's kryptonite?",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2023.2266461",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58027,
+  "year": 2024,
+  "title": "Automating social assistance: Exploring the use of robotic process automation in the Swedish personal social services",
+  "journal": "International Journal of Social Welfare",
+  "doi": "10.1111/ijsw.12633",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58626,
+  "year": 2024,
+  "title": "Algorithmic decision-making in social work practice and pedagogy: confronting the competency/critique dilemma",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2023.2195425",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 58909,
+  "year": 2024,
+  "title": "The rise of artificial intelligence, the fall of human wellbeing?",
+  "journal": "International Journal of Social Welfare",
+  "doi": "10.1111/ijsw.12586",
+  "label": "reception",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "empirical",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 60690,
+  "year": 2024,
+  "title": "Decision support and algorithmic support: the construction of algorithms and professional discretion in social work",
+  "journal": "European Journal of Social Work",
+  "doi": "10.1080/13691457.2022.2063806",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 71533,
+  "year": 2024,
+  "title": "A Systematic Review of Sophisticated Predictive and Prescriptive Analytics in Child Welfare: Accuracy, Equity, and Bias",
+  "journal": "Child & Adolescent Social Work Journal",
+  "doi": "10.1007/s10560-023-00931-2",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72043,
+  "year": 2024,
+  "title": "Construct-Irrelevant Variance on the ASWB Clinical Social Work Licensing Exam: A Replication of Prior Validity Concerns",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315231188305",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72135,
+  "year": 2024,
+  "title": "Reducing administration? Examining the alignment of robotic process automation and social assistance in Swedish Personal Social Services",
+  "journal": "Nordic Social Work Research",
+  "doi": "10.1080/2156857x.2024.2440720",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72304,
+  "year": 2024,
+  "title": "Ethical considerations in research when building predictive risk modelling in child and family welfare",
+  "journal": "Journal of Comparative Social Work",
+  "doi": "10.31265/jcsw.v19i1.619",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72311,
+  "year": 2024,
+  "title": "Considering a Unified Model of Artificial Intelligence Enhanced Social Work: A Systematic Review",
+  "journal": "Journal of Human Rights and Social Work",
+  "doi": "10.1007/s41134-024-00326-y",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72798,
+  "year": 2024,
+  "title": "Saving time for activation or relationships? The legitimation and performance of automated decision-making for time efficiency in two street-level bureaucracies serving poor and unemployed clients",
+  "journal": "Nordic Social Work Research",
+  "doi": "10.1080/2156857x.2023.2218385",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 72831,
+  "year": 2024,
+  "title": "Value positions in the implementation of automated decision-making in social assistance",
+  "journal": "Nordic Social Work Research",
+  "doi": "10.1080/2156857x.2022.2062040",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 102024,
+  "year": 2024,
+  "title": "Editorial: A Follow-up on Artificial Intelligence",
+  "journal": "International Journal of Social Work Values and Ethics",
+  "doi": "10.55521/10-021-102",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 102029,
+  "year": 2024,
+  "title": "Forum: The Limitations of Large Language Models and Emerging Correctives to Support Social Work Scholarship: Selecting the Right Tool for the Task",
+  "journal": "International Journal of Social Work Values and Ethics",
+  "doi": "10.55521/10-021-112",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 517,
+  "year": 2025,
+  "title": "AIgiarism: Computer Generated Text, Plagiarism, and How to Address it in Teaching",
+  "journal": "Journal of Teaching in Social Work",
+  "doi": "10.1080/08841233.2024.2433795",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 879,
+  "year": 2025,
+  "title": "What are we even here for? AI, Critical Feminism, and Social Work Scholarship",
+  "journal": "Affilia-Feminist Inquiry in Social Work",
+  "doi": "10.1177/08861099241295959",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 908,
+  "year": 2025,
+  "title": "Our journey with an AI assistant offering narrative therapy on WhatsApp",
+  "journal": "Journal of Social Work Practice",
+  "doi": "10.1080/02650533.2024.2420314",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54561,
+  "year": 2025,
+  "title": "A learning tool or hazard? Concerns related to AI misuse in social work courses",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2025.2508510",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54668,
+  "year": 2025,
+  "title": "Balancing data privacy and social good: A framework for the AI generation of social and human services",
+  "journal": "International Social Work",
+  "doi": "10.1177/00208728251336944",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54677,
+  "year": 2025,
+  "title": "Using Machine Learning Technology to Measure Changes in Emotional State During Parenting Helpline Calls",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2501963",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54688,
+  "year": 2025,
+  "title": "The Therapist in the Machine: Confronting AI's Challenge to Clinical Social Work",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2500827",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54711,
+  "year": 2025,
+  "title": "Artificial Intelligence in Social Work: An EPIC Model for Practice",
+  "journal": "Australian Social Work",
+  "doi": "10.1080/0312407x.2025.2488345",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54745,
+  "year": 2025,
+  "title": "Harnessing artificial intelligence to revolutionize HIV self-testing and broader infectious disease diagnostics",
+  "journal": "Journal of HIV-AIDS & Social Services",
+  "doi": "10.1080/15381501.2025.2488774",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54783,
+  "year": 2025,
+  "title": "Challenges of using artificial intelligence in social work education",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2025.2483354",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54788,
+  "year": 2025,
+  "title": "Predictors of Self-Rated Health by Considering Socio-Economic and Regional Differences in Turkey",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2025.2494142",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54802,
+  "year": 2025,
+  "title": "Facilitating Technology Usage Through Playing with Companion Robot Among Korean American Older Immigrants",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2493863",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54830,
+  "year": 2025,
+  "title": "Impact of Socially Assistive Robots on Geriatric Depression: A Comparative Study of Pre- and During-Pandemic Cohorts",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251331847",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54907,
+  "year": 2025,
+  "title": "Mixed payment methods and health cost control in China: A machine learning analysis of policy big data",
+  "journal": "International Journal of Social Welfare",
+  "doi": "10.1111/ijsw.70002",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 54999,
+  "year": 2025,
+  "title": "Artificial Intelligence-Assisted Case Management in Social Work Services: A Systematic Review",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251329531",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55003,
+  "year": 2025,
+  "title": "Social workers' evaluation of ChatGPT for solving ethical dilemmas within the limits of confidentiality",
+  "journal": "Journal of Social Work Practice",
+  "doi": "10.1080/02650533.2025.2480092",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55011,
+  "year": 2025,
+  "title": "The Touch of Artificial Intelligence in Social Work: Analysis of Social Investigation Reports in Child Welfare with ChatGPT",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2480396",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55064,
+  "year": 2025,
+  "title": "\"I Don't Understand It, but Okay\": An Empirical Study of Mental Health Practitioners' Readiness to Use Large Language Models",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2479475",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55135,
+  "year": 2025,
+  "title": "Predicting nursing students' behavioral intentions to use AI: The interplay of ethical awareness, digital literacy, moral sensitivity, attitude, self-efficacy, anxiety, and social influence",
+  "journal": "Journal of Human Behavior in the Social Environment",
+  "doi": "10.1080/10911359.2025.2472852",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55170,
+  "year": 2025,
+  "title": "Artificial Intelligence (AI) Literacy for Social Work: Implications for Core Competencies",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/735187",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55180,
+  "year": 2025,
+  "title": "Development of Machine-Learning-Based and Deep-Learning-Based Models for Predicting Korean Adolescents' Overweight and Obesity",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/733509",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55186,
+  "year": 2025,
+  "title": "Introducing a New JSSWR Specialty Series on Artificial Intelligence and Social Work",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/735286",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55192,
+  "year": 2025,
+  "title": "Artificial Intelligence Algorithms, Bias, and Innovation: Implications for Social Work",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2470903",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55261,
+  "year": 2025,
+  "title": "Artificial Intelligence in Providing Psychosocial Support in Natural Hazards: A Semi-Systematic Literature Review",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2470150",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55304,
+  "year": 2025,
+  "title": "Interactive AI Technology for Dementia Caregivers: Needs and Implementation Evidence",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2460156",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55462,
+  "year": 2025,
+  "title": "Human Services Organizations and the Responsible Integration of AI: Considering Ethics and Contextualizing Risk(s)",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2457045",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55469,
+  "year": 2025,
+  "title": "The role of digital libraries and emerging technologies in enhancing social work education: a comprehensive analysis",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2024.2445740",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55492,
+  "year": 2025,
+  "title": "AI-Enhanced Social Work: Developing and Evaluating Retrieval-Augmented Generation (RAG) Support Systems",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2024.2411172",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55493,
+  "year": 2025,
+  "title": "Comparative Efficacy of AI LLMs in Clinical Social Work: ChatGPT-4, Gemini, Copilot",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315241313071",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55571,
+  "year": 2025,
+  "title": "Social Work Educators Innovating With Generative AI: An Exploratory Study",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2024.2411170",
+  "label": "reception",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 55681,
+  "year": 2025,
+  "title": "Distinguishing characteristics of out-of-school adolescents in South Korea: A machine learning approach",
+  "journal": "International Journal of Social Welfare",
+  "doi": "10.1111/ijsw.12699",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56142,
+  "year": 2025,
+  "title": "Confronting and managing ethical dilemmas in social work using ChatGPT",
+  "journal": "European Journal of Social Work",
+  "doi": "10.1080/13691457.2024.2377786",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 100452,
+  "year": 2025,
+  "title": "Artificial Intelligence-Driven Rent Pricing Tools & the Housing Crisis",
+  "journal": "Columbia Social Work Review",
+  "doi": "10.52214/cswr.v23i1.13268",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 107128,
+  "year": 2025,
+  "title": "Impact of shooting at an lgbtq+ nightclub on cadets\u2019 feelings of belonging and safety.",
+  "journal": "Sexual and Gender Diversity in Social Services",
+  "doi": "10.1080/29933021.2025.2504907",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 107133,
+  "year": 2025,
+  "title": "Imagining the future beyond the crystal ball: Artificial human services here we come?",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2502831",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 84918,
+  "year": 2004,
+  "title": "A bilingual computerized voice-interactive system for screening depression symptoms",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1300/j017v22n04_01",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 41719,
+  "year": 2014,
+  "title": "Predicting Methamphetamine Use of Homeless Youths Attending High School: Comparison of Decision Rules and Logistic Regression Classification Algorithms",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/676830",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 63761,
+  "year": 2021,
+  "title": "Emotions in leader's crisis communication: Twitter sentiment analysis during COVID-19 outbreak",
+  "journal": "Journal of Human Behavior in the Social Environment",
+  "doi": "10.1080/10911359.2020.1829239",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "swrd",
+  "id": 56329,
+  "year": 2024,
+  "title": "Ethnic Density as a Key Factor to Narrow Health Disparities: A Case of American Indians and Alaska Natives",
+  "journal": "Health & Social Work",
+  "doi": "10.1093/hsw/hlae014",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/3",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "amachinelearningapproachtoasianasianamericanyoungadultsracialmicroaggressionsand",
+  "year": 2025,
+  "title": "A Machine Learning Approach to Asian & Asian-American Young Adults' Racial Microaggressions and Depressive Symptoms",
+  "journal": "Studies In Clinical Social Work-Transforming Practice Education And",
+  "doi": "10.1080/28376811.2024.2424412",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "commentary",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aprimeronwordembeddingsaitechniquesfortextanalysisinsocialwork",
+  "year": 2025,
+  "title": "A Primer on Word Embeddings: AI Techniques for Text Analysis in Social Work",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/735577",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "anaienhancedscopingreviewsupervisionforpeersupportspecialiststreatingopioidusedi",
+  "year": 2025,
+  "title": "An AI-enhanced scoping review: supervision for peer support specialists treating opioid use disorders",
+  "journal": "Journal Of Social Work Practice In The Addictions",
+  "doi": "10.1080/1533256x.2025.2514127",
+  "label": "commentary",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "anexploratorystudyofanarrativetherapychatbotwithsocialworkstudents",
+  "year": 2025,
+  "title": "An Exploratory Study of a Narrative Therapy Chatbot with Social Work Students",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2559342",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "anexploratorystudyofaibasedalgorithmtodetectchildabuseinyoutubevideos",
+  "year": 2025,
+  "title": "An exploratory study of AI-based algorithm to detect child abuse in YouTube videos",
+  "journal": "Asia Pacific Journal Of Social Work And Development",
+  "doi": "10.1080/29949769.2025.2526633",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceaiassistedcodingforcompetencybasedskillimprovementacasestu",
+  "year": 2025,
+  "title": "Artificial Intelligence (AI)-Assisted Coding for Competency-Based Skill Improvement: A Case Study of Motivational Interviewing Skill Development in Behavioral Health Providers-in-Training",
+  "journal": "Families In Society-The Journal Of Contemporary Social Services",
+  "doi": "10.1177/10443894251378612",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceandculturalcontextanempiricalinvestigationoflargelanguagem",
+  "year": 2025,
+  "title": "Artificial Intelligence and Cultural Context: An Empirical Investigation of Large Language Models' Performance on Chinese Social Work Professional Standards",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/735590",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceandempathyinsocialworkpractice",
+  "year": 2025,
+  "title": "Artificial Intelligence and Empathy in Social Work Practice",
+  "journal": "Journal Of Social Work",
+  "doi": "10.1177/14680173251390786",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "canlargelanguagemodelssupporthealthliteracyexaminingsociodemographicbiasesinchat",
+  "year": 2025,
+  "title": "Can large language models support health literacy? Examining sociodemographic biases in ChatGPT's representation of HIV knowledge",
+  "journal": "Journal Of Hiv-Aids & Social Services",
+  "doi": "10.1080/15381501.2025.2547229",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "commentaryethicsanethicalframeworkforartificialintelligenceaiuseinsocialworkrese",
+  "year": 2025,
+  "title": "Commentary: ETHICS-An Ethical Framework for Artificial Intelligence (AI) Use in Social Work Research",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/739116",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "creatinganaipoweredvrsimulationplatformforsocialworkskilldevelopment",
+  "year": 2025,
+  "title": "Creating an AI Powered VR Simulation Platform for Social Work Skill Development",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2565820",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "demystifyingapplicationprogramminginterfacesapisunlockingthepoweroflargelanguage",
+  "year": 2025,
+  "title": "Demystifying Application Programming Interfaces (APIs): Unlocking the Power of Large Language Models and Other Web-Based AI Services in Social Work Research",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/735364",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "digitalimmortalityasahumanserviceassessingstudentattitudesandtolerancetowarddigi",
+  "year": 2025,
+  "title": "Digital Immortality as a Human Service?: Assessing Student Attitudes and Tolerance Toward Digitalization of the Memory of the Dead",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2588768",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "digitalizingcaregivingforwhatroledynamicsofcaregiversinnursinghomesimplementings",
+  "year": 2025,
+  "title": "Digitalizing Caregiving for What? Role Dynamics of Caregivers in Nursing Homes Implementing Smart Technologies",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2585409",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "effectsofacustomizedchatbotinterventiononsocialworkstudentscounselingselfefficac",
+  "year": 2025,
+  "title": "Effects of a Customized Chatbot Intervention on Social Work Students' Counseling Self-Efficacy",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251394310",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkinthedigitalagetowardsadoptingartificialintelligenceinsocialwork",
+  "year": 2025,
+  "title": "Social work in the digital age: Towards adopting artificial intelligence in social work",
+  "journal": "International Social Work",
+  "doi": "10.1177/00208728251383134",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socioeconomicbarriersandeducationalpathwaysofunaccompaniedforeignminorsineuropes",
+  "year": 2025,
+  "title": "Socioeconomic barriers and educational pathways of unaccompanied foreign minors in Europe's southern border",
+  "journal": "International Journal Of Social Welfare",
+  "doi": "10.1111/ijsw.70025",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "testperformanceofartificialintelligenceinthechinesesocialworkcertificationexamin",
+  "year": 2025,
+  "title": "Test Performance of Artificial Intelligence in the Chinese Social Work Certification Examination",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251389554",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "theoreticalandmethodologicalshiftsinsocialworkresearchanaidrivenanalysisofpostmo",
+  "year": 2025,
+  "title": "Theoretical and Methodological Shifts in Social Work Research: An AI-Driven Analysis of Postmodern and Critical Theory at the SSWR Annual Conference",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251352838",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "understandingbehavioralintentionoffilipinoadultsinadoptingmentalhealthchatbots",
+  "year": 2025,
+  "title": "Understanding Behavioral Intention of Filipino Adults in Adopting Mental Health Chatbots",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2025.2572758",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "usingcomputationalmethodstoassessracialethnicandlinguisticdiversityandspatialacc",
+  "year": 2025,
+  "title": "Using Computational Methods to Assess Racial, Ethnic, and Linguistic Diversity and Spatial Accessibility of the Clinical Social Work Workforce in the United States",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/738140",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "ignoringitisaproblemsocialworkstudentperspectivesontheopportunitiesandthreatsofa",
+  "year": 2026,
+  "title": "\"Ignoring It Is a Problem\": Social Work Student Perspectives on the Opportunities and Threats of Artificial Intelligence for Practice and Education",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2025.2602743",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "magicmomentsaiandthedisappearanceofsocialworkethics",
+  "year": 2026,
+  "title": "'Magic moments': AI and the 'disappearance' of social work ethics?",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcaf230",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "akindofmagicartificialintelligenceassistedrecordingdevelopingprinciplesforanaiin",
+  "year": 2026,
+  "title": "A kind of magic? Artificial intelligence-assisted recording: developing principles for an AI-informed social work curriculum",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2669634",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aiandgendertheambivalentroleofaiinadvancinggenderequalityforsdg5",
+  "year": 2026,
+  "title": "AI and Gender-The Ambivalent Role of AI in Advancing Gender Equality for SDG 5",
+  "journal": "Journal Of Human Rights And Social Work",
+  "doi": "10.1007/s41134-025-00432-5",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aisystemsascarnivalmirrorslearningaboutonlineradicalisationpreventionthroughdist",
+  "year": 2026,
+  "title": "AI systems as carnival mirrors: Learning about online radicalisation prevention through distorted reflections",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aigeneratedimagesofsocialworkersinhealthcareandimplicationsforprofessionalidenti",
+  "year": 2026,
+  "title": "AI-Generated Images of Social Workers in Healthcare and Implications for Professional Identity",
+  "journal": "Australian Social Work",
+  "doi": "10.1080/0312407x.2026.2627220",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aienabledpsychometricandpsychophysiologicalassessmentinpsychiatriccomorbidityofo",
+  "year": 2026,
+  "title": "AI-enabled psychometric and psychophysiological assessment in psychiatric comorbidity of oncology patients: A systematic review",
+  "journal": "Journal Of Psychosocial Oncology",
+  "doi": "10.1080/07347332.2026.2649035",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aienhancedethicaldecisionmakinginsocialworkdevelopmentandtestingofanapplications",
+  "year": 2026,
+  "title": "AI-enhanced ethical decision-making in social work: development and testing of an application-specific language model",
+  "journal": "Journal Of Social Work Practice",
+  "doi": "10.1080/02650533.2026.2683352",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "accuracyandreadabilityoflargelanguagemodelsresponsestofrequentlyaskedquestionson",
+  "year": 2026,
+  "title": "Accuracy and Readability of Large Language Models' Responses to Frequently Asked Questions on Social Assistance",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/740347",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "algorithmicassisteddecisionmakingtoolsinchildwelfarepracticeasystematicreview",
+  "year": 2026,
+  "title": "Algorithmic-Assisted Decision-Making Tools in Child Welfare Practice: A Systematic Review",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251350933",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "aninnovativesimulatorforpracticingethicaldilemmasontheboundariesofconfidentialit",
+  "year": 2026,
+  "title": "An Innovative Simulator for Practicing Ethical Dilemmas on the Boundaries of Confidentiality in Social Work",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/739437",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "applyingmachinelearningtounderstandfactorspredictingpharmacotherapyformentalheal",
+  "year": 2026,
+  "title": "Applying machine learning to understand factors predicting pharmacotherapy for mental health support among adults with intellectual and developmental disabilities",
+  "journal": "Social Work In Mental Health",
+  "doi": "10.1080/15332985.2025.2545892",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "arefuturesocialworkersreadyforaifearsbarriersandlearningneedsinhighereducation",
+  "year": 2026,
+  "title": "Are future social workers ready for AI? Fears, barriers, and learning needs in higher education",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2631708",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceinsocialworkintellectualstructureandthematicgrowthoveradec",
+  "year": 2026,
+  "title": "Artificial Intelligence in Social Work: Intellectual Structure and Thematic Growth over a Decade",
+  "journal": "Social Work Research",
+  "doi": "10.1093/swr/svag011",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceinsystematicliteraturereviewssocialworkethicsapplicationan",
+  "year": 2026,
+  "title": "Artificial Intelligence in Systematic Literature Reviews: Social Work Ethics, Application, and Feasibility",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2548853",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligencesupportedgroupfacilitationemergingpotentialscautiousapproa",
+  "year": 2026,
+  "title": "Artificial intelligence-supported group facilitation: emerging potentials, cautious approaches, and ethical considerations in social work practice",
+  "journal": "Social Work With Groups",
+  "doi": "10.1080/01609513.2025.2540474",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "artificialintelligenceaneoliberaltooltobettermanagesocialinequalities",
+  "year": 2026,
+  "title": "Artificial intelligence: a neoliberal tool to better manage social inequalities?",
+  "journal": "European Journal Of Social Work",
+  "doi": "10.1080/13691457.2025.2607705",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "betweendataanddignitysocialworkersreflectionsonartificialintelligenceaiuseincris",
+  "year": 2026,
+  "title": "Between data and dignity: Social workers' reflections on artificial intelligence (AI) use in crisis intervention",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "bewarethealgorithmascopingreviewofpredictiveanalyticsinchildrenssocialcare",
+  "year": 2026,
+  "title": "Beware the algorithm: a scoping review of predictive analytics in children's social care",
+  "journal": "Critical And Radical Social Work",
+  "doi": "10.1332/20498608y2026d000000128",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "bullyingvictimizationanddelinquentbehaviourduringadolescenceadoublemachinelearni",
+  "year": 2026,
+  "title": "Bullying Victimization and Delinquent Behaviour During Adolescence: A Double Machine Learning Approach",
+  "journal": "Child & Family Social Work",
+  "doi": "10.1111/cfs.70212",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "canalargelanguagemodeljudgeachildsstatementacomparativeanalysisofchatgptandhuman",
+  "year": 2026,
+  "title": "Can a Large Language Model Judge a Child's Statement?: A Comparative Analysis of ChatGPT and Human Experts in Credibility Assessment",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2547211",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "chatgptinsocialworkinsightsfrommswstudents",
+  "year": 2026,
+  "title": "ChatGPT in Social Work? Insights from MSW Students",
+  "journal": "Journal of Social Work Education",
+  "doi": "10.1080/10437797.2025.2594423",
+  "label": "reception",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "childprotectioninthedigitalageinsouthkoreaprofessionalsperceptionsonartificialin",
+  "year": 2026,
+  "title": "Child Protection in the Digital Age in South Korea: Professionals' Perceptions on Artificial Intelligence (AI) and Big Data Efficacy and Ethical Challenges",
+  "journal": "Child & Family Social Work",
+  "doi": "10.1111/cfs.70125",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "clarifyingthedifferentialfactorswithadolescentdelinquencyabuseselfinjuryandmenta",
+  "year": 2026,
+  "title": "Clarifying the differential factors with adolescent delinquency, abuse, self-injury, and mental health problems: Machine-learning and text mining analysis of a large sample of social work case records",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcaf186",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "clinicalsocialworkersperceptionsoflargelanguagemodelsinpracticeresistancetoautom",
+  "year": 2026,
+  "title": "Clinical Social Workers' Perceptions of Large Language Models in Practice: Resistance to Automation and Prospects for Integration",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2542450",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "criticalparticipatorypracticefortechnologythatcansupporttransformativejusticeand",
+  "year": 2026,
+  "title": "Critical participatory practice for technology that can support transformative justice and change",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "digitalmediaforsocialjusticeandchangeconceptualizingimpactsofartificialintellige",
+  "year": 2026,
+  "title": "Digital Media for Social Justice and Change: Conceptualizing Impacts of Artificial Intelligence on Marginalized Media Creators",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2594675",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "digitalisationandmeaningfulfrontlineworkinsightsfromthedanishpublicemploymentser",
+  "year": 2026,
+  "title": "Digitalisation and meaningful frontline work: insights from the Danish public employment services",
+  "journal": "European Journal Of Social Work",
+  "doi": "10.1080/13691457.2025.2518269",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "effectivenessofdialogicreadingversustypicalreadingonemotionalregulationofchildre",
+  "year": 2026,
+  "title": "Effectiveness of Dialogic Reading Versus Typical Reading on Emotional Regulation of Children with Attention-Deficit Hyperactivity Disorder (ADHD) in China: A Comparison of Artificial Intelligence (AI) and Social Worker-Led Training",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315261425186",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "evaluatingaiinsocialprogramsreframingcomplexinterventionassociotechnicalinterven",
+  "year": 2026,
+  "title": "Evaluating AI in Social Programs: Reframing Complex Intervention as Socio-Technical Intervention",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2583932",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "evolutionofsocialworkknowledgeproductionover35yearsanaienabledanalysisoftrendsin",
+  "year": 2026,
+  "title": "Evolution of Social Work Knowledge Production Over 35 Years: An AI-Enabled Analysis of Trends in Empiricism, Methodology, Collaboration, Citation Patterns, and Output",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315261416833",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "experiencesandperceptionsofartificialintelligenceamongsocialworkstudentsanalysis",
+  "year": 2026,
+  "title": "Experiences and perceptions of artificial intelligence among social work students: analysis of educational transformations",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2671971",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "feasibilityofanaienhancedplatformfortrainingbeginnersinnarrativetherapy",
+  "year": 2026,
+  "title": "Feasibility of an AI-Enhanced Platform for Training Beginners in Narrative Therapy",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2026.2663553",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "fromfirstjobstobetterpaypredictingrefugeewagemobilitywithmachinelearning",
+  "year": 2026,
+  "title": "From First Jobs to Better Pay: Predicting Refugee Wage Mobility with Machine Learning",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/740324",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "fromjobpostingstocurriculumdecisionsusingaitogenerateworkforceintelligenceformsw",
+  "year": 2026,
+  "title": "From Job Postings to Curriculum Decisions: Using AI to Generate Workforce Intelligence for MSW Program Planning",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2026.2658025",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "fromchalkboardstochatbotsreclaimingconnectioninsocialworkeducation",
+  "year": 2026,
+  "title": "From chalkboards to chatbots: Reclaiming connection in social work education",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "fromresistancetointegrationaiinsocialworkeducation",
+  "year": 2026,
+  "title": "From resistance to integration: AI in social work education",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2638396",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "generativeartificialintelligenceuseamongsocialworkstudentstheroleofperceivedutil",
+  "year": 2026,
+  "title": "Generative Artificial Intelligence Use Among Social Work Students: The Role of Perceived Utility and Knowledge",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2596186",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "humanaiinteractioninhighstakescontextschildwelfareprofessionalsperceptionsofaiin",
+  "year": 2026,
+  "title": "Human-AI Interaction in High-Stakes Contexts: Child Welfare Professionals' Perceptions of AI Integration",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2026.2691414",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "innovatingsocialworkpedagogygenerativeaiforcriticalcompetencydevelopmentineviden",
+  "year": 2026,
+  "title": "Innovating social work pedagogy: generative AI for critical competency development in evidence-based practice",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2617512",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "reception",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "levelingsocoeconomicdisparitiestheroleofserviceavailabilityinschooldropoutrates",
+  "year": 2026,
+  "title": "Leveling Socoeconomic Disparities: The Role of Service Availability in School Dropout Rates",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251377009",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "leveragingcodesignprinciplesandartificialintelligencetodevelopstatewidestandardo",
+  "year": 2026,
+  "title": "Leveraging Co-Design Principles and Artificial Intelligence to Develop Statewide Standard Operating Procedures for Housing Interventions in Arizona",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/740864",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "makingaiaccessibletosocialworkresearchersanexploratoryanalysisofusingchatgpttosc",
+  "year": 2026,
+  "title": "Making AI Accessible to Social Work Researchers: An Exploratory Analysis of Using ChatGPT to Screen Articles for Systematic and Scoping Reviews",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315251357190",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "makingaccuratejudgementsinchildwelfarecomparingchatgptwithqualifiedsocialworkers",
+  "year": 2026,
+  "title": "Making Accurate Judgements in Child Welfare: Comparing ChatGPT With Qualified Social Workers",
+  "journal": "Child & Family Social Work",
+  "doi": "10.1111/cfs.13304",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "mappingcurrentandemergentartificialintelligencetechnologiesforclinicalsupervisio",
+  "year": 2026,
+  "title": "Mapping Current and Emergent Artificial Intelligence Technologies for Clinical Supervision: An Analytical Approach and Model for Social Work Research",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2026.2641216",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "mediatingroleofperceivedindividualinnovativenessintherelationshipbetweenemployme",
+  "year": 2026,
+  "title": "Mediating role of perceived individual innovativeness in the relationship between employment anxiety and attitudes toward artificial intelligence among social work students",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcag022",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "opportunitieschallengesandconspicuousabsencesanintegrativereviewofthesocialworkl",
+  "year": 2026,
+  "title": "Opportunities, challenges, and conspicuous absences: An integrative review of the social work literature on artificial intelligence",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "parentalcooperationfromswisschildprotectionreportsreasoninglanguagemodelsoutperf",
+  "year": 2026,
+  "title": "Parental Cooperation from Swiss Child Protection Reports: Reasoning Language Models Outperform Retrieval-Augmented Generation",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315261446932",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "potentialchallengesandopportunitiesinaienabledsocialworkpracticesintrkiye",
+  "year": 2026,
+  "title": "Potential Challenges and Opportunities in AI-Enabled Social Work Practices in T\u00fcrkiye",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2594662",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "predictingcyberbullyingvictimizationamongcollegestudentswithhouseholddysfunction",
+  "year": 2026,
+  "title": "Predicting cyberbullying victimization among college students with household dysfunctional experiences: Using a decision tree model",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcag007",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "preliminaryoutcomesofahybriddigitalparentinginterventioninroutineservicesinmalay",
+  "year": 2026,
+  "title": "Preliminary Outcomes of a Hybrid-Digital Parenting Intervention in Routine Services in Malaysia",
+  "journal": "Research on Social Work Practice",
+  "doi": "10.1177/10497315261422589",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "preservingtheintegrityofevidencebasedsocialworkintheageofaiaproposedethicalframe",
+  "year": 2026,
+  "title": "Preserving the Integrity of Evidence-Based Social Work in the Age of AI: A Proposed Ethical Framework",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2587092",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "promotingailiteracyinsocialworkeducationlessonsfromaninterdisciplinarycoursefors",
+  "year": 2026,
+  "title": "Promoting AI literacy in social work education: lessons from an interdisciplinary course for social work students",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2635471",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "3/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "reception",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "reframingcommunicationbetweenautisticpeopleandneurotypicalsocialworkersthroughar",
+  "year": 2026,
+  "title": "Reframing communication between autistic people and neurotypical social workers through artificial intelligence",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcag063",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "refusingtofallbehindtheethicalobligationtoembraceaiinmentalhealthsocialwork",
+  "year": 2026,
+  "title": "Refusing to Fall Behind: The Ethical Obligation to Embrace AI in Mental Health Social Work",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2553018",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "researchonemotionaldesignofelderlycareserviceplatformbasedondeepneuralnetworks",
+  "year": 2026,
+  "title": "Research on emotional design of elderly care service platform based on deep neural networks",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcaf286",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "resistingtheuseofllmsinsocialworkcelebratinghumanimaginationv21",
+  "year": 2026,
+  "title": "Resisting the use of LLMs in social work: Celebrating human imagination V.21",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "responsetothespecialissuesocialworkandsocialcontroladelphistudyconnectingthecoer",
+  "year": 2026,
+  "title": "Response to the special issue 'Social Work and Social Control': a Delphi study connecting the coercive past and artificial intelligence futures of social work in Lithuania, Spain and the UK",
+  "journal": "Critical And Radical Social Work",
+  "doi": "10.1332/20498608y2025d000000119",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "scalingupmentalhealthservicesartificialintelligenceregulatorypathwaysandcasestud",
+  "year": 2026,
+  "title": "Scaling-up Mental Health Services Artificial Intelligence: Regulatory Pathways and Case Study",
+  "journal": "Journal of Technology in Human Services",
+  "doi": "10.1080/15228835.2026.2670322",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "situatingaiinsocialworknotesoncapitalismtechnologyandlabourprocesses",
+  "year": 2026,
+  "title": "Situating AI in social work: Notes on capitalism, technology and labour processes",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "smallmodelsachievelargelanguagemodelperformanceevaluatingreasoningenabledaiforse",
+  "year": 2026,
+  "title": "Small Models Achieve Large Language Model Performance: Evaluating Reasoning-Enabled AI for Secure Child Welfare Research",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2026.2616711",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkpracticeintheeraofartificialintelligencesocialworkersvoicesfromsouthas",
+  "year": 2026,
+  "title": "Social Work Practice in the Era of Artificial Intelligence: Social Workers' Voices from South Asia",
+  "journal": "Social Work",
+  "doi": "10.1093/sw/swaf050",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkintheageofartificialintelligencearightsbasedframeworkforevidencebasedp",
+  "year": 2026,
+  "title": "Social Work in the Age of Artificial Intelligence: A rights-Based Framework for evidence-Based Practice Through Social Psychology, Group Dynamics, and Institutional Analysis",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2547219",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkersconcernsaboutartificialintelligencethemediatingroleofethicsandinnov",
+  "year": 2026,
+  "title": "Social Workers' Concerns About Artificial Intelligence: The Mediating Role of Ethics and Innovation",
+  "journal": "Journal Of Social Work",
+  "doi": "10.1177/14680173261435140",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkpracticeandartificialintelligenceascopingreview",
+  "year": 2026,
+  "title": "Social work practice and artificial intelligence: A scoping review",
+  "journal": "Aotearoa New Zealand Social Work",
+  "doi": "",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "socialworkersperceptionsofaispotentialcontributionstosocialworkpracticeanexplora",
+  "year": 2026,
+  "title": "Social workers' perceptions of AI's potential contributions to social work practice: an exploratory qualitative study",
+  "journal": "Journal Of Social Work Practice",
+  "doi": "10.1080/02650533.2026.2683350",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "studentperspectivesonartificialintelligencechallengesopportunitiesandsocietalimp",
+  "year": 2026,
+  "title": "Student Perspectives on Artificial Intelligence: Challenges, Opportunities, and Societal Implications",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2517073",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "thecurrentstateofmachinelearningstudiesondementiariskforethnoracialminoritiesasc",
+  "year": 2026,
+  "title": "The Current State of Machine Learning Studies on Dementia Risk for Ethnoracial Minorities: A Scoping Review",
+  "journal": "Journal of Social Service Research",
+  "doi": "10.1080/01488376.2026.2648315",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "thedigitalscholarartificialintelligenceinsocialworkresearch",
+  "year": 2026,
+  "title": "The Digital Scholar: Artificial Intelligence in Social Work Research",
+  "journal": "Families In Society-The Journal Of Contemporary Social Services",
+  "doi": "10.1177/10443894251407365",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "theeffectofartificialintelligenceattitudesonsocialworkstudentsintrkiye",
+  "year": 2026,
+  "title": "The Effect of Artificial Intelligence Attitudes on Social Work Students in T\u00fcrkiye",
+  "journal": "Social Work Research",
+  "doi": "10.1093/swr/svag010",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "thehumanelementartificialintelligencewillnotreplacequalitativeresearchers",
+  "year": 2026,
+  "title": "The Human Element: Artificial Intelligence Will Not Replace Qualitative Researchers",
+  "journal": "Social Work Research",
+  "doi": "10.1093/swr/svag007",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "theintersectionofsocialworkandaishapingthefutureofpediatricmentalhealth",
+  "year": 2026,
+  "title": "The Intersection of Social Work and AI: Shaping the Future of Pediatric Mental Health",
+  "journal": "Families In Society-The Journal Of Contemporary Social Services",
+  "doi": "10.1177/10443894261448395",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "thelinguisticcornerstoneoftheintelligentsocietytowardatheoreticalandpracticeagen",
+  "year": 2026,
+  "title": "The Linguistic Cornerstone of the Intelligent Society: Toward a Theoretical and Practice Agenda for Linguistic Social Work",
+  "journal": "British Journal of Social Work",
+  "doi": "10.1093/bjsw/bcag049",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "theroleofaichatbotinalleviatinganxietyamongelderlypeoplelivingaloneinthecommunit",
+  "year": 2026,
+  "title": "The Role of AI Chatbot in Alleviating Anxiety Among Elderly People Living Alone in the Community: A Prospective Study",
+  "journal": "Journal Of Gerontological Social Work",
+  "doi": "10.1080/01634372.2026.2698796",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "toolsorthreatsocialworkersattitudesconcernsandreadinessforartificialintelligence",
+  "year": 2026,
+  "title": "Tools or threat: Social workers' attitudes, concerns, and readiness for artificial intelligence in Singapore",
+  "journal": "International Social Work",
+  "doi": "10.1177/00208728261453261",
+  "label": "reception",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "reception",
+   "Opus5": "reception",
+   "Sonnet5": "reception",
+   "sol": "reception"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "towardsaframeworkfordigitalliteracyinsocialworkeducationinatimeofartificialintel",
+  "year": 2026,
+  "title": "Towards a framework for digital literacy in social work education in a time of artificial intelligence",
+  "journal": "Social Work Education",
+  "doi": "10.1080/02615479.2026.2660786",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "unintendedramificationsofaiassisteddocumentationnavigatingpragmaticethicalclinic",
+  "year": 2026,
+  "title": "Unintended Ramifications of Ai-Assisted Documentation: Navigating Pragmatic & Ethical Clinical Social Work Workload Challenges",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2025.2571439",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "upholdingprofessionaljudgementinsocialworkamidtheriseofartificialintelligence",
+  "year": 2026,
+  "title": "Upholding Professional Judgement in Social Work amid the Rise of Artificial Intelligence",
+  "journal": "Australian Social Work",
+  "doi": "10.1080/0312407x.2026.2684237",
+  "label": "commentary",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "commentary",
+   "sol": "commentary"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "usingchatgptforqualitativesocialmediaanalysisinsightsforcrossculturalsocialwork",
+  "year": 2026,
+  "title": "Using ChatGPT for Qualitative Social Media Analysis: Insights for Cross-Cultural Social Work",
+  "journal": "Journal of the Society for Social Work and Research",
+  "doi": "10.1086/740605",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "validationofasmalllanguagemodelfordsm5substancecategoryclassificationinchildwelf",
+  "year": 2026,
+  "title": "Validation of a Small Language Model for DSM-5 Substance Category Classification in Child Welfare Records",
+  "journal": "Journal of Evidence-Based Social Work",
+  "doi": "10.1080/26408066.2026.2673377",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "whenjudgmentvariesthepotentialofaitoreducenoiseinsocialworkassessments",
+  "year": 2026,
+  "title": "When judgment varies: the potential of AI to reduce noise in social work assessments",
+  "journal": "European Journal Of Social Work",
+  "doi": "10.1080/13691457.2025.2600668",
+  "label": "empirical",
+  "label_source": "human tie-break",
+  "label_votes": "2/4",
+  "model_votes": {
+   "Fable5": "commentary",
+   "Opus5": "commentary",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ },
+ {
+  "source": "wos",
+  "id": "whydotheyleaveidentifyingdriversofturnoverintentionamongchinesesocialworkerswith",
+  "year": 2026,
+  "title": "Why do they leave? Identifying drivers of turnover intention among Chinese social workers with machine learning approach",
+  "journal": "International Journal Of Social Welfare",
+  "doi": "10.1111/ijsw.70069",
+  "label": "empirical",
+  "label_source": "model majority",
+  "label_votes": "4/4",
+  "model_votes": {
+   "Fable5": "empirical",
+   "Opus5": "empirical",
+   "Sonnet5": "empirical",
+   "sol": "empirical"
+  }
+ }
+]

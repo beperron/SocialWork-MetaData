@@ -1,6 +1,6 @@
 # Cookbook — Worked Examples You Can Run by Prompting
 
-Each walkthrough here is an analysis you can get done by prompting an AI assistant — Claude, ChatGPT/Codex, or any assistant that can fetch a URL and run code. You do not need to write SQL or Python yourself, and there is nothing to install: the databases are hosted, read-only, and open with a public key. Every recipe has two layers:
+Each walkthrough here is an analysis you can get done by prompting an AI assistant — Claude, ChatGPT/Codex, or any assistant that can fetch a URL and run code. You do not need to write SQL or Python yourself, and for recipes 01–07 there is nothing to install: the databases are hosted, read-only, and open with a public key. (Recipes 08–09 add meaning-based search and are the only ones with a local setup step — see their section below.) Every recipe has two layers:
 
 - **Do this with Claude or Codex** — a copy-paste prompt (edit the bracketed parts), plus what to check when the assistant finishes.
 - **Under the hood** — the actual steps and queries the assistant runs, kept for transparency and for assistants reading this repo directly.
@@ -17,7 +17,20 @@ Every prompt starts the same way: it hands the assistant one URL — [`llms.txt`
 | [06 · Classify what a literature does](06-classify-what-a-literature-does.md) | Empirical vs. reception vs. commentary composition, by era and venue |
 | [07 · Co-authorship networks with thresholds](07-coauthorship-networks-with-thresholds.md) | A readable network of the frequent authors, with explicit inclusion rules |
 
-The fully worked artifact behind 05–07 (verified corpora, labels, figures, and scripts from the AI-in-social-work analysis) lives in [`analyses/ai-in-social-work/`](../analyses/ai-in-social-work/).
+The fully worked artifact behind 05–07 (verified corpora, labels, figures, and scripts from the AI-in-social-work analysis) lives in [`analyses/ai-in-social-work/`](../analyses/ai-in-social-work/). For a finished write-up of what these recipes produce — with the data, the runnable code, and the category definitions all published — see the [**Demonstrations**](../demonstrations/).
+
+## Going further: semantic search (recipes 08–09 — one local install)
+
+Everything above runs on keyword search and SQL. The databases also store a meaning vector for every abstract, which enables **semantic search**: finding the papers that discuss your topic in vocabulary you didn't think to search (*attrition* and *discontinuance* when you said *dropout*). Using it requires one local component — the same small embedding model the databases were built with, run via Ollama (~5 minutes to set up, ~620 MB, one time).
+
+**You don't need to figure the setup out yourself.** The [`ollama-embeddings`](../skills/ollama-embeddings/SKILL.md) skill is a check-install-verify script for your assistant: it first checks whether Ollama and the `embeddinggemma:300m` model are already present (and installs nothing if so), walks through the install per platform if not, and verifies the endpoint end to end. The prompts in recipes 08–09 point the assistant at it automatically and tell it to ask you before installing anything.
+
+| Walkthrough | What you get |
+|---|---|
+| [08 · Semantic search: find what keywords can't name](08-semantic-search-beyond-keywords.md) | The papers on your topic that use different vocabulary, with evidence of what semantic search added |
+| [09 · Semantic recall audit of a keyword-built corpus](09-semantic-recall-audit.md) | An answer to "what did your keywords miss?" — recovered records, each with its named vocabulary gap |
+
+If your environment can't run Ollama, recipe 05's vocabulary-expansion audit is the no-install alternative to 09, and recipes 01/04 are the keyword counterparts of 08.
 
 ## Writing prompts that work with these databases
 

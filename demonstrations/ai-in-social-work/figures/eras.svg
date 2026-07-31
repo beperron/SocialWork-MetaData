@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="657.795919pt" height="239.378656pt" viewBox="0 0 657.795919 239.378656" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-30T20:35:04.423633</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 239.378656 
+L 657.795919 239.378656 
+L 657.795919 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 102.910763 216.978812 
+L 638.590762 216.978812 
+L 638.590762 28.482812 
+L 102.910763 28.482812 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m699381fd96" d="M 0 0 
+L 0 3.5 
+" style="stroke: #71717a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m699381fd96" x="102.910763" y="216.978812" style="fill: #71717a; stroke: #71717a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="fill: #71717a; font: 9px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: middle" x="102.910763" y="230.405375" transform="rotate(-0 102.910763 230.405375)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m699381fd96" x="236.830762" y="216.978812" style="fill: #71717a; stroke: #71717a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="fill: #71717a; font: 9px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: middle" x="236.830762" y="230.405375" transform="rotate(-0 236.830762 230.405375)">25%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m699381fd96" x="370.750762" y="216.978812" style="fill: #71717a; stroke: #71717a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="fill: #71717a; font: 9px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: middle" x="370.750762" y="230.405375" transform="rotate(-0 370.750762 230.405375)">50%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m699381fd96" x="504.670763" y="216.978812" style="fill: #71717a; stroke: #71717a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="fill: #71717a; font: 9px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: middle" x="504.670763" y="230.405375" transform="rotate(-0 504.670763 230.405375)">75%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m699381fd96" x="638.590762" y="216.978812" style="fill: #71717a; stroke: #71717a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="fill: #71717a; font: 9px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: middle" x="638.590762" y="230.405375" transform="rotate(-0 638.590762 230.405375)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 102.910763 216.978812 
+L 638.590762 216.978812 
+" style="fill: none; stroke: #c3c2b7; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 102.910763 46.724361 
+L 236.830762 46.724361 
+L 236.830762 83.207458 
+L 102.910763 83.207458 
+z
+" clip-path="url(#p916c97490d)" style="fill: #2a78d6; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 236.830762 46.724361 
+L 638.590762 46.724361 
+L 638.590762 83.207458 
+L 236.830762 83.207458 
+z
+" clip-path="url(#p916c97490d)" style="fill: #1baf7a; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_6">
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(30.111031 62.395597)">Expert systems</text>
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(12.425813 72.396316)">1989–1998  ·  N=24</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 102.910763 107.529522 
+L 431.230762 107.529522 
+L 431.230762 144.012619 
+L 102.910763 144.012619 
+z
+" clip-path="url(#p916c97490d)" style="fill: #2a78d6; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 431.230762 107.529522 
+L 457.150762 107.529522 
+L 457.150762 144.012619 
+L 431.230762 144.012619 
+z
+" clip-path="url(#p916c97490d)" style="fill: #eb6834; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 457.150762 107.529522 
+L 638.590762 107.529522 
+L 638.590762 144.012619 
+L 457.150762 144.012619 
+z
+" clip-path="url(#p916c97490d)" style="fill: #1baf7a; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(22.98025 123.191211)">Machine learning</text>
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(12.425813 133.211024)">1999–2022  ·  N=62</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 102.910763 168.334683 
+L 317.740762 168.334683 
+L 317.740762 204.81778 
+L 102.910763 204.81778 
+z
+" clip-path="url(#p916c97490d)" style="fill: #2a78d6; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 317.740762 168.334683 
+L 443.290762 168.334683 
+L 443.290762 204.81778 
+L 317.740762 204.81778 
+z
+" clip-path="url(#p916c97490d)" style="fill: #eb6834; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 443.290763 168.334683 
+L 638.590762 168.334683 
+L 638.590762 204.81778 
+L 443.290763 204.81778 
+z
+" clip-path="url(#p916c97490d)" style="fill: #1baf7a; stroke: #ffffff; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_8">
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(38.305188 184.052919)">Generative AI</text>
+    <text style="fill: #18181b; font: 9.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(7.2 193.959638)">2023–2026  ·  N=192</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #18181b; font: 700 13px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif; text-anchor: start" x="102.910763" y="16.482812" transform="rotate(-0 102.910763 16.482812)">What the literature does, by technological era</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(152.835169 62.625984)">empirical</text>
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(155.322356 71.648897)">6 (25%)</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(414.211762 62.541984)">commentary</text>
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(420.827419 71.648897)">18 (75%)</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(250.035169 123.431146)">empirical</text>
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(250.187419 132.454058)">38 (61%)</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(524.371762 123.347146)">commentary</text>
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(530.987419 132.454058)">21 (34%)</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(193.290169 184.236307)">empirical</text>
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(193.442419 193.259219)">77 (40%)</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(362.9322 184.236307)">reception</text>
+    <text style="fill: #ffffff; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(363.632419 193.259219)">45 (23%)</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(517.441762 184.152307)">commentary</text>
+    <text style="fill: #06301e; font: 700 8.4px 'IBM Plex Sans', 'system-ui', 'Helvetica Neue', 'Arial', sans-serif" transform="translate(524.057419 193.259219)">70 (36%)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p916c97490d">
+   <rect x="102.910763" y="28.482812" width="535.68" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -15,6 +15,8 @@ Copy, edit the bracketed parts, and paste:
 
 *If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
+> **Strongly recommended: add the semantic arm.** Keyword search finds only exact matches — papers that use your words. The literature rarely agrees on vocabulary (*grandparents raising grandchildren* is also *custodial grandparents*, *kinship caregivers*, and *grandfamilies*), and rephrasings only catch the variants you thought of. With the one-time embedding setup ([`ollama-embeddings`](../skills/ollama-embeddings/SKILL.md), ~5 minutes), [recipe 08](08-semantic-search-beyond-keywords.md) finds papers by *meaning* regardless of wording — run it alongside this recipe whenever completeness matters.
+
 **What to check when it finishes.** Ask it how many raw matches it screened out and why; a good run names its false positives. If counts look surprisingly high or low, ask it to show 5 borderline abstracts so you can judge the boundary yourself.
 
 ## Under the hood — the steps the assistant runs

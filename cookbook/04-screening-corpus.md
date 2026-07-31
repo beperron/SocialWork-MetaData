@@ -15,6 +15,8 @@ Copy, edit the bracketed parts, and paste:
 
 *If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 
+> **Strongly recommended for reviews: add the semantic arm.** Everything above matches exact words, so the corpus can only contain papers that use vocabulary you (or your rephrasings) anticipated — a real recall risk for a systematic review. With the one-time embedding setup ([`ollama-embeddings`](../skills/ollama-embeddings/SKILL.md), ~5 minutes), add semantic retrieval passes ([recipe 08](08-semantic-search-beyond-keywords.md)) to the union, or at minimum run [recipe 09](09-semantic-recall-audit.md) afterward to audit what the keywords missed and document it in your methods section.
+
 **What to check when it finishes.** Ask how many records each pass contributed and how many were unique to the rephrasings; if the rephrasings added nothing, they were too similar. Spot-check 10 random rows of the CSV against the databases.
 
 ## Under the hood — the steps the assistant runs

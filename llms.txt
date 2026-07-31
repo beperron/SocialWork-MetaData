@@ -79,8 +79,9 @@ incomplete because publisher indexing lags — exclude them from trend claims
 and say so. CRITICAL: author names are stored exactly as
 published, with NO disambiguation — never report unique-author counts from
 SWRD as fact; caveat them. A small number of articles are double-indexed
-under two journal ids — when building a corpus, dedupe on DOI or title, not
-just `id`.
+under two journal ids — when building a corpus, dedupe on normalized title
+(double-indexed pairs usually have differing or null DOIs, so DOI alone
+misses them).
 
 | Table | Rows | Key columns |
 |---|---|---|
@@ -96,7 +97,8 @@ Views: `swrd.papers_with_journals`, `swrd.publication_trends`,
 
 **SSWR (`sswr`) — conference presentations.** All 23,793 presentations at the
 Society for Social Work and Research annual conference, 2005–2026, every one
-with a full abstract and a method label. Distinguishing feature: authors ARE
+with a full abstract and a method label (`methodology` is never null; the
+2026 program year is complete — the conference has already occurred). Distinguishing feature: authors ARE
 disambiguated — 21,209 canonical identities — so author-level and longitudinal
 analyses are reliable here. Always start scholar analyses with the fuzzy
 lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
@@ -105,7 +107,7 @@ lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
 |---|---|---|
 | `sswr.papers` | 23,793 | `id` (text PK, e.g. `2019-O-0142`), `title`, `abstract`, `year`, `format`, `methodology` (lowercase: `quantitative`, `qualitative`, `mixed_methods`, `review`, `other`), `author_count`, `fts` (tsvector over title+abstract) |
 | `sswr.authors` | 21,209 | `id` (int PK), `name` (canonical), `variants`, `institutions`, `years`, `total_papers` |
-| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized`, `country_normalized` |
+| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly 'unknown' before 2011), `country_normalized` |
 | `sswr.paper_export` | view | flat, one row per paper with author arrays — easiest for exports |
 
 ## Search (built in — no setup, no local models)
@@ -125,6 +127,14 @@ ranks across different query strings. When unioning results from several
 phrasings, dedupe by `id` and note which phrasing(s) found each record; to
 present a merged top-N, order by the primary phrasing's ranking and annotate
 which rephrasings also matched each item.
+
+All search functions accept optional `min_year`/`max_year` after
+`match_count`. `match_count` caps the returned rows and reports no total —
+to size a topic, run a SQL count with an fts sweep (below), not a search
+call. When claiming search "missed" something, distinguish true vocabulary
+misses (the phrase is absent from title+abstract — check with `fts @@
+phraseto_tsquery(...)` per id) from ranking misses (present but below your
+top-N cutoff).
 
 ```sql
 select id, title, year, methodology, rank
@@ -174,9 +184,40 @@ where publication_year >= 1989
   and (coalesce(title,'') || ' ' || coalesce(abstract,'')) ~* '\mkinship care\M'
 ```
 
-(The databases also support semantic/vector search, but it requires a local
-embedding model; nothing in the cookbook needs it. If asked to use it, see
-the full skill files below rather than installing anything on your own.)
+## Semantic search (optional — needs a one-time local model setup)
+
+Cookbook recipes 01–07 never need this; recipes 08–09 use it. Every abstract
+also carries a 768-dim meaning vector, searchable once you can embed the
+query locally with **EmbeddingGemma 300M via Ollama** — the exact model the
+databases were built with; no other model's vectors are comparable. Setup is
+a check-install-verify script (ask the user before installing; ~620 MB once):
+https://beperron.github.io/SocialWork-MetaData/skills/ollama-embeddings/SKILL.md
+
+```python
+emb = requests.post("http://localhost:11434/api/embed", json={
+    "model": "embeddinggemma:300m",
+    "input": ["task: search result | query: " + question]}).json()["embeddings"][0]
+# same headers as run_sql above (Content-Profile picks swrd or sswr)
+hits = requests.post(
+    "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_semantic",
+    headers={"apikey": KEY, "Authorization": f"Bearer {KEY}",
+             "Content-Profile": "swrd", "Content-Type": "application/json"},
+    json={"query_embedding": emb, "match_count": 20}).json()
+```
+
+The `task: search result | query: ` prefix is REQUIRED — without it results
+degrade badly. `search_papers_semantic(query_embedding, match_count,
+min_year, max_year)` returns the same columns as keyword search plus
+`similarity` (cosine 0–1; >= ~0.55 usually on-topic, >= ~0.65 strongly so).
+Note: the function returns at most ~40 rows regardless of `match_count`, so
+"pull the top 300" is not achievable in one call — to retrieve a deeper
+neighborhood, embed several distinct phrasings of the topic and union their
+top-40s (each phrasing probes a different semantic direction).
+`search_papers_hybrid(query_text, query_embedding, match_count)` fuses the
+semantic and keyword rankings (reciprocal-rank fusion; extra fields
+`rrf_score`, `semantic_rank`, `keyword_rank` — NULL means not in that arm's
+top 60, a fixed pool depth independent of `match_count`) and is the best
+default when both arms are available.
 
 ## Rules that prevent the most common errors
 
@@ -217,4 +258,5 @@ Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 
 - SWRD skill file: https://beperron.github.io/SocialWork-MetaData/skills/swrd-database-skill.md
 - SSWR skill file: https://beperron.github.io/SocialWork-MetaData/skills/sswr-database-skill.md
+- Embedding setup (semantic search): https://beperron.github.io/SocialWork-MetaData/skills/ollama-embeddings/SKILL.md
 - Cookbook (worked examples): https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook

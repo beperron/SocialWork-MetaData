@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artificial Intelligence in Social Work: A Verified Corpus, 1989–2026</title>
+<meta name="description" content="A worked demonstration: every social work journal article on artificial intelligence from 1989 to 2026, verified by reading, classified by what each study does, and released with its labels.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FAFAF9;color:#18181B;
+       font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.65;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+  .wide{max-width:1020px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+  a{color:#00274C}
+  code,.mono{font-family:'IBM Plex Mono',monospace;font-size:.9em}
+
+  header.top{background:#00274C;color:#fff;padding:8px 0}
+  header.top .wide{display:flex;gap:18px;align-items:center;font-size:13.5px}
+  header.top a{color:#CBD5E1;text-decoration:none}
+  header.top a:hover{color:#fff}
+  header.top .brand{font-weight:600;color:#fff}
+
+  .hero{background:#00274C;color:#fff;padding:clamp(46px,6vw,74px) 0 clamp(40px,5vw,58px);
+        border-bottom:4px solid #FFCB05}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.13em;
+          text-transform:uppercase;color:#FFCB05;font-weight:500}
+  .hero h1{margin:14px 0 0;font-size:clamp(28px,4.4vw,44px);line-height:1.12;font-weight:600;
+           letter-spacing:-.02em;max-width:19ch}
+  .hero p{margin:16px 0 0;max-width:60ch;font-size:17px;color:#C7D3E0}
+  .stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:30px}
+  .stat b{display:block;font-size:30px;font-weight:600;line-height:1.1}
+  .stat span{font-size:12.5px;color:#9FB3C8;letter-spacing:.02em}
+
+  section{padding:clamp(38px,5vw,58px) 0}
+  section.alt{background:#fff;border-top:1px solid #E7E5E0;border-bottom:1px solid #E7E5E0}
+  h2{font-size:clamp(21px,2.6vw,27px);font-weight:600;letter-spacing:-.015em;margin:0 0 6px;line-height:1.25}
+  h3{font-size:17.5px;font-weight:600;margin:30px 0 8px}
+  .lede{color:#3F3F46;margin:0 0 22px;max-width:64ch}
+  p{max-width:68ch}
+  figure{margin:26px 0 10px}
+  figure img{width:100%;height:auto;display:block;background:#fff;border:1px solid #E7E5E0;border-radius:8px}
+  figcaption{font-size:13px;color:#71717A;margin-top:10px;max-width:72ch;line-height:1.55}
+
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:18px 0}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #E7E5E0;vertical-align:top}
+  th{font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#71717A}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .tablewrap{overflow-x:auto}
+
+  .def{background:#fff;border:1px solid #E7E5E0;border-left:4px solid var(--c,#00274C);
+       border-radius:8px;padding:18px 20px;margin:14px 0}
+  .def h4{margin:0 0 6px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:9px}
+  .def h4 i{width:11px;height:11px;border-radius:3px;background:var(--c);display:inline-block;flex:0 0 auto}
+  .def p{margin:0;font-size:14.8px;color:#3F3F46}
+  .def .ex{margin-top:9px;font-size:13.5px;color:#52525B;border-top:1px dashed #E7E5E0;padding-top:9px}
+
+  .note{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:16px 19px;margin:22px 0}
+  .note strong{color:#78350F}
+  .note p{margin:0;font-size:14.8px;color:#4B3A15;max-width:none}
+  .note p + p{margin-top:9px}
+
+  .era{background:#fff;border:1px solid #E7E5E0;border-radius:8px;padding:19px 21px;margin:14px 0}
+  .era h4{margin:0 0 4px;font-size:16.5px;font-weight:600}
+  .era .yr{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#71717A;letter-spacing:.04em}
+  .era p{margin:8px 0 0;font-size:15px;color:#3F3F46;max-width:none}
+  .era ul{margin:9px 0 0;padding-left:18px;font-size:14.3px;color:#52525B}
+  .era li{margin:3px 0}
+
+  .foot{background:#18181B;color:#A1A1AA;padding:34px 0;font-size:13.5px}
+  .foot a{color:#E4E4E7}
+  .cite{background:#fff;border:1px solid #E7E5E0;border-radius:8px;padding:15px 18px;font-size:14px;color:#3F3F46}
+  ul.plain{padding-left:19px}
+  ul.plain li{margin:5px 0}
+  @media (max-width:640px){ .stats{gap:22px} .stat b{font-size:25px} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wide">
+    <a class="brand" href="../../">Social Work Meta-Data Project</a>
+    <a href="../">Demonstrations</a>
+    <a href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook">Cookbook</a>
+    <a href="https://github.com/beperron/SocialWork-MetaData">GitHub</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Demonstration · Verified topical corpus</div>
+    <h1>Artificial Intelligence in Social Work, 1989–2026</h1>
+    <p>Every article on artificial intelligence in the disciplinary social work journals — found by search, verified by reading each abstract, and classified by what the study actually <em>does</em> rather than what it is about.</p>
+    <div class="stats">
+      <div class="stat"><b>278</b><span>VERIFIED ARTICLES</span></div>
+      <div class="stat"><b>37</b><span>YEARS COVERED</span></div>
+      <div class="stat"><b>58</b><span>JOURNAL OUTLETS</span></div>
+      <div class="stat"><b>1989</b><span>FIRST ARTICLE</span></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What this demonstrates</h2>
+    <p class="lede">This page is a worked example of an analysis anyone can reproduce with the project's databases and a prompt. It shows a complete pipeline: cast a wide net, read everything, classify by a stated scheme, and publish the labels so a reader can disagree with you specifically rather than in general.</p>
+    <p>The finding underneath it is simple and easy to get wrong: <strong>social work has been writing about artificial intelligence for more than thirty-five years</strong>, and the current surge is the third wave, not the first. What has changed is not that the field discovered AI in 2023, but that the balance of the literature shifted — from describing systems, to building them, to studying how practitioners react to them.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Before ChatGPT: what "AI" meant in 1989</h2>
+    <p class="lede">It is easy to assume that generative chatbots are what artificial intelligence <em>is</em>. The record says otherwise. Two-thirds of the years in this corpus pre-date ChatGPT entirely, and the earlier work was neither speculative nor marginal — it built working systems that made recommendations in child welfare, diagnosis, and treatment planning.</p>
+
+    <div class="era">
+      <h4>Expert systems and knowledge-based systems</h4>
+      <div class="yr">DOMINANT 1989–1998 · 24 ARTICLES IN THIS CORPUS</div>
+      <p>An expert system encodes a specialist's decision rules — literally a structured set of if-then statements elicited from experienced practitioners — so that a computer can reach the same conclusion on a new case. This was the mainstream meaning of "AI" in the field's first wave, and social work engaged it directly: <em>First generation expert systems in social welfare</em> (1989), <em>Expert systems: New tools for professional decision-making</em> (1990), <em>Desktop expert systems: Applications for social services</em> (1993).</p>
+      <ul>
+        <li><strong>Decision support systems</strong> — software that ranks or recommends a placement or service, such as <em>The Continuum of Care System</em> (1990), a working system for human services placement decisions.</li>
+        <li><strong>Knowledge acquisition</strong> — the research problem of getting expertise out of a practitioner's head and into machine-usable rules, e.g. <em>Understanding and representing human-services knowledge</em> (1994).</li>
+        <li><strong>Computer-assisted diagnosis</strong> — including <em>DTREE, the electronic DSM-III-R</em> (1993) and a knowledge-based system for differential diagnosis of chemical dependency (1992).</li>
+      </ul>
+    </div>
+
+    <div class="era">
+      <h4>Statistical learning and neural networks</h4>
+      <div class="yr">DOMINANT 1999–2022 · 62 ARTICLES IN THIS CORPUS</div>
+      <p>The second wave replaced hand-written rules with patterns learned from data. Social work researchers used neural networks and, later, machine learning to predict outcomes — and, characteristically, benchmarked them against the statistics the field already trusted: <em>Predicting placement in foster care: A comparison of logistic regression and neural network models</em> (2001), <em>Predicting child physical abuse recurrence: comparison of a neural network to logistic regression</em> (2003), <em>Using artificial intelligence to model juvenile recidivism patterns</em> (1994).</p>
+      <ul>
+        <li><strong>Predictive risk modeling</strong> in child welfare, which later became the subject of sustained ethical critique.</li>
+        <li><strong>Text and language processing</strong> — detecting interpersonal patterns in case text before the phrase "natural language processing" was common in the field.</li>
+        <li><strong>Adoption research</strong> begins here too: <em>Child welfare workers' adoption of decision support technology</em> (2009).</li>
+      </ul>
+    </div>
+
+    <div class="era">
+      <h4>Generative AI and large language models</h4>
+      <div class="yr">DOMINANT 2023–2026 · 192 ARTICLES IN THIS CORPUS</div>
+      <p>The third wave is the one most readers recognize: ChatGPT and its successors, applied to documentation, assessment, supervision, and education, and studied for how students and practitioners respond to them. It accounts for roughly seven of every ten articles in this corpus — a genuine surge, but one that arrives on top of a literature that had been running for three decades.</p>
+    </div>
+
+    <p style="margin-top:20px">Boundary years are labeling conveniences, not discoveries. Expert-system work continues after 1998, and neural networks did not stop in 2022; each era is named for what dominated it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How each article was classified</h2>
+    <p class="lede">The classification asks what a study <em>does</em>, not what it is about. Keyword topic alone cannot separate a team that built and tested a model from a team that surveyed practitioners' opinions about models, yet those are different kinds of knowledge. Every abstract was read and assigned to exactly one of three categories.</p>
+
+    <div class="def" style="--c:#2a78d6">
+      <h4><i></i>Empirical work</h4>
+      <p>The study builds, applies, or tests a system on data. Running a model and measuring what it produces counts, including benchmarking an off-the-shelf tool such as ChatGPT against a task. Traditional statistics used alone do not count — a logistic regression is not artificial intelligence — though such models frequently appear as comparison baselines.</p>
+      <div class="ex"><strong>Example:</strong> comparing a neural network with logistic regression to predict foster care placement; evaluating whether an LLM can answer licensing exam items.</div>
+    </div>
+
+    <div class="def" style="--c:#eb6834">
+      <h4><i></i>Reception studies</h4>
+      <p>The study collects original data about people — attitudes, adoption, perceptions, readiness, concerns — without running a system itself. The object of study is the human response to the technology rather than the technology's performance.</p>
+      <div class="ex"><strong>Example:</strong> surveying practitioners on their willingness to use AI-based decision support; interviewing students about their use of generative AI.</div>
+    </div>
+
+    <div class="def" style="--c:#1baf7a">
+      <h4><i></i>Commentary and review</h4>
+      <p>Conceptual, ethical, educational, critical, or review writing that presents no original data. This is the field's argumentative literature: what AI would mean for practice, what it threatens, how curricula should respond.</p>
+      <div class="ex"><strong>Example:</strong> an ethics analysis of algorithmic decision-making in child protection; a scoping review of digital practice.</div>
+    </div>
+
+    <p>The hard boundary in practice is between the first two. A study in which researchers prompt ChatGPT with case vignettes and then judge the answers is doing something to a system and measuring the result, so it is coded empirical even when the framing is evaluative. Eight articles produced genuinely split judgments and were decided by hand; they are marked in the released data.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>Growth</h2>
+    <p class="lede">Attention is real, uneven, and much older than the current wave.</p>
+    <figure>
+      <img src="figures/growth.svg" alt="Stacked bar chart of verified AI articles per year from 1989 to 2026. A cluster of about 3 to 7 articles per year from 1989 to 1994, near-zero through the 2000s and 2010s, then rapid growth from 2018 reaching 34 in 2024, 35 in the database plus 21 in the supplement in 2025, and 82 supplement-only records in 2026.">
+      <figcaption>Verified articles per publication year. Navy is the SWRD database corpus; maize is the Web of Science supplement, which is stored and reported separately rather than merged. The 2024–25 database counts are lower bounds because publisher indexing lags; 2026 is supplement-only because it falls past the database release.</figcaption>
+    </figure>
+
+    <p>Three features are worth naming. First, <strong>an early cluster</strong>: 22 articles appeared between 1989 and 1994, when expert systems were a live methodological project in human services. Second, <strong>a long trough</strong>: from 1995 through 2016 the topic nearly disappears from disciplinary journals, averaging under one article a year even as neural-network methods advanced elsewhere. Third, <strong>the surge</strong>: growth resumes around 2018 and accelerates sharply after the public release of ChatGPT in late 2022, with 2023–2026 alone accounting for 192 of the 278 articles.</p>
+
+    <p>The trough is the interesting part. It does not mean the field stopped thinking about computation; it means the disciplinary journals were not where that thinking was published. Read alongside the early cluster, the pattern suggests the field's engagement with AI is episodic and technology-triggered rather than cumulative.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <h2>What the literature does, by era</h2>
+    <p class="lede">Composition shifts across the three waves, and the shift is not the one people expect.</p>
+    <figure>
+      <img src="figures/eras.svg" alt="Three horizontal 100 percent stacked bars. Expert systems era 1989 to 1998, N equals 24: 75 percent commentary, 25 percent empirical. Machine learning era 1999 to 2022, N equals 62: 61 percent empirical, 34 percent commentary, 5 percent reception. Generative AI era 2023 to 2026, N equals 192: 40 percent empirical, 37 percent commentary, 23 percent reception.">
+      <figcaption>Within-era composition. Percentages are shares of each era's articles; the expert-systems era rests on only 24 articles, so its split can move several points on a handful of recoding decisions.</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Era</th><th class="num">N</th><th class="num">Empirical</th><th class="num">Reception</th><th class="num">Commentary</th></tr></thead>
+        <tbody>
+          <tr><td>Expert systems · 1989–1998</td><td class="num">24</td><td class="num">6 (25%)</td><td class="num">0</td><td class="num">18 (75%)</td></tr>
+          <tr><td>Machine learning · 1999–2022</td><td class="num">62</td><td class="num">38 (61%)</td><td class="num">3 (5%)</td><td class="num">21 (34%)</td></tr>
+          <tr><td>Generative AI · 2023–2026</td><td class="num">192</td><td class="num">77 (40%)</td><td class="num">45 (23%)</td><td class="num">70 (37%)</td></tr>
+          <tr><td><strong>All years</strong></td><td class="num"><strong>278</strong></td><td class="num"><strong>121 (44%)</strong></td><td class="num"><strong>48 (17%)</strong></td><td class="num"><strong>109 (39%)</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The first wave was <strong>overwhelmingly discursive</strong>: three-quarters of it argued about what expert systems could or should do, against a minority that built them. The second wave <strong>inverted that</strong>: 61% empirical, as researchers with neural networks and administrative data tested predictions against the field's existing statistical baselines. The third wave <strong>swings back toward talk</strong> — empirical work falls to 40% while commentary rises again — and introduces a category that barely existed before: <strong>reception studies</strong>, which jump from 3 articles in twenty-four years to 45 in four.</p>
+
+    <p>That last shift is the clearest signal in the data. Generative AI is the first wave of this technology that ordinary practitioners and students encounter directly, so for the first time the field is studying its own members' responses at scale rather than only the systems themselves.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>Where this work appears</h2>
+    <p class="lede">278 articles spread across 58 journals, with a long tail: 23 outlets carry exactly one article.</p>
+    <figure>
+      <img src="figures/outlets.svg" alt="Horizontal bar chart of the top ten journals. Journal of Technology in Human Services leads with 59 articles, then Journal of the Society for Social Work and Research 22, Journal of Evidence-Based Social Work 19, Research on Social Work Practice 17, British Journal of Social Work 13, Social Work Education 13, Journal of Social Work Education 10, Journal of Social Service Research 8, Aotearoa New Zealand Social Work 8, Social Work 5.">
+      <figcaption>Top 10 outlets by verified article count, split by source. The top ten carry 174 of 278 articles (63%).</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th class="num">#</th><th>Journal</th><th class="num">Total</th><th class="num">Database</th><th class="num">Supplement</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Journal of Technology in Human Services</td><td class="num">59</td><td class="num">50</td><td class="num">9</td></tr>
+          <tr><td class="num">2</td><td>Journal of the Society for Social Work and Research</td><td class="num">22</td><td class="num">12</td><td class="num">10</td></tr>
+          <tr><td class="num">3</td><td>Journal of Evidence-Based Social Work</td><td class="num">19</td><td class="num">4</td><td class="num">15</td></tr>
+          <tr><td class="num">4</td><td>Research on Social Work Practice</td><td class="num">17</td><td class="num">7</td><td class="num">10</td></tr>
+          <tr><td class="num">5</td><td>British Journal of Social Work</td><td class="num">13</td><td class="num">6</td><td class="num">7</td></tr>
+          <tr><td class="num">6</td><td>Social Work Education</td><td class="num">13</td><td class="num">6</td><td class="num">7</td></tr>
+          <tr><td class="num">7</td><td>Journal of Social Work Education</td><td class="num">10</td><td class="num">8</td><td class="num">2</td></tr>
+          <tr><td class="num">8</td><td>Journal of Social Service Research</td><td class="num">8</td><td class="num">7</td><td class="num">1</td></tr>
+          <tr><td class="num">9</td><td>Aotearoa New Zealand Social Work</td><td class="num">8</td><td class="num">0</td><td class="num">8</td></tr>
+          <tr><td class="num">10</td><td>Social Work</td><td class="num">5</td><td class="num">4</td><td class="num">1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>One journal dominates: the <em>Journal of Technology in Human Services</em> carries 59 articles, more than the next two combined, and has done so across all three eras — it was publishing expert-systems work in 1990 and generative-AI work in 2025. Beyond it, the literature is <strong>distributed rather than concentrated</strong>, appearing in generalist flagships (<em>British Journal of Social Work</em>, <em>Social Work</em>), research outlets (<em>JSSWR</em>, <em>RSWP</em>), and — notably in the newest cohort — education journals, consistent with a field working out what to teach.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Data and methods</h2>
+
+    <h3>Building the corpus</h3>
+    <p>A wide keyword net was cast over titles and abstracts of the SWRD journal database, restricted to <span class="mono">publication_year &gt;= 1989</span> — the systematically compiled window of the database and of its published article. The net spanned era-appropriate vocabulary, from <em>expert system</em> and <em>knowledge-based system</em> through <em>neural network</em>, <em>machine learning</em> and <em>predictive analytics</em> to <em>ChatGPT</em>, <em>large language model</em> and <em>generative AI</em>, with word-boundary anchors on short tokens.</p>
+    <p>Every match was read; none were sampled. Roughly half of raw matches were false positives in nameable classes — "AI" as American Indian/Alaska Native or Appreciative Inquiry, "deep learning" as pedagogy, "neural network" as brain circuitry, "expert systems" in the sociological sense, and clinical data mining, which in social work denotes manual secondary analysis of case records rather than computation. A semantic recall audit using sentence embeddings then searched by meaning rather than wording, recovering additional in-scope articles that the keyword net missed — most of them from the pre-2000 era, where the modern vocabulary simply did not exist.</p>
+
+    <h3>Finding what the keywords missed: embedding-based search</h3>
+    <p>A keyword net can only find phrasings someone thought of, which is a serious problem across thirty-seven years of shifting vocabulary. The databases therefore also store a <strong>meaning vector for every abstract</strong>, so a query can be matched by <em>sense</em> rather than by string. Running that audit on this corpus recovered in-scope articles the net had missed — a 1990 <em>review of automated assessment</em>, a 1989 study of <em>computers and social diagnosis</em>, a 1993 <em>computerized assessment system</em> — none of which contain the phrase "artificial intelligence" anywhere in title or abstract.</p>
+
+    <div class="def" style="--c:#00274C">
+      <h4><i></i>The embedding model, precisely</h4>
+      <p><strong>EmbeddingGemma 300M</strong> (Google), served locally through <a href="https://ollama.com">Ollama</a> as <code>embeddinggemma:300m</code>, producing <strong>768-dimension</strong> vectors. Every abstract in both databases was embedded with this exact model, so <strong>query vectors must come from it too</strong> — a vector from OpenAI, Cohere, a different Gemma build, or another quantisation is not comparable and returns noise. There is no server-side embedding endpoint; the query vector is generated on your machine (~620&nbsp;MB, downloaded once).</p>
+      <div class="ex"><strong>Required prompt prefix.</strong> EmbeddingGemma is trained with task prefixes. Queries must be embedded as <code>task: search result | query: {your question}</code>; documents were embedded as <code>title: … | text: …</code>, already done. Omitting the query prefix is the most common mistake and degrades results badly. Similarity is cosine, 0–1: ≥&nbsp;0.55 is usually on topic, ≥&nbsp;0.65 strongly so. The search function returns roughly 40 rows per call regardless of the requested count, so deeper coverage comes from unioning several differently-worded statements of the same question.</div>
+    </div>
+
+    <p>The model was not chosen by reputation. It was selected by benchmarking candidates on this corpus: every embedding model tested beat keyword retrieval, open-weight models matched or exceeded commercial APIs, and EmbeddingGemma had the best quality-to-size ratio for a model that runs on a laptop. <a href="code/semantic_audit.py">semantic_audit.py</a> in this folder performs the whole audit — it checks that Ollama is running with the right model, embeds several statements of the corpus definition, retrieves neighbours, and reports the candidates that are not already in the corpus. Scores nominate; a human still reads each candidate and admits it only with a note naming the vocabulary gap.</p>
+
+    <h3>Assigning the labels</h3>
+    <p>Each article was classified by reading its abstract against the three definitions above. To make the labeling checkable rather than asserted, the screening and classification were run four times independently by different AI systems working only from the published documentation, and the label recorded here is the majority judgment. 270 of the 278 articles carried a clear majority; the remaining 8 split evenly and were decided by a human reader. The released data file records every model's individual vote and flags the hand-decided cases, so any reader can see exactly where the classification was contested.</p>
+
+    <h3>The Web of Science supplement</h3>
+    <p>The database is a versioned release with an end date; the literature is not. To extend coverage past that date, the same keyword net was run in Web of Science over the same journal set for recent years, screened with the same discipline, and deduplicated against the database by DOI. <strong>Those records are kept in a separate file and are not merged into the database</strong> — the versioned release stays clean, and every count above reports the two sources separately.</p>
+
+    <div class="note">
+      <p><strong>What the supplement can and cannot see.</strong> Web of Science indexes a curated set of journals. Recent open-access titles, newer journals not yet accepted for indexing, regional and non-English journals, and some practice-facing outlets may be absent from it. The supplement therefore extends the time window but not necessarily the <em>breadth</em> of the original journal set, and articles published in venues outside Web of Science coverage will be missing from the 2025–2026 figures.</p>
+      <p>Treat the recent years as a <strong>lower bound</strong>, not a census — as with the 2024–25 database counts, where publisher indexing still lags.</p>
+    </div>
+
+    <h3>Other limits worth stating</h3>
+    <ul class="plain">
+      <li><strong>Journal-set boundary.</strong> The corpus covers disciplinary social work journals. AI research by social work scholars published in health, policy, computing, or interdisciplinary venues is out of scope by design.</li>
+      <li><strong>Abstract-level coding.</strong> Labels are assigned from titles and abstracts, not full texts. A study whose empirical component is invisible in its abstract will be misclassified.</li>
+      <li><strong>Boundary rules are contestable.</strong> Two decisions move the count by tens: whether traditional predictive statistics count as AI, and whether decision-support systems count when they do not learn. Both are documented here so a reader can redraw them.</li>
+      <li><strong>Small early N.</strong> Percentages for 1989–1998 rest on 24 articles.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Get the data and the code</h2>
+    <p class="lede">Everything behind this page is in the folder it is served from — the labels, the raw candidate set, and four scripts that reproduce the analysis end to end.</p>
+
+    <h3>Data</h3>
+    <ul class="plain">
+      <li><a href="data/ai_corpus_labeled.json">data/ai_corpus_labeled.json</a> — all 278 verified records: year, title, journal, DOI, final label, each independent system's vote, and a flag on the eight hand-decided cases.</li>
+      <li><a href="data/candidates_raw.json">data/candidates_raw.json</a> — the 373 raw keyword matches before screening, so you can see exactly what was rejected and re-screen it yourself.</li>
+      <li><a href="data/stats.json">data/stats.json</a> — every count on this page, in machine-readable form.</li>
+    </ul>
+
+    <h3>Code</h3>
+    <ul class="plain">
+      <li><a href="code/fetch_candidates.py">fetch_candidates.py</a> — casts the era-spanning keyword net over the database and writes the candidate set. No credentials, no install: <code>python3 fetch_candidates.py</code>.</li>
+      <li><a href="code/semantic_audit.py">semantic_audit.py</a> — the embedding-based recall audit; documents the exact model and prefix convention, and checks your setup before running.</li>
+      <li><a href="code/compute_stats.py">compute_stats.py</a> — recomputes every number on this page from the released labels.</li>
+      <li><a href="code/make_figures.py">make_figures.py</a> — regenerates all three figures.</li>
+    </ul>
+    <p>Only the screening and labeling steps are not scripted, because they are the steps that require reading. That is the honest boundary of automation here: the machine retrieves and proposes; a person decides.</p>
+
+    <h3>Do the databases need a big model?</h3>
+    <p>No. Querying is plain HTTPS with a public read-only key, so <strong>a small model running locally can drive the whole retrieval pipeline</strong> — in building this demonstration, a 35-billion-parameter open-weight model on a laptop connected from the documentation alone, ran the keyword sweeps and SQL, and produced a screened corpus of comparable size to the frontier models. Where model capability told was not access but <em>judgment at volume</em>: consistency in applying the three category definitions across hundreds of abstracts, and care with bookkeeping. Use whatever model you like to query; check the classification work regardless of what produced it.</p>
+
+    <h3>Related</h3>
+    <ul class="plain">
+      <li><a href="https://github.com/beperron/SocialWork-MetaData/tree/master/analyses/ai-in-social-work">analyses/ai-in-social-work/</a> — the fuller working artifact behind the published paper: corpora, networks, figures, scripts.</li>
+      <li><a href="https://github.com/beperron/SocialWork-MetaData/blob/master/cookbook/05-verified-topic-corpus-with-wos-extension.md">Cookbook recipe 05</a> builds a verified corpus like this on any topic; <a href="https://github.com/beperron/SocialWork-MetaData/blob/master/cookbook/09-semantic-recall-audit.md">recipe 09</a> is the semantic audit; <a href="https://github.com/beperron/SocialWork-MetaData/blob/master/skills/ollama-embeddings/SKILL.md">the embeddings skill</a> sets up the model.</li>
+      <li><a href="../../llms.txt">llms.txt</a> — hand this one file to an AI assistant and it can query both databases directly.</li>
+    </ul>
+
+    <h3>Citation</h3>
+    <div class="cite">
+      Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). Evolution of social work knowledge production over 35 years. <em>Research on Social Work Practice</em>. <a href="https://doi.org/10.1177/10497315261416833">https://doi.org/10.1177/10497315261416833</a>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="wrap">
+    <p style="max-width:none;margin:0">Social Work Meta-Data Project · University of Michigan School of Social Work ·
+    <a href="../../">project home</a> ·
+    <a href="https://github.com/beperron/SocialWork-MetaData">repository</a></p>
+    <p style="max-width:none;margin:8px 0 0;font-size:12.5px;color:#71717A">Counts on this page were computed from the released data file and reflect the corpus as of the 2026 database release plus the Web of Science supplement.</p>
+  </div>
+</div>
+
+</body>
+</html>

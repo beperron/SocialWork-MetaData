@@ -11,9 +11,11 @@ This is the full verified-corpus workflow behind the AI-in-social-work analysis 
 
 Copy, edit the bracketed parts, and paste:
 
-> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, and schema. Build a verified corpus from the swrd database of every article on [YOUR TOPIC]: cast a wide keyword net including historical vocabulary, then read every match and remove false positives, naming each false-positive class and reporting the arithmetic stepwise (raw, removed by class, kept). Then run a recall audit: harvest recurring vocabulary from the abstracts you kept, run additional keyword sweeps with those terms and with 2-3 rephrasings of the topic, and read any new matches. I will also give you a Web of Science export for recent years [attach it]: screen it the same way, deduplicate against SWRD by DOI, and keep it as a separate supplement file; do not merge it into the database records. Give me the labeled corpus as JSON plus a summary I can audit. Use the built-in search and SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, and schema. Build a verified corpus from the swrd database of every article on [YOUR TOPIC], restricted to publication_year >= 1989 — that is the SWRD's systematically compiled corpus and the window of the database's published article; pre-1989 records come from an incomplete supplement and stay out. Cast a wide keyword net including historical vocabulary, then read every match and remove false positives, naming each false-positive class and reporting the arithmetic stepwise (raw, removed by class, kept). Then run a recall audit: harvest recurring vocabulary from the abstracts you kept, run additional keyword sweeps with those terms and with 2-3 rephrasings of the topic, and read any new matches. I will also give you a Web of Science export for recent years [attach it]: screen it the same way, deduplicate against SWRD by DOI, and keep it as a separate supplement file; do not merge it into the database records. Give me the labeled corpus as JSON plus a summary I can audit. Use the built-in search and SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
 
 *If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
+
+> **Strongly recommended: audit recall with embeddings.** The keyword net and the Step 3 vocabulary expansion both match exact words, so they can only find phrasings someone thought of. With the one-time embedding setup ([`ollama-embeddings`](../skills/ollama-embeddings/SKILL.md), ~5 minutes), [recipe 09](09-semantic-recall-audit.md) audits the finished corpus by *meaning* — in the original AI-in-social-work analysis, exactly this kind of embedding audit recovered in-scope articles the keywords missed (decision-support papers that never say "AI").
 
 **What to check when it finishes.** The arithmetic must add up exactly (raw minus removed equals kept) and every 100 percent of removals should be itemized. Ask what the recall audit recovered; zero recoveries on a broad topic is suspicious.
 
@@ -28,11 +30,12 @@ Search titles and abstracts with every phrasing of the topic, historical vocabul
 ```sql
 select id, publication_year, title, abstract
 from swrd.papers
-where (coalesce(title,'') || ' ' || coalesce(abstract,''))
+where publication_year >= 1989   -- the systematically compiled corpus; matches the SWRD paper's window
+  and (coalesce(title,'') || ' ' || coalesce(abstract,''))
       ~* '(artificial intelligence|machine learning|expert system|neural network|deep learning|chatgpt|large language model|\mai\M|...)'
 ```
 
-Word-boundary anchors matter: an unanchored `ai` matches "AI/AN" (American Indian/Alaska Native) and "Appreciative Inquiry," and those false positives will dominate your raw set.
+Word-boundary anchors matter: an unanchored `ai` matches "AI/AN" (American Indian/Alaska Native) and "Appreciative Inquiry," and those false positives will dominate your raw set. The `>= 1989` filter is a design decision, not a convenience: the pre-1989 Supplement is substantially incomplete (many records lack abstracts), so including it would mix a censused corpus with a partial one. State the window in your report.
 
 ### Step 2 — Read everything; taxonomize the false positives
 

@@ -1,0 +1,149 @@
+{
+ "total": 278,
+ "swrd": 175,
+ "wos": 103,
+ "labels": {
+  "commentary": 109,
+  "empirical": 121,
+  "reception": 48
+ },
+ "labels_swrd": {
+  "commentary": 73,
+  "empirical": 80,
+  "reception": 22
+ },
+ "labels_wos": {
+  "empirical": 41,
+  "commentary": 36,
+  "reception": 26
+ },
+ "years_swrd": {
+  "1989": 3,
+  "1990": 7,
+  "1991": 1,
+  "1992": 1,
+  "1993": 5,
+  "1994": 5,
+  "1997": 1,
+  "1998": 1,
+  "1999": 2,
+  "2001": 1,
+  "2002": 1,
+  "2003": 1,
+  "2004": 1,
+  "2005": 2,
+  "2009": 2,
+  "2012": 2,
+  "2014": 1,
+  "2015": 1,
+  "2016": 1,
+  "2017": 3,
+  "2018": 10,
+  "2019": 5,
+  "2020": 5,
+  "2021": 10,
+  "2022": 14,
+  "2023": 20,
+  "2024": 34,
+  "2025": 35
+ },
+ "years_wos": {
+  "2025": 21,
+  "2026": 82
+ },
+ "top_outlets": [
+  {
+   "journal": "Journal of Technology in Human Services",
+   "n": 59,
+   "swrd": 50,
+   "wos": 9
+  },
+  {
+   "journal": "Journal of the Society for Social Work and Research",
+   "n": 22,
+   "swrd": 12,
+   "wos": 10
+  },
+  {
+   "journal": "Journal of Evidence-Based Social Work",
+   "n": 19,
+   "swrd": 4,
+   "wos": 15
+  },
+  {
+   "journal": "Research on Social Work Practice",
+   "n": 17,
+   "swrd": 7,
+   "wos": 10
+  },
+  {
+   "journal": "British Journal of Social Work",
+   "n": 13,
+   "swrd": 6,
+   "wos": 7
+  },
+  {
+   "journal": "Social Work Education",
+   "n": 13,
+   "swrd": 6,
+   "wos": 7
+  },
+  {
+   "journal": "Journal of Social Work Education",
+   "n": 10,
+   "swrd": 8,
+   "wos": 2
+  },
+  {
+   "journal": "Journal of Social Service Research",
+   "n": 8,
+   "swrd": 7,
+   "wos": 1
+  },
+  {
+   "journal": "Aotearoa New Zealand Social Work",
+   "n": 8,
+   "swrd": 0,
+   "wos": 8
+  },
+  {
+   "journal": "Social Work",
+   "n": 5,
+   "swrd": 4,
+   "wos": 1
+  }
+ ],
+ "distinct_outlets": 58,
+ "singletons": 23,
+ "eras": [
+  {
+   "name": "Expert systems",
+   "lo": 1989,
+   "hi": 1998,
+   "counts": {
+    "commentary": 18,
+    "empirical": 6
+   }
+  },
+  {
+   "name": "Machine learning",
+   "lo": 1999,
+   "hi": 2022,
+   "counts": {
+    "commentary": 21,
+    "empirical": 38,
+    "reception": 3
+   }
+  },
+  {
+   "name": "Generative AI",
+   "lo": 2023,
+   "hi": 2026,
+   "counts": {
+    "commentary": 70,
+    "empirical": 77,
+    "reception": 45
+   }
+  }
+ ]
+}

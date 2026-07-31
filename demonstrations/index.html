@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demonstrations — Social Work Meta-Data Project</title>
+<meta name="description" content="Worked analyses built on the project's databases: complete, reproducible, and published with their data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FAFAF9;color:#18181B;font-family:'IBM Plex Sans',system-ui,sans-serif;
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+  a{color:#00274C}
+  header.top{background:#00274C;color:#fff;padding:8px 0}
+  header.top .wrap{display:flex;gap:18px;align-items:center;font-size:13.5px}
+  header.top a{color:#CBD5E1;text-decoration:none}
+  header.top a:hover{color:#fff}
+  header.top .brand{font-weight:600;color:#fff}
+  .hero{background:#00274C;color:#fff;padding:clamp(42px,5vw,64px) 0 clamp(34px,4vw,46px);border-bottom:4px solid #FFCB05}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#FFCB05;font-weight:500}
+  h1{margin:13px 0 0;font-size:clamp(27px,4vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+  .hero p{margin:14px 0 0;max-width:62ch;color:#C7D3E0;font-size:17px}
+  section{padding:clamp(34px,4vw,52px) 0}
+  .card{background:#fff;border:1px solid #E7E5E0;border-radius:10px;overflow:hidden;
+        box-shadow:0 1px 2px rgba(24,24,27,.04);margin-bottom:20px}
+  .card .bar{height:4px;background:#FFCB05}
+  .card .body{padding:24px 26px}
+  .card h2{margin:0;font-size:21px;font-weight:600;letter-spacing:-.01em}
+  .card h2 a{text-decoration:none}
+  .card .meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+              text-transform:uppercase;color:#71717A;margin-bottom:9px}
+  .card p{margin:9px 0 0;color:#3F3F46;font-size:15.5px;max-width:70ch}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+  .tag{font-size:12px;padding:3px 10px;border:1px solid #E7E5E0;border-radius:20px;color:#52525B;background:#FAFAF9}
+  .go{display:inline-flex;align-items:center;gap:7px;margin-top:17px;height:38px;padding:0 17px;
+      background:#00274C;color:#fff;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none}
+  .about{color:#3F3F46;max-width:68ch}
+  .foot{background:#18181B;color:#A1A1AA;padding:30px 0;font-size:13.5px}
+  .foot a{color:#E4E4E7}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">Social Work Meta-Data Project</a>
+    <a href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook">Cookbook</a>
+    <a href="https://github.com/beperron/SocialWork-MetaData">GitHub</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Demonstrations</div>
+    <h1>Worked analyses, start to finish</h1>
+    <p>Complete studies built on the project's databases — each one published with its data, its category definitions, and its limits, so the analysis can be checked rather than taken on faith.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="card">
+      <div class="bar"></div>
+      <div class="body">
+        <div class="meta">Verified topical corpus · 1989–2026 · 278 articles</div>
+        <h2><a href="ai-in-social-work/">Artificial Intelligence in Social Work</a></h2>
+        <p>Every article on AI in the disciplinary social work journals across thirty-seven years, verified by reading and classified by what each study does. Shows that the field's engagement with AI began with expert systems in 1989 — long before generative chatbots — and traces how the balance shifted from arguing about the technology, to building it, to studying how practitioners respond to it.</p>
+        <div class="tags">
+          <span class="tag">growth over time</span>
+          <span class="tag">publication outlets</span>
+          <span class="tag">empirical vs. reception vs. commentary</span>
+          <span class="tag">Web of Science extension</span>
+          <span class="tag">labels released</span>
+        </div>
+        <a class="go" href="ai-in-social-work/">Read the demonstration
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="about">Each demonstration corresponds to a <a href="https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook">Cookbook</a> recipe — the copy-paste prompt that produces the same kind of analysis on a topic of your choosing. The databases are open and read-only; hand <a href="../llms.txt">llms.txt</a> to an AI assistant and it can query them directly.</p>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="wrap">
+    <p style="margin:0">Social Work Meta-Data Project · University of Michigan School of Social Work ·
+    <a href="../">project home</a> · <a href="https://github.com/beperron/SocialWork-MetaData">repository</a></p>
+  </div>
+</div>
+
+</body>
+</html>
