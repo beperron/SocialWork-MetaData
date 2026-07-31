@@ -1,6 +1,14 @@
 {
  "journals": {
   "venue": "journals",
+  "ramp": [
+   "#A18BE0",
+   "#8A70D4",
+   "#7357C4",
+   "#5C44AE",
+   "#463394",
+   "#332578"
+  ],
   "min_items": 2,
   "min_links": 3,
   "total_authors": 677,
@@ -16,7 +24,7 @@
      6
     ],
     "score": 0.588,
-    "color": "#7C67CE",
+    "color": "#5C44AE",
     "dark": true
    },
    {
@@ -30,7 +38,7 @@
      4
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -44,7 +52,7 @@
      3
     ],
     "score": 0.667,
-    "color": "#7C67CE",
+    "color": "#5C44AE",
     "dark": true
    },
    {
@@ -58,7 +66,7 @@
      5
     ],
     "score": 0.25,
-    "color": "#CFC2F2",
+    "color": "#8A70D4",
     "dark": false
    },
    {
@@ -72,7 +80,7 @@
      1
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -86,8 +94,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 6,
@@ -100,7 +108,7 @@
      0
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -114,8 +122,8 @@
      2
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 8,
@@ -128,7 +136,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -142,7 +150,7 @@
      1
     ],
     "score": 0.667,
-    "color": "#7C67CE",
+    "color": "#5C44AE",
     "dark": true
    },
    {
@@ -156,7 +164,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -170,7 +178,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -184,7 +192,7 @@
      1
     ],
     "score": 0.667,
-    "color": "#7C67CE",
+    "color": "#5C44AE",
     "dark": true
    },
    {
@@ -198,7 +206,7 @@
      1
     ],
     "score": 0.25,
-    "color": "#CFC2F2",
+    "color": "#8A70D4",
     "dark": false
    },
    {
@@ -212,7 +220,7 @@
      0
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -226,7 +234,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -240,7 +248,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -254,8 +262,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 18,
@@ -268,7 +276,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -282,8 +290,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 20,
@@ -296,7 +304,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -310,7 +318,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -324,7 +332,7 @@
      0
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -338,8 +346,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 24,
@@ -352,7 +360,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -366,7 +374,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -380,7 +388,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -394,7 +402,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -408,8 +416,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 29,
@@ -422,8 +430,8 @@
      1
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#7357C4",
+    "dark": true
    },
    {
     "i": 30,
@@ -436,7 +444,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -450,7 +458,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    },
    {
@@ -464,7 +472,7 @@
      0
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#463394",
     "dark": true
    },
    {
@@ -478,7 +486,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#332578",
     "dark": true
    }
   ],
@@ -917,6 +925,14 @@
  },
  "conference": {
   "venue": "conference",
+  "ramp": [
+   "#E19255",
+   "#CE7434",
+   "#B65C22",
+   "#994818",
+   "#7A3910",
+   "#5C2B0B"
+  ],
   "min_items": 3,
   "min_links": 2,
   "total_authors": 502,
@@ -932,7 +948,7 @@
      1
     ],
     "score": 0.875,
-    "color": "#5A48B4",
+    "color": "#7A3910",
     "dark": true
    },
    {
@@ -946,7 +962,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -960,7 +976,7 @@
      1
     ],
     "score": 0.786,
-    "color": "#5A48B4",
+    "color": "#7A3910",
     "dark": true
    },
    {
@@ -974,7 +990,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -988,7 +1004,7 @@
      0
     ],
     "score": 0.875,
-    "color": "#5A48B4",
+    "color": "#7A3910",
     "dark": true
    },
    {
@@ -1002,7 +1018,7 @@
      2
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1016,7 +1032,7 @@
      1
     ],
     "score": 0.75,
-    "color": "#5A48B4",
+    "color": "#7A3910",
     "dark": true
    },
    {
@@ -1030,7 +1046,7 @@
      1
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1044,7 +1060,7 @@
      2
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1058,7 +1074,7 @@
      2
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1072,7 +1088,7 @@
      2
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1086,7 +1102,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1100,7 +1116,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1114,7 +1130,7 @@
      2
     ],
     "score": 0.375,
-    "color": "#A896E4",
+    "color": "#B65C22",
     "dark": false
    },
    {
@@ -1128,7 +1144,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1142,7 +1158,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1156,7 +1172,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1170,7 +1186,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1184,7 +1200,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1198,7 +1214,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1212,7 +1228,7 @@
      1
     ],
     "score": 0.667,
-    "color": "#7C67CE",
+    "color": "#994818",
     "dark": true
    },
    {
@@ -1226,8 +1242,8 @@
      0
     ],
     "score": 0.5,
-    "color": "#A896E4",
-    "dark": false
+    "color": "#B65C22",
+    "dark": true
    },
    {
     "i": 22,
@@ -1240,7 +1256,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1254,7 +1270,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1268,7 +1284,7 @@
      0
     ],
     "score": 1.0,
-    "color": "#3E3191",
+    "color": "#5C2B0B",
     "dark": true
    },
    {
@@ -1282,7 +1298,7 @@
      1
     ],
     "score": 0.667,
-    "color": "#7C67CE",
+    "color": "#994818",
     "dark": true
    }
   ],

@@ -11,16 +11,22 @@ from collections import Counter, defaultdict
 
 HERE = os.path.dirname(__file__)
 D    = os.path.join(HERE, "..", "data")
-# Sequential ramp: light = commentary, dark = empirical. Node colour places an
+# Sequential ramps: light = commentary, dark = empirical. Node colour places an
 # author on a continuum of work orientation (commentary -> study of AI ->
-# empirical) from the mix of their own items, exactly as the published figures
-# do, rather than flattening them to one dominant category.
-RAMP = ["#EDE8FB", "#CFC2F2", "#A896E4", "#7C67CE", "#5A48B4", "#3E3191"]
+# empirical) from the mix of their own items. Each venue gets its own hue,
+# matching the venue colours used elsewhere on the page (violet = journals,
+# orange = conference); both ramps pass the ordinal palette checks on the
+# light surface.
+RAMPS = {
+    "journals":   ["#A18BE0", "#8A70D4", "#7357C4", "#5C44AE", "#463394", "#332578"],
+    "conference": ["#E19255", "#CE7434", "#B65C22", "#994818", "#7A3910", "#5C2B0B"],
+}
 
-def ramp_colour(score):
+def ramp_colour(score, venue):
     """score 0 = wholly commentary, 0.5 = wholly study of AI, 1 = wholly empirical"""
-    i = min(len(RAMP) - 1, max(0, int(round(score * (len(RAMP) - 1)))))
-    return RAMP[i]
+    ramp = RAMPS[venue]
+    i = min(len(ramp) - 1, max(0, int(round(score * (len(ramp) - 1)))))
+    return ramp[i]
 
 def kcore(pc, counts, min_items, min_links):
     keep = {a for a, c in counts.items() if c >= min_items}
@@ -59,10 +65,10 @@ def build(pc, counts, labels, names, min_items, min_links, venue):
         score = (e + 0.5 * r_) / tot if tot else 0.5
         out_nodes.append({"i": idx[a], "num": idx[a] + 1, "name": names.get(str(a), str(a)),
                           "n": counts[a], "split": [e, r_, c], "score": round(score, 3),
-                          "color": ramp_colour(score),
-                          "dark": score >= 0.55})
+                          "color": ramp_colour(score, venue),
+                          "dark": score >= 0.4})
     out_links = [{"s": idx[x], "t": idx[y], "w": n} for (x, y), n in edges.items()]
-    return {"venue": venue, "min_items": min_items, "min_links": min_links,
+    return {"venue": venue, "ramp": RAMPS[venue], "min_items": min_items, "min_links": min_links,
             "total_authors": len(counts), "nodes": out_nodes, "links": out_links}
 
 def main():
