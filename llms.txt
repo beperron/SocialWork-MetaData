@@ -22,6 +22,25 @@ API key:   sb_publishable_RY5wIh9k-D_41VZJdtCv7Q_NV--EQP5
 below. There is NO MCP server, no SDK, no client library, and no login step —
 do not look for one.
 
+FIRST, check that your execution runtime can reach the database at all.
+Some sandboxes (phone and cloud assistants especially) can fetch web pages
+through a browsing tool but give the code runtime no DNS or outbound network,
+and the two are different channels. Probe from the same runtime you will
+query from:
+
+    curl -sI --max-time 6 https://kcffctxedcscvvposypb.supabase.co/rest/v1/ | head -1
+
+- `HTTP/2 401` (or any HTTP status): the host is reachable — the 401 just
+  means no key was sent; proceed normally.
+- `Could not resolve host`, timeout, or curl exit 6/28: your runtime has no
+  egress to this host. Do not keep retrying and do not blame the database.
+  Tell the user plainly: "my execution environment cannot reach
+  kcffctxedcscvvposypb.supabase.co; the databases need outbound HTTPS on
+  port 443." The fallbacks, in order: run in an environment with network
+  access (a desktop CLI session usually has it); or give the user the exact
+  commands or Python from this file to run locally and paste the results
+  back to you.
+
 Every request needs BOTH key headers, plus a profile header naming the database:
 
 - `apikey: <KEY>` and `Authorization: Bearer <KEY>`
