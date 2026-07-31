@@ -42,19 +42,18 @@ def main():
     ax.bar(yrs, b1, color=CORE, label="SWRD database (verified)", width=.74, zorder=3)
     ax.bar(yrs, b2, bottom=b1, color=SUPP, linewidth=0,
            label="Web of Science supplement (kept separate)", width=.74, zorder=3)
-    # direct labels above the bars they describe — no arrows to collide with text
-    ax.text(2024.5, 60, "2024–25\nindexing\nincomplete", fontsize=8, color=MUT,
-            ha="center", va="bottom", linespacing=1.35)
-    ax.text(2026, 86, "2026:\nsupplement\nonly", fontsize=8, color=MUT,
-            ha="center", va="bottom", linespacing=1.35)
     ax.grid(axis="y", color=GRID, lw=.8, zorder=0)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
     ax.spines["left"].set_color(BASE); ax.spines["bottom"].set_color(BASE)
-    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(1988.2, 2027.6); ax.set_ylim(0, 108)
+    ax.tick_params(colors=MUT, labelsize=9); ax.set_xlim(1988.2, 2027.0); ax.set_ylim(0, 96)
     ax.set_ylabel("verified items", fontsize=9.5, color=INK2)
-    ax.legend(frameon=False, fontsize=9, loc="upper left", labelcolor=INK2)
+    ax.legend(frameon=False, fontsize=9.2, loc="upper center", bbox_to_anchor=(0.60, 1.0),
+              labelcolor=INK2, handlelength=1.5, borderaxespad=0.2)
     ax.set_title("Growth of the AI literature in social work, 1989–2026",
-                 fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
+                 fontsize=13, fontweight="bold", loc="left", pad=26, color=INK)
+    ax.text(0, 1.045, "Database indexing for 2024–25 is incomplete · 2026 is supplement-only, "
+                      "past the database release",
+            transform=ax.transAxes, fontsize=9, color=MUT, va="bottom", ha="left")
     fig.savefig(f"{FIGS}/growth.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
 
     # ---- eras ----
