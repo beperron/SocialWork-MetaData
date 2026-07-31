@@ -295,7 +295,7 @@
     <p class="thresh" id="netthresh"></p>
 
     <div class="netwrap">
-      <div class="netcanvas"><svg id="net" role="img" aria-label="Interactive co-authorship network; the same authors and counts are listed in the numbered key beside it."></svg></div>
+      <div class="netcanvas"><div class="nettitle" id="nettitle"></div><svg id="net" role="img" aria-label="Interactive co-authorship network; the same authors and counts are listed in the numbered key beside it."></svg></div>
       <aside class="netkey">
         <h4>Node colour: the orientation of that author's work</h4>
         <div class="rampbar"></div>
@@ -426,6 +426,8 @@ const NETDATA = {"journals": {"venue": "journals", "ramp": ["#A18BE0", "#8A70D4"
     meta.textContent = `${g.nodes.length} authors · ${g.links.length} collaborations`;
     var rb = document.querySelector(".rampbar");
     if (rb && g.ramp) rb.style.background = "linear-gradient(90deg," + g.ramp.join(",") + ")";
+    var tt = document.getElementById("nettitle");
+    if (tt) tt.textContent = view === "conference" ? "Conference Authors" : "Journal Authors";
     document.getElementById("netthresh").innerHTML =
       `THRESHOLD: showing only authors with <b>${g.min_items} or more</b> items `
       + `<b>and ${g.min_links} or more</b> co-author links`;
