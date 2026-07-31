@@ -94,7 +94,7 @@ def main():
             break
 
     fig = plt.figure(figsize=(12.6, 6.6)); fig.patch.set_facecolor(SURF)
-    ax = fig.add_axes([0.0, 0.10, 0.60, 0.78]); ax.set_facecolor(SURF); ax.axis("off")
+    ax = fig.add_axes([0.0, 0.02, 0.60, 0.86]); ax.set_facecolor(SURF); ax.axis("off")
     for (a, b), n in edges.items():
         ax.plot([P[a][0], P[b][0]], [P[a][1], P[b][1]], color=EDGE,
                 lw=0.9 + 1.1 * n, zorder=1, solid_capstyle="round")
@@ -105,7 +105,7 @@ def main():
                 color="#fff" if colour[a] != COM else "#06301e", fontweight="bold", zorder=4)
     ax.margins(0.12)
 
-    lg = fig.add_axes([0.605, 0.10, 0.395, 0.78]); lg.axis("off")
+    lg = fig.add_axes([0.605, 0.02, 0.395, 0.86]); lg.axis("off")
     lg.set_xlim(0, 1); lg.set_ylim(0, 1)
     lg.text(0, 1.0, "Node colour — the author's most common category",
             fontsize=9.2, fontweight="bold", va="top", color=INK)
@@ -124,14 +124,6 @@ def main():
     fig.text(0.008, 0.935,
              f"THRESHOLD:  {MIN_PRESENTATIONS}+ verified presentations   AND   {MIN_LINKS}+ co-author links",
              fontsize=10, fontweight="bold", color="#4a3aa7", va="top")
-    fig.text(0.008, 0.045,
-             f"{len(nodes)} authors and {len(edges)} collaborations, out of {len(counts)} authors on the "
-             f"{len(pc)} verified presentations. Both rules are applied repeatedly, so every author shown still "
-             f"meets both after\\nthe others are removed. Node size and the key number are that author's "
-             f"presentation count; edge width is joint presentations. Position carries no meaning beyond "
-             f"connectivity. Author identity comes from the\\nconference database's canonical author IDs, which "
-             f"resolve name variants across all years.",
-             fontsize=8, color=MUT, va="bottom")
     fig.savefig(f"{FIGS}/network_conference.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF)
     fig.savefig("/tmp/_sswr_net.png", dpi=150, bbox_inches="tight", pad_inches=0.28, facecolor=SURF)
     comps = [c for c in nx.connected_components(G) if len(c) > 1]
