@@ -90,8 +90,13 @@ def main():
     ax.set_ylim(-.6, 2.5); ax.set_xlim(0, 100); ax.invert_yaxis()
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
     ax.spines["bottom"].set_color(BASE); ax.tick_params(colors=MUT, labelsize=9)
+    handles = [plt.Rectangle((0, 0), 1, 1, facecolor=c, edgecolor="none")
+               for c in (EMP, REC, COM)]
+    ax.legend(handles, ["empirical", "reception", "commentary"], frameon=False,
+              fontsize=8.6, loc="lower right", bbox_to_anchor=(1.0, 1.01), ncol=3,
+              handlelength=1.2, columnspacing=1.1, labelcolor=INK2)
     ax.set_title("What the literature does, by technological era",
-                 fontsize=13, fontweight="bold", loc="left", pad=12, color=INK)
+                 fontsize=13, fontweight="bold", loc="left", pad=24, color=INK)
     fig.savefig(f"{FIGS}/eras.svg", bbox_inches="tight", pad_inches=0.28, facecolor=SURF); plt.close(fig)
 
     # ---- outlets ----
