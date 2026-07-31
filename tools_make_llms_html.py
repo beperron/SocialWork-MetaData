@@ -3,7 +3,8 @@
 import html
 txt = open("llms.txt").read()
 tpl = open("llms.html").read()
-import re
-new = re.sub(r"<pre>.*</pre>", "<pre>" + html.escape(txt) + "</pre>", tpl, flags=re.S)
-open("llms.html","w").write(new)
+head, _, rest = tpl.partition("<pre>")
+_, _, tail = rest.partition("</pre>")
+new = head + "<pre>" + html.escape(txt) + "</pre>" + tail
+open("llms.html", "w").write(new)
 print("llms.html refreshed from llms.txt")
