@@ -139,7 +139,8 @@
   <div class="wrap">
     <h2>What this demonstrates</h2>
     <p class="lede">This page works through one analysis from start to finish using the project's databases: cast a wide net, read everything, classify by a stated scheme, and publish the labels so that individual decisions can be checked.</p>
-    <p>The main result: social work has been writing about artificial intelligence for more than thirty-five years, and the current surge is the third wave, not the first. The field did not discover AI in 2023. What changed over time is the balance of the literature, from describing systems, to building them, to studying how practitioners react to them.</p>
+    <p>Two results run through the page. First, social work has been writing about artificial intelligence for more than thirty-five years: the current surge is the third technological wave, not the first, and what changed over time is the balance of the literature, from describing systems, to building them, to studying how practitioners react to them.</p>
+    <p>Second, that balance depends on where you look. At the field's research conference, 77 percent of verified presentations report hands-on empirical AI work; in the journals, commentary and review writing nearly matches empirical work. The field is doing more AI research than its journal literature alone would suggest, and the gap between the two venues is itself the finding.</p>
   </div>
 </section>
 
@@ -182,8 +183,8 @@
 
 <section>
   <div class="wide">
-    <h2>Growth</h2>
-    <p class="lede">Verified articles per year, 1989 through the partial year 2026.</p>
+    <h2>Growth, in two venues</h2>
+    <p class="lede">Journal articles across the full 1989–2026 window, then both venues compared over the years they share.</p>
     <figure>
       <img src="figures/growth.svg" alt="Stacked bar chart of verified AI articles per year from 1989 to 2026. A cluster of about 3 to 7 articles per year from 1989 to 1994, near-zero through the 2000s and early 2010s, then rapid growth from 2018 reaching 34 in 2024 and 35 database plus 21 supplement articles in 2025. The 2026 bar of 82 supplement-only records is hatched and labeled January to July only.">
       <figcaption>Verified articles per publication year. The darker bars are the SWRD database corpus; the lighter bars are the Web of Science supplement, which is stored and reported separately rather than merged. Two caveats apply at the right-hand end. The 2024–25 database counts are lower bounds because publisher indexing lags. The hatched 2026 bar is supplement-only and covers January to July; its 82 articles in seven months work out to roughly 141 across a full year, an arithmetic annualisation rather than a forecast, and because indexing itself lags, even the seven-month figure is a lower bound.</figcaption>
@@ -192,6 +193,13 @@
     <p>The series has three phases. An early cluster of 22 articles appeared between 1989 and 1994, when expert systems were an active methodological project in human services. From 1995 through 2016 the topic nearly disappears from the disciplinary journals, averaging under one article a year even as neural-network methods advanced elsewhere. Growth resumes around 2018 and accelerates after the public release of ChatGPT in late 2022; 2023–2026 account for 192 of the 278 articles, and 2026 is only seven months of data.</p>
 
     <p>The trough does not mean the field stopped thinking about computation; it means the disciplinary journals were not where that thinking was published. Read alongside the early cluster, the pattern suggests engagement with AI that is episodic and technology-triggered rather than cumulative.</p>
+
+    <figure>
+      <img src="figures/venue_growth.svg" alt="Line chart comparing verified items per year in the two venues from 2005 to 2026. Conference presentations rise from near zero in 2015 to 60 in 2026; journal articles rise later but more steeply, reaching 82 in 2026.">
+      <figcaption>Verified items per year in each venue. Conference activity begins earlier and climbs steadily; the journal literature arrives later and then accelerates past it. The two 2026 points are not equivalent: the conference year is complete, because that meeting has already occurred, while the journal year covers only January to July and will grow.</figcaption>
+    </figure>
+
+    <p>The conference leads in time. Presentations on AI appear consistently from 2018 onward, several years before the journal literature turns upward, as expected for a venue with a one-year cycle rather than a multi-year review and publication lag.</p>
   </div>
 </section>
 
@@ -251,15 +259,8 @@
 
 <section class="alt">
   <div class="wide">
-    <h2>The conference record</h2>
-    <p class="lede">The same search and screening was run against the Society for Social Work and Research conference database, which holds every presentation from 2005 to 2026. The two venues carry different mixes of work.</p>
-
-    <figure>
-      <img src="figures/venue_growth.svg" alt="Line chart comparing verified items per year in the two venues from 2005 to 2026. Conference presentations rise from near zero in 2015 to 60 in 2026; journal articles rise later but more steeply, reaching 82 in 2026.">
-      <figcaption>Verified items per year in each venue. Conference activity begins earlier and climbs steadily; the journal literature arrives later and then accelerates past it. The two 2026 points are not equivalent: the conference year is complete, because that meeting has already occurred, while the journal year covers only January to July and will grow.</figcaption>
-    </figure>
-
-    <p>The conference leads in time. Presentations on AI appear consistently from 2018 onward, several years before the journal literature turns upward, as expected for a venue with a one-year cycle rather than a multi-year review and publication lag.</p>
+    <h2>The venue contrast: doing versus publishing</h2>
+    <p class="lede">The same search, screening, and three-category scheme were applied to the Society for Social Work and Research conference database, every presentation from 2005 to 2026. Comparing the two verified corpora is where the page's second result comes from.</p>
 
     <figure>
       <img src="figures/venues.svg" alt="Two 100 percent stacked bars. Conference presentations, N equals 200: 77 percent empirical, 10 percent reception, 12 percent commentary. Journal articles, N equals 278: 44 percent empirical, 17 percent reception, 39 percent commentary.">
@@ -270,14 +271,10 @@
 
     <p>The likely explanation is structural rather than intellectual. SSWR is a research conference whose submission format asks for background, methods, and results, so a conceptual essay has nowhere natural to sit. Journals, by contrast, publish editorials, ethical analyses, curriculum pieces, and reviews alongside studies. Read together, the two venues suggest the field is doing more empirical AI work than its journal literature alone would indicate: the conference shows the research pipeline, the journals show what the discipline chooses to print.</p>
 
-    <h3>How these labels were assigned</h3>
-    <p>All 232 candidate presentations retrieved by the keyword net were read and screened, with 32 removed as false positives. Three independent runs classified every record without seeing any prior labels; 184 of 232 were unanimous, one record split three ways, and the rest were settled by majority. Agreement between runs was higher here than on journal abstracts (pairwise Cohen's kappa 0.87 to 0.93), likely because conference abstracts are structured, so whether a system was actually run is usually answerable from the methods sentence rather than inferred from prose.</p>
-
     <div class="note">
       <p>One boundary decision matters especially in this venue. SSWR carries a good deal of causal-inference research that runs machine learning as a nuisance estimator (targeted maximum likelihood, double machine learning, gradient-boosted propensity scores) while answering a question unrelated to AI. All three classification runs flagged this boundary independently. The rule applied here: a named algorithm that produces the reported estimates counts as empirical AI work; an unnamed mention of machine learning in a methods list does not. Reasonable analysts could draw that line elsewhere, and a handful of records would move as a block if they did.</p>
     </div>
 
-    <p>A second difference is worth noting for anyone working with these data: the conference database carries canonical author identifiers, with name variants resolved across all years. Author-level claims are therefore reliable on the conference side in a way they are not for the journals, where names are stored exactly as published.</p>
 
 
   </div>
@@ -286,7 +283,7 @@
 <section>
   <div class="wide">
     <h2>Who works with whom</h2>
-    <p class="lede">Co-authorship among the recurring authors in each venue. Drag any node to pull the layout apart, and hover over a node to highlight its author in the key.</p>
+    <p class="lede">The venue contrast extends to the people doing the work. These are the co-authorship networks of each venue's recurring authors: drag any node to pull the layout apart, and hover over a node to highlight its author in the key.</p>
 
     <div class="netbar">
       <button class="vbtn on" data-v="journals">Journal authors</button>
@@ -339,7 +336,8 @@
     <p>The model was selected by benchmarking candidates on this corpus: every embedding model tested beat keyword retrieval, open-weight models matched or exceeded commercial APIs, and EmbeddingGemma had the best quality-to-size ratio for a model that runs on a laptop. <a href="code/semantic_audit.py">semantic_audit.py</a> in this folder performs the audit: it checks that Ollama is running with the right model, embeds several statements of the corpus definition, retrieves neighbours, and reports the candidates not already in the corpus. A similarity score only nominates a candidate; a person reads each one and admits it only with a note naming the vocabulary gap that explains the miss.</p>
 
     <h3>Assigning the labels</h3>
-    <p>Each article was classified by reading its abstract against the three definitions above. To make the labeling checkable rather than asserted, the screening and classification were run four times independently by different AI systems working only from the published documentation, and the label recorded here is the majority judgment. 270 of the 278 articles carried a clear majority; the remaining 8 split evenly and were decided by a human reader. The released data file records every model's individual vote and flags the hand-decided cases, so any reader can see exactly where the classification was contested.</p>
+    <p>Each article was classified by reading its abstract against the three definitions on this page. To make the labeling checkable rather than asserted, the screening and classification were run four times independently by different AI systems working only from the published documentation, and the label recorded here is the majority judgment. 270 of the 278 articles carried a clear majority; the remaining 8 split evenly and were decided by a human reader. The released data file records every model's individual vote and flags the hand-decided cases, so any reader can see exactly where the classification was contested.</p>
+    <p>The conference corpus went through the same process: 232 candidate presentations were retrieved and read, 32 were removed as false positives, and three independent runs classified every record without seeing any prior labels. 184 of 232 were unanimous, one record split three ways, and the rest were settled by majority. Agreement between runs was higher on conference abstracts than on journal abstracts (pairwise Cohen's kappa 0.87 to 0.93), likely because conference abstracts are structured, so whether a system was actually run is usually answerable from the methods sentence rather than inferred from prose.</p>
 
     <h3>The Web of Science supplement</h3>
     <p>The database is a versioned release with a fixed end date, and the literature continues past it. To extend coverage, the same keyword net was run in Web of Science over the same journal set for recent years, screened with the same discipline, and deduplicated against the database by DOI. Those records are kept in a separate file and are not merged into the database; the versioned release stays clean, and every count above reports the two sources separately.</p>
