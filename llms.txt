@@ -33,7 +33,9 @@ query from:
 - `HTTP/2 401` (or any HTTP status): the host is reachable — the 401 just
   means no key was sent; proceed normally.
 - `Could not resolve host`, timeout, or curl exit 6/28: your runtime has no
-  egress to this host. Do not keep retrying and do not blame the database.
+  egress to this host. This is the normal state of phone apps and most hosted
+  sandboxes; it is a property of your environment, not a database outage.
+  Do not keep retrying and do not blame the database.
   Tell the user plainly: "my execution environment cannot reach
   kcffctxedcscvvposypb.supabase.co; the databases need outbound HTTPS on
   port 443." The fallbacks, in order: run in an environment with network
