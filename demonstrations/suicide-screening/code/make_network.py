@@ -54,6 +54,34 @@ INITIALS = re.compile(r"^[A-Za-z]\.?([A-Za-z]\.?)?$")
 # into a spurious collaboration.
 NOT_A_PERSON = re.compile(r"^(anonymous|staff|editors?|unknown|n/?a)$", re.I)
 
+# ---------------------------------------------------------------------------
+# Disambiguation, for THIS corpus only.
+#
+# SWRD stores names as published with no disambiguation, so surname + first
+# initial is wrong in both directions: it merges different people who share
+# them, and it splits one person recorded under a misspelling. Both happen
+# here. These tables fix the cases in this corpus and are deliberately
+# explicit and hand-checked rather than fuzzy — the corpus is small enough to
+# resolve properly, and a similarity threshold would quietly merge
+# Cheng/Cheung and Collins/Collin, who are different people.
+#
+# NOTE: this corrects the figure on this page. It does not touch the database,
+# where the same names remain undisambiguated.
+
+# Misspelled surnames -> the form used by the same person elsewhere in the
+# corpus. Each verified by inspecting the records: same co-authors, same
+# journals, same research programme.
+SURNAME_FIX = {
+    "miriek": "mirick",     # 'Miriek, Rebecca G' — 4 records, incl. one paper
+                            # listing both spellings as if two people
+    "moffat": "moffatt",    # 'Moffat, Ken' / 'Moffatt, Ken'
+    "muelle": "mueller",    # 'Muelle, Anna S' / 'Mueller, Anna S.'
+}
+
+# Given names that are the same person. Larry/Lawrence Berkowitz appears on
+# seven records, always with the same Mirick postvention team.
+NICKNAMES = [{"larry", "lawrence"}]
+
 
 def swrd_key(raw: str):
     """Return (key, display) for a published SWRD author string.
@@ -65,7 +93,7 @@ def swrd_key(raw: str):
     """
     name = re.sub(r"\s+", " ", (raw or "").strip().strip(".,"))
     if not name or NOT_A_PERSON.match(name):
-        return None, None
+        return None, None, ""
 
     if "," in name:
         surname, _, rest = name.partition(",")
@@ -82,11 +110,14 @@ def swrd_key(raw: str):
 
     surname = surname.strip().strip(".")
     if not surname:
-        return None, None
+        return None, None, ""
+    slug = re.sub(r"[^a-z]", "", surname.lower())
+    slug = SURNAME_FIX.get(slug, slug)
     initial = (given.strip().strip(".")[:1] or "").upper()
-    key = f"{re.sub(r'[^a-z]', '', surname.lower())}|{initial.lower()}"
+    first = re.sub(r"[^a-z]", "", given.split()[0].lower()) if given.split() else ""
+    key = f"{slug}|{initial.lower()}"
     display = surname.title() + (f", {initial}." if initial else "")
-    return key, display
+    return key, display, (first if len(first) > 2 else "")
 
 
 def outcome(rec):
@@ -94,7 +125,58 @@ def outcome(rec):
     return "Non-empirical" if s["evidence_class"] == "Non-empirical" else s["empirical_method"]
 
 
-def build(records, venue):
+def nickname_group(first):
+    """Collapse known nickname pairs so they do not read as two people."""
+    for grp in NICKNAMES:
+        if first in grp:
+            return "/".join(sorted(grp))
+    return first
+
+
+def resolve_swrd(records):
+    """Map every SWRD author mention to a disambiguated identity.
+
+    Surname + first initial is the only key the source supports, but it is
+    wrong in both directions. This pass repairs both:
+
+      merge   misspelled surnames are folded in by SURNAME_FIX before keying,
+              and nickname pairs are treated as one person
+      split   where one key covers two genuinely different first names, the
+              key gains the first name, so 'Lee, Edward Ou Jin' and
+              'Lee, Eunjung' become separate identities
+
+    Entries that give only an initial attach to the majority full name under
+    that key when there is exactly one; when a key is genuinely contested they
+    cannot be assigned and are left on the bare key.
+    """
+    seen = defaultdict(Counter)          # key -> first names seen, weighted
+    for rec in records:
+        for raw in (rec.get("authors") or "").split(";"):
+            k, _, first = swrd_key(raw)
+            if k and first:
+                seen[k][nickname_group(first)] += 1
+
+    contested = {k for k, c in seen.items() if len(c) > 1}
+    majority = {k: c.most_common(1)[0][0] for k, c in seen.items() if len(c) == 1}
+
+    def resolve(raw):
+        k, disp, first = swrd_key(raw)
+        if not k:
+            return None, None
+        g = nickname_group(first) if first else ""
+        if k not in contested:
+            return k, disp
+        if not g:
+            # initial only under a contested key: it cannot be assigned to
+            # either person, so the mention is dropped rather than guessed
+            return None, None
+        surname = disp.split(",")[0]
+        return f"{k}|{g}", f"{surname}, {g.split('/')[0].title()}"
+
+    return resolve
+
+
+def build(records, venue, resolve=None):
     """One venue -> nodes, links, and the colour/threshold metadata."""
     per_paper, counts, display, mix = {}, Counter(), {}, defaultdict(Counter)
 
@@ -108,10 +190,12 @@ def build(records, venue):
                 display.setdefault(aid, names[i] if i < len(names) else aid)
         else:
             for raw in (rec.get("authors") or "").split(";"):
-                k, d = swrd_key(raw)
+                k, d = resolve(raw)
                 if k:
                     keys.append(k)
                     display.setdefault(k, d)
+        # A number of SWRD records list the same author twice; dedupe within
+        # the paper so that does not become a self-collaboration.
         keys = sorted(set(keys))
         if not keys:
             continue
@@ -176,8 +260,9 @@ def main():
     with open(SRC) as f:
         recs = [r for r in json.load(f)["screening_results"] if r["screening"]["is_relevant"]]
 
+    swrd = [r for r in recs if r["source_database"] == "SWRD"]
     out = {
-        "journals": build([r for r in recs if r["source_database"] == "SWRD"], "journals"),
+        "journals": build(swrd, "journals", resolve_swrd(swrd)),
         "conference": build([r for r in recs if r["source_database"] == "SSWR"], "conference"),
     }
     with open(OUT, "w") as f:
