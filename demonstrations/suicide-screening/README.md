@@ -81,6 +81,7 @@ data/screening_summary.json                    final counts and audit metadata
 data/stats.json                                every number on the page, machine-readable
 
 code/                                      the scripts the assistants wrote, published for inspection
+data/networks.json                         co-authorship graphs behind the interactive figure
 figures/*.svg                              composition, growth, audit agreement
 ```
 
@@ -93,6 +94,7 @@ figures/*.svg                              composition, growth, audit agreement
 - **62 records were screened from title alone** under a conservative rule that sends them all to Non-empirical. Flagged `screening_basis: title_only` so they can be dropped.
 - **No mixed-methods category** existed in the requested taxonomy; mixed-methods work was absorbed into Quantitative or Qualitative by predominance.
 - **SWRD 2024–2025 are lower bounds** (publisher indexing lag). SSWR 2026 is complete — that meeting has already occurred.
+- **Co-authorship identity differs by venue.** SSWR uses canonical author ids, so those counts are solid. SWRD stores names as published in three inconsistent formats (`GILLILAND, D`, `Gilliland D.`, `Fiona Gardner`); identity there is surname + first initial via a heuristic, so same-initial namesakes merge and one person may split. Records credited to "Anonymous" are excluded from the graph.
 - **Every corrected record keeps its pre-correction decision** under `screening_initial` or `screening_pre_manual_spot_check`, with the audit that changed it.
 
 ## Where this came from
