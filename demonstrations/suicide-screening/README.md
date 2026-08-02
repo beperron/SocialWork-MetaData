@@ -54,11 +54,11 @@ A few minutes of frontier-model time for planning, orchestration, and interpreta
 
 ## How much to trust the labels
 
-- **Blind re-screen, 100 records:** 92% agreement on the full label (relevance + evidence class + method). Eight disagreements adjudicated, six corrected.
-- **Independent inspection, 20 records:** 90%. Two corrections, both on the same boundary — whether a suicide measure was *analyzed* or merely *collected*.
+- **Qwen re-reads itself, blind — 100 records:** 92% agreement on the full label (relevance + evidence class + method). Eight disagreements adjudicated by Qwen with thinking mode on; six corrected.
+- **Sol reads 20 independently:** 90%. Codex (GPT-5.6-Sol) read title and full abstract against the rubric — a different model, not a re-run of the pipeline. Two corrections, both on the same boundary: whether a suicide measure was *analyzed* or merely *collected*.
 - **Strongest validation:** all 747 SSWR presentations were classified empirical. SSWR is an empirical-only conference, so zero is the correct answer — and the model produced it 747 times without ever being told which venue a record came from.
 
-The 92% figure compares the model against itself, so it is consistency, not accuracy. The 90% figure rests on four records per group and was produced by an AI assistant, not by trained suicide researchers. **This is a well-documented draft corpus, not a validated one.**
+The two numbers are different kinds of evidence. 92% is Qwen against Qwen — consistency, not accuracy. 90% is Qwen against Sol, a genuinely independent reader sharing no weights or prompt with the first; that is the stronger signal, and it is the one resting on only twenty records. Sol is still an AI assistant reading a rubric, not a trained suicide researcher. **This is a well-documented draft corpus, not a validated one.**
 
 ## Data problems this run surfaced
 

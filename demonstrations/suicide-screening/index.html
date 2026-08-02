@@ -275,16 +275,16 @@
 <section class="alt">
   <div class="wide">
     <h2>How much should you trust these labels?</h2>
-    <p class="lede">Every label on this page was assigned by an AI model reading a title and abstract. That work was checked twice, and the honest answer is that the checks are encouraging but fall short of proof.</p>
+    <p class="lede">Every label on this page was assigned by Qwen3.6-27B reading a title and abstract on a laptop. That work was checked twice — once by Qwen against itself, once by a different model — and the honest answer is that the checks are encouraging but fall short of proof.</p>
 
     <figure>
       <img src="figures/audit.svg" alt="Grouped bar chart of agreement by outcome group. Blind model re-screen: Irrelevant 90 percent, Relevant Non-empirical 95, Quantitative 95, Qualitative 80, Review 100. Independent manual check: Irrelevant 75, Relevant Non-empirical 100, Quantitative 100, Qualitative 75, Review 100.">
       <figcaption>Agreement on the complete label — whether a record is relevant, whether it is empirical, and which method — all three matching. Both checks deliberately sampled equal numbers from each group, so these rates describe the groups, not the corpus as a whole.</figcaption>
     </figure>
 
-    <p><b>First check: 100 records, re-read blind.</b> A hundred records were pulled at random — twenty from each outcome group — and screened again from scratch, without the model being shown what it had decided the first time. Ninety-two came back identical on all three decisions. The eight that disagreed went to a third pass that saw both answers and the reasoning behind them; six were resolved against the original label and corrected.</p>
+    <p><b>First check — Qwen re-reads itself, blind.</b> A hundred records were pulled at random, twenty from each outcome group, and screened again from scratch by the same local model that produced the labels in the first place — <code>qwen3.6:27b</code> — without being shown what it had decided before, and required this time to write a short rationale. Ninety-two came back identical on all three decisions. The eight that disagreed went to a third Qwen pass with thinking mode enabled, which saw both answers and the reasoning behind them; six were resolved against the original label and corrected.</p>
 
-    <p><b>Second check: 20 records, read by hand.</b> A separate sample of twenty, drawn from records the first check had not touched, was inspected against the written criteria rather than re-run through a model. Eighteen agreed. The two that did not were both the same kind of error in opposite directions — the line between <em>suicide was measured</em> and <em>suicide was analyzed</em>:</p>
+    <p><b>Second check — Sol reads 20 by hand.</b> A separate sample of twenty, drawn from records the first check had not touched, was inspected against the written criteria by Codex running GPT-5.6-Sol — a different model entirely, reading the title and full abstract rather than re-running the screening pipeline. Eighteen agreed with Qwen. The two that did not were the same kind of error in opposite directions — the line between <em>suicide was measured</em> and <em>suicide was analyzed</em>:</p>
 
     <ul class="plain">
       <li>A study of homeless youth was moved from irrelevant to <em>quantitative</em>. Suicidal ideation was in the regression as an analyzed mechanism with its own reported result; the model had read it as an incidental covariate.</li>
@@ -292,8 +292,8 @@
     </ul>
 
     <div class="note">
-      <p><b>What these numbers are not.</b> The 92% figure compares the model against itself, so it measures consistency, not correctness — a model that is confidently and consistently wrong about a category would score well on it. The 90% figure rests on four records per group and was produced by an AI assistant reading against the criteria, not by trained suicide researchers. Neither is an accuracy estimate for the corpus.</p>
-      <p>This is a well-documented draft corpus. Publishing from it would first require independent dual review by human experts on a proper probability sample, with interrater agreement reported. Everything needed to do that — including every record the audits changed and what it was before — is released below.</p>
+      <p><b>The two checks are not the same kind of evidence.</b> The 92% is Qwen against Qwen, so it measures the model's <em>consistency</em>, not its correctness — a model confidently and consistently wrong about a category would score well on it. The 90% is Qwen against Sol, a genuinely independent second reader that shares no weights, no prompt, and no failure modes with the first. Cross-model agreement is the stronger signal of the two, and it is the one resting on only twenty records.</p>
+      <p><b>Neither is an accuracy estimate.</b> Both sampled equal numbers per outcome group by design, so neither rate is prevalence-weighted for the corpus. The 90% rests on four records per group, and Sol is an AI assistant reading against a rubric, not a trained suicide researcher. This is a well-documented draft corpus; publishing from it would first require independent dual review by human experts on a proper probability sample, with interrater agreement reported. Everything needed to do that — including every record the audits changed and what it was before — is released below.</p>
     </div>
 
     <p>Where the residual error most likely sits is worth naming: qualitative was the least stable label in both checks, and the recurring judgment call across the whole corpus is whether a suicide measure was genuinely analyzed or merely collected.</p>
@@ -323,8 +323,8 @@
       </li>
       <li>
         <h4>Check the answers twice</h4>
-        <p>The blind re-screen of 100 records and the hand inspection of 20 more, both described above, with every disagreement adjudicated and eight corrections written back into the data. Codex designed and ran both checks; the blind labels themselves came from the local model again.</p>
-        <span class="who">Codex, with the local model producing the blind labels</span>
+        <p>Two checks, deliberately different in kind. Qwen re-screened 100 records blind and adjudicated its own disagreements with thinking mode on. Sol then read a separate 20 by hand against the rubric — an independent second opinion rather than a repeat of the same machinery. Eight corrections went back into the data.</p>
+        <span class="who">Qwen re-screened and adjudicated · Sol inspected independently</span>
       </li>
       <li>
         <h4>Work out what the labels mean</h4>
@@ -409,8 +409,8 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
       <tbody>
         <tr><td>Connection, retrieval, pagination, deduplication</td><td>Codex, running GPT-5.6-Sol</td><td>minutes</td></tr>
         <tr><td><b>Screening and classification of all 2,034 records</b></td><td><b><code>qwen3.6:27b</code>, local via Ollama</b> — planned and orchestrated by Codex</td><td><b>1.7 hours</b></td></tr>
-        <tr><td>100-record blind re-screen and adjudication</td><td>Same local model, orchestrated by Codex</td><td>minutes</td></tr>
-        <tr><td>20-record independent inspection</td><td>Codex, reading against the written criteria</td><td>minutes</td></tr>
+        <tr><td>100-record blind re-screen, and adjudication of the 8 disagreements</td><td><code>qwen3.6:27b</code> again — thinking mode on for adjudication</td><td>minutes</td></tr>
+        <tr><td>20-record independent inspection</td><td>Codex (GPT-5.6-Sol), reading against the written criteria</td><td>minutes</td></tr>
         <tr><td>Substantive analysis, figures, and this write-up</td><td>Claude Opus 5, from the released files</td><td>minutes</td></tr>
       </tbody>
     </table>
@@ -519,7 +519,7 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
       <li><b>Abstract-level decisions.</b> Labels come from titles and abstracts, never full texts. Distinguishing systematic from narrative review methods, or qualitative from mixed-methods designs, is sometimes impossible from an abstract — and those are exactly the cells where the audits found the most movement.</li>
       <li><b>Sixty-two title-only records.</b> The conservative fallback pushes them all to Non-empirical, which likely misclassifies genuinely empirical older studies. They are flagged so they can be dropped.</li>
       <li><b>A forced taxonomy.</b> No mixed-methods category, no case-study category. Mixed-methods work was absorbed into Quantitative or Qualitative by predominance.</li>
-      <li><b>Model dependence.</b> One model produced every primary label and also performed the 100-record blind audit. The 92% figure is internal consistency and may overstate agreement with independent reviewers.</li>
+      <li><b>Model dependence.</b> Qwen produced every primary label <em>and</em> performed the 100-record blind re-screen, so the 92% is internal consistency and may overstate agreement with an independent reviewer. The only genuinely independent check — Sol's — covered 20 records.</li>
       <li><b>Incomplete recent journal years.</b> Publisher indexing lag makes SWRD 2024–2025 lower bounds; they should not carry trend conclusions.</li>
       <li><b>Residual duplication and author ambiguity.</b> SWRD was deduplicated on normalized title and year as the guide prescribes, but non-identical duplicates may remain, and SWRD author strings are not identity-disambiguated. SSWR author ids are canonical.</li>
       <li><b>Known open data problems.</b> This corpus was built on the database as it stands today, including the quality issues this run surfaced — non-DOI values in the DOI column, double-indexed articles with a wrong journal id, and missing abstracts. They are tracked as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be corrected in the next data release, at which point the affected records here should be re-checked.</li>

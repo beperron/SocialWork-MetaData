@@ -136,9 +136,9 @@ def audit(S):
     fig.patch.set_facecolor(SURF)
     ax.set_facecolor(SURF)
     ax.bar([i - 0.2 for i in x], b, width=0.38, color=QT, zorder=3,
-           label="Blind model re-screen (20 per group)")
+           label="Qwen re-screens itself, blind (20 per group)")
     ax.bar([i + 0.2 for i in x], s, width=0.38, color=RV, zorder=3,
-           label="Independent manual check (4 per group)")
+           label="Sol reads independently (4 per group)")
 
     for i, (v, n) in enumerate(zip(b, bn)):
         ax.text(i - 0.2, v + 1.6, f"{v:.0f}%", ha="center", fontsize=9, color=INK2)
