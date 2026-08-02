@@ -200,6 +200,39 @@ def norm_journal(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", s).strip()
 
 
+def journal_match(our_issns, their_issns, our_name, their_name):
+    """Do we and Crossref agree on which journal this is?
+
+    Returns (verdict, basis) where verdict is match / mismatch / unknown.
+
+    ISSN decides it whenever both sides have one — that is the whole point of
+    the identifier. Name comparison is the fallback, and it has to tolerate the
+    ways the same journal gets written down:
+
+      case and punctuation      'Health & Social Work' vs 'Health and Social Work'
+      a leading article         'The Journal of ...' vs 'Journal of ...'
+      truncation on one side    prefix match
+      bilingual titles reordered
+          'Global Social Work / Trabajo Social Global'
+          'Trabajo Social Global-Global Social Work'
+      ...which are the same journal with the halves swapped, so an ordered
+      comparison scores them as different while a token set sees the match.
+    """
+    ours = {s.strip().upper() for s in (our_issns or []) if s}
+    theirs = {s.strip().upper() for s in (their_issns or []) if s}
+    if ours and theirs:
+        return ("match" if ours & theirs else "mismatch"), "issn"
+
+    a, b = norm_journal(our_name), norm_journal(their_name)
+    if not b:
+        return "unknown", "no_container_title"
+    if a == b or a.startswith(b) or b.startswith(a) or title_sim(a, b) >= 0.85:
+        return "match", "name"
+    if set(a.split()) == set(b.split()):
+        return "match", "name_tokens"
+    return "mismatch", "name"
+
+
 def cr_title(item: dict) -> str:
     t = (item.get("title") or [""])[0]
     sub = (item.get("subtitle") or [""])[0]
@@ -235,15 +268,39 @@ def cr_surnames(item: dict) -> set[str]:
     return out
 
 
+_INITIALS = re.compile(r"^[A-Za-z]\.?([A-Za-z]\.?)?$")
+
+
 def swrd_surnames(authors: str) -> set[str]:
-    """SWRD stores 'Surname, Given; Surname, Given'. Take the surnames."""
+    """Take the surname out of each SWRD author string.
+
+    SWRD stores names exactly as published, and this corpus contains three
+    different orderings — assuming any one of them silently returns nonsense:
+
+        "GILLILAND, D"     surname first, comma
+        "Gilliland D."     surname first, no comma, trailing initials
+        "Fiona Gardner"    given name first
+
+    An earlier version split on the comma only, so given-name-first strings came
+    back as whole names ('richfurman') and never matched a Crossref `family`
+    field. That made author overlap read as 0.0 for entire journals.
+    """
     out = set()
     for chunk in (authors or "").split(";"):
-        chunk = chunk.strip()
-        if not chunk:
+        name = re.sub(r"\s+", " ", chunk.strip().strip(".,"))
+        if not name:
             continue
-        fam = chunk.split(",")[0].strip().lower()
-        fam = re.sub(r"[^a-z]", "", fam)
+        if "," in name:
+            fam = name.split(",")[0]
+        else:
+            parts = name.split()
+            if len(parts) == 1:
+                fam = parts[0]
+            elif _INITIALS.match(parts[-1]):
+                fam = " ".join(parts[:-1])      # trailing initial -> surname led
+            else:
+                fam = parts[-1]                 # given name led
+        fam = re.sub(r"[^a-z]", "", fam.lower())
         if fam:
             out.add(fam)
     return out

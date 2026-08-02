@@ -36,3 +36,44 @@ Known imperfections carried in v1.0 (candidates for v1.1):
   contain no articles, and one journal appears under two ids
   ("Sexual and Gender Diversity in Social Services", ids 232 and 263).
 - SWRD author names are as published (not disambiguated).
+- **3,556 `doi` values (5.1% of populated) are not DOIs** — OAI identifiers from
+  the Digital Commons ingest and internal `dc/` hashes from DOAJ, across nine
+  journals. Repair prepared in [`qc/doi/`](../qc/doi/README.md); see
+  [issue #1](https://github.com/beperron/SocialWork-MetaData/issues/1).
+- 84 of 91 journals carry no ISSN, and ISSNs are not currently exported.
+
+## Prepared for v1.1 (not yet applied)
+
+### DOI column repair — 2,973 corrections
+
+Recovers the real DOI for records whose `doi` field held a non-DOI identifier.
+Method, precision, and the review queue are documented in
+[`qc/doi/README.md`](../qc/doi/README.md); the patch set is
+`qc/doi/data/proposed_doi_corrections.csv` and the statements are
+`qc/doi/data/apply_doi_corrections.sql`.
+
+| | |
+|---|---|
+| Affected before | 3,556 (2,002 `oai:`, 1,554 `dc/`) |
+| Corrections proposed | 2,973 (1,999 rule-derived, 974 search-recovered) |
+| Remaining after | 583, itemised in `qc/doi/data/review_queue.csv` |
+| Precision | 120/120 sampled, seed `20260802` |
+
+Applying:
+
+```bash
+psql "$TGT" -v ON_ERROR_STOP=1 -f qc/doi/data/apply_doi_corrections.sql
+```
+
+The file is idempotent — each `UPDATE` matches on the current broken value — and
+the transaction asserts the malformed count fell by exactly 2,973 before
+committing. Afterwards, re-run `migration/04_health_check_swrd.sql` and confirm
+the new `SWRD: DOI SYNTAX VALIDITY` block reports `malformed = 583`.
+
+This changes field values only, so the `EXPECTED` row-count invariants in
+`migration/10_export_release_csv.py` are unaffected and need no update.
+
+Twenty records are deliberately excluded: ten DOIs were each proposed for two
+records because those are the same article ingested twice under different `dc/`
+hashes. Assigning one DOI to both would create duplicate DOIs. They belong to a
+separate duplicate-consolidation job.

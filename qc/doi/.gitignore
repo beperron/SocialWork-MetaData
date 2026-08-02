@@ -1,0 +1,3 @@
+# Crossref responses: regenerable, and large enough that committing them would
+# dwarf the artifacts that matter. Delete to force a fresh fetch.
+cache/*.jsonl.gz
