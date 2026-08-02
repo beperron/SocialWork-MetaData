@@ -1,6 +1,15 @@
 # Suicide Scholarship in Social Work, 1989–2026
 
-Every suicide-related article in the disciplinary journals and every suicide-related presentation at the SSWR conference — found, read, and sorted by what kind of study each one is.
+Every suicide-related article in the disciplinary social work journals and every suicide-related presentation at the SSWR conference — found, read, and sorted by what kind of study each one is.
+
+## Scope
+
+Two sources, both bounded to social work's own publishing venues:
+
+- **SWRD, 1989–2025** — the 88 disciplinary social work journals systematically compiled in Perron, B. E., Victor, B. G., & Qi, Z. (2026), *Evolution of social work knowledge production over 35 years*, **Research on Social Work Practice**, https://doi.org/10.1177/10497315261416833. "Social work journal" means a journal in that defined set, not any journal a social worker publishes in.
+- **SSWR, 2005–2026** — all 23,793 annual conference presentations, per Perron, B. E., Victor, B. G., & Qi, Z. (2026), *AI-assisted curation of conference scholarship*, **arXiv**, https://doi.org/10.48550/arXiv.2603.06814.
+
+**Many social work scholars publish their suicide research elsewhere and none of it is counted here** — suicidology, psychiatry, public health, and medical journals are outside the set by construction, including *Suicide and Life-Threatening Behavior* and the *JAMA* family. Read every count as suicide scholarship *within social work's own venues*, not as all suicide research by social workers.
 
 **Read it:** https://beperron.github.io/SocialWork-MetaData/demonstrations/suicide-screening/
 
