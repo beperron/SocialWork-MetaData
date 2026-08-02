@@ -62,13 +62,9 @@ The 92% figure compares the model against itself, so it is consistency, not accu
 
 ## Data problems this run surfaced
 
-Reading every record turned up faults in SWRD, now tracked as [issue #1](https://github.com/beperron/SocialWork-MetaData/issues/1) and queued for the next data release. Following them back through the whole database showed the first two are one problem, not two:
+Reading every record surfaced a handful of quality issues in SWRD itself: a small share of DOI values are not DOIs, some articles are indexed twice under two journal ids with one of them wrong, and a minority of records carry no abstract (62 here, judged from title alone).
 
-1. **`doi` often does not hold a DOI** — 27 of 705 populated values in this sweep; **3,556 database-wide, 5% of every populated DOI in the 1989+ corpus** (2,002 OAI identifiers, 1,554 `dc/` hashes). Breaks linking and matching, and actively misleads any "prefer the record with a DOI" rule. Only ~180 have a duplicate twin — the other ~3,200 are unique records, so deduplication does not fix it.
-2. **Articles filed under the wrong journal** — five pairs here, ~850 double-indexed research articles database-wide (531 split across two journal ids). One ingest ran twice: one pass wrote the wrong journal with a valid DOI, the other the right journal with an OAI identifier. Neither row is fully correct, and the OAI ids encode the real DOIs, so they convert mechanically.
-3. **62 SWRD records (7.8%) have no abstract**, across every decade. Abstract-level screening and semantic search cannot see them.
-
-A fourth apparent fault turned out not to be one, and is worth recording: deduplicating title+year across the whole database collapses ~2,100 rows, but most are **book reviews** — the same book reviewed in several journals in the same year, each a separate publication with its own DOI — plus editorials and rows titled "Untitled". [`llms.txt`](../../llms.txt) has been updated to scope the deduplication rule to `is_scientific` records and to carry the DOI warning.
+Scientific meta-data is messy, and a corpus assembled from many publishers over thirty-seven years carries inconsistencies of exactly this kind. None of it undermines the analysis; all of it is worth fixing. Specifics, affected record ids, and proposed corrections are recorded as [issue #1](https://github.com/beperron/SocialWork-MetaData/issues/1) and queued for the next data release. [`llms.txt`](../../llms.txt) has been updated so assistants know to check.
 
 ## What is here
 

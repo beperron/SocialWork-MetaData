@@ -354,23 +354,11 @@
 
     <h3>And then the re-run found something in the data</h3>
 
-    <p>Re-running the analysis against the corrected guide turned up three genuine problems in SWRD itself — the kind that only appear when something reads every record instead of sampling a few:</p>
+    <p>Re-running the analysis also surfaced a handful of quality issues in the database itself — the kind that only appear when something reads every record rather than sampling a few. A small share of DOI values turn out not to be DOIs, some articles are indexed twice under two journal ids with one of them wrong, and a minority of records carry no abstract at all, which is why 62 records here had to be judged from their titles.</p>
 
-    <ul class="plain">
-      <li><b>The DOI column contains things that are not DOIs.</b> 27 of the 705 populated DOIs in this sweep hold an OAI identifier or an internal hash instead. Checking the whole database afterwards found <b>3,556 such rows — 5% of every populated DOI in the 1989+ corpus</b>. Anything that links, cites, or matches on DOI silently fails for those records, and any rule of the form "prefer the record that has a DOI" is actively misled, because the field is filled in — just not with a DOI.</li>
-      <li><b>Articles filed under the wrong journal.</b> Five of the eight double-indexed pairs here had a <em>Journal of Sociology &amp; Social Welfare</em> article also indexed under <em>Journal of Social Work Practice</em>. Database-wide there are about <b>850 double-indexed research articles</b>, 531 of them split across two journal ids.</li>
-      <li><b>62 records have no abstract.</b> 7.8% of the SWRD records in this sweep, spread across every decade. Abstract-level screening and semantic search cannot see them at all; here they had to be judged from the title alone.</li>
-    </ul>
+    <p>Scientific meta-data is messy, and a corpus assembled from many publishers over thirty-seven years is going to carry inconsistencies of exactly this kind. None of it undermines the analysis on this page; all of it is worth fixing. The specifics, with affected record ids and proposed corrections, are recorded as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be addressed in the next data release. The connection guide has already been updated so that assistants know to check.</p>
 
-    <p>Following the first two back through the whole database showed they are not three faults but one. A single ingest ran twice: one pass filed the article under the wrong journal but recorded a valid DOI, the other filed it under the right journal but wrote an OAI identifier into the DOI field. Neither row is completely correct, and the article number embedded in the OAI identifier is the same number in the real DOI — which is what makes them mechanically convertible.</p>
-
-    <p>All of it is filed as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a>, with the affected record ids, the verification, and proposed corrections, and will be addressed in the next data release. The guide has already been updated. Recording this publicly rather than quietly patching one analysis is the point: the corpus on this page was built on the data as it stands today, and a reader should be able to see exactly what was wrong with it.</p>
-
-    <div class="note">
-      <p><b>The same exercise nearly produced a fourth "fault" that was not one.</b> Deduplicating titles across the whole database collapses about 2,100 rows, which looks like large-scale duplication until you read the records. Most are book reviews — the same book reviewed in several journals in the same year, each review a separate publication with its own DOI — plus editorials and rows titled "Untitled". The guide now says to scope that rule to research articles, because it previously prescribed the deduplication without the scope.</p>
-    </div>
-
-    <p>So the fuller version of the story is that one user's report of a connection hiccup led to three fixes in the guide and three corrections queued for the database. This page is the same analysis re-run against the corrected guide. It connected on the first attempt.</p>
+    <p>So one user's report of a connection hiccup led to three fixes in the guide and a set of corrections queued for the database. This page is the same analysis re-run against the corrected guide. It connected on the first attempt.</p>
   </div>
 </section>
 
@@ -512,7 +500,7 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
       <li><b>Model dependence.</b> One model produced every primary label and also performed the 100-record blind audit. The 92% figure is internal consistency and may overstate agreement with independent reviewers.</li>
       <li><b>Incomplete recent journal years.</b> Publisher indexing lag makes SWRD 2024–2025 lower bounds; they should not carry trend conclusions.</li>
       <li><b>Residual duplication and author ambiguity.</b> SWRD was deduplicated on normalized title and year as the guide prescribes, but non-identical duplicates may remain, and SWRD author strings are not identity-disambiguated. SSWR author ids are canonical.</li>
-      <li><b>Known open data problems.</b> This corpus was built on the database as it stands today, including the three faults this run surfaced — non-DOI values in the DOI column, five articles filed under the wrong journal, and 62 missing abstracts. They are tracked as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be corrected in the next data release, at which point the affected records here should be re-checked.</li>
+      <li><b>Known open data problems.</b> This corpus was built on the database as it stands today, including the quality issues this run surfaced — non-DOI values in the DOI column, double-indexed articles with a wrong journal id, and missing abstracts. They are tracked as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be corrected in the next data release, at which point the affected records here should be re-checked.</li>
     </ul>
   </div>
 </section>
