@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Demonstrations — The Social Work Meta-Data Project</title>
-<meta name="description" content="Empirical demonstrations of the Social Work Meta-Data Project: small local Text-to-SQL models querying the databases, and a benchmark of word-embedding models for semantic search over social work literature.">
+<meta name="description" content="Empirical demonstrations of the Social Work Meta-Data Project: small local Text-to-SQL models querying the databases, a benchmark of word-embedding models for semantic search, a verified corpus of AI scholarship, and a suicide literature screened end to end by a local model.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -81,6 +81,18 @@
         <h2 style="margin:12px 0 0; font-size:22px; font-weight:600; letter-spacing:-0.01em; color:#18181B;">Artificial intelligence in social work, 1989–2026</h2>
         <p style="margin:12px 0 0; font-size:14.5px; color:#3F3F46; flex:1;">Every article on AI in the disciplinary journals and every presentation at the SSWR conference — found by keyword and embedding search, verified by reading each abstract, and classified by what each study does rather than what it is about. The record starts with expert systems in 1989, long before generative chatbots, and the two venues turn out to publish almost inverse mixes of empirical work and commentary. Includes growth, publication outlets, an interactive co-authorship network, the labeled corpora, and the code.</p>
         <a href="demonstrations/ai-in-social-work/" style="margin-top:22px; display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 20px; background:#00274C; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none; align-self:flex-start;">Read the report
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <article style="background:#FFFFFF; border:1px solid #E7E5E0; border-radius:8px; box-shadow:0 1px 2px rgba(24,24,27,0.04),0 0 0 1px rgba(24,24,27,0.03); overflow:hidden; display:flex; flex-direction:column;">
+      <div style="height:3px; background:#0F5257;"></div>
+      <div style="padding:28px 28px 26px; flex:1; display:flex; flex-direction:column;">
+        <span class="mono" style="font-size:11.5px; font-weight:500; letter-spacing:0.06em; color:#71717A;">REPORT 04 · LOCAL-MODEL SCREENING</span>
+        <h2 style="margin:12px 0 0; font-size:22px; font-weight:600; letter-spacing:-0.01em; color:#18181B;">Screening a suicide literature with a local model</h2>
+        <p style="margin:12px 0 0; font-size:14.5px; color:#3F3F46; flex:1;">The AI integration, end to end. A reader tested the connection file on a suicide question and hit two errors that looked like a broken database and were not; the guide was fixed and the analysis re-run. Two prompts retrieve every suicide-related record in both databases, and a 27B open-weight model on a laptop screens all 2,034 of them one at a time — 1.7 hours, no API bill, abstracts never leaving the machine. Includes the verbatim prompts, a blind re-screen, an independent spot check, the full audit trail, and the code.</p>
+        <a href="demonstrations/suicide-screening/" style="margin-top:22px; display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 20px; background:#00274C; color:#FFFFFF; font-size:14px; font-weight:600; border-radius:6px; border:none; align-self:flex-start;">Read the report
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>

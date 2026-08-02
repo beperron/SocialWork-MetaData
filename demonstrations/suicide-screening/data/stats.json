@@ -1,0 +1,276 @@
+{
+  "screened_records": 2034,
+  "relevant_records": 1331,
+  "irrelevant_records": 703,
+  "relevance_rate": 0.6544,
+  "outcome_groups": {
+    "Irrelevant": 703,
+    "Non-empirical": 171,
+    "Quantitative": 915,
+    "Qualitative": 180,
+    "Review": 65
+  },
+  "evidence_class": {
+    "Empirical": 1160,
+    "Non-empirical": 171
+  },
+  "by_source": {
+    "SWRD": {
+      "screened": 796,
+      "relevant": 584,
+      "Irrelevant": 212,
+      "Non-empirical": 171,
+      "Quantitative": 301,
+      "Qualitative": 83,
+      "Review": 29
+    },
+    "SSWR": {
+      "screened": 1238,
+      "relevant": 747,
+      "Irrelevant": 491,
+      "Non-empirical": 0,
+      "Quantitative": 614,
+      "Qualitative": 97,
+      "Review": 36
+    }
+  },
+  "screening_basis": {
+    "title_and_abstract": 1972,
+    "title_only": 62
+  },
+  "title_only_outcomes": {
+    "Non-empirical": 54,
+    "Irrelevant": 8
+  },
+  "model_effort": {
+    "requests": 2034,
+    "total_model_hours": 1.73,
+    "median_seconds_per_record": 3.3,
+    "slowest_seconds": 4.74,
+    "attempts_needed": {
+      "1": 2034
+    },
+    "prompt_tokens": 2856937,
+    "completion_tokens": 49191
+  },
+  "corrections": {
+    "blind_audit_disagreements_adjudicated": 8,
+    "blind_audit_labels_changed": 6,
+    "spot_check_records_reviewed": 2,
+    "spot_check_labels_changed": 2
+  },
+  "relevant_by_year": {
+    "SWRD": {
+      "1989": 1,
+      "1990": 2,
+      "1991": 6,
+      "1992": 2,
+      "1993": 3,
+      "1994": 4,
+      "1995": 9,
+      "1996": 12,
+      "1997": 5,
+      "1998": 10,
+      "1999": 5,
+      "2000": 5,
+      "2001": 9,
+      "2002": 11,
+      "2003": 10,
+      "2004": 8,
+      "2005": 12,
+      "2006": 12,
+      "2007": 13,
+      "2008": 17,
+      "2009": 10,
+      "2010": 13,
+      "2011": 21,
+      "2012": 23,
+      "2013": 17,
+      "2014": 21,
+      "2015": 15,
+      "2016": 22,
+      "2017": 18,
+      "2018": 22,
+      "2019": 32,
+      "2020": 31,
+      "2021": 24,
+      "2022": 34,
+      "2023": 45,
+      "2024": 50,
+      "2025": 30
+    },
+    "SSWR": {
+      "2005": 7,
+      "2006": 5,
+      "2007": 5,
+      "2008": 10,
+      "2009": 8,
+      "2010": 9,
+      "2011": 5,
+      "2012": 14,
+      "2013": 19,
+      "2014": 11,
+      "2015": 31,
+      "2016": 46,
+      "2017": 42,
+      "2018": 47,
+      "2019": 58,
+      "2020": 63,
+      "2021": 46,
+      "2022": 41,
+      "2023": 50,
+      "2024": 75,
+      "2025": 72,
+      "2026": 83
+    }
+  },
+  "relevant_swrd_journal_count": 63,
+  "top_swrd_journals": [
+    [
+      "Child & Adolescent Social Work Journal",
+      38
+    ],
+    [
+      "Social Work in Mental Health",
+      37
+    ],
+    [
+      "Social Work",
+      33
+    ],
+    [
+      "Journal of Human Behavior in the Social Environment",
+      27
+    ],
+    [
+      "British Journal of Social Work",
+      26
+    ],
+    [
+      "Health & Social Work",
+      23
+    ],
+    [
+      "Journal of Gerontological Social Work",
+      22
+    ],
+    [
+      "Clinical Social Work Journal",
+      22
+    ],
+    [
+      "Research on Social Work Practice",
+      20
+    ],
+    [
+      "Social Work in Public Health",
+      16
+    ],
+    [
+      "Journal of Technology in Human Services",
+      15
+    ],
+    [
+      "Journal of Social Work Practice",
+      13
+    ],
+    [
+      "Journal of Social Service Research",
+      13
+    ],
+    [
+      "Journal of Psychosocial Oncology",
+      13
+    ],
+    [
+      "Children & Schools",
+      13
+    ]
+  ],
+  "year_range": [
+    1989,
+    2026
+  ],
+  "audit": {
+    "blind_model_audit": {
+      "audit_version": "stratified-blind-audit-v1.0",
+      "model": "qwen3.6:27b",
+      "method": "Reproducible stratified random sample; blind one-record rescreen; thinking-mode adjudication of every disagreement",
+      "random_seed": 20260802,
+      "sample_per_group": 20,
+      "total_sampled": 100,
+      "group_statistics": {
+        "Irrelevant": {
+          "sampled": 20,
+          "full_label_agreements": 18,
+          "full_label_agreement_rate": 0.9
+        },
+        "Relevant Non-empirical": {
+          "sampled": 20,
+          "full_label_agreements": 19,
+          "full_label_agreement_rate": 0.95
+        },
+        "Quantitative": {
+          "sampled": 20,
+          "full_label_agreements": 19,
+          "full_label_agreement_rate": 0.95
+        },
+        "Qualitative": {
+          "sampled": 20,
+          "full_label_agreements": 16,
+          "full_label_agreement_rate": 0.8
+        },
+        "Review": {
+          "sampled": 20,
+          "full_label_agreements": 20,
+          "full_label_agreement_rate": 1.0
+        }
+      },
+      "full_label_agreements": 92,
+      "full_label_agreement_rate": 0.92,
+      "disagreements_adjudicated": 8,
+      "sampled_records_corrected_after_adjudication": 6,
+      "completed_at": "2026-08-02T19:39:00.981392+00:00"
+    },
+    "independent_manual_spot_check": {
+      "method": "Independent manual inspection of title and full abstract against the prespecified rubric",
+      "random_seed": 20260803,
+      "excluded_prior_model_audit_records": 100,
+      "sample_per_group": 4,
+      "total_sampled": 20,
+      "agreements": 18,
+      "agreement_rate": 0.9,
+      "records_corrected": 2,
+      "group_statistics": {
+        "Irrelevant": {
+          "sampled": 4,
+          "agreements": 3,
+          "agreement_rate": 0.75
+        },
+        "Relevant Non-empirical": {
+          "sampled": 4,
+          "agreements": 4,
+          "agreement_rate": 1.0
+        },
+        "Quantitative": {
+          "sampled": 4,
+          "agreements": 4,
+          "agreement_rate": 1.0
+        },
+        "Qualitative": {
+          "sampled": 4,
+          "agreements": 3,
+          "agreement_rate": 0.75
+        },
+        "Review": {
+          "sampled": 4,
+          "agreements": 4,
+          "agreement_rate": 1.0
+        }
+      },
+      "completed_at": "2026-08-02T19:42:14.498416+00:00"
+    }
+  },
+  "model": "qwen3.6:27b",
+  "prompt_version": "suicide-screen-v1.4-one-record-labels"
+}
