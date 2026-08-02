@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Screening a Suicide Literature with a Local Model: 2,034 Records, One at a Time</title>
-<meta name="description" content="A worked demonstration of the project's AI integration: two prompts retrieve and screen every suicide-related record in the SWRD and SSWR databases using a local Qwen3.6-27B model, with a blind audit and an independent spot check of the labels.">
+<title>Suicide Scholarship in Social Work: 1,331 Studies, Screened and Classified</title>
+<meta name="description" content="Every suicide-related record in the social work journals and the SSWR conference, 1989–2026 — screened one at a time by AI, checked twice, and released with its labels. What the discipline's suicide literature actually contains.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,6 +40,7 @@
 
   section{padding:clamp(38px,5vw,58px) 0}
   section.alt{background:#fff;border-top:1px solid #E7E5E0;border-bottom:1px solid #E7E5E0}
+  section.tech{background:#F4F5F4;border-top:1px solid #E0E2E0}
   h2{font-size:clamp(21px,2.6vw,27px);font-weight:600;letter-spacing:-.015em;margin:0 0 6px;line-height:1.25}
   h3{font-size:17.5px;font-weight:600;margin:30px 0 8px}
   .lede{color:#3F3F46;margin:0 0 22px;max-width:64ch}
@@ -55,6 +56,13 @@
   tr.tot td{font-weight:600;border-bottom:none;border-top:2px solid #C3C2B7}
   .tablewrap{overflow-x:auto}
 
+  .find{background:#fff;border:1px solid #E7E5E0;border-left:4px solid var(--c,#0F5257);
+        border-radius:8px;padding:18px 21px;margin:16px 0}
+  .find b.n{display:block;font-size:27px;font-weight:600;line-height:1.15;color:var(--c,#0F5257);
+            letter-spacing:-.01em}
+  .find h4{margin:4px 0 6px;font-size:16.5px;font-weight:600}
+  .find p{margin:0;font-size:15px;color:#3F3F46;max-width:none}
+
   .def{background:#fff;border:1px solid #E7E5E0;border-left:4px solid var(--c,#0F5257);
        border-radius:8px;padding:18px 20px;margin:14px 0}
   .def h4{margin:0 0 6px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:9px}
@@ -66,6 +74,11 @@
   .note b{color:#0B2E31}
   .note p{margin:0;font-size:14.8px;color:#2C4744;max-width:none}
   .note p + p{margin-top:9px}
+
+  blockquote.said{margin:18px 0;padding:16px 22px;background:#fff;border:1px solid #E7E5E0;
+                  border-left:4px solid #C97B3E;border-radius:8px;font-size:16px;color:#27272A}
+  blockquote.said p{margin:0;max-width:none}
+  blockquote.said cite{display:block;margin-top:9px;font-style:normal;font-size:13.5px;color:#71717A}
 
   .prompt{background:#0B2E31;color:#DCEEEA;border-radius:8px;padding:18px 20px;margin:14px 0;
           font-family:'IBM Plex Mono',monospace;font-size:13.2px;line-height:1.62;
@@ -84,6 +97,9 @@
   .steps p{margin:0;font-size:15px;color:#3F3F46;max-width:none}
   .steps .who{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
               text-transform:uppercase;color:#71717A;display:block;margin-top:5px}
+
+  .techbar{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
+           text-transform:uppercase;color:#0F5257;font-weight:500;margin:0 0 10px}
 
   .foot{background:#18181B;color:#A1A1AA;padding:34px 0;font-size:13.5px}
   .foot a{color:#E4E4E7}
@@ -109,127 +125,278 @@
 
 <div class="hero">
   <div class="wrap">
-    <div class="kicker">Demonstration · AI integration, end to end</div>
-    <h1>Screening a suicide literature with a local model</h1>
-    <p>Two prompts, one connection file, and a 27-billion-parameter model running on a laptop: every suicide-related record in both databases retrieved, screened one at a time for substantive relevance, and classified by evidence class and method — then audited twice.</p>
+    <div class="kicker">Demonstration · What the discipline has published on suicide</div>
+    <h1>Suicide scholarship in social work, 1989–2026</h1>
+    <p>Every suicide-related article in the disciplinary journals and every suicide-related presentation at the SSWR conference — found, read, and sorted by what kind of study each one is. This page reports what that literature contains, then shows exactly how it was assembled.</p>
     <div class="stats">
-      <div class="stat"><b>2,034</b><span>CANDIDATES SCREENED</span></div>
-      <div class="stat"><b>1,331</b><span>SUICIDE-RELEVANT</span></div>
-      <div class="stat"><b>1.7 h</b><span>LOCAL MODEL TIME</span></div>
-      <div class="stat"><b>92%</b><span>BLIND RE-SCREEN AGREEMENT</span></div>
+      <div class="stat"><b>1,331</b><span>SUICIDE STUDIES</span></div>
+      <div class="stat"><b>87%</b><span>REPORT ORIGINAL EVIDENCE</span></div>
+      <div class="stat"><b>65</b><span>SYSTEMATIC REVIEWS</span></div>
+      <div class="stat"><b>37</b><span>YEARS COVERED</span></div>
     </div>
   </div>
 </div>
 
 <section>
   <div class="wrap">
-    <h2>What this demonstrates, and where it came from</h2>
-    <p class="lede">This report exists because someone else tried the integration first and it did not go smoothly. Jonathan Singer tested the project's <a href="../../llms.txt">llms.txt</a> connection file on a suicide-literature question, got real results, and ran into two errors along the way. Both were fixable, both were in the guide rather than the database, and this page is the same analysis run again after the fix.</p>
+    <h2>What the literature looks like</h2>
+    <p class="lede">Two thousand records in these databases mention suicide. Reading each one shows that about two-thirds are genuinely <em>about</em> suicide — and that when social work studies suicide, it studies it in a strikingly narrow set of ways.</p>
 
-    <p>The claim being tested is narrow and checkable: that an AI assistant handed one published text file can connect to these databases unaided, and that the screening work that follows — reading two thousand abstracts and deciding which are actually about suicide — can be done by a free model on a laptop rather than a commercial API. Everything below is the record of that attempt, including the parts that needed correcting.</p>
+    <div class="find" style="--c:#0F5257">
+      <b class="n">1,331 of 2,034</b>
+      <h4>A third of the records that mention suicide are not about it</h4>
+      <p>Suicide turns up constantly as background: a sentence of rationale, one unexamined item in a list of mental-health concerns, a sample characteristic nobody analyzed. Separating those out is the whole job of screening, and it removed 703 records — 35% of everything the search returned.</p>
+    </div>
 
-    <p>What comes out is a corpus: 1,331 suicide-relevant records from the disciplinary journals (SWRD, 1989–2025) and the SSWR annual conference (2005–2026), each labeled Empirical or Non-empirical and, where empirical, Quantitative, Qualitative, or Review. The labels are released with the page so any individual decision can be checked.</p>
+    <div class="find" style="--c:#7A6A8F">
+      <b class="n">87% empirical</b>
+      <h4>This is a literature of studies, not of commentary</h4>
+      <p>1,160 of the 1,331 relevant records report original evidence; only 171 are conceptual pieces, editorials, practice overviews, or narrative reviews. That is a much higher empirical share than social work's writing on newer topics, where commentary tends to arrive first and evidence later. Suicide scholarship here is mature.</p>
+    </div>
 
-    <div class="note">
-      <p><b>The division of labour matters here.</b> Three different systems did three different jobs. A coding assistant (Codex) handled retrieval — reading the connection file, writing the SQL, paginating the API, deduplicating. A local open-weight model (Qwen3.6-27B through Ollama) did all 2,034 screening decisions, because that is the volume work and it should not require a paid API. Claude was used afterwards to summarise and write up what the data showed. No single model did the whole thing, and the write-up model never touched the labels.</p>
+    <div class="find" style="--c:#D4A24C">
+      <b class="n">65 syntheses</b>
+      <h4>Almost nobody is pulling the evidence together</h4>
+      <p>Across thirty-seven years and two venues, just 65 records are systematic reviews, meta-analyses, or scoping reviews — 5% of the empirical work, one every eight months. A field producing this many primary studies with this little synthesis is a field where practitioners have nowhere to look for a settled answer.</p>
+    </div>
+
+    <div class="find" style="--c:#4C9F8A">
+      <b class="n">5 to 1</b>
+      <h4>Quantitative work outnumbers qualitative five to one</h4>
+      <p>915 quantitative studies against 180 qualitative. Suicide research in these venues is overwhelmingly about measurement, prediction, and risk factors. Lived-experience work — what suicidality is like, what survivors of a loss actually need, why people do or do not disclose — is the smaller literature by a wide margin.</p>
     </div>
   </div>
 </section>
 
 <section class="alt">
-  <div class="wrap">
-    <h2>What broke, and what was changed</h2>
-    <p class="lede">Both failures produced error messages that read like the database was misconfigured. Neither was. The fix was to the documentation, not the endpoint, and it is the reason this run went cleanly.</p>
+  <div class="wide">
+    <h2>The full breakdown</h2>
+    <p class="lede">Every one of the 2,034 records the search returned ends up in exactly one of five buckets.</p>
 
-    <div class="def" style="--c:#C97B3E">
-      <h4><i></i>1. The endpoint looks missing when you GET it</h4>
-      <p>The database is reached by POSTing SQL to a REST endpoint. Most assistants have a "fetch this URL" tool, and pointing it at the endpoint issues a GET, which returns <code>401 No API key found</code> without a key and, with a key, <code>404 PGRST202 … could not find the function public.run_sql</code>. That 404 reads as a missing function. It is not: the <code>public.</code> prefix is the tell that the <code>Content-Profile</code> header is absent, so the request is looking in the wrong schema.</p>
-      <div class="ex">The guide now tables all four request shapes against the exact response each returns, names <code>public.</code> as the diagnostic, and says plainly to use a shell or code tool that can POST with headers — never a page-fetch tool.</div>
+    <figure>
+      <img src="figures/composition.svg" alt="Horizontal stacked bar chart showing what the 2,034 screened candidates became. Combined: 915 quantitative, 180 qualitative, 65 review, 171 non-empirical, 703 screened out. SSWR conference: 614 quantitative, 97 qualitative, 36 review, no non-empirical, 491 screened out. SWRD journals: 301 quantitative, 83 qualitative, 29 review, 171 non-empirical, 212 screened out.">
+      <figcaption>Bars are percentages so the two venues can be compared; the labels are record counts. The most visible difference between them is the purple band: conceptual and commentary work exists in the journals and is entirely absent from the conference set.</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>What the study is</th><th class="num">Records</th><th class="num">% of relevant</th></tr></thead>
+      <tbody>
+        <tr><td>Quantitative study</td><td class="num">915</td><td class="num">68.7%</td></tr>
+        <tr><td>Qualitative study</td><td class="num">180</td><td class="num">13.5%</td></tr>
+        <tr><td>Systematic review, meta-analysis, or scoping review</td><td class="num">65</td><td class="num">4.9%</td></tr>
+        <tr><td>Non-empirical — commentary, theory, narrative review</td><td class="num">171</td><td class="num">12.8%</td></tr>
+        <tr class="tot"><td>All suicide-relevant records</td><td class="num">1,331</td><td class="num">100.0%</td></tr>
+      </tbody>
+    </table>
     </div>
 
-    <div class="def" style="--c:#C97B3E">
-      <h4><i></i>2. The sandbox prompt looks alarming</h4>
-      <p>Sandboxed coding assistants ask permission before their first outbound request and display an opaque hostname. Approving <code>kcffctxedcscvvposypb.supabase.co</code> is the whole fix, but nothing in the guide had told the user that was the project's own hosted database.</p>
-      <div class="ex">The guide and the site now name the host to approve, state that it is read-only HTTPS on port 443, and point to the reachability probe for runtimes that have no outbound network at all.</div>
+    <h3>The journals and the conference do different jobs</h3>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Source</th><th class="num">Screened</th><th class="num">Relevant</th><th class="num">Rate</th><th class="num">Non-emp.</th><th class="num">Quant.</th><th class="num">Qual.</th><th class="num">Review</th></tr></thead>
+      <tbody>
+        <tr><td>SWRD journals, 1989–2025</td><td class="num">796</td><td class="num">584</td><td class="num">73.4%</td><td class="num">171</td><td class="num">301</td><td class="num">83</td><td class="num">29</td></tr>
+        <tr><td>SSWR conference, 2005–2026</td><td class="num">1,238</td><td class="num">747</td><td class="num">60.3%</td><td class="num">0</td><td class="num">614</td><td class="num">97</td><td class="num">36</td></tr>
+        <tr class="tot"><td>Combined</td><td class="num">2,034</td><td class="num">1,331</td><td class="num">65.4%</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
+      </tbody>
+    </table>
     </div>
 
-    <div class="def" style="--c:#4C9F8A">
-      <h4><i></i>3. "Dedupe on normalized title" was never defined</h4>
-      <p>A separate round of testing surfaced a quieter problem: the guide told assistants to deduplicate double-indexed articles on normalized title without saying what normalization meant, and each run invented its own. The guide now gives the expression, scoped within publication year so that different papers sharing a generic title are not collapsed.</p>
-      <div class="ex"><code>lower(regexp_replace(title, '[^a-zA-Z0-9]', '', 'g')) || '|' || publication_year</code> — the rule this analysis used, which removed 8 duplicate rows from 804 SWRD matches.</div>
+    <p>The conference is where suicide research shows up first and in the largest volume — 747 presentations against 584 journal articles — and all of it is empirical. The journals carry the discipline's thinking <em>about</em> suicide as well as its studies of it: every one of the 171 conceptual and commentary pieces is a journal article.</p>
+
+    <div class="note">
+      <p><b>That zero is the single best validation on this page.</b> Not one of the 747 SSWR presentations was classified as non-empirical — and that is exactly the right answer. SSWR is an empirical research conference; its submission process asks for a study, and conceptual and commentary work is not what the venue accepts. The correct count of non-empirical presentations in a suicide-topic sweep of that conference is zero, and the model produced zero, 747 times in a row, without ever being told what venue a record came from.</p>
+      <p>That is a harder test than it looks. The model saw only a title and an abstract; nothing in its input identified the source database. It had every opportunity to drift — to call a conceptually-framed presentation a commentary, or to label a thin abstract non-empirical because the design was hard to see. It did not do so once. And it did the opposite where it should have: all 171 non-empirical records it found are journal articles, which is where conceptual work actually lives.</p>
     </div>
 
-    <p>None of these were database bugs, which is the point worth drawing out. An integration meant to be driven by a machine reading a text file fails at the places where that file is silent or ambiguous, and those places are only found by watching someone else's assistant hit them.</p>
+    <p>The conference also drops more of its candidates in screening — 40% against the journals' 27%. Conference abstracts are longer and list more secondary measures, so suicide is likelier to appear somewhere in the text without being what the work is about.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <h2>Growth over time</h2>
+    <p class="lede">Suicide has become a substantially larger share of what social work researchers present and publish, and the conference registered that shift before the journals did.</p>
+
+    <figure>
+      <img src="figures/growth.svg" alt="Stacked bar chart of suicide-relevant records per year, 1989 to 2026. Journal articles run from 1 in 1989 to about 50 in 2024. Conference presentations begin in 2005 and rise to 83 in 2026. Combined totals climb from single digits in the early 1990s to over 100 in the mid 2020s. The 2024 and 2025 region is shaded as incomplete for journal indexing.">
+      <figcaption>Suicide-relevant records per year in each venue. Two caveats sit at the right-hand edge. The 2024–2025 journal counts are lower bounds, because publishers index articles into the database on a lag. The 2026 bar is conference-only and complete, since that meeting has already happened while the journal year has not begun in this data. Neither is a forecast.</figcaption>
+    </figure>
+
+    <p>The journal series is a slow climb rather than a sudden arrival: single digits through the early 1990s, into the teens and twenties by the 2010s, 45 to 50 a year by 2023–2024. The conference series is steeper and starts later, holding under twenty a year until 2014 and then reaching 70 to 83 a year from 2024 on.</p>
+
+    <p>The 584 relevant journal articles are spread across 63 different journals, with the largest single outlet holding just 38 of them. Suicide is not owned by one venue in this discipline; it appears across the specialty journals — child and adolescent, mental health, gerontological, school, health — wherever the population happens to be.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>How much should you trust these labels?</h2>
+    <p class="lede">Every label on this page was assigned by an AI model reading a title and abstract. That work was checked twice, and the honest answer is that the checks are encouraging but fall short of proof.</p>
+
+    <figure>
+      <img src="figures/audit.svg" alt="Grouped bar chart of agreement by outcome group. Blind model re-screen: Irrelevant 90 percent, Relevant Non-empirical 95, Quantitative 95, Qualitative 80, Review 100. Independent manual check: Irrelevant 75, Relevant Non-empirical 100, Quantitative 100, Qualitative 75, Review 100.">
+      <figcaption>Agreement on the complete label — whether a record is relevant, whether it is empirical, and which method — all three matching. Both checks deliberately sampled equal numbers from each group, so these rates describe the groups, not the corpus as a whole.</figcaption>
+    </figure>
+
+    <p><b>First check: 100 records, re-read blind.</b> A hundred records were pulled at random — twenty from each outcome group — and screened again from scratch, without the model being shown what it had decided the first time. Ninety-two came back identical on all three decisions. The eight that disagreed went to a third pass that saw both answers and the reasoning behind them; six were resolved against the original label and corrected.</p>
+
+    <p><b>Second check: 20 records, read by hand.</b> A separate sample of twenty, drawn from records the first check had not touched, was inspected against the written criteria rather than re-run through a model. Eighteen agreed. The two that did not were both the same kind of error in opposite directions — the line between <em>suicide was measured</em> and <em>suicide was analyzed</em>:</p>
+
+    <ul class="plain">
+      <li>A study of homeless youth was moved from irrelevant to <em>quantitative</em>. Suicidal ideation was in the regression as an analyzed mechanism with its own reported result; the model had read it as an incidental covariate.</li>
+      <li>A study of domestic-violence service needs was moved from <em>qualitative</em> to irrelevant. Suicide and self-harm were minor items in a broad needs assessment and were never separately analyzed.</li>
+    </ul>
+
+    <div class="note">
+      <p><b>What these numbers are not.</b> The 92% figure compares the model against itself, so it measures consistency, not correctness — a model that is confidently and consistently wrong about a category would score well on it. The 90% figure rests on four records per group and was produced by an AI assistant reading against the criteria, not by trained suicide researchers. Neither is an accuracy estimate for the corpus.</p>
+      <p>This is a well-documented draft corpus. Publishing from it would first require independent dual review by human experts on a proper probability sample, with interrater agreement reported. Everything needed to do that — including every record the audits changed and what it was before — is released below.</p>
+    </div>
+
+    <p>Where the residual error most likely sits is worth naming: qualitative was the least stable label in both checks, and the recurring judgment call across the whole corpus is whether a suicide measure was genuinely analyzed or merely collected.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>The two prompts, verbatim</h2>
-    <p class="lede">The entire analysis was driven by these two instructions. They are reproduced exactly as issued, including the parts that exist only to steer an assistant away from the failure modes above.</p>
-
-    <div class="prompt"><span class="lbl">Prompt 1 · retrieval — issued to Codex</span>Ok, do this. I want to access all papers specific to the topic of suicide:
-
-Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirror at .../llms.html), run its reachability check, and connect exactly as it describes, then answer my question using those databases. The database endpoint is a POST API, not a web page, so query it from a shell or code tool rather than a page-fetch tool, and approve the host if you are asked. If you cannot fetch either URL, tell me and I will paste the file.</div>
-
-    <p>Three clauses in that prompt are doing specific work. "Run its reachability check" makes the assistant confirm it has outbound network before it starts writing queries. "POST API, not a web page … rather than a page-fetch tool" pre-empts failure 1. "Approve the host if you are asked" pre-empts failure 2. A user who has read the revised guide does not need to say any of this — but saying it makes the run reproducible for a reader who has not.</p>
-
-    <div class="prompt"><span class="lbl">Prompt 2 · screening and classification — executed by local Qwen3.6-27B</span>Now, use my local Ollama model -- Qwen3.6-27b to carefully screen each abstract for its relevance to suicide. For all relevant articles, classify as Empirical (includes systematic, meta-analysis, scoping) vs. Non-empirical. If the article is empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should all considered non-empirical. If empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should be classified as Non-empirical. Return your results as a JSON file. Just do one-by-one for most accuracy</div>
-
-    <p>The last five words are the substantive methodological instruction. Batching several abstracts into one request is faster and materially worse: decisions bleed across records in the same context, and a long batch drifts toward whatever label it has been emitting. One record per request costs more wall-clock time — 1.7 hours here — and buys independence between decisions.</p>
-
-    <p>The prompt also fixes two taxonomy boundaries that are genuinely contestable, and it is worth being explicit that these are choices rather than facts. Systematic reviews, meta-analyses, and scoping reviews count as <em>empirical</em>; narrative reviews do not. A different project could rule the other way and get a different corpus.</p>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <h2>How the run actually proceeded</h2>
+    <h2>How this was built</h2>
+    <p class="lede">Nobody wrote any code. The whole analysis was requested in plain English, twice, and carried out by three AI systems with clearly separated jobs — a frontier model for a few minutes of planning and analysis, a free local model for the hours of repetitive reading.</p>
 
     <ol class="steps">
       <li>
-        <h4>Connect from the published file alone</h4>
-        <p>The assistant fetched <code>llms.txt</code>, verified it had received the complete guide by checking that it ended with <code>END OF GUIDE</code>, and ran the prescribed reachability probe. The probe returned <code>HTTP/2 401</code> — the expected unauthenticated response, and confirmation that the runtime could reach the host at all.</p>
-        <span class="who">Codex · no credentials beyond the public read-only key in the guide</span>
+        <h4>Connect to the databases from a published file</h4>
+        <p>Codex was pointed at the project's <a href="../../llms.txt">llms.txt</a> — one public text file describing how to reach the databases — and connected from that alone. No credentials beyond the public read-only key printed in the file itself, and no setup on the researcher's part.</p>
+        <span class="who">Codex, running GPT-5.6-Sol · minutes</span>
       </li>
       <li>
-        <h4>Cast the candidate net</h4>
-        <p>A case-insensitive word-start match on the stem <code>suicid</code> across title and abstract, run separately against each schema. SWRD was restricted to its recommended 1989+ corpus. The API caps responses at 1,000 rows, so results were paged at 700.</p>
-        <span class="who">804 SWRD rows → 796 after dedup · 1,238 SSWR presentations · 2,034 unique candidates</span>
+        <h4>Pull every record that mentions suicide</h4>
+        <p>A deliberately wide net across both databases: any record whose title or abstract contains a word starting with <em>suicid</em>. Wide on purpose — it is far easier to remove a record that mentions suicide in passing than to find one the search never returned. Codex planned the sweep, ran it, paged through the results, and removed duplicate entries.</p>
+        <span class="who">Codex · 2,034 unique records · minutes</span>
       </li>
       <li>
-        <h4>Screen every candidate, one request each</h4>
-        <p>Each record went to the local model on its own, at temperature 0 with a fixed seed and a structured JSON output schema. Every decision was appended to a checkpoint file and flushed immediately, so an interrupted run resumes without repeating work. The database's own method fields were deliberately withheld from the model — it saw only title and abstract.</p>
-        <span class="who">Qwen3.6-27B via Ollama · 2,034 requests · all succeeded on first attempt</span>
+        <h4>Read every one of them, one at a time</h4>
+        <p>This is the heavy lifting, and it ran entirely on a free open-weight model on the laptop: Qwen3.6-27B, one record per request, no memory of the record before it. It saw only a title and an abstract — never the database's own labels, never which venue the record came from — and answered three questions: is this really about suicide, does it report evidence, and if so what kind.</p>
+        <span class="who">Local Qwen3.6-27B · 2,034 separate requests · 1.7 hours</span>
       </li>
       <li>
-        <h4>Audit the labels twice</h4>
-        <p>A stratified blind re-screen of 100 records, then an independent manual inspection of 20 more drawn from records the first audit had not touched. Every disagreement went to a third adjudication pass. Eight corrections were applied to the final data.</p>
-        <span class="who">92% blind full-label agreement · 90% on the independent check</span>
+        <h4>Check the answers twice</h4>
+        <p>The blind re-screen of 100 records and the hand inspection of 20 more, both described above, with every disagreement adjudicated and eight corrections written back into the data. Codex designed and ran both checks; the blind labels themselves came from the local model again.</p>
+        <span class="who">Codex, with the local model producing the blind labels</span>
       </li>
       <li>
-        <h4>Summarise and write up</h4>
-        <p>Post-hoc analysis of the completed label set: counts, cross-tabulations, the figures on this page, and the methods narrative. Nothing at this stage altered a label.</p>
-        <span class="who">Claude · reading the released JSON, not the databases</span>
+        <h4>Work out what the labels mean</h4>
+        <p>Counts, cross-tabulations, the venue comparison, the figures on this page, and this write-up — the substantive analysis of a finished corpus. Nothing at this stage touched a label; it read the released files, not the databases.</p>
+        <span class="who">Claude Opus 5 · minutes</span>
       </li>
     </ol>
+
+    <div class="note">
+      <p><b>Why the division of labour matters.</b> Add up the frontier-model time and it is a few minutes: planning the search, orchestrating the run, designing the checks, and interpreting the result. The part that took hours — reading two thousand abstracts and making the same three decisions about each, without getting bored, inconsistent, or tired — ran on a model that costs nothing and never sent a single abstract off the machine.</p>
+      <p>That split is the actual claim being tested here. Expensive judgment is cheap because there is so little of it; expensive volume is what breaks a research budget, and volume is exactly what a local model is good for. A researcher with no grant, no API budget, and no programming can run this.</p>
+    </div>
+
+    <div class="note">
+      <p><b>No code was written by a person.</b> Both instructions below are ordinary English sentences. The scripts in this folder were generated by the assistants in the course of following them, and are published so the run can be inspected and repeated — but they are an <em>output</em> of this demonstration, not an input to it.</p>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="alt">
+  <div class="wrap">
+    <h2>Where this came from</h2>
+    <p class="lede">This analysis was run because someone else tried the integration first and told us what happened.</p>
+
+    <p>Jonathan Singer tested the project's <code>llms.txt</code> connection file on a suicide-literature question — the same kind of question this page answers — and reported back on LinkedIn:</p>
+
+    <blockquote class="said">
+      <p>It got a little tripped up trying to access https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql, but running it in the code editor and manually giving permission seemed to work.</p>
+      <cite>Jonathan Singer</cite>
+    </blockquote>
+
+    <p>That is a good outcome and a useful report at the same time: it worked, and it should not have needed a workaround. One sentence, and it points at two separate things the guide had failed to say.</p>
+
+    <div class="def" style="--c:#C97B3E">
+      <h4><i></i>Why it got tripped up on the address</h4>
+      <p>That URL is not a web page. It is an endpoint you send a query <em>to</em>, and most AI assistants reach for a "fetch this URL" tool when handed a link — which asks the endpoint for a page and gets a refusal that reads like the database is broken or missing. The database was fine; the request was the wrong shape, and nothing in the guide had warned about it.</p>
+      <div class="ex">The guide now lists every way the endpoint can be called and the exact error each one returns, names the giveaway that identifies this particular failure, and says plainly to query it from code rather than from a page-fetch tool.</div>
+    </div>
+
+    <div class="def" style="--c:#C97B3E">
+      <h4><i></i>Why manually giving permission fixed it</h4>
+      <p>Coding assistants ask before reaching the internet for the first time, and the prompt they show is a long meaningless hostname. Approving it is the entire fix — but nothing had told the user that the alarming-looking address was simply the project's own database.</p>
+      <div class="ex">The guide and the project site now name the host to approve, state that it is read-only and encrypted, and explain what to do if your setup has no internet access at all.</div>
+    </div>
+
+    <p>A third gap surfaced separately, in repeated testing rather than from a user report: the guide told assistants to remove duplicate articles by "normalized title" without ever defining what that meant, so each run invented its own rule and got slightly different results. The guide now gives the exact expression.</p>
+
+    <p>None of those three were faults in the data. They are the failure modes of an integration meant to be driven by a machine reading a text file: it breaks wherever that file is silent or ambiguous, and those places are essentially impossible to find on your own machine, where you already know what you meant. They are found by watching someone else's assistant hit them — which is why a report like Jonathan's is worth more than it looks.</p>
+
+    <h3>And then the re-run found something in the data</h3>
+
+    <p>Re-running the analysis against the corrected guide turned up three genuine problems in SWRD itself — the kind that only appear when something reads every record instead of sampling a few:</p>
+
+    <ul class="plain">
+      <li><b>The DOI column contains things that are not DOIs.</b> 27 of the 705 records with a populated DOI hold an OAI identifier or an internal hash instead. Anything that matches, merges, or links on DOI silently fails for those records, and any rule of the form "prefer the record that has a DOI" is misled, because the field is filled in — just not with a DOI.</li>
+      <li><b>Five articles are filed under the wrong journal.</b> Deduplication found eight double-indexed pairs, and in five of them a <em>Journal of Sociology &amp; Social Welfare</em> article is also indexed under <em>Journal of Social Work Practice</em>. The same wrong value across five records points to a systematic mapping error in one ingest rather than five separate slips, which means the true count is likely higher outside this suicide sweep.</li>
+      <li><b>62 records have no abstract.</b> 7.8% of the SWRD records in this sweep, spread across every decade. Abstract-level screening and semantic search cannot see them at all; here they had to be judged from the title alone.</li>
+    </ul>
+
+    <p>These are now filed as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> on the project repository, with the affected record ids, the verification, and a proposed correction — the OAI identifiers turn out to encode the real DOIs, so most of them are mechanically fixable. They will be addressed in the next data release. Recording them publicly rather than quietly patching this one analysis is the point: the corpus below was built on the data as it stands today, and a reader should be able to see exactly what was wrong with it.</p>
+
+    <p>So the fuller version of the story is that one user's report of a connection hiccup led to three fixes in the guide and three corrections queued for the database. This page is the same analysis re-run against the corrected guide. It connected on the first attempt.</p>
+  </div>
+</section>
+
+<section class="tech">
+  <div class="wrap">
+    <p class="techbar">The technical record · everything below is the method</p>
+    <h2>The two prompts</h2>
+    <p class="lede">The entire analysis was driven by these two instructions, reproduced exactly as issued.</p>
+
+    <div class="prompt"><span class="lbl">Prompt 1 · retrieval — issued to Codex (GPT-5.6-Sol)</span>Ok, do this. I want to access all papers specific to the topic of suicide:
+
+Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirror at .../llms.html), run its reachability check, and connect exactly as it describes, then answer my question using those databases. The database endpoint is a POST API, not a web page, so query it from a shell or code tool rather than a page-fetch tool, and approve the host if you are asked. If you cannot fetch either URL, tell me and I will paste the file.</div>
+
+    <p>Three clauses in that prompt exist only to steer around the failures Jonathan's report exposed. "Run its reachability check" makes the assistant confirm it has outbound network before writing queries. "POST API, not a web page … rather than a page-fetch tool" pre-empts the first. "Approve the host if you are asked" pre-empts the second. A user who has read the revised guide does not need to say any of this; saying it makes the run reproducible for a reader who has not.</p>
+
+    <div class="prompt"><span class="lbl">Prompt 2 · screening and classification — orchestrated by Codex, executed by local Qwen3.6-27B</span>Now, use my local Ollama model -- Qwen3.6-27b to carefully screen each abstract for its relevance to suicide. For all relevant articles, classify as Empirical (includes systematic, meta-analysis, scoping) vs. Non-empirical. If the article is empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should all considered non-empirical. If empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should be classified as Non-empirical. Return your results as a JSON file. Just do one-by-one for most accuracy</div>
+
+    <p>The last five words are the substantive methodological instruction. Batching several abstracts into one request is faster and materially worse: decisions bleed across records sharing a context, and a long batch drifts toward whatever label it has been emitting. One record per request costs wall-clock time — 1.7 hours here — and buys independence between decisions.</p>
+
+    <p>The prompt also fixes two contestable taxonomy boundaries, and they are choices rather than facts: systematic reviews, meta-analyses, and scoping reviews count as <em>empirical</em>, and narrative reviews do not. A different project could rule the other way and get a different corpus.</p>
+
+    <h3>Who ran what</h3>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Stage</th><th>System</th><th>Roughly</th></tr></thead>
+      <tbody>
+        <tr><td>Connection, retrieval, pagination, deduplication</td><td>Codex, running GPT-5.6-Sol</td><td>minutes</td></tr>
+        <tr><td><b>Screening and classification of all 2,034 records</b></td><td><b><code>qwen3.6:27b</code>, local via Ollama</b> — planned and orchestrated by Codex</td><td><b>1.7 hours</b></td></tr>
+        <tr><td>100-record blind re-screen and adjudication</td><td>Same local model, orchestrated by Codex</td><td>minutes</td></tr>
+        <tr><td>20-record independent inspection</td><td>Codex, reading against the written criteria</td><td>minutes</td></tr>
+        <tr><td>Substantive analysis, figures, and this write-up</td><td>Claude Opus 5, from the released files</td><td>minutes</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Two frontier models were involved and neither did much work by volume: Codex planned and drove the pipeline, Claude Opus 5 interpreted the finished labels. Every one of the 2,034 classification decisions — and every one of the 100 blind re-screens — came from a free open-weight model on a laptop.</p>
+  </div>
+</section>
+
+<section class="tech" style="border-top:none">
   <div class="wrap">
     <h2>Finding the candidates</h2>
-    <p class="lede">The inclusion rule is deliberately mechanical, so that a reader can regenerate exactly this candidate set rather than trust that a search was thorough.</p>
+    <p class="lede">The inclusion rule is deliberately mechanical, so a reader can regenerate exactly this candidate set rather than trust that a search was thorough.</p>
 
-    <p>The high-recall net is a single regular expression applied to the concatenation of title and abstract:</p>
-    <div class="prompt" style="background:#F4F4F2;color:#18181B"><span class="lbl" style="color:#71717A">The candidate rule</span>(coalesce(title, '') || ' ' || coalesce(abstract, '')) ~* '\msuicid'</div>
+    <p>A record is a candidate when its title or abstract contains a word <em>beginning</em> with the stem <span class="mono">suicid</span> — matched at a word boundary, case-insensitively, across the two fields joined together. That catches <em>suicide</em>, <em>suicidal</em>, <em>suicidality</em>, and their compounds, and nothing else.</p>
 
-    <p>The word-start marker followed by the open stem catches <em>suicide</em>, <em>suicidal</em>, <em>suicidality</em>, and their compounds. What it deliberately does not do is treat nonsuicidal self-injury, self-harm, or euthanasia as suicide topics by default: those records enter the candidate set only if they also use a suicide-root term, and then have to survive screening on substance. The database's ranked keyword search was run separately with several phrasings — <em>suicide prevention</em>, <em>suicide risk</em>, <em>suicidal behavior</em>, <em>self harm</em> — and the first three returned nothing the stem sweep had missed.</p>
+    <p>What it deliberately does not do is treat nonsuicidal self-injury, self-harm, or euthanasia as suicide topics by default: those records enter only if they also use a suicide-root term, and then have to survive screening on substance. The database's ranked keyword search was run separately with several phrasings — <em>suicide prevention</em>, <em>suicide risk</em>, <em>suicidal behavior</em>, <em>self harm</em> — and the first three returned nothing the stem sweep had missed.</p>
 
-    <p>This buys reproducibility at a known cost: a study about suicide that uses no suicide-root term anywhere in its title or abstract is invisible to the rule. That is a recall limit, not an oversight, and it is why the rule is stated rather than described.</p>
+    <p>This buys reproducibility at a known cost: a study about suicide using no suicide-root term anywhere in title or abstract is invisible to the rule. That is a recall limit, not an oversight, and it is why the rule is stated rather than described.</p>
 
     <h3>Deduplication</h3>
-    <p>A small number of SWRD articles are indexed under two journal ids, usually with differing or null DOIs, so DOI matching alone misses them. Applying the normalized-title-plus-year rule collapsed 804 SWRD rows to 796 papers. Where a group of duplicates disagreed, the retained row was chosen by preferring a record with a DOI, then the longest abstract, then the fullest author string; the discarded record ids are kept in a <code>duplicate_record_ids</code> field rather than thrown away.</p>
+    <p>A small number of SWRD articles are indexed under two journal ids, usually with differing or null DOIs, so DOI matching alone misses them. Applying the normalized-title-plus-year rule collapsed 804 SWRD rows to 796 papers. Where duplicates disagreed, the retained row was chosen by preferring a record with a DOI, then the longest abstract, then the fullest author string; discarded record ids are kept in a <code>duplicate_record_ids</code> field rather than thrown away.</p>
 
     <div class="tablewrap">
     <table>
@@ -242,14 +409,14 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
     </table>
     </div>
 
-    <p>Of the 2,034 candidates, 966 carried a suicide-root term in the title; the other 1,068 matched on abstract alone. Sixty-two SWRD records had no abstract at all and were screened from title only, under a conservative rule described below.</p>
+    <p>Of the 2,034 candidates, 966 carried a suicide-root term in the title; the other 1,068 matched on abstract alone. Sixty-two SWRD records had no abstract at all.</p>
   </div>
 </section>
 
-<section class="alt">
+<section class="tech" style="border-top:none">
   <div class="wrap">
     <h2>The screening protocol</h2>
-    <p class="lede">Three decisions per record, forced choices, one request each.</p>
+    <p class="lede">Three decisions per record, all forced choices, one request each.</p>
 
     <div class="def" style="--c:#0F5257">
       <h4><i></i>Relevant</h4>
@@ -265,15 +432,16 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
 
     <div class="def" style="--c:#4C9F8A">
       <h4><i></i>Method, for empirical records only</h4>
-      <p>Exactly one of Quantitative, Qualitative, or Review. The taxonomy the prompt specified has no mixed-methods category, so mixed-methods studies with a central quantitative component were mapped to Quantitative and the rest to their predominant method.</p>
-      <div class="ex">That is a real distortion and it is stated rather than hidden: a reader who needs a mixed-methods count cannot get one from these labels.</div>
+      <p>Exactly one of Quantitative, Qualitative, or Review. The requested taxonomy has no mixed-methods category, so mixed-methods studies with a central quantitative component were mapped to Quantitative and the rest to their predominant method.</p>
+      <div class="ex">That is a real distortion, stated rather than hidden: a reader who needs a mixed-methods count cannot get one from these labels.</div>
     </div>
 
     <h3>Execution settings</h3>
     <div class="tablewrap">
     <table>
       <tbody>
-        <tr><td>Model</td><td><code>qwen3.6:27b</code>, served locally by <a href="https://ollama.com">Ollama</a></td></tr>
+        <tr><td>Screening model</td><td><code>qwen3.6:27b</code>, served locally by <a href="https://ollama.com">Ollama</a></td></tr>
+        <tr><td>Orchestration</td><td>Codex, running GPT-5.6-Sol</td></tr>
         <tr><td>Protocol version</td><td><code>suicide-screen-v1.4-one-record-labels</code></td></tr>
         <tr><td>Batching</td><td>None — exactly one bibliographic record per request</td></tr>
         <tr><td>Temperature / seed</td><td><code>0</code> / <code>42</code></td></tr>
@@ -285,104 +453,10 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
     </table>
     </div>
 
-    <p>The cost of that configuration, measured from the per-request metrics the model returns: 2,034 requests, 1.7 hours of model time, a median of 3.3 seconds per record and 4.7 seconds at the slowest, 2.86 million prompt tokens and 49,000 completion tokens. Every record succeeded on its first attempt. No API bill, and the abstracts never left the machine — which for a suicide corpus is not merely a cost consideration.</p>
+    <p>The cost of that configuration, measured from the per-request metrics the model returns: 2,034 requests, 1.7 hours of model time, a median of 3.3 seconds per record and 4.7 at the slowest, 2.86 million prompt tokens and 49,000 completion tokens. Every record succeeded on its first attempt. Each decision was appended to a checkpoint file and flushed immediately, so an interrupted run resumes without repeating work.</p>
 
     <h3>Records without abstracts</h3>
-    <p>Sixty-two records had titles and nothing else. Screening these at all is a judgment call; the alternative is dropping 3% of the corpus. They were screened from title under a conservative forced-choice rule: if a title established suicide relevance but gave no defensible evidence of an empirical design, the record was labeled Non-empirical rather than guessed into a method. Fifty-four were retained as relevant and all 54 landed in Non-empirical; eight were excluded. That rule is safe in one direction and biased in the other, and the flag <code>screening_basis: title_only</code> is preserved on every one of them so they can be excluded or re-screened.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <h2>What the corpus looks like</h2>
-    <p class="lede">Of 2,034 candidates carrying a suicide-root term, 1,331 survived screening as substantively about suicide — 65.4%. The other 703 mentioned suicide without studying it.</p>
-
-    <figure>
-      <img src="figures/composition.svg" alt="Horizontal stacked bar chart showing what the 2,034 screened candidates became. Combined: 915 quantitative, 180 qualitative, 65 review, 171 non-empirical, 703 screened out. SSWR conference: 614 quantitative, 97 qualitative, 36 review, no non-empirical, 491 screened out. SWRD journals: 301 quantitative, 83 qualitative, 29 review, 171 non-empirical, 212 screened out.">
-      <figcaption>Every screened candidate lands in exactly one of five outcomes. Bars are percentages so the two venues are comparable; the labels are record counts. The single most visible difference is the purple band: non-empirical work exists in the journals and is entirely absent from the conference set under this protocol.</figcaption>
-    </figure>
-
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th>Final classification</th><th class="num">Records</th><th class="num">% of relevant</th></tr></thead>
-      <tbody>
-        <tr><td>Empirical — Quantitative</td><td class="num">915</td><td class="num">68.7%</td></tr>
-        <tr><td>Empirical — Qualitative</td><td class="num">180</td><td class="num">13.5%</td></tr>
-        <tr><td>Empirical — Review</td><td class="num">65</td><td class="num">4.9%</td></tr>
-        <tr><td>Non-empirical</td><td class="num">171</td><td class="num">12.8%</td></tr>
-        <tr class="tot"><td>All relevant</td><td class="num">1,331</td><td class="num">100.0%</td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <p>Suicide scholarship in these venues is overwhelmingly empirical — 1,160 of 1,331 records, 87.2% — and within that, overwhelmingly quantitative: 78.9% of empirical records, against 15.5% qualitative and 5.6% systematic evidence synthesis. Sixty-five systematic reviews, meta-analyses, and scoping reviews across thirty-seven years and two venues is a thin synthesis layer for a literature of this size.</p>
-
-    <h3>By venue</h3>
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th>Source</th><th class="num">Screened</th><th class="num">Relevant</th><th class="num">Rate</th><th class="num">Non-emp.</th><th class="num">Quant.</th><th class="num">Qual.</th><th class="num">Review</th></tr></thead>
-      <tbody>
-        <tr><td>SWRD journals</td><td class="num">796</td><td class="num">584</td><td class="num">73.4%</td><td class="num">171</td><td class="num">301</td><td class="num">83</td><td class="num">29</td></tr>
-        <tr><td>SSWR conference</td><td class="num">1,238</td><td class="num">747</td><td class="num">60.3%</td><td class="num">0</td><td class="num">614</td><td class="num">97</td><td class="num">36</td></tr>
-        <tr class="tot"><td>Combined</td><td class="num">2,034</td><td class="num">1,331</td><td class="num">65.4%</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
-      </tbody>
-    </table>
-    </div>
-
-    <div class="note">
-      <p><b>Read the zero carefully.</b> No SSWR presentation was classified Non-empirical. That is a fact about this candidate set under this protocol, not proof that the conference carries no conceptual or commentary scholarship. SSWR abstracts are structured around a research design, so the empirical signal is usually explicit in the text the model was given; a conceptual paper that reads as a study in abstract form will classify as one. It also reflects that a conference submission whose abstract shows no design is unlikely to appear in a suicide-topic sweep in the first place.</p>
-    </div>
-
-    <p>The conference also screens out more of its candidates than the journals do — 39.7% against 26.6%. Conference abstracts are longer and list more secondary measures, so a suicide item is more likely to appear somewhere in the text without being the subject of the work.</p>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wide">
-    <h2>Volume over time</h2>
-    <p class="lede">Both venues grow, and the right-hand edge of the chart means different things in each.</p>
-
-    <figure>
-      <img src="figures/growth.svg" alt="Stacked bar chart of suicide-relevant records per year, 1989 to 2026. Journal articles run from 1 in 1989 to about 50 in 2024. Conference presentations begin in 2005 and rise to 83 in 2026. Combined totals climb from single digits in the early 1990s to over 100 in the mid 2020s. The 2024 and 2025 region is shaded and marked as incomplete for journal indexing.">
-      <figcaption>Suicide-relevant records per year by venue. Two caveats sit at the right edge. SWRD 2024–2025 counts are lower bounds, because publisher indexing lags the database release. The 2026 bar is conference-only and complete, because that meeting has already taken place — the journal year has not begun in this data. Neither is a forecast.</figcaption>
-    </figure>
-
-    <p>The journal series is a slow climb rather than an inflection: single digits through the early 1990s, into the teens and twenties by the 2010s, and 45 to 50 a year by 2023–2024. The conference series is steeper and starts later, holding under twenty a year until 2014 and then moving to 70–83 a year from 2024 onward. Read together they say something unremarkable but worth having a number for: suicide has become a substantially larger share of what social work researchers present and publish, and the conference registers that shift earlier than the journals do.</p>
-
-    <p>The 584 relevant journal articles are spread across 63 distinct journals. The concentration is modest — the largest single outlet holds 38 of them — which is consistent with suicide being a topic that appears across the discipline's specialty journals rather than one owned by a dedicated venue.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wide">
-    <h2>Checking the labels</h2>
-    <p class="lede">A classification run of this size is only as good as its audit, and the audits here are diagnostic rather than definitive. Both are reported with their limits attached.</p>
-
-    <figure>
-      <img src="figures/audit.svg" alt="Grouped bar chart of full-label agreement by outcome group. Blind model re-screen: Irrelevant 90 percent, Relevant Non-empirical 95, Quantitative 95, Qualitative 80, Review 100. Independent manual check: Irrelevant 75, Relevant Non-empirical 100, Quantitative 100, Qualitative 75, Review 100.">
-      <figcaption>Agreement on the complete label tuple — relevance, evidence class, and method all matching. The two checks disagree about which groups are shakiest, which is what four-record cells look like; the pattern they share is that Qualitative is the least stable label in both.</figcaption>
-    </figure>
-
-    <h3>Blind model re-screen</h3>
-    <p>A stratified sample of 100 records, 20 from each of the five outcome groups, drawn with seed <code>20260802</code>. Each was re-screened by the same model, one at a time, without being shown its original label, and required to give a short rationale. Agreement was scored strictly: the whole label tuple had to match, so a record that was relevant and empirical in both passes but quantitative in one and qualitative in the other counts as a disagreement.</p>
-
-    <p>Ninety-two of 100 matched. All eight disagreements went to a third pass with thinking mode enabled, which saw the title, abstract, both decisions, and the blind rationales. Six of the eight were resolved against the original label and corrected; two were confirmed. That moved the corpus from 1,336 relevant records to 1,331.</p>
-
-    <p><b>What this number is not.</b> The same model produced both passes, so 92% measures internal reproducibility under blind re-screening. It is not sensitivity, not specificity, and not agreement with a human expert. A model that is confidently and consistently wrong about a category would score well here.</p>
-
-    <h3>Independent manual spot check</h3>
-    <p>A second sample, seed <code>20260803</code>, four records per group, explicitly excluding the 100 already audited. These were read against the rubric rather than resubmitted to the model. Eighteen of 20 agreed, and both disagreements were corrected:</p>
-
-    <ul class="plain">
-      <li><em>Gender Differences in the Pathways from Sexual Abuse to Risky Sexual Behavior in Homeless Youth</em> — moved from Irrelevant to Empirical–Quantitative. Suicidal ideation entered the regression as an analyzed mechanism with a separately reported significant association, which meets the relevance definition; the model treated it as an incidental covariate.</li>
-      <li><em>An Exploration of Knowledge and Attitudes about Victims or Survivors of Domestic Violence with Mental Health Disability</em> — moved from Empirical–Qualitative to Irrelevant. Suicide and self-harm were minor items inside a broader service-needs assessment and were never distinctly analyzed.</li>
-    </ul>
-
-    <p>The two corrections cancel in the relevant total and shift one record from Qualitative to Quantitative. Both errors are the same error in opposite directions: the boundary between "suicide was measured" and "suicide was analyzed" is where this rubric is hardest to apply, and it is where a reader should expect the residual error to sit.</p>
-
-    <div class="note">
-      <p><b>Twenty records is a spot check, not an accuracy estimate.</b> Four records per group gives a confidence interval wide enough to be uninformative, and the inspection was done by an AI assistant reading against the rubric, not by trained suicide researchers. Both audits also sampled equal numbers per group by design, so neither overall rate is prevalence-weighted for the corpus as a whole. A defensible accuracy claim would need independent dual human review of a larger probability sample with reported interrater agreement — which this is not, and does not claim to be.</p>
-    </div>
+    <p>Sixty-two records had titles and nothing else. Screening these at all is a judgment call; the alternative is dropping 3% of the corpus. They were screened from title under a conservative forced-choice rule: if a title established suicide relevance but gave no defensible evidence of an empirical design, the record was labeled Non-empirical rather than guessed into a method. Fifty-four were retained as relevant and all 54 landed in Non-empirical; eight were excluded. That rule is safe in one direction and biased in the other, and the flag <code>screening_basis: title_only</code> is preserved on every one so they can be excluded or re-screened.</p>
 
     <h3>Where the corrections landed</h3>
     <div class="tablewrap">
@@ -391,34 +465,33 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
       <tbody>
         <tr><td>Primary one-by-one screen</td><td class="num">1,336</td><td class="num">698</td><td class="num">171</td><td class="num">915</td><td class="num">185</td><td class="num">65</td></tr>
         <tr><td>After blind-audit adjudication</td><td class="num">1,331</td><td class="num">703</td><td class="num">171</td><td class="num">914</td><td class="num">181</td><td class="num">65</td></tr>
-        <tr class="tot"><td>After independent spot check</td><td class="num">1,331</td><td class="num">703</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
+        <tr class="tot"><td>After independent inspection</td><td class="num">1,331</td><td class="num">703</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
       </tbody>
     </table>
     </div>
 
-    <p>Every corrected record keeps its pre-correction decision under a <code>screening_initial</code> or <code>screening_pre_manual_spot_check</code> key in the released data, alongside which audit changed it. The audit trail is part of the release, not a summary of it.</p>
+    <p>The blind audit sampled with seed <code>20260802</code>, twenty records per group; the independent inspection used seed <code>20260803</code>, four per group, excluding everything the first audit had touched. Every corrected record keeps its pre-correction decision under a <code>screening_initial</code> or <code>screening_pre_manual_spot_check</code> key, alongside which audit changed it. The audit trail is part of the release, not a summary of it.</p>
   </div>
 </section>
 
-<section class="alt">
+<section class="tech" style="border-top:none">
   <div class="wrap">
     <h2>Limitations</h2>
     <ul class="plain">
       <li><b>This is not a suicide-literature review.</b> It covers selected disciplinary social work journals and one conference. Suicide scholarship in medicine, psychology, public health, sociology, and nursing is out of scope by construction, as is work by social work researchers published outside the disciplinary journal set.</li>
       <li><b>Vocabulary-bounded recall.</b> A record enters only if a suicide-root term appears in its title or abstract. Studies phrased entirely in alternate terminology are missing, and self-harm and nonsuicidal self-injury work is not swept in by default.</li>
-      <li><b>Abstract-level decisions.</b> Labels come from titles and abstracts, never full texts. Distinguishing systematic from narrative review methods, or qualitative from mixed-methods designs, is sometimes impossible from an abstract, and those are exactly the cells where the audits found the most movement.</li>
+      <li><b>Abstract-level decisions.</b> Labels come from titles and abstracts, never full texts. Distinguishing systematic from narrative review methods, or qualitative from mixed-methods designs, is sometimes impossible from an abstract — and those are exactly the cells where the audits found the most movement.</li>
       <li><b>Sixty-two title-only records.</b> The conservative fallback pushes them all to Non-empirical, which likely misclassifies genuinely empirical older studies. They are flagged so they can be dropped.</li>
       <li><b>A forced taxonomy.</b> No mixed-methods category, no case-study category. Mixed-methods work was absorbed into Quantitative or Qualitative by predominance.</li>
-      <li><b>Model dependence.</b> One model produced every primary label and also performed the 100-record blind audit. The 92% figure is internal consistency and may well overstate agreement with independent reviewers.</li>
+      <li><b>Model dependence.</b> One model produced every primary label and also performed the 100-record blind audit. The 92% figure is internal consistency and may overstate agreement with independent reviewers.</li>
       <li><b>Incomplete recent journal years.</b> Publisher indexing lag makes SWRD 2024–2025 lower bounds; they should not carry trend conclusions.</li>
       <li><b>Residual duplication and author ambiguity.</b> SWRD was deduplicated on normalized title and year as the guide prescribes, but non-identical duplicates may remain, and SWRD author strings are not identity-disambiguated. SSWR author ids are canonical.</li>
+      <li><b>Known open data problems.</b> This corpus was built on the database as it stands today, including the three faults this run surfaced — non-DOI values in the DOI column, five articles filed under the wrong journal, and 62 missing abstracts. They are tracked as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be corrected in the next data release, at which point the affected records here should be re-checked.</li>
     </ul>
-
-    <p>The honest summary is that this demonstrates a workable, reproducible, auditable screening pipeline that runs for free on a laptop — and that its output is a well-documented draft corpus, not a validated one. Publishing from it would require human dual review of a proper probability sample first.</p>
   </div>
 </section>
 
-<section>
+<section class="tech" style="border-top:none">
   <div class="wrap">
     <h2>Get the data and the code</h2>
     <p class="lede">Everything behind this page is in the folder it is served from: the labels, the full audit trail, and the scripts that produce them.</p>
@@ -429,38 +502,27 @@ Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirro
       <li><a href="data/suicide_relevant_articles.json">suicide_relevant_articles.json</a> — the 1,331 relevant records only.</li>
       <li><a href="data/suicide_corpus_labeled.csv">suicide_corpus_labeled.csv</a> — the same corpus as a flat table without abstracts, for spreadsheet work.</li>
       <li><a href="data/accuracy_audit.json">accuracy_audit.json</a> — the 100-record blind re-screen, with the blind rationales and every adjudication.</li>
-      <li><a href="data/independent_manual_spot_check.json">independent_manual_spot_check.json</a> — the 20-record independent check and its two corrections.</li>
+      <li><a href="data/independent_manual_spot_check.json">independent_manual_spot_check.json</a> — the 20-record independent inspection and its two corrections.</li>
       <li><a href="data/screening_summary.json">screening_summary.json</a> — final counts and audit metadata.</li>
       <li><a href="data/stats.json">stats.json</a> — every number on this page, machine-readable.</li>
     </ul>
 
-    <h3>Code</h3>
+    <h3>The scripts the assistants wrote</h3>
+    <p>Nobody typed any of these. They were produced by the AI systems while carrying out the two English instructions above, and they are published because a claim about a method should be inspectable — not because anyone needs to read or run them to repeat this. Repeating it means giving an assistant the connection file and the same two prompts.</p>
     <ul class="plain">
-      <li><a href="code/fetch_suicide_papers.py">fetch_suicide_papers.py</a> — retrieval, pagination, SWRD deduplication, and export. No credentials, no install: <code>python3 fetch_suicide_papers.py</code>.</li>
-      <li><a href="code/screen_suicide_abstracts_ollama.py">screen_suicide_abstracts_ollama.py</a> — the one-record-at-a-time screening pass, with the full system prompt, the output schema, and JSONL checkpointing.</li>
-      <li><a href="code/audit_suicide_screening.py">audit_suicide_screening.py</a> — the stratified blind re-screen and the thinking-mode adjudication of disagreements.</li>
-      <li><a href="code/apply_independent_spot_check.py">apply_independent_spot_check.py</a> — records and applies the independent spot-check decisions with provenance.</li>
-      <li><a href="code/compute_stats.py">compute_stats.py</a> — recomputes every count on this page from the released labels and writes the CSV. Nothing to install.</li>
+      <li><a href="code/fetch_suicide_papers.py">fetch_suicide_papers.py</a> — retrieval, pagination, deduplication, and export.</li>
+      <li><a href="code/screen_suicide_abstracts_ollama.py">screen_suicide_abstracts_ollama.py</a> — the one-record-at-a-time screening pass, including the full instructions the local model received for every record.</li>
+      <li><a href="code/audit_suicide_screening.py">audit_suicide_screening.py</a> — the blind re-screen and the adjudication of disagreements.</li>
+      <li><a href="code/apply_independent_spot_check.py">apply_independent_spot_check.py</a> — applies the independent inspection decisions with provenance.</li>
+      <li><a href="code/compute_stats.py">compute_stats.py</a> — recomputes every count on this page from the released labels. It needs no model and no network, so it is the quickest way to check this page against its data.</li>
       <li><a href="code/make_figures.py">make_figures.py</a> — regenerates the three figures.</li>
     </ul>
-
-    <h3>Reproducing it</h3>
-    <div class="prompt" style="background:#F4F4F2;color:#18181B"><span class="lbl" style="color:#71717A">from this folder</span>python3 code/fetch_suicide_papers.py      # public read-only key, no install
-python3 code/compute_stats.py            # check this page's numbers against the data
-
-ollama pull qwen3.6:27b                  # ~17 GB, once
-python3 code/screen_suicide_abstracts_ollama.py    # ~1.7 h on an M-series laptop
-python3 code/audit_suicide_screening.py
-
-pip install matplotlib && python3 code/make_figures.py</div>
-
-    <p><code>compute_stats.py</code> is the one to run first if you only want to verify the page: it needs no model and no network, and it recomputes every count here from the released labels. The screening scripts require Ollama serving <code>qwen3.6:27b</code> locally on port 11434.</p>
 
     <h3>Related</h3>
     <ul class="plain">
       <li><a href="METHODS.md">METHODS.md</a> — the long-form methods and results document, written during the run.</li>
-      <li><a href="../../llms.txt">llms.txt</a> — the connection file this whole demonstration is a test of. Give it to an assistant and it can query both databases.</li>
-      <li><a href="../ai-in-social-work/">Artificial intelligence in social work, 1989–2026</a> — the same pattern applied to a different topic, with human rather than model labeling.</li>
+      <li><a href="../../llms.txt">llms.txt</a> — the connection file this demonstration is a test of. Give it to an assistant and it can query both databases.</li>
+      <li><a href="../ai-in-social-work/">Artificial intelligence in social work, 1989–2026</a> — the same pattern on a different topic, with human rather than model labeling.</li>
       <li><a href="../../text-to-sql.html">Can small local models query the databases?</a> — the benchmark behind the claim that this runs on open weights.</li>
     </ul>
   </div>
