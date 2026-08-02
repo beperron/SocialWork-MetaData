@@ -104,6 +104,39 @@ Limits: single SELECT statements only (no semicolons, no writes), 30-second
 timeout, 1,000 rows max per call (paginate with offset/limit or aggregate
 server-side).
 
+## If the endpoint seems broken, check these two things first
+
+Almost every reported connection failure is one of these, and both return
+error messages that look like the database is misconfigured when it is not.
+
+**1. Do not point a web-fetch or browsing tool at the API URL.** The endpoint
+is a POST API, not a web page. Many assistants have a &quot;fetch this URL&quot; tool
+that issues a GET; on this endpoint that produces misleading errors:
+
+| What you did | What comes back |
+|---|---|
+| GET, no headers (a browse/fetch tool) | `401 No API key found in request` |
+| GET with the key | `404 PGRST202 ... could not find the function public.run_sql` |
+| POST but no `Content-Profile` header | `404 PGRST202 ... public.run_sql` |
+| POST with key + `Content-Profile` | `200` and your rows |
+
+The 404 does NOT mean the function is missing. `public.` in that message is
+the tell: without `Content-Profile: swrd` (or `sswr`) the request looks in the
+wrong schema. Use a shell or code tool that can POST with headers — curl,
+Python requests, urllib, fetch — never a page-fetch tool.
+
+**2. Approve the host if your tool sandboxes network access.** Coding
+assistants (Claude Code, Codex CLI, Cursor, and similar) may block or prompt
+before the first outbound request. The prompt shows an opaque hostname, which
+looks alarming but is just the project&#x27;s hosted database:
+
+    kcffctxedcscvvposypb.supabase.co     port 443, HTTPS, read-only
+
+Approve it once, or allowlist it in your tool&#x27;s settings, and every query in
+this guide works. If you cannot approve it, see the reachability check above:
+the runtime may have no egress at all, which is a different problem with a
+different fix.
+
 ## The two databases
 
 **SWRD (`swrd`) — journal articles, 1989–2025.** The corpus for analysis is
@@ -289,8 +322,11 @@ default when both arms are available.
 7. If the question says &quot;how many&quot;, return a count, not a listing.
 8. Trailing semicolons cause syntax errors in `run_sql`; send one bare SELECT.
 
-Troubleshooting: `Could not find the table &#x27;public.papers&#x27;` → you forgot the
-profile header. `relation &quot;papers&quot; does not exist` → schema-qualify
+Troubleshooting: any error naming `public.` (`could not find the table
+&#x27;public.papers&#x27;`, `could not find the function public.run_sql`) → the profile
+header is missing; add `Content-Profile: swrd` on POST or `Accept-Profile` on
+GET. A `401 No API key found` on a URL you opened in a browser or fetch tool
+→ this is a POST API, not a page; see the section above. `relation &quot;papers&quot; does not exist` → schema-qualify
 (`swrd.papers` / `sswr.papers`). `permission denied` → you attempted a write.
 Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 
