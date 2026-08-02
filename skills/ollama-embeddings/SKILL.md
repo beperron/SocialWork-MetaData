@@ -112,8 +112,10 @@ CLI is unavailable, the API form works too:
 
 Then re-run Check 3. It must print `768`.
 
-Why this exact model: the databases' 134,411 abstracts were embedded with
-EmbeddingGemma 300M (768 dimensions), selected by benchmarking on this corpus.
+Why this exact model: every record in both databases (134,411 rows) was
+embedded with EmbeddingGemma 300M, 768 dimensions, selected by benchmarking
+on this corpus. Records without abstracts embed from their titles alone and
+are correspondingly weaker matches.
 Query vectors from any other model, provider, or build are not comparable and
 return noise. There is no substitute tag.
 
@@ -167,10 +169,16 @@ def embed_query(question):
 ```
 
 Batching: pass several strings in `input` at once (roughly 30–50 texts/second
-on a laptop). Similarity is cosine, 0–1: about 0.55 and above is usually on
-topic, 0.65 and above strongly so. The database's semantic function returns at
-most ~40 rows per call regardless of the requested count; union several
-differently worded queries for deeper coverage.
+on a laptop).
+
+Similarity is cosine, 0–1, and should be read relatively rather than against
+a fixed cutoff: the scale shifts with query length and specificity. On this
+corpus the two-word query "child welfare" tops out at 0.560, while a long
+natural-language question puts every returned row above 0.55. Sort by score,
+find where the values flatten into the noise, and read abstracts around that
+elbow. The database's semantic function returns at most ~40 rows per call
+regardless of the requested count; union several differently worded queries
+for deeper coverage.
 
 ## Troubleshooting
 

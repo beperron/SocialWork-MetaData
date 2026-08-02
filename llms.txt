@@ -6,6 +6,18 @@ installation, no database driver. If you (the assistant) were given this file
 or its URL, connect as described below and start querying — there is nothing
 to download or set up.
 
+FIRST, CHECK YOU HAVE THE WHOLE FILE. Some assistants retrieve a URL through
+a summarizing tool, which returns a paraphrase rather than the document: the
+schema tables, the search API, and the rules all vanish, and nothing warns
+you. The complete file is about 380 lines and ends with the line
+"END OF GUIDE". If what you are reading is shorter than that, or lacks a
+table listing `swrd.papers` with its columns, you have a summary. Re-fetch
+the raw text with a shell command, not a browsing or fetch tool:
+
+    curl -s https://beperron.github.io/SocialWork-MetaData/llms.txt
+
+and work from that.
+
 Site: https://beperron.github.io/SocialWork-MetaData/
 HTML mirror of this file (for tools that cannot fetch plain text): https://beperron.github.io/SocialWork-MetaData/llms.html
 Repository: https://github.com/beperron/SocialWork-MetaData
@@ -148,7 +160,7 @@ so DOI alone misses them).
 | Table | Rows | Key columns |
 |---|---|---|
 | `swrd.papers` | 110,618 (87,329 are the 1989+ corpus) | `id` (int PK), `title`, `abstract`, `publication_year`, `journal_id`, `doi`, `document_type` (inconsistently cased legacy strings — use `is_scientific` to define research articles, not this), `is_scientific`, `is_empirical`, `research_method`, `fts` (tsvector over title+abstract) |
-| `swrd.journals` | 91 | `id`, `name`, `publisher` |
+| `swrd.journals` | 91 | `id`, `name`, `publisher` — 91 table rows cover the 88 disciplinary journals: two rows carry no articles and one journal appears under two ids, so `count(*)` here is not the journal count to report |
 | `swrd.authors` | 164,549 | `id`, `name` (as published), `orcid` |
 | `swrd.paper_authors` | 241,766 | `paper_id`, `author_id`, `position` (1 = first), `is_corresponding` |
 | `swrd.organizations` | 34,967 | `id`, `name` |
@@ -167,9 +179,9 @@ lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
 
 | Table | Rows | Key columns |
 |---|---|---|
-| `sswr.papers` | 23,793 | `id` (text PK, e.g. `2019-O-0142`), `title`, `abstract`, `year`, `format`, `methodology` (lowercase: `quantitative`, `qualitative`, `mixed_methods`, `review`, `other`), `author_count`, `fts` (tsvector over title+abstract) |
+| `sswr.papers` | 23,793 | `id` (text PK, `YEAR-LETTER-NNNN`, e.g. `2019-O-0142`; the letter is a session code — `U` 11,930, `P` 8,864, `O` 2,081, `X` 478, `G` 246, `F` 183, `W` 11 — so do not write a regex that assumes only O/P/U), `title`, `abstract`, `year`, `format` (`Oral` 12,346, `Poster` 8,868, `Unknown` 2,046, `Sig` 246, `Flash` 183, `Other` 93, `Workshop` 11 — capitalised, unlike `methodology`), `methodology` (lowercase: `quantitative`, `qualitative`, `mixed_methods`, `review`, `other`), `author_count`, `fts` (tsvector over title+abstract) |
 | `sswr.authors` | 21,209 | `id` (int PK), `name` (canonical), `variants`, `institutions`, `years`, `total_papers` |
-| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly 'unknown' before 2011), `country_normalized` |
+| `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed — see warning below), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly 'unknown' before 2011), `country_normalized` |
 | `sswr.paper_export` | view | flat, one row per paper with author arrays — easiest for exports |
 
 ## Search (built in — no setup, no local models)
@@ -185,7 +197,12 @@ from swrd.search_papers_keyword('kinship care', 20)
 ```
 
 Rank scores are relative to their own query — never compare or merge raw
-ranks across different query strings. When unioning results from several
+ranks across different query strings. There is also no absolute cutoff: a
+high `rank` does not certify relevance the way a semantic `similarity` band
+does, so "the top N" always needs abstracts read before it is reported as
+on-topic. Expect little or no overlap between phrasings — on some topics
+different vocabulary returns entirely disjoint result sets, which is the
+argument for running several phrasings rather than trusting one. When unioning results from several
 phrasings, dedupe by `id` and note which phrasing(s) found each record; to
 present a merged top-N, order by the primary phrasing's ranking and annotate
 which rephrasings also matched each item.
@@ -215,8 +232,26 @@ author_name, variants, institutions, years, total_papers, name_similarity`.
 Do NOT blindly take the highest-similarity row: residual duplicate identities
 exist (e.g. an inverted-name variant with a handful of papers can outrank the
 canonical entry holding the full record). Compare candidates on
-`total_papers`, `years`, and `institutions`; when a small entry is plainly
-the same person as a large one, analyze both ids together and say so.
+`total_papers`, `years`, and `institutions`; when a small entry looks like
+the same person as a large one, verify rather than assume: pull the small
+id's papers and check whether its co-authors are among the large id's
+frequent collaborators, and whether the large id is absent from those papers
+(if so, combining adds records rather than double-counting). Then analyze
+both ids together and say so.
+If you already hold a set of paper ids (a corpus you built earlier), do NOT
+go through the name lookup: join `sswr.paper_authors` to those ids and read
+`author_id` directly, then join `sswr.authors` for display names. The fuzzy
+lookup is for the case where you start from a person's name. Note that
+duplicate-identity detection is only available on the name-search path, so an
+id-first analysis should say that residual duplicates were not screened.
+
+ALWAYS aggregate authors by `author_id`, never by `paper_authors.name`.
+That column holds the name exactly as printed on each paper, and 1,547 SSWR
+authors appear under more than one printed form, so a `GROUP BY name`
+silently splits one person into several rows and returns HTTP 200 with wrong
+counts — no error to catch. Join `sswr.authors` for a display name after
+aggregating on the id.
+
 Also: `sswr.search_papers_by_institution(query_text, match_count, min_year,
 max_year)`; institution strings in `paper_authors.institution_normalized`
 retain some spelling variants ("St. Louis" vs "Saint Louis") — group with
@@ -270,13 +305,26 @@ hits = requests.post(
 The `task: search result | query: ` prefix is REQUIRED — without it results
 degrade badly. `search_papers_semantic(query_embedding, match_count,
 min_year, max_year)` returns the same columns as keyword search plus
-`similarity` (cosine 0–1; >= ~0.55 usually on-topic, >= ~0.65 strongly so).
+`similarity` (cosine 0–1).
+
+Read `similarity` relatively, not against a fixed cutoff. The scale shifts
+with the length and specificity of the query, so the same number means
+different things across searches. Measured on this corpus: the two-word query
+"child welfare" returns a top score of 0.560 with 1 of 40 rows above 0.55,
+while a long natural-language question returns 0.656 with all 40 rows above
+it. A fixed "0.55 means on-topic" rule would discard nearly everything in the
+first case and accept everything in the second. Sort by similarity, find the
+drop where scores flatten into the noise, and read abstracts around that
+elbow; below about 0.5 the function stops returning rows at all.
+
 Note: the function returns at most ~40 rows regardless of `match_count`, so
 "pull the top 300" is not achievable in one call — to retrieve a deeper
 neighborhood, embed several distinct phrasings of the topic and union their
 top-40s (each phrasing probes a different semantic direction).
 `search_papers_hybrid(query_text, query_embedding, match_count)` fuses the
-semantic and keyword rankings (reciprocal-rank fusion; extra fields
+semantic and keyword rankings. Its `query_text` argument behaves like keyword
+search, so keep it to a short phrase even though the embedding half tolerates
+longer wording. (Reciprocal-rank fusion; extra fields
 `rrf_score`, `semantic_rank`, `keyword_rank` — NULL means not in that arm's
 top 60, a fixed pool depth independent of `match_count`) and is the best
 default when both arms are available.
@@ -325,3 +373,5 @@ Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 - SSWR skill file: https://beperron.github.io/SocialWork-MetaData/skills/sswr-database-skill.md
 - Embedding setup (semantic search): https://beperron.github.io/SocialWork-MetaData/skills/ollama-embeddings/SKILL.md
 - Cookbook (worked examples): https://github.com/beperron/SocialWork-MetaData/tree/master/cookbook
+
+END OF GUIDE

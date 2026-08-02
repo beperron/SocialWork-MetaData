@@ -11,7 +11,7 @@ This one is SQL-only, so any assistant with web access can run it; no local inst
 
 Copy and paste:
 
-> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes — that one file has the endpoint, key, and schema. Using the swrd database, describe how social work scholarship changed from 1989 to 2023: articles per year, percent empirical over time, methodology mix by decade, and team size trends. Exclude 2024-2025 from trend claims because publisher indexing is incomplete, and state that caveat in your summary. Give me a short written summary plus one chart. Use SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
+> I'm using the Social Work Meta-Data Project's hosted databases (public read-only key, plain HTTPS, nothing to install). Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt and connect exactly as it describes (the endpoint is a POST API queried from a shell or code tool, not a page-fetch tool) — that one file has the endpoint, key, and schema. Using the swrd database, describe how social work scholarship changed from 1989 to 2023: articles per year, percent empirical over time, methodology mix by decade, and team size trends. Exclude 2024-2025 from trend claims because publisher indexing is incomplete, and state that caveat in your summary. Give me a short written summary plus one chart. Use SQL only; do not install anything beyond common Python libraries (requests, pandas, matplotlib).
 
 *If your assistant cannot fetch URLs, download [llms.txt](../llms.txt) and paste its contents into the chat together with the prompt.*
 

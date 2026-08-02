@@ -7,6 +7,33 @@ description: Analyze the Social Work Research Database (SWRD) — journal-articl
 
 Everything works over HTTPS with the public key below — no password, no account, no database driver. All access is read-only.
 
+## Before you start: two things that make the endpoint look broken
+
+**This is a POST API, not a web page.** Do not point a browsing or page-fetch
+tool at the endpoint URL; those issue a GET, and the responses mislead:
+
+| What you did | What comes back |
+|---|---|
+| GET, no headers (a browse/fetch tool) | `401 No API key found in request` |
+| GET with the key | `404 PGRST202 ... could not find the function public.run_sql` |
+| POST but no `Content-Profile` header | `404 PGRST202 ... public.run_sql` |
+| POST with key + `Content-Profile` | `200` and your rows |
+
+That 404 does not mean the function is missing. The `public.` prefix in the
+message is the tell: without the profile header the request looks in the wrong
+schema. Use a shell or code tool that can POST with headers.
+
+**Approve the host if your tool sandboxes network access.** Coding assistants
+may prompt or block before the first outbound request. The hostname is opaque
+but is simply the project's hosted database:
+
+    kcffctxedcscvvposypb.supabase.co     port 443, HTTPS, read-only
+
+If the request fails with `Could not resolve host` rather than an HTTP status,
+your runtime has no outbound network at all (common on phone apps and hosted
+sandboxes); that is an environment limit, not a database problem.
+
+
 ## What this database is
 
 Article records (title, abstract, authors, affiliations, journal, year, DOI) from **91 disciplinary social work journals**:

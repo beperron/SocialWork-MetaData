@@ -170,7 +170,7 @@ curl -s "https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/search_papers_sema
   -d "{\"query_embedding\": $QVEC, \"match_count\": 10}"
 ```
 
-Interpretation: `similarity` runs 0–1 (cosine); ≥ ~0.55 usually on-topic, ≥ ~0.65 strongly so.
+Interpretation: `similarity` runs 0–1 (cosine), but read it relatively — the scale shifts with query length and specificity. A two-word query may top out near 0.56 while a long question puts every row above 0.55. Sort by score, find the elbow where values flatten, and read abstracts there.
 
 ### Hybrid search (recommended default for topic questions)
 
@@ -204,11 +204,39 @@ curl -s "$BASE/papers?select=title,publication_year&title=ilike.*foster%20care*&
 curl -s "$BASE/database_info" -H "$H1" -H "$H2" -H "$H3"
 ```
 
+
+## Before you start: two things that make the endpoint look broken
+
+**This is a POST API, not a web page.** Do not point a browsing or page-fetch
+tool at the endpoint URL; those issue a GET, and the responses mislead:
+
+| What you did | What comes back |
+|---|---|
+| GET, no headers (a browse/fetch tool) | `401 No API key found in request` |
+| GET with the key | `404 PGRST202 ... could not find the function public.run_sql` |
+| POST but no `Content-Profile` header | `404 PGRST202 ... public.run_sql` |
+| POST with key + `Content-Profile` | `200` and your rows |
+
+That 404 does not mean the function is missing. The `public.` prefix in the
+message is the tell: without the profile header the request looks in the wrong
+schema. Use a shell or code tool that can POST with headers.
+
+**Approve the host if your tool sandboxes network access.** Coding assistants
+may prompt or block before the first outbound request. The hostname is opaque
+but is simply the project's hosted database:
+
+    kcffctxedcscvvposypb.supabase.co     port 443, HTTPS, read-only
+
+If the request fails with `Could not resolve host` rather than an HTTP status,
+your runtime has no outbound network at all (common on phone apps and hosted
+sandboxes); that is an environment limit, not a database problem.
+
 ## 7. Troubleshooting
 
 | Symptom | Fix |
 |---|---|
-| `Could not find the table 'public.papers'` | You forgot the `Accept-Profile: swrd` (GET) or `Content-Profile: swrd` (POST) header |
+| Any error naming `public.` (`could not find the table 'public.papers'`, `could not find the function public.run_sql`) | The profile header is missing: `Accept-Profile: swrd` on GET, `Content-Profile: swrd` on POST |
+| `401 No API key found` on a URL you opened in a browser or fetch tool | This is a POST API, not a page — see the section above |
 | `run_sql`: `syntax error` on a valid-looking statement | Remove trailing semicolons; only a single SELECT is accepted |
 | `run_sql`: `permission denied` | You attempted a write — access is read-only |
 | Exactly 1,000 rows returned | You hit the per-call cap; paginate with `offset`/`limit` or aggregate |
