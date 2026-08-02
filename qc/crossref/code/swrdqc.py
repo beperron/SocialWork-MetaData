@@ -193,6 +193,13 @@ def title_sim(a: str, b: str) -> float:
     return SequenceMatcher(None, na, nb).ratio()
 
 
+def norm_journal(s: str) -> str:
+    """Normalise a journal name for comparison across sources."""
+    s = html.unescape(s or "").lower().replace("&", " and ")
+    s = re.sub(r"^(the)\s+", "", s)
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
 def cr_title(item: dict) -> str:
     t = (item.get("title") or [""])[0]
     sub = (item.get("subtitle") or [""])[0]

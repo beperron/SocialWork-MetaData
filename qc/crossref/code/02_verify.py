@@ -51,14 +51,26 @@ def compare(rec, item):
     else:
         year_verdict = "mismatch"
 
+    # ISSN is the reliable key, but only 7 of 91 SWRD journals carry one, so it
+    # answers "unknown" almost everywhere. Fall back to comparing journal names.
+    # Without some journal check, a bibliographic search happily matches a book
+    # review of the same work in an entirely different journal — which is where
+    # the pilot's false positives came from.
     ours = {s.strip().upper() for s in (rec.get("issn_print"), rec.get("issn_online")) if s}
     theirs = Q.cr_issns(item)
-    if not ours or not theirs:
-        journal_verdict = "unknown"
-    elif ours & theirs:
-        journal_verdict = "match"
+    if ours and theirs:
+        journal_verdict = "match" if ours & theirs else "mismatch"
+        journal_basis = "issn"
     else:
-        journal_verdict = "mismatch"
+        a, b = Q.norm_journal(rec.get("journal_name")), Q.norm_journal(
+            (item.get("container-title") or [None])[0])
+        if not b:
+            journal_verdict, journal_basis = "unknown", "no_container_title"
+        elif a and (a == b or a.startswith(b) or b.startswith(a)
+                    or Q.title_sim(a, b) >= 0.85):
+            journal_verdict, journal_basis = "match", "name"
+        else:
+            journal_verdict, journal_basis = "mismatch", "name"
 
     return {
         "crossref_doi": item.get("DOI"),
@@ -70,6 +82,7 @@ def compare(rec, item):
         "title_similarity": round(sim, 3),
         "year_verdict": year_verdict,
         "journal_verdict": journal_verdict,
+        "journal_basis": journal_basis,
         "author_overlap": round(
             Q.jaccard(Q.swrd_surnames(rec.get("authors")), Q.cr_surnames(item)), 3),
     }
@@ -177,10 +190,18 @@ def main():
                 best, best_cmp = item, cmp
         if best_cmp is None:
             findings.append({**base, "check": check, "verdict": "no_candidate", "tier": "C"})
-        elif best_cmp["title_similarity"] >= CONFIRM and best_cmp["year_verdict"] != "mismatch":
+        elif (best_cmp["title_similarity"] >= CONFIRM
+              and best_cmp["year_verdict"] != "mismatch"
+              and best_cmp["journal_verdict"] != "mismatch"):
             findings.append({**base, "check": check, **best_cmp,
                              "proposed_doi": best.get("DOI"),
                              "verdict": "recovered", "tier": "B"})
+        elif best_cmp["journal_verdict"] == "mismatch":
+            # Right title, wrong journal: almost always a book review of the same
+            # work, or a same-titled paper elsewhere. Never auto-apply.
+            findings.append({**base, "check": check, **best_cmp,
+                             "proposed_doi": best.get("DOI"),
+                             "verdict": "rejected_wrong_journal", "tier": "C"})
         else:
             findings.append({**base, "check": check, **best_cmp,
                              "proposed_doi": best.get("DOI"),
