@@ -28,7 +28,7 @@ to download or set up.
 FIRST, CHECK YOU HAVE THE WHOLE FILE. Some assistants retrieve a URL through
 a summarizing tool, which returns a paraphrase rather than the document: the
 schema tables, the search API, and the rules all vanish, and nothing warns
-you. The complete file is about 380 lines and ends with the line
+you. The complete file is about 400 lines and ends with the line
 &quot;END OF GUIDE&quot;. If what you are reading is shorter than that, or lacks a
 table listing `swrd.papers` with its columns, you have a summary. Re-fetch
 the raw text with a shell command, not a browsing or fetch tool:
@@ -171,15 +171,34 @@ exclude them from trend claims and say so.
 Author records: 164,549 `swrd.authors` rows and 241,766 `swrd.paper_authors`
 links (212,249 of them on 1989+ papers). CRITICAL: author names are stored
 exactly as published, with NO disambiguation — never report unique-author
-counts from SWRD as fact; caveat them. A small number of articles are
-double-indexed under two journal ids — when building a corpus, dedupe on
-normalized title (double-indexed pairs usually have differing or null DOIs,
-so DOI alone misses them). &quot;Normalized title&quot; means lowercase with every
-non-alphanumeric character stripped, compared within the same publication
-year so that different papers sharing a generic title (&quot;Editorial&quot;) are not
-collapsed:
+counts from SWRD as fact; caveat them.
+
+**Double-indexed articles.** About 850 research articles (1.4% of the 62,628
+`is_scientific` records from 1989 on) are indexed twice, usually under two
+journal ids, one of which is wrong. When building a corpus, dedupe on
+normalized title within publication year (double-indexed pairs usually have
+differing or null DOIs, so DOI alone misses them). &quot;Normalized title&quot; means
+lowercase with every non-alphanumeric character stripped, compared within the
+same publication year so that different papers sharing a generic title
+(&quot;Editorial&quot;) are not collapsed:
 
     lower(regexp_replace(title, &#x27;[^a-zA-Z0-9]&#x27;, &#x27;&#x27;, &#x27;g&#x27;)) || &#x27;|&#x27; || publication_year
+
+Do NOT apply that rule across the whole table. Book reviews of the same book
+appear in several journals in the same year, each with its own DOI, and are
+genuinely separate records; so are editorials and the many rows titled
+&quot;Untitled&quot;. Deduping title+year unscoped collapses ~2,100 rows, most of which
+are not duplicates. Scope it to `is_scientific`, or check `document_type`.
+
+**`doi` is not guaranteed to hold a DOI.** 3,556 rows in the 1989+ corpus
+(5% of the 69,912 populated values) contain an OAI identifier
+(`oai:scholarworks.wmich.edu:…`) or an internal `dc/…` hash instead. Test
+with `doi ~ &#x27;^10\.&#x27;` before linking, citing, or matching on it. Never use
+&quot;has a DOI&quot; as a tie-break when deduping — where a pair splits this way the
+malformed row is the one to drop, so the naive rule keeps the wrong one.
+Only ~180 of the affected rows have a duplicate twin; the other ~3,200 are
+unique records with a bad identifier, so deduplication does not fix this.
+Tracked in issue #1.
 
 | Table | Rows | Key columns |
 |---|---|---|
