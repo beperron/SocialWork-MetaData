@@ -155,7 +155,12 @@ exactly as published, with NO disambiguation — never report unique-author
 counts from SWRD as fact; caveat them. A small number of articles are
 double-indexed under two journal ids — when building a corpus, dedupe on
 normalized title (double-indexed pairs usually have differing or null DOIs,
-so DOI alone misses them).
+so DOI alone misses them). "Normalized title" means lowercase with every
+non-alphanumeric character stripped, compared within the same publication
+year so that different papers sharing a generic title ("Editorial") are not
+collapsed:
+
+    lower(regexp_replace(title, '[^a-zA-Z0-9]', '', 'g')) || '|' || publication_year
 
 | Table | Rows | Key columns |
 |---|---|---|
@@ -183,6 +188,11 @@ lookup `sswr.search_authors_by_name` and work from the returned `author_id`.
 | `sswr.authors` | 21,209 | `id` (int PK), `name` (canonical), `variants`, `institutions`, `years`, `total_papers` |
 | `sswr.paper_authors` | 69,924 | `paper_id`, `author_id` (canonical), `name` (as printed — see warning below), `author_order` (1 = first), `institution_normalized`, `position_normalized` (mostly 'unknown' before 2011), `country_normalized` |
 | `sswr.paper_export` | view | flat, one row per paper with author arrays — easiest for exports |
+
+SSWR has no journal or DOI columns — presentations are not journal articles.
+When exporting a table that combines both databases, leave those fields empty
+for conference rows or label the venue "SSWR annual conference"; do not
+invent identifiers.
 
 ## Search (built in — no setup, no local models)
 
