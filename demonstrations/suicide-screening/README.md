@@ -87,6 +87,15 @@ figures/*.svg                              composition, growth, audit agreement
 
 `code/compute_stats.py` needs no model and no network; it recomputes every number on the page from the released labels and is the quickest way to check the page against its data. To *repeat* the analysis, give an assistant the connection file and the two prompts above.
 
+## What the co-authorship network cannot show
+
+The graph is bounded by the disciplinary social work journals and SSWR — that boundary is the point, but it means the figure is not a map of who does suicide research in social work. Two examples, neither of whom appears in it:
+
+- **Jonathan Singer** (Loyola Chicago), whose report prompted this analysis: 3 suicide-relevant journal articles and 6 SSWR presentations here, against suicide work in *JAMA Network Open*, *American Psychologist*, *Suicide and Life-Threatening Behavior*, *School Mental Health*, and *Psychiatric Annals*, plus three books.
+- **Yunyu Xiao** (Weill Cornell Medicine), a social work PhD: **zero** journal articles here and 10 SSWR presentations, against 88 PubMed records since 2017 — 37 suicide-titled — in *JAMA*, *JAMA Psychiatry*, *JAMA Network Open*, and *Journal of Adolescent Health*.
+
+Read the network as collaboration structure *within social work's own journals*, not as the field's suicide research.
+
 ## Data notes
 
 - **The inclusion rule** is a word-start match on the stem `suicid` in title or abstract, SWRD restricted to 1989+. Reproducible, but blind to studies using no suicide-root term. Self-harm and NSSI are not swept in by default.
