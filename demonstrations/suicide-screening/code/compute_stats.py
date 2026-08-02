@@ -86,6 +86,24 @@ def main():
         r["journal_or_venue"] for r in rel if r["source_database"] == "SWRD"
     )
 
+    # Evidence synthesis against primary empirical work, by period. Averaging
+    # reviews over the whole window is misleading — none appear before 2004 —
+    # so the page reports the trend rather than a flat rate.
+    empirical = [r for r in rel if group(r) in ("Quantitative", "Qualitative", "Review")]
+    reviews = [r for r in empirical if group(r) == "Review"]
+    periods = [(1989, 1999), (2000, 2009), (2010, 2014), (2015, 2019), (2020, 2026)]
+    synthesis = []
+    for lo, hi in periods:
+        e = sum(1 for r in empirical if lo <= r["year"] <= hi)
+        v = sum(1 for r in reviews if lo <= r["year"] <= hi)
+        synthesis.append({
+            "period": f"{lo}-{hi}",
+            "empirical": e,
+            "syntheses": v,
+            "share": round(v / e, 5) if e else None,
+            "per_year": round(v / (hi - lo + 1), 2),
+        })
+
     stats = {
         "screened_records": len(recs),
         "relevant_records": len(rel),
@@ -126,6 +144,10 @@ def main():
                 if r["screening_pre_manual_spot_check"] != r["screening"]
             ),
         },
+        "synthesis_by_period": synthesis,
+        "first_synthesis_year": min(r["year"] for r in reviews),
+        "syntheses_since_2020": sum(1 for r in reviews if r["year"] >= 2020),
+        "syntheses_by_year": dict(sorted(Counter(str(r["year"]) for r in reviews).items())),
         "relevant_by_year": years,
         "relevant_swrd_journal_count": len(journals),
         "top_swrd_journals": journals.most_common(15),

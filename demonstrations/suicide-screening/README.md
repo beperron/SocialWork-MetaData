@@ -14,7 +14,15 @@ Every suicide-related article in the disciplinary journals and every suicide-rel
 | Quantitative / Qualitative / Review | 915 / 180 / 65 |
 | Journals represented | 63, largest holding only 38 |
 
-Three things stand out. The literature is overwhelmingly empirical and overwhelmingly quantitative — quantitative studies outnumber qualitative five to one. Synthesis is nearly absent: 65 systematic reviews, meta-analyses, and scoping reviews across thirty-seven years and two venues. And all 171 non-empirical records are journal articles; the conference carries none.
+Three things stand out. The literature is overwhelmingly empirical and overwhelmingly quantitative — quantitative studies outnumber qualitative five to one. Evidence synthesis is the newest part of it: no systematic review, meta-analysis, or scoping review appears before 2004, and 41 of the 65 have come since 2020, now running at ~6 a year and 6.8% of empirical output — the highest share of any period. And all 171 non-empirical records are journal articles; the conference carries none.
+
+| Period | Empirical | Syntheses | Share |
+|---|---:|---:|---:|
+| 1989–1999 | 25 | 0 | 0.0% |
+| 2000–2009 | 104 | 4 | 3.8% |
+| 2010–2014 | 128 | 7 | 5.5% |
+| 2015–2019 | 301 | 13 | 4.3% |
+| 2020–2026 | 602 | 41 | 6.8% |
 
 ## No code was written by a person
 
