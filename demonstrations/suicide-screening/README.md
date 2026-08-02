@@ -62,11 +62,13 @@ The 92% figure compares the model against itself, so it is consistency, not accu
 
 ## Data problems this run surfaced
 
-Reading every record turned up three faults in SWRD, now tracked as [issue #1](https://github.com/beperron/SocialWork-MetaData/issues/1) and queued for the next data release:
+Reading every record turned up faults in SWRD, now tracked as [issue #1](https://github.com/beperron/SocialWork-MetaData/issues/1) and queued for the next data release. Following them back through the whole database showed the first two are one problem, not two:
 
-1. **27 of 705 populated DOI values are not DOIs** — OAI identifiers (`oai:scholarworks.wmich.edu:jssw-*`) or internal `dc/` hashes. Breaks DOI matching and misleads any "prefer the record with a DOI" rule. The OAI ids turn out to encode the real DOIs, so most are mechanically fixable.
-2. **Five articles filed under the wrong journal** — *Journal of Sociology & Social Welfare* articles also indexed under *Journal of Social Work Practice*. The same wrong value five times suggests a systematic ingest error, so the true count is likely higher outside this sweep.
+1. **`doi` often does not hold a DOI** — 27 of 705 populated values in this sweep; **3,556 database-wide, 5% of every populated DOI in the 1989+ corpus** (2,002 OAI identifiers, 1,554 `dc/` hashes). Breaks linking and matching, and actively misleads any "prefer the record with a DOI" rule. Only ~180 have a duplicate twin — the other ~3,200 are unique records, so deduplication does not fix it.
+2. **Articles filed under the wrong journal** — five pairs here, ~850 double-indexed research articles database-wide (531 split across two journal ids). One ingest ran twice: one pass wrote the wrong journal with a valid DOI, the other the right journal with an OAI identifier. Neither row is fully correct, and the OAI ids encode the real DOIs, so they convert mechanically.
 3. **62 SWRD records (7.8%) have no abstract**, across every decade. Abstract-level screening and semantic search cannot see them.
+
+A fourth apparent fault turned out not to be one, and is worth recording: deduplicating title+year across the whole database collapses ~2,100 rows, but most are **book reviews** — the same book reviewed in several journals in the same year, each a separate publication with its own DOI — plus editorials and rows titled "Untitled". [`llms.txt`](../../llms.txt) has been updated to scope the deduplication rule to `is_scientific` records and to carry the DOI warning.
 
 ## What is here
 
