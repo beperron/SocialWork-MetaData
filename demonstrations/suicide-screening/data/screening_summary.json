@@ -1,0 +1,103 @@
+{
+  "model": "qwen3.6:27b",
+  "prompt_version": "suicide-screen-v1.4-one-record-labels",
+  "screening_mode": "Sequential: exactly one bibliographic record per Ollama request",
+  "input_file": "/Users/beperron/Desktop/DataAnalysis/suicide_papers/all_suicide_papers.json",
+  "input_records": 2034,
+  "screened_records": 2034,
+  "relevant_records": 1331,
+  "irrelevant_records": 703,
+  "title_only_records": 62,
+  "evidence_class_counts_among_relevant": {
+    "Non-empirical": 171,
+    "Empirical": 1160
+  },
+  "empirical_method_counts": {
+    "Quantitative": 915,
+    "Qualitative": 180,
+    "Review": 65
+  },
+  "completed_at": "2026-08-02T19:08:46.537491+00:00",
+  "accuracy_audit": {
+    "audit_version": "stratified-blind-audit-v1.0",
+    "model": "qwen3.6:27b",
+    "method": "Reproducible stratified random sample; blind one-record rescreen; thinking-mode adjudication of every disagreement",
+    "random_seed": 20260802,
+    "sample_per_group": 20,
+    "total_sampled": 100,
+    "group_statistics": {
+      "Irrelevant": {
+        "sampled": 20,
+        "full_label_agreements": 18,
+        "full_label_agreement_rate": 0.9
+      },
+      "Relevant Non-empirical": {
+        "sampled": 20,
+        "full_label_agreements": 19,
+        "full_label_agreement_rate": 0.95
+      },
+      "Quantitative": {
+        "sampled": 20,
+        "full_label_agreements": 19,
+        "full_label_agreement_rate": 0.95
+      },
+      "Qualitative": {
+        "sampled": 20,
+        "full_label_agreements": 16,
+        "full_label_agreement_rate": 0.8
+      },
+      "Review": {
+        "sampled": 20,
+        "full_label_agreements": 20,
+        "full_label_agreement_rate": 1.0
+      }
+    },
+    "full_label_agreements": 92,
+    "full_label_agreement_rate": 0.92,
+    "disagreements_adjudicated": 8,
+    "sampled_records_corrected_after_adjudication": 6,
+    "completed_at": "2026-08-02T19:39:00.981392+00:00"
+  },
+  "accuracy_audit_version": "stratified-blind-audit-v1.0",
+  "accuracy_audit_random_seed": 20260802,
+  "accuracy_audit_sample_size": 20,
+  "accuracy_audit_completed_at": "2026-08-02T19:39:00.988172+00:00",
+  "independent_manual_spot_check": {
+    "method": "Independent manual inspection of title and full abstract against the prespecified rubric",
+    "random_seed": 20260803,
+    "excluded_prior_model_audit_records": 100,
+    "sample_per_group": 4,
+    "total_sampled": 20,
+    "agreements": 18,
+    "agreement_rate": 0.9,
+    "records_corrected": 2,
+    "group_statistics": {
+      "Irrelevant": {
+        "sampled": 4,
+        "agreements": 3,
+        "agreement_rate": 0.75
+      },
+      "Relevant Non-empirical": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      },
+      "Quantitative": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      },
+      "Qualitative": {
+        "sampled": 4,
+        "agreements": 3,
+        "agreement_rate": 0.75
+      },
+      "Review": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      }
+    },
+    "completed_at": "2026-08-02T19:42:14.498416+00:00"
+  }
+}

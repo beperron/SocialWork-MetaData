@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suicide Scholarship in Social Work: 1,331 Studies, Screened and Classified</title>
+<meta name="description" content="Every suicide-related record in the social work journals and the SSWR conference, 1989–2026 — screened one at a time by AI, checked twice, and released with its labels. What the discipline's suicide literature actually contains.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#FAFAF9;color:#18181B;
+       font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16.5px;line-height:1.65;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+  .wide{max-width:1020px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+  a{color:#0F5257}
+  code,.mono{font-family:'IBM Plex Mono',monospace;font-size:.9em}
+
+  header.top{background:#0B2E31;color:#fff;padding:8px 0}
+  header.top .wide{display:flex;gap:18px;align-items:center;font-size:13.5px}
+  header.top a{color:#CBD5E1;text-decoration:none}
+  header.top a:hover{color:#fff}
+  header.top .brand{font-weight:650;color:#fff;font-size:15px}
+  header.top .ghbtn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:32px;
+    padding:0 14px;background:#fff;color:#0B2E31 !important;border-radius:6px;font-weight:600}
+  header.top .ghbtn:hover{background:#DDEFEE}
+
+  .hero{background:linear-gradient(160deg,#14484C 0%,#0F5257 45%,#0B2E31 100%);color:#fff;
+        padding:clamp(46px,6vw,74px) 0 clamp(40px,5vw,58px);border-bottom:3px solid #4C9F8A}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.13em;
+          text-transform:uppercase;color:#8FD3C2;font-weight:500}
+  .hero h1{margin:14px 0 0;font-size:clamp(28px,4.4vw,44px);line-height:1.12;font-weight:600;
+           letter-spacing:-.02em;max-width:20ch}
+  .hero p{margin:16px 0 0;max-width:62ch;font-size:17px;color:#C6DEDB}
+  .stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:30px}
+  .stat b{display:block;font-size:30px;font-weight:600;line-height:1.1}
+  .stat span{font-size:12.5px;color:#94BCB7;letter-spacing:.02em}
+
+  section{padding:clamp(38px,5vw,58px) 0}
+  section.alt{background:#fff;border-top:1px solid #E7E5E0;border-bottom:1px solid #E7E5E0}
+  section.tech{background:#F4F5F4;border-top:1px solid #E0E2E0}
+  h2{font-size:clamp(21px,2.6vw,27px);font-weight:600;letter-spacing:-.015em;margin:0 0 6px;line-height:1.25}
+  h3{font-size:17.5px;font-weight:600;margin:30px 0 8px}
+  .lede{color:#3F3F46;margin:0 0 22px;max-width:64ch}
+  p{max-width:68ch}
+  figure{margin:26px 0 10px}
+  figure img{width:100%;height:auto;display:block;background:#fff;border:1px solid #E7E5E0;border-radius:8px}
+  figcaption{font-size:13px;color:#71717A;margin-top:10px;max-width:72ch;line-height:1.55}
+
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:18px 0}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #E7E5E0;vertical-align:top}
+  th{font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#71717A}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  tr.tot td{font-weight:600;border-bottom:none;border-top:2px solid #C3C2B7}
+  .tablewrap{overflow-x:auto}
+
+  .find{background:#fff;border:1px solid #E7E5E0;border-left:4px solid var(--c,#0F5257);
+        border-radius:8px;padding:18px 21px;margin:16px 0}
+  .find b.n{display:block;font-size:27px;font-weight:600;line-height:1.15;color:var(--c,#0F5257);
+            letter-spacing:-.01em}
+  .find h4{margin:4px 0 6px;font-size:16.5px;font-weight:600}
+  .find p{margin:0;font-size:15px;color:#3F3F46;max-width:none}
+
+  .def{background:#fff;border:1px solid #E7E5E0;border-left:4px solid var(--c,#0F5257);
+       border-radius:8px;padding:18px 20px;margin:14px 0}
+  .def h4{margin:0 0 6px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:9px}
+  .def h4 i{width:11px;height:11px;border-radius:3px;background:var(--c);display:inline-block;flex:0 0 auto}
+  .def p{margin:0;font-size:14.8px;color:#3F3F46}
+  .def .ex{margin-top:9px;font-size:13.5px;color:#52525B;border-top:1px dashed #E7E5E0;padding-top:9px}
+
+  .note{background:#EFF7F5;border:1px solid #C6E2DB;border-radius:8px;padding:16px 19px;margin:22px 0}
+  .note b{color:#0B2E31}
+  .note p{margin:0;font-size:14.8px;color:#2C4744;max-width:none}
+  .note p + p{margin-top:9px}
+
+  blockquote.said{margin:18px 0;padding:16px 22px;background:#fff;border:1px solid #E7E5E0;
+                  border-left:4px solid #C97B3E;border-radius:8px;font-size:16px;color:#27272A}
+  blockquote.said p{margin:0;max-width:none}
+  blockquote.said cite{display:block;margin-top:9px;font-style:normal;font-size:13.5px;color:#71717A}
+
+  .prompt{background:#0B2E31;color:#DCEEEA;border-radius:8px;padding:18px 20px;margin:14px 0;
+          font-family:'IBM Plex Mono',monospace;font-size:13.2px;line-height:1.62;
+          white-space:pre-wrap;overflow-x:auto}
+  .prompt .lbl{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+               color:#7FBDB2;margin-bottom:10px;font-weight:500}
+
+  .steps{counter-reset:s;list-style:none;padding:0;margin:18px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:0 0 20px 46px;margin:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:30px;height:30px;
+    border-radius:50%;background:#0F5257;color:#fff;font-size:14px;font-weight:600;
+    display:flex;align-items:center;justify-content:center}
+  .steps li::after{content:"";position:absolute;left:15px;top:34px;bottom:2px;width:1.5px;background:#D8E5E2}
+  .steps li:last-child::after{display:none}
+  .steps h4{margin:2px 0 4px;font-size:16.5px;font-weight:600}
+  .steps p{margin:0;font-size:15px;color:#3F3F46;max-width:none}
+  .steps .who{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+              text-transform:uppercase;color:#71717A;display:block;margin-top:5px}
+
+  .techbar{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
+           text-transform:uppercase;color:#0F5257;font-weight:500;margin:0 0 10px}
+
+  .netbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:20px 0 12px}
+  .vbtn{font:inherit;font-size:13.5px;font-weight:500;padding:7px 15px;border:1px solid #E7E5E0;
+        background:#fff;color:#3F3F46;border-radius:7px;cursor:pointer}
+  .vbtn:hover{border-color:#A1A1AA}
+  .vbtn.on{background:#0F5257;color:#fff;border-color:#0F5257}
+  .vbtn.ghost{margin-left:auto;color:#71717A}
+  .netmeta{font-size:13px;color:#71717A}
+  .netwrap{display:grid;grid-template-columns:1fr 290px;gap:20px;align-items:start;
+           background:#fff;border:1px solid #E7E5E0;border-radius:10px;padding:14px}
+  .netcanvas{position:relative;min-height:560px}
+  .netcanvas svg{width:100%;height:620px;display:block;touch-action:none;cursor:grab}
+  .netcanvas svg.dragging{cursor:grabbing}
+  .netkey h4{margin:0 0 7px;font-size:12.5px;font-weight:600;color:#18181B}
+  .rampbar{height:13px;border-radius:7px;border:1px solid #C9C7C0;
+           background:linear-gradient(90deg,#9FD3CB,#7FC0B5,#5CA99C,#3D8F81,#256E63,#0F5257)}
+  .ramplab{display:flex;justify-content:space-between;font-size:11px;color:#71717A;margin-top:4px}
+  .netkey ol{margin:0;padding:0;list-style:none;columns:2;column-gap:14px;font-size:12.2px;line-height:1.55}
+  .netkey li{color:#3F3F46;break-inside:avoid}
+  .netkey li b{color:#18181B;font-weight:600}
+  .netkey li.hl{background:#FFF7CC;border-radius:3px}
+  .thresh{margin:0 0 10px;padding:9px 14px;background:#EFF7F5;border:1px solid #C6E2DB;border-radius:7px;
+          font-size:13.5px;color:#2C4744;max-width:none;letter-spacing:.01em}
+  .thresh b{color:#0B2E31}
+  .netcap{font-size:13px;color:#71717A;margin-top:12px;max-width:none;line-height:1.55}
+  .nodeg circle{cursor:grab}
+  .nodeg.pinned circle{stroke-width:2.6}
+  @media (max-width:820px){ .netwrap{grid-template-columns:1fr} .netkey ol{columns:2} }
+  .foot{background:#18181B;color:#A1A1AA;padding:34px 0;font-size:13.5px}
+  .foot a{color:#E4E4E7}
+  .crisis{background:#fff;border:1px solid #E7E5E0;border-left:4px solid #C97B3E;border-radius:8px;
+          padding:15px 19px;margin:0 0 26px;font-size:14.5px;color:#3F3F46}
+  .crisis a{color:#0F5257}
+  ul.plain{padding-left:19px}
+  ul.plain li{margin:5px 0}
+  @media (max-width:640px){ .stats{gap:22px} .stat b{font-size:25px} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wide">
+    <a class="brand" href="../../">Social Work Meta-Data Project</a>
+    <a class="ghbtn" href="https://github.com/beperron/SocialWork-MetaData">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub repository
+    </a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Demonstration · What the discipline has published on suicide</div>
+    <h1>Suicide scholarship in social work, 1989–2026</h1>
+    <p>Every suicide-related article in the 88 disciplinary social work journals and every suicide-related presentation at the SSWR conference — found, read, and sorted by what kind of study each one is. This page reports what that literature contains, then shows exactly how it was assembled. It counts what social work publishes in its own venues, not every suicide study a social worker has written.</p>
+    <div class="stats">
+      <div class="stat"><b>1,331</b><span>SUICIDE STUDIES</span></div>
+      <div class="stat"><b>87%</b><span>REPORT ORIGINAL EVIDENCE</span></div>
+      <div class="stat"><b>65</b><span>SYSTEMATIC REVIEWS</span></div>
+      <div class="stat"><b>37</b><span>YEARS COVERED</span></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What this covers, and what it does not</h2>
+    <p class="lede">Before any of the numbers: this is a study of what <em>social work publishes in its own venues</em>. That boundary is deliberate, it is the thing being measured, and it excludes a great deal of suicide research done by social workers.</p>
+
+    <div class="def" style="--c:#0F5257">
+      <h4><i></i>The journals — SWRD, 1989–2025</h4>
+      <p>The 88 disciplinary social work journals systematically compiled by Perron, Victor, and Qi, covering 87,329 records from 1989 onward. "Social work journal" here means a journal in that defined set — not any journal a social worker publishes in.</p>
+      <div class="ex">Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). Evolution of social work knowledge production over 35 years. <em>Research on Social Work Practice.</em> <a href="https://doi.org/10.1177/10497315261416833">10.1177/10497315261416833</a></div>
+    </div>
+
+    <div class="def" style="--c:#C97B3E">
+      <h4><i></i>The conference — SSWR, 2005–2026</h4>
+      <p>Every presentation at the annual Society for Social Work and Research conference, 23,793 in all, with abstracts and canonical author identities. The conference is where the field's research is presented regardless of where it is later published, which makes it a usefully different lens on the same discipline.</p>
+      <div class="ex">Perron, B. E., Victor, B. G., &amp; Qi, Z. (2026). AI-assisted curation of conference scholarship. <em>arXiv.</em> <a href="https://doi.org/10.48550/arXiv.2603.06814">10.48550/arXiv.2603.06814</a></div>
+    </div>
+
+    <div class="note">
+      <p><b>Many social work scholars publish their suicide research elsewhere, and none of it is counted here.</b> Suicidology, psychiatry, public health, medical, and interdisciplinary journals are outside the journal set by construction — including <em>Suicide and Life-Threatening Behavior</em>, the field's flagship suicidology journal, and the <em>JAMA</em> family. A social work researcher can have a substantial suicide bibliography and appear only once or twice in these pages, or not at all.</p>
+      <p>So read every count below as <em>suicide scholarship within social work's own publishing venues</em>. That is a real and worthwhile thing to measure — it is how a discipline talks to itself — but it is not the same as all suicide research conducted by social workers. <a href="#scope-examples">Two worked examples</a> appear later, alongside the co-authorship network where the boundary matters most.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What the literature looks like</h2>
+    <p class="lede">Two thousand records in these databases mention suicide. Reading each one shows that about two-thirds are genuinely <em>about</em> suicide — and that when social work studies suicide, it studies it in a strikingly narrow set of ways.</p>
+
+    <div class="find" style="--c:#0F5257">
+      <b class="n">1,331 of 2,034</b>
+      <h4>A third of the records that mention suicide are not about it</h4>
+      <p>Suicide turns up constantly as background: a sentence of rationale, one unexamined item in a list of mental-health concerns, a sample characteristic nobody analyzed. Separating those out is the whole job of screening, and it removed 703 records — 35% of everything the search returned.</p>
+    </div>
+
+    <div class="find" style="--c:#7A6A8F">
+      <b class="n">87% empirical</b>
+      <h4>This is a literature of studies, not of commentary</h4>
+      <p>1,160 of the 1,331 relevant records report original evidence; only 171 are conceptual pieces, editorials, practice overviews, or narrative reviews. That is a much higher empirical share than social work's writing on newer topics, where commentary tends to arrive first and evidence later. Suicide scholarship here is mature.</p>
+    </div>
+
+    <div class="find" style="--c:#D4A24C">
+      <b class="n">41 of 65 since 2020</b>
+      <h4>Synthesis arrived late, then took off</h4>
+      <p>There is not a single systematic review, meta-analysis, or scoping review of suicide in this corpus before 2004. Two-thirds of the 65 have appeared since 2020, running at about six a year and 6.8% of empirical output — the highest share of any period. Averaged flat across thirty-seven years the number reads as thin; it is not thin, it is recent.</p>
+    </div>
+
+    <div class="find" style="--c:#4C9F8A">
+      <b class="n">5 to 1</b>
+      <h4>Quantitative work outnumbers qualitative five to one</h4>
+      <p>915 quantitative studies against 180 qualitative. Suicide research in these venues is overwhelmingly about measurement, prediction, and risk factors. Lived-experience work — what suicidality is like, what survivors of a loss actually need, why people do or do not disclose — is the smaller literature by a wide margin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>The full breakdown</h2>
+    <p class="lede">Every one of the 2,034 records the search returned ends up in exactly one of five buckets.</p>
+
+    <figure>
+      <img src="figures/composition.svg" alt="Horizontal stacked bar chart showing what the 2,034 screened candidates became. Combined: 915 quantitative, 180 qualitative, 65 review, 171 non-empirical, 703 screened out. SSWR conference: 614 quantitative, 97 qualitative, 36 review, no non-empirical, 491 screened out. SWRD journals: 301 quantitative, 83 qualitative, 29 review, 171 non-empirical, 212 screened out.">
+      <figcaption>Bars are percentages so the two venues can be compared; the labels are record counts. The most visible difference between them is the purple band: conceptual and commentary work exists in the journals and is entirely absent from the conference set.</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>What the study is</th><th class="num">Records</th><th class="num">% of relevant</th></tr></thead>
+      <tbody>
+        <tr><td>Quantitative study</td><td class="num">915</td><td class="num">68.7%</td></tr>
+        <tr><td>Qualitative study</td><td class="num">180</td><td class="num">13.5%</td></tr>
+        <tr><td>Systematic review, meta-analysis, or scoping review</td><td class="num">65</td><td class="num">4.9%</td></tr>
+        <tr><td>Non-empirical — commentary, theory, narrative review</td><td class="num">171</td><td class="num">12.8%</td></tr>
+        <tr class="tot"><td>All suicide-relevant records</td><td class="num">1,331</td><td class="num">100.0%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>The journals and the conference do different jobs</h3>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Source</th><th class="num">Screened</th><th class="num">Relevant</th><th class="num">Rate</th><th class="num">Non-emp.</th><th class="num">Quant.</th><th class="num">Qual.</th><th class="num">Review</th></tr></thead>
+      <tbody>
+        <tr><td>SWRD journals, 1989–2025</td><td class="num">796</td><td class="num">584</td><td class="num">73.4%</td><td class="num">171</td><td class="num">301</td><td class="num">83</td><td class="num">29</td></tr>
+        <tr><td>SSWR conference, 2005–2026</td><td class="num">1,238</td><td class="num">747</td><td class="num">60.3%</td><td class="num">0</td><td class="num">614</td><td class="num">97</td><td class="num">36</td></tr>
+        <tr class="tot"><td>Combined</td><td class="num">2,034</td><td class="num">1,331</td><td class="num">65.4%</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>The conference is where suicide research shows up first and in the largest volume — 747 presentations against 584 journal articles — and all of it is empirical. The journals carry the discipline's thinking <em>about</em> suicide as well as its studies of it: every one of the 171 conceptual and commentary pieces is a journal article.</p>
+
+    <div class="note">
+      <p><b>That zero is the single best validation on this page.</b> Not one of the 747 SSWR presentations was classified as non-empirical — and that is exactly the right answer. SSWR is an empirical research conference; its submission process asks for a study, and conceptual and commentary work is not what the venue accepts. The correct count of non-empirical presentations in a suicide-topic sweep of that conference is zero, and the model produced zero, 747 times in a row, without ever being told what venue a record came from.</p>
+      <p>That is a harder test than it looks. The model saw only a title and an abstract; nothing in its input identified the source database. It had every opportunity to drift — to call a conceptually-framed presentation a commentary, or to label a thin abstract non-empirical because the design was hard to see. It did not do so once. And it did the opposite where it should have: all 171 non-empirical records it found are journal articles, which is where conceptual work actually lives.</p>
+    </div>
+
+    <p>The conference also drops more of its candidates in screening — 40% against the journals' 27%. Conference abstracts are longer and list more secondary measures, so suicide is likelier to appear somewhere in the text without being what the work is about.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wide">
+    <h2>Growth over time</h2>
+    <p class="lede">Suicide has become a substantially larger share of what social work researchers present and publish, and the conference registered that shift before the journals did.</p>
+
+    <figure>
+      <img src="figures/growth.svg" alt="Stacked bar chart of suicide-relevant records per year, 1989 to 2026. Journal articles run from 1 in 1989 to about 50 in 2024. Conference presentations begin in 2005 and rise to 83 in 2026. Combined totals climb from single digits in the early 1990s to over 100 in the mid 2020s. The 2024 and 2025 region is shaded as incomplete for journal indexing.">
+      <figcaption>Suicide-relevant records per year in each venue. Two caveats sit at the right-hand edge. The 2024–2025 journal counts are lower bounds, because publishers index articles into the database on a lag. The 2026 bar is conference-only and complete, since that meeting has already happened while the journal year has not begun in this data. Neither is a forecast.</figcaption>
+    </figure>
+
+    <p>The journal series is a slow climb rather than a sudden arrival: single digits through the early 1990s, into the teens and twenties by the 2010s, 45 to 50 a year by 2023–2024. The conference series is steeper and starts later, holding under twenty a year until 2014 and then reaching 70 to 83 a year from 2024 on.</p>
+
+    <h3>Where it gets published</h3>
+    <p>The 584 relevant journal articles are spread across 63 different journals. No outlet owns the topic: the largest holds 38 articles, 6.5% of the total, and the top ten together account for only 45%.</p>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Journal</th><th class="num">Articles</th><th class="num">% of 584</th></tr></thead>
+      <tbody>
+        <tr><td>Child &amp; Adolescent Social Work Journal</td><td class="num">38</td><td class="num">6.5%</td></tr>
+        <tr><td>Social Work in Mental Health</td><td class="num">37</td><td class="num">6.3%</td></tr>
+        <tr><td>Social Work</td><td class="num">33</td><td class="num">5.7%</td></tr>
+        <tr><td>Journal of Human Behavior in the Social Environment</td><td class="num">27</td><td class="num">4.6%</td></tr>
+        <tr><td>British Journal of Social Work</td><td class="num">26</td><td class="num">4.5%</td></tr>
+        <tr><td>Health &amp; Social Work</td><td class="num">23</td><td class="num">3.9%</td></tr>
+        <tr><td>Journal of Gerontological Social Work</td><td class="num">22</td><td class="num">3.8%</td></tr>
+        <tr><td>Clinical Social Work Journal</td><td class="num">22</td><td class="num">3.8%</td></tr>
+        <tr><td>Research on Social Work Practice</td><td class="num">20</td><td class="num">3.4%</td></tr>
+        <tr><td>Social Work in Public Health</td><td class="num">16</td><td class="num">2.7%</td></tr>
+        <tr class="tot"><td>Top ten combined</td><td class="num">264</td><td class="num">45.2%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>What the list shows is that suicide reaches the discipline through its <em>populations</em> rather than through a dedicated venue. The top two are a child-and-adolescent journal and a mental-health journal; gerontology, health, schools, and public health all appear. A researcher following this literature has to read across ten or more journals to see it whole — which is part of why the thinness of synthesis matters.</p>
+
+    <h3>Synthesis is the newest part of this literature</h3>
+    <p>Evidence syntheses — systematic reviews, meta-analyses, scoping reviews — do not track the growth of primary research. They start from nothing and then outpace it.</p>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Period</th><th class="num">Empirical records</th><th class="num">Syntheses</th><th class="num">Share</th><th class="num">Per year</th></tr></thead>
+      <tbody>
+        <tr><td>1989–1999</td><td class="num">25</td><td class="num">0</td><td class="num">0.0%</td><td class="num">0.0</td></tr>
+        <tr><td>2000–2009</td><td class="num">104</td><td class="num">4</td><td class="num">3.8%</td><td class="num">0.4</td></tr>
+        <tr><td>2010–2014</td><td class="num">128</td><td class="num">7</td><td class="num">5.5%</td><td class="num">1.4</td></tr>
+        <tr><td>2015–2019</td><td class="num">301</td><td class="num">13</td><td class="num">4.3%</td><td class="num">2.6</td></tr>
+        <tr><td>2020–2026</td><td class="num">602</td><td class="num">41</td><td class="num">6.8%</td><td class="num">5.9</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>The first synthesis in this corpus appears in 2004, fifteen years into the window. The rate climbs steeply after that — 0.4 a year in the 2000s, 1.4 in the early 2010s, 2.6 in the late 2010s, 5.9 in the 2020s — and the 2020s carry 41 of the 65, with ten in 2024 alone. As a share of empirical output the trend is upward but not smooth: it dips from 5.5% in 2010–2014 to 4.3% in 2015–2019, because primary studies grew faster than syntheses over those years, before reaching its high of 6.8%.</p>
+
+    <p>Two readings are available and this data does not settle between them. The generous one is that the field accumulated enough primary studies to be worth synthesising and is now doing so. The sceptical one echoes an argument made in other fields — that systematic reviews have become cheap to produce and abundant beyond their usefulness. Testing either would need a comparison against synthesis rates elsewhere, which is outside what these two databases can answer. What the numbers here do establish is that synthesis is the newest layer of this literature and the fastest-growing one. Note also that 2026 is conference-only, so the last row is not a complete year of journals.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>Who writes it, and with whom</h2>
+    <p class="lede">The same corpus seen as people rather than papers. Node size is how many suicide-relevant records an author appears on; colour is how quantitative their own body of work is; an edge means they co-authored at least once.</p>
+
+    <div class="netbar">
+      <button class="vbtn on" data-v="journals">Journal authors</button>
+      <button class="vbtn" data-v="conference">Conference authors</button>
+      <span class="netmeta" id="netmeta"></span>
+      <button class="vbtn ghost" id="netreset">Reset layout</button>
+    </div>
+
+    <p class="thresh" id="netthresh"></p>
+
+    <div class="netwrap">
+      <div class="netcanvas"><div class="nettitle" id="nettitle"></div><svg id="net" role="img" aria-label="Interactive co-authorship network; the same authors and counts are listed in the numbered key beside it."></svg></div>
+      <aside class="netkey">
+        <h4>Node colour: how quantitative that author's work is</h4>
+        <div class="rampbar"></div>
+        <div class="ramplab"><span>qualitative</span><span>mixed</span><span>quantitative</span></div>
+        <h4 style="margin-top:15px">Authors, by number of records</h4>
+        <ol id="netlist"></ol>
+      </aside>
+    </div>
+    <p class="netcap" id="netcap"></p>
+
+    <p>Drag a node to pull the layout apart; hover a name in the key to find it in the graph. Position carries no meaning beyond connectivity — only who is joined to whom, and how tightly.</p>
+
+    <p>The two venues have different shapes. The conference network is denser and more clustered: research groups presenting together year after year, and it needed a higher cutoff than the journal graph to stay legible at all. The journal network is looser, with more small components — teams that publish together once or twice rather than continuously.</p>
+
+    <p>The colour tells the same story as the corpus-level counts, one author at a time. Most conference nodes sit at the dark end of the ramp because most of their records are quantitative; the paler nodes are the smaller number of researchers whose suicide work is predominantly qualitative. In the journal graph the ramp is more mixed, because the journals also carry the conceptual and commentary writing that the conference does not.</p>
+
+    <h3 id="scope-examples">What the network cannot show you</h3>
+    <p>This graph is bounded by the disciplinary social work journals and the SSWR conference. That boundary is the point of the exercise — it defines what social work publishes <em>in its own venues</em> — but it means the graph is not a map of who does suicide research in social work. A great deal of that work is published in suicidology, psychiatry, public health, and medical journals, none of which are in the database by construction.</p>
+
+    <p>Two researchers make the gap concrete, and neither appears anywhere in the figure above.</p>
+
+    <p><b>Jonathan Singer</b> — whose report of a connection failure prompted this whole analysis — has three suicide-relevant articles in the journal corpus and six SSWR presentations. His published suicide scholarship is much larger than that: his CV lists suicide work in <em>JAMA Network Open</em>, <em>American Psychologist</em>, <em>Suicide and Life-Threatening Behavior</em>, <em>School Mental Health</em>, and <em>Psychiatric Annals</em>, plus three books on suicide in schools and a long list of handbook chapters. Almost none of it is visible here, and <em>Suicide and Life-Threatening Behavior</em> — the field's flagship suicidology journal — is not a social work journal, so his work there falls outside the corpus by definition.</p>
+
+    <p><b>Yunyu Xiao</b>, a social work PhD at Weill Cornell Medicine, is a sharper case still: <b>zero</b> articles in the journal corpus and ten SSWR presentations. A PubMed author search returns 88 records from 2017 onward, 37 of them with a suicide term in the title, in <em>JAMA</em>, <em>JAMA Psychiatry</em>, <em>JAMA Network Open</em>, <em>Journal of Adolescent Health</em>, and <em>Journal of Child Psychology and Psychiatry</em>. A prolific suicide researcher trained in social work, essentially invisible to a social work journal database.</p>
+
+    <p>The pattern is consistent with what the conference-versus-journal comparison showed earlier: SSWR registers this work because researchers present there regardless of where they later publish. Read the network as the collaboration structure of suicide scholarship <em>within social work's own journals</em> — which is a real and worthwhile thing to measure, and not the same thing as the field's suicide research.</p>
+
+    <div class="note">
+      <p><b>The PubMed count carries the same caveat as everything else on this page.</b> An author-name search is not disambiguated either, so those 88 records are what the name returns, not a verified bibliography. The problem this report spent so long fixing for 41 nodes is not peculiar to SWRD.</p>
+    </div>
+
+    <div class="note">
+      <p><b>The journal names had to be disambiguated before this figure could be trusted.</b> SSWR carries canonical author ids with variants already resolved, so the conference graph needed nothing. SWRD stores names exactly as published with no disambiguation, in three inconsistent formats — this corpus contains <span class="mono">GILLILAND, D</span>, <span class="mono">Gilliland D.</span> and <span class="mono">Fiona Gardner</span> — and keying on surname plus first initial turned out to be wrong in <em>both</em> directions.</p>
+      <p>It merged different people: <span class="mono">Lee, E.</span> was Edward Ou Jin Lee and Eunjung Lee in one node, <span class="mono">Hirsch, J.</span> was Jameson and Jennifer, <span class="mono">Li, M.</span> was Man-chiu and Mingqi, <span class="mono">Taylor, S.</span> was Sarah and Stephan. And it split single people apart: four records credit <span class="mono">Miriek, Rebecca G</span>, a misspelling of Mirick — one paper lists both spellings as though two authors were present. Several records name the same author twice.</p>
+      <p>Each case was checked against its records and fixed for this figure: misspelled surnames folded in, genuinely different people separated by first name, duplicate mentions collapsed, and Larry/Lawrence Berkowitz kept as one person after confirming that all seven records are the same postvention team. Where a record gives only an initial under a contested name, it is dropped rather than guessed at. The graph went from 41 nodes to 37, and the ones that remain are people rather than composites.</p>
+      <p><b>This corrects the figure, not the database.</b> The underlying records are unchanged, and SWRD author counts obtained any other way remain undisambiguated — which is why the project guide says never to report unique-author counts from SWRD as fact. The resolution tables are in <a href="code/make_network.py">make_network.py</a>, deliberately explicit and hand-checked rather than fuzzy: a similarity threshold would also have merged Cheng with Cheung and Collins with Collin, who are different people.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wide">
+    <h2>How much should you trust these labels?</h2>
+    <p class="lede">Every label on this page was assigned by Qwen3.6-27B reading a title and abstract on a laptop. That work was checked twice — once by Qwen against itself, once by a different model — and the honest answer is that the checks are encouraging but fall short of proof.</p>
+
+    <figure>
+      <img src="figures/audit.svg" alt="Grouped bar chart of agreement by outcome group. Blind model re-screen: Irrelevant 90 percent, Relevant Non-empirical 95, Quantitative 95, Qualitative 80, Review 100. Independent manual check: Irrelevant 75, Relevant Non-empirical 100, Quantitative 100, Qualitative 75, Review 100.">
+      <figcaption>Agreement on the complete label — whether a record is relevant, whether it is empirical, and which method — all three matching. Both checks deliberately sampled equal numbers from each group, so these rates describe the groups, not the corpus as a whole.</figcaption>
+    </figure>
+
+    <p><b>First check — Qwen re-reads itself, blind.</b> A hundred records were pulled at random, twenty from each outcome group, and screened again from scratch by the same local model that produced the labels in the first place — <code>qwen3.6:27b</code> — without being shown what it had decided before, and required this time to write a short rationale. Ninety-two came back identical on all three decisions. The eight that disagreed went to a third Qwen pass with thinking mode enabled, which saw both answers and the reasoning behind them; six were resolved against the original label and corrected.</p>
+
+    <p><b>Second check — Sol reads 20 by hand.</b> A separate sample of twenty, drawn from records the first check had not touched, was inspected against the written criteria by Codex running GPT-5.6-Sol — a different model entirely, reading the title and full abstract rather than re-running the screening pipeline. Eighteen agreed with Qwen. The two that did not were the same kind of error in opposite directions — the line between <em>suicide was measured</em> and <em>suicide was analyzed</em>:</p>
+
+    <ul class="plain">
+      <li>A study of homeless youth was moved from irrelevant to <em>quantitative</em>. Suicidal ideation was in the regression as an analyzed mechanism with its own reported result; the model had read it as an incidental covariate.</li>
+      <li>A study of domestic-violence service needs was moved from <em>qualitative</em> to irrelevant. Suicide and self-harm were minor items in a broad needs assessment and were never separately analyzed.</li>
+    </ul>
+
+    <div class="note">
+      <p><b>The two checks are not the same kind of evidence.</b> The 92% is Qwen against Qwen, so it measures the model's <em>consistency</em>, not its correctness — a model confidently and consistently wrong about a category would score well on it. The 90% is Qwen against Sol, a genuinely independent second reader that shares no weights, no prompt, and no failure modes with the first. Cross-model agreement is the stronger signal of the two, and it is the one resting on only twenty records.</p>
+      <p><b>Neither is an accuracy estimate.</b> Both sampled equal numbers per outcome group by design, so neither rate is prevalence-weighted for the corpus. The 90% rests on four records per group, and Sol is an AI assistant reading against a rubric, not a trained suicide researcher. This is a well-documented draft corpus; publishing from it would first require independent dual review by human experts on a proper probability sample, with interrater agreement reported. Everything needed to do that — including every record the audits changed and what it was before — is released below.</p>
+    </div>
+
+    <p>Where the residual error most likely sits is worth naming: qualitative was the least stable label in both checks, and the recurring judgment call across the whole corpus is whether a suicide measure was genuinely analyzed or merely collected.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How this was built</h2>
+    <p class="lede">Nobody wrote any code. The whole analysis was requested in plain English, twice, and carried out by three AI systems with clearly separated jobs — a frontier model for a few minutes of planning and analysis, a free local model for the hours of repetitive reading.</p>
+
+    <ol class="steps">
+      <li>
+        <h4>Connect to the databases from a published file</h4>
+        <p>Codex was pointed at the project's <a href="../../llms.txt">llms.txt</a> — one public text file describing how to reach the databases — and connected from that alone. No credentials beyond the public read-only key printed in the file itself, and no setup on the researcher's part.</p>
+        <span class="who">Codex, running GPT-5.6-Sol · minutes</span>
+      </li>
+      <li>
+        <h4>Pull every record that mentions suicide</h4>
+        <p>A deliberately wide net across both databases: any record whose title or abstract contains a word starting with <em>suicid</em>. Wide on purpose — it is far easier to remove a record that mentions suicide in passing than to find one the search never returned. Codex planned the sweep, ran it, paged through the results, and removed duplicate entries.</p>
+        <span class="who">Codex · 2,034 unique records · minutes</span>
+      </li>
+      <li>
+        <h4>Read every one of them, one at a time</h4>
+        <p>This is the heavy lifting, and it ran entirely on a free open-weight model on the laptop: Qwen3.6-27B, one record per request, no memory of the record before it. It saw only a title and an abstract — never the database's own labels, never which venue the record came from — and answered three questions: is this really about suicide, does it report evidence, and if so what kind.</p>
+        <span class="who">Local Qwen3.6-27B · 2,034 separate requests · 1.7 hours</span>
+      </li>
+      <li>
+        <h4>Check the answers twice</h4>
+        <p>Two checks, deliberately different in kind. Qwen re-screened 100 records blind and adjudicated its own disagreements with thinking mode on. Sol then read a separate 20 by hand against the rubric — an independent second opinion rather than a repeat of the same machinery. Eight corrections went back into the data.</p>
+        <span class="who">Qwen re-screened and adjudicated · Sol inspected independently</span>
+      </li>
+      <li>
+        <h4>Work out what the labels mean</h4>
+        <p>Counts, cross-tabulations, the venue comparison, the figures on this page, and this write-up — the substantive analysis of a finished corpus. Nothing at this stage touched a label; it read the released files, not the databases.</p>
+        <span class="who">Claude Opus 5 · minutes</span>
+      </li>
+    </ol>
+
+    <div class="note">
+      <p><b>Why the division of labour matters.</b> Add up the frontier-model time and it is a few minutes: planning the search, orchestrating the run, designing the checks, and interpreting the result. The part that took hours — reading two thousand abstracts and making the same three decisions about each, without getting bored, inconsistent, or tired — ran on a model that costs nothing and never sent a single abstract off the machine.</p>
+      <p>That split is the actual claim being tested here. Expensive judgment is cheap because there is so little of it; expensive volume is what breaks a research budget, and volume is exactly what a local model is good for. A researcher with no grant, no API budget, and no programming can run this.</p>
+    </div>
+
+    <div class="note">
+      <p><b>No code was written by a person.</b> Both instructions below are ordinary English sentences. The scripts in this folder were generated by the assistants in the course of following them, and are published so the run can be inspected and repeated — but they are an <em>output</em> of this demonstration, not an input to it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Where this came from</h2>
+    <p class="lede">This analysis was run because someone else tried the integration first and told us what happened.</p>
+
+    <p>Jonathan Singer tested the project's <code>llms.txt</code> connection file on a suicide-literature question — the same kind of question this page answers — and reported back on LinkedIn:</p>
+
+    <blockquote class="said">
+      <p>It got a little tripped up trying to access https://kcffctxedcscvvposypb.supabase.co/rest/v1/rpc/run_sql, but running it in the code editor and manually giving permission seemed to work.</p>
+      <cite>Jonathan Singer</cite>
+    </blockquote>
+
+    <p>That is a good outcome and a useful report at the same time: it worked, and it should not have needed a workaround. One sentence, and it points at two separate things the guide had failed to say.</p>
+
+    <div class="def" style="--c:#C97B3E">
+      <h4><i></i>Why it got tripped up on the address</h4>
+      <p>That URL is not a web page. It is an endpoint you send a query <em>to</em>, and most AI assistants reach for a "fetch this URL" tool when handed a link — which asks the endpoint for a page and gets a refusal that reads like the database is broken or missing. The database was fine; the request was the wrong shape, and nothing in the guide had warned about it.</p>
+      <div class="ex">The guide now lists every way the endpoint can be called and the exact error each one returns, names the giveaway that identifies this particular failure, and says plainly to query it from code rather than from a page-fetch tool.</div>
+    </div>
+
+    <div class="def" style="--c:#C97B3E">
+      <h4><i></i>Why manually giving permission fixed it</h4>
+      <p>Coding assistants ask before reaching the internet for the first time, and the prompt they show is a long meaningless hostname. Approving it is the entire fix — but nothing had told the user that the alarming-looking address was simply the project's own database.</p>
+      <div class="ex">The guide and the project site now name the host to approve, state that it is read-only and encrypted, and explain what to do if your setup has no internet access at all.</div>
+    </div>
+
+    <p>A third gap surfaced separately, in repeated testing rather than from a user report: the guide told assistants to remove duplicate articles by "normalized title" without ever defining what that meant, so each run invented its own rule and got slightly different results. The guide now gives the exact expression.</p>
+
+    <p>None of those three were faults in the data. They are the failure modes of an integration meant to be driven by a machine reading a text file: it breaks wherever that file is silent or ambiguous, and those places are essentially impossible to find on your own machine, where you already know what you meant. They are found by watching someone else's assistant hit them — which is why a report like Jonathan's is worth more than it looks.</p>
+
+    <h3>And then the re-run found something in the data</h3>
+
+    <p>Re-running the analysis also surfaced a handful of quality issues in the database itself — the kind that only appear when something reads every record rather than sampling a few. A small share of DOI values turn out not to be DOIs, some articles are indexed twice under two journal ids with one of them wrong, and a minority of records carry no abstract at all, which is why 62 records here had to be judged from their titles.</p>
+
+    <p>Scientific meta-data is messy, and a corpus assembled from many publishers over thirty-seven years is going to carry inconsistencies of exactly this kind. None of it undermines the analysis on this page; all of it is worth fixing. The specifics, with affected record ids and proposed corrections, are recorded as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be addressed in the next data release. The connection guide has already been updated so that assistants know to check.</p>
+
+    <p>So one user's report of a connection hiccup led to three fixes in the guide and a set of corrections queued for the database. This page is the same analysis re-run against the corrected guide. It connected on the first attempt.</p>
+  </div>
+</section>
+
+<section class="tech">
+  <div class="wrap">
+    <p class="techbar">The technical record · everything below is the method</p>
+    <h2>The two prompts</h2>
+    <p class="lede">The entire analysis was driven by these two instructions, reproduced exactly as issued.</p>
+
+    <div class="prompt"><span class="lbl">Prompt 1 · retrieval — issued to Codex (GPT-5.6-Sol)</span>Ok, do this. I want to access all papers specific to the topic of suicide:
+
+Fetch https://beperron.github.io/SocialWork-MetaData/llms.txt (or its HTML mirror at .../llms.html), run its reachability check, and connect exactly as it describes, then answer my question using those databases. The database endpoint is a POST API, not a web page, so query it from a shell or code tool rather than a page-fetch tool, and approve the host if you are asked. If you cannot fetch either URL, tell me and I will paste the file.</div>
+
+    <p>Three clauses in that prompt exist only to steer around the failures Jonathan's report exposed. "Run its reachability check" makes the assistant confirm it has outbound network before writing queries. "POST API, not a web page … rather than a page-fetch tool" pre-empts the first. "Approve the host if you are asked" pre-empts the second. A user who has read the revised guide does not need to say any of this; saying it makes the run reproducible for a reader who has not.</p>
+
+    <div class="prompt"><span class="lbl">Prompt 2 · screening and classification — orchestrated by Codex, executed by local Qwen3.6-27B</span>Now, use my local Ollama model -- Qwen3.6-27b to carefully screen each abstract for its relevance to suicide. For all relevant articles, classify as Empirical (includes systematic, meta-analysis, scoping) vs. Non-empirical. If the article is empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should all considered non-empirical. If empirical, classify as qualitative, quantitative, or review (systematic, meta-analysis, scoping). Narrative reviews should be classified as Non-empirical. Return your results as a JSON file. Just do one-by-one for most accuracy</div>
+
+    <p>The last five words are the substantive methodological instruction. Batching several abstracts into one request is faster and materially worse: decisions bleed across records sharing a context, and a long batch drifts toward whatever label it has been emitting. One record per request costs wall-clock time — 1.7 hours here — and buys independence between decisions.</p>
+
+    <p>The prompt also fixes two contestable taxonomy boundaries, and they are choices rather than facts: systematic reviews, meta-analyses, and scoping reviews count as <em>empirical</em>, and narrative reviews do not. A different project could rule the other way and get a different corpus.</p>
+
+    <h3>Who ran what</h3>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Stage</th><th>System</th><th>Roughly</th></tr></thead>
+      <tbody>
+        <tr><td>Connection, retrieval, pagination, deduplication</td><td>Codex, running GPT-5.6-Sol</td><td>minutes</td></tr>
+        <tr><td><b>Screening and classification of all 2,034 records</b></td><td><b><code>qwen3.6:27b</code>, local via Ollama</b> — planned and orchestrated by Codex</td><td><b>1.7 hours</b></td></tr>
+        <tr><td>100-record blind re-screen, and adjudication of the 8 disagreements</td><td><code>qwen3.6:27b</code> again — thinking mode on for adjudication</td><td>minutes</td></tr>
+        <tr><td>20-record independent inspection</td><td>Codex (GPT-5.6-Sol), reading against the written criteria</td><td>minutes</td></tr>
+        <tr><td>Substantive analysis, figures, and this write-up</td><td>Claude Opus 5, from the released files</td><td>minutes</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Two frontier models were involved and neither did much work by volume: Codex planned and drove the pipeline, Claude Opus 5 interpreted the finished labels. Every one of the 2,034 classification decisions — and every one of the 100 blind re-screens — came from a free open-weight model on a laptop.</p>
+  </div>
+</section>
+
+<section class="tech" style="border-top:none">
+  <div class="wrap">
+    <h2>Finding the candidates</h2>
+    <p class="lede">The inclusion rule is deliberately mechanical, so a reader can regenerate exactly this candidate set rather than trust that a search was thorough.</p>
+
+    <p>A record is a candidate when its title or abstract contains a word <em>beginning</em> with the stem <span class="mono">suicid</span> — matched at a word boundary, case-insensitively, across the two fields joined together. That catches <em>suicide</em>, <em>suicidal</em>, <em>suicidality</em>, and their compounds, and nothing else.</p>
+
+    <p>What it deliberately does not do is treat nonsuicidal self-injury, self-harm, or euthanasia as suicide topics by default: those records enter only if they also use a suicide-root term, and then have to survive screening on substance. The database's ranked keyword search was run separately with several phrasings — <em>suicide prevention</em>, <em>suicide risk</em>, <em>suicidal behavior</em>, <em>self harm</em> — and the first three returned nothing the stem sweep had missed.</p>
+
+    <p>This buys reproducibility at a known cost: a study about suicide using no suicide-root term anywhere in title or abstract is invisible to the rule. That is a recall limit, not an oversight, and it is why the rule is stated rather than described.</p>
+
+    <h3>Deduplication</h3>
+    <p>A small number of SWRD articles are indexed under two journal ids, usually with differing or null DOIs, so DOI matching alone misses them. Applying the normalized-title-plus-year rule collapsed 804 SWRD rows to 796 papers. Where duplicates disagreed, the retained row was chosen by preferring a record with a DOI, then the longest abstract, then the fullest author string; discarded record ids are kept in a <code>duplicate_record_ids</code> field rather than thrown away.</p>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Source</th><th class="num">Rows returned</th><th class="num">Unique records screened</th></tr></thead>
+      <tbody>
+        <tr><td>SWRD journal articles, 1989–2025</td><td class="num">804</td><td class="num">796</td></tr>
+        <tr><td>SSWR conference presentations, 2005–2026</td><td class="num">1,238</td><td class="num">1,238</td></tr>
+        <tr class="tot"><td>Combined</td><td class="num">2,042</td><td class="num">2,034</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Of the 2,034 candidates, 966 carried a suicide-root term in the title; the other 1,068 matched on abstract alone. Sixty-two SWRD records had no abstract at all.</p>
+  </div>
+</section>
+
+<section class="tech" style="border-top:none">
+  <div class="wrap">
+    <h2>The screening protocol</h2>
+    <p class="lede">Three decisions per record, all forced choices, one request each.</p>
+
+    <div class="def" style="--c:#0F5257">
+      <h4><i></i>Relevant</h4>
+      <p>Suicide is a central substantive focus or a distinctly analyzed component: ideation, attempts, deaths, suicidality, risk and protective factors, prevention, intervention, postvention, screening and assessment, bereavement and loss survivors, or attitudes, training, and policy specifically about suicide.</p>
+      <div class="ex">Suicide as one outcome among several counts only when the abstract shows it was separately analyzed or reported. Background mentions, illustrative examples, one unexamined item in a list of mental-health concerns, and unanalyzed sample characteristics do not count.</div>
+    </div>
+
+    <div class="def" style="--c:#7A6A8F">
+      <h4><i></i>Empirical vs. Non-empirical</h4>
+      <p>Empirical means the record analyzes primary or secondary observations: surveys, trials, experiments, administrative or clinical data, statistical models, interviews, focus groups, observation, qualitative text, empirical case studies, program evaluations — and, for this project, systematic reviews, meta-analyses, and scoping reviews.</p>
+      <div class="ex">Non-empirical covers narrative and traditional literature reviews, conceptual and theoretical articles, commentaries, editorials, book reviews, practice overviews, policy arguments without analyzed data, clinical vignettes without a research design, and protocols without results. A record described merely as "a review" is not empirical unless systematic methods are visible in the title or abstract.</div>
+    </div>
+
+    <div class="def" style="--c:#4C9F8A">
+      <h4><i></i>Method, for empirical records only</h4>
+      <p>Exactly one of Quantitative, Qualitative, or Review. The requested taxonomy has no mixed-methods category, so mixed-methods studies with a central quantitative component were mapped to Quantitative and the rest to their predominant method.</p>
+      <div class="ex">That is a real distortion, stated rather than hidden: a reader who needs a mixed-methods count cannot get one from these labels.</div>
+    </div>
+
+    <h3>Execution settings</h3>
+    <div class="tablewrap">
+    <table>
+      <tbody>
+        <tr><td>Screening model</td><td><code>qwen3.6:27b</code>, served locally by <a href="https://ollama.com">Ollama</a></td></tr>
+        <tr><td>Orchestration</td><td>Codex, running GPT-5.6-Sol</td></tr>
+        <tr><td>Protocol version</td><td><code>suicide-screen-v1.4-one-record-labels</code></td></tr>
+        <tr><td>Batching</td><td>None — exactly one bibliographic record per request</td></tr>
+        <tr><td>Temperature / seed</td><td><code>0</code> / <code>42</code></td></tr>
+        <tr><td>Context window</td><td>4,096 tokens</td></tr>
+        <tr><td>Thinking mode</td><td>Off for the primary pass; on for adjudication only</td></tr>
+        <tr><td>Output</td><td>Structured JSON schema; responses violating the taxonomy were rejected and retried</td></tr>
+        <tr><td>Inputs seen by the model</td><td>Title and abstract only — never the database's own method or empirical flags</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>The cost of that configuration, measured from the per-request metrics the model returns: 2,034 requests, 1.7 hours of model time, a median of 3.3 seconds per record and 4.7 at the slowest, 2.86 million prompt tokens and 49,000 completion tokens. Every record succeeded on its first attempt. Each decision was appended to a checkpoint file and flushed immediately, so an interrupted run resumes without repeating work.</p>
+
+    <h3>Records without abstracts</h3>
+    <p>Sixty-two records had titles and nothing else. Screening these at all is a judgment call; the alternative is dropping 3% of the corpus. They were screened from title under a conservative forced-choice rule: if a title established suicide relevance but gave no defensible evidence of an empirical design, the record was labeled Non-empirical rather than guessed into a method. Fifty-four were retained as relevant and all 54 landed in Non-empirical; eight were excluded. That rule is safe in one direction and biased in the other, and the flag <code>screening_basis: title_only</code> is preserved on every one so they can be excluded or re-screened.</p>
+
+    <h3>Where the corrections landed</h3>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Processing stage</th><th class="num">Relevant</th><th class="num">Irrelevant</th><th class="num">Non-emp.</th><th class="num">Quant.</th><th class="num">Qual.</th><th class="num">Review</th></tr></thead>
+      <tbody>
+        <tr><td>Primary one-by-one screen</td><td class="num">1,336</td><td class="num">698</td><td class="num">171</td><td class="num">915</td><td class="num">185</td><td class="num">65</td></tr>
+        <tr><td>After blind-audit adjudication</td><td class="num">1,331</td><td class="num">703</td><td class="num">171</td><td class="num">914</td><td class="num">181</td><td class="num">65</td></tr>
+        <tr class="tot"><td>After independent inspection</td><td class="num">1,331</td><td class="num">703</td><td class="num">171</td><td class="num">915</td><td class="num">180</td><td class="num">65</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>The blind audit sampled with seed <code>20260802</code>, twenty records per group; the independent inspection used seed <code>20260803</code>, four per group, excluding everything the first audit had touched. Every corrected record keeps its pre-correction decision under a <code>screening_initial</code> or <code>screening_pre_manual_spot_check</code> key, alongside which audit changed it. The audit trail is part of the release, not a summary of it.</p>
+  </div>
+</section>
+
+<section class="tech" style="border-top:none">
+  <div class="wrap">
+    <h2>Limitations</h2>
+    <ul class="plain">
+      <li><b>This is not a suicide-literature review.</b> It covers selected disciplinary social work journals and one conference. Suicide scholarship in medicine, psychology, public health, sociology, and nursing is out of scope by construction, as is work by social work researchers published outside the disciplinary journal set.</li>
+      <li><b>Vocabulary-bounded recall.</b> A record enters only if a suicide-root term appears in its title or abstract. Studies phrased entirely in alternate terminology are missing, and self-harm and nonsuicidal self-injury work is not swept in by default.</li>
+      <li><b>Abstract-level decisions.</b> Labels come from titles and abstracts, never full texts. Distinguishing systematic from narrative review methods, or qualitative from mixed-methods designs, is sometimes impossible from an abstract — and those are exactly the cells where the audits found the most movement.</li>
+      <li><b>Sixty-two title-only records.</b> The conservative fallback pushes them all to Non-empirical, which likely misclassifies genuinely empirical older studies. They are flagged so they can be dropped.</li>
+      <li><b>A forced taxonomy.</b> No mixed-methods category, no case-study category. Mixed-methods work was absorbed into Quantitative or Qualitative by predominance.</li>
+      <li><b>Model dependence.</b> Qwen produced every primary label <em>and</em> performed the 100-record blind re-screen, so the 92% is internal consistency and may overstate agreement with an independent reviewer. The only genuinely independent check — Sol's — covered 20 records.</li>
+      <li><b>Incomplete recent journal years.</b> Publisher indexing lag makes SWRD 2024–2025 lower bounds; they should not carry trend conclusions.</li>
+      <li><b>Residual duplication and author ambiguity.</b> SWRD was deduplicated on normalized title and year as the guide prescribes, but non-identical duplicates may remain, and SWRD author strings are not identity-disambiguated. SSWR author ids are canonical.</li>
+      <li><b>Known open data problems.</b> This corpus was built on the database as it stands today, including the quality issues this run surfaced — non-DOI values in the DOI column, double-indexed articles with a wrong journal id, and missing abstracts. They are tracked as <a href="https://github.com/beperron/SocialWork-MetaData/issues/1">issue #1</a> and will be corrected in the next data release, at which point the affected records here should be re-checked.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="tech" style="border-top:none">
+  <div class="wrap">
+    <h2>Get the data and the code</h2>
+    <p class="lede">Everything behind this page is in the folder it is served from: the labels, the full audit trail, and the scripts that produce them.</p>
+
+    <h3>Data</h3>
+    <ul class="plain">
+      <li><a href="data/suicide_abstract_screening_results.json">suicide_abstract_screening_results.json</a> — all 2,034 screened candidates: bibliographic metadata, abstract, the three decisions, per-request model metrics, and the pre-correction decision on every audited record.</li>
+      <li><a href="data/suicide_relevant_articles.json">suicide_relevant_articles.json</a> — the 1,331 relevant records only.</li>
+      <li><a href="data/suicide_corpus_labeled.csv">suicide_corpus_labeled.csv</a> — the same corpus as a flat table without abstracts, for spreadsheet work.</li>
+      <li><a href="data/accuracy_audit.json">accuracy_audit.json</a> — the 100-record blind re-screen, with the blind rationales and every adjudication.</li>
+      <li><a href="data/independent_manual_spot_check.json">independent_manual_spot_check.json</a> — the 20-record independent inspection and its two corrections.</li>
+      <li><a href="data/screening_summary.json">screening_summary.json</a> — final counts and audit metadata.</li>
+      <li><a href="data/stats.json">stats.json</a> — every number on this page, machine-readable.</li>
+    </ul>
+
+    <h3>The scripts the assistants wrote</h3>
+    <p>Nobody typed any of these. They were produced by the AI systems while carrying out the two English instructions above, and they are published because a claim about a method should be inspectable — not because anyone needs to read or run them to repeat this. Repeating it means giving an assistant the connection file and the same two prompts.</p>
+    <ul class="plain">
+      <li><a href="code/fetch_suicide_papers.py">fetch_suicide_papers.py</a> — retrieval, pagination, deduplication, and export.</li>
+      <li><a href="code/screen_suicide_abstracts_ollama.py">screen_suicide_abstracts_ollama.py</a> — the one-record-at-a-time screening pass, including the full instructions the local model received for every record.</li>
+      <li><a href="code/audit_suicide_screening.py">audit_suicide_screening.py</a> — the blind re-screen and the adjudication of disagreements.</li>
+      <li><a href="code/apply_independent_spot_check.py">apply_independent_spot_check.py</a> — applies the independent inspection decisions with provenance.</li>
+      <li><a href="code/compute_stats.py">compute_stats.py</a> — recomputes every count on this page from the released labels. It needs no model and no network, so it is the quickest way to check this page against its data.</li>
+      <li><a href="code/make_figures.py">make_figures.py</a> — regenerates the three figures.</li>
+    </ul>
+
+    <h3>Related</h3>
+    <ul class="plain">
+      <li><a href="METHODS.md">METHODS.md</a> — the long-form methods and results document, written during the run.</li>
+      <li><a href="../../llms.txt">llms.txt</a> — the connection file this demonstration is a test of. Give it to an assistant and it can query both databases.</li>
+      <li><a href="../ai-in-social-work/">Artificial intelligence in social work, 1989–2026</a> — the same pattern on a different topic, with human rather than model labeling.</li>
+      <li><a href="../../text-to-sql.html">Can small local models query the databases?</a> — the benchmark behind the claim that this runs on open weights.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="wrap">
+    <div class="crisis"><b>If you are struggling:</b> in the United States, the 988 Suicide &amp; Crisis Lifeline is available 24/7 — call or text <b>988</b>, or chat at <a href="https://988lifeline.org">988lifeline.org</a>. Outside the US, the <a href="https://findahelpline.com">International Association for Suicide Prevention directory</a> lists crisis centres by country.</div>
+    <p style="max-width:none;margin:0">Social Work Meta-Data Project · University of Michigan School of Social Work ·
+    <a href="../../">project home</a> ·
+    <a href="https://github.com/beperron/SocialWork-MetaData">repository</a></p>
+    <p style="max-width:none;margin:8px 0 0;font-size:12.5px;color:#71717A">Analysis completed 2 August 2026 against the current database release. Counts were computed from the released label files by <code>compute_stats.py</code> and reflect the corpus as of that date.</p>
+  </div>
+</div>
+
+<script>
+const NETDATA = {"journals":{"venue":"journals","ramp":["#9FD3CB","#7FC0B5","#5CA99C","#3D8F81","#256E63","#0F5257"],"min_items":2,"min_links":4,"total_authors":1433,"nodes":[{"i":0,"num":1,"name":"Mirick, R.","n":19,"split":[11,6,0,2],"score":0.579,"color":"#3D8F81","dark":true},{"i":1,"num":2,"name":"Mccauley, J.","n":9,"split":[4,3,0,2],"score":0.444,"color":"#5CA99C","dark":false},{"i":2,"num":3,"name":"Bridger, J.","n":8,"split":[3,3,0,2],"score":0.375,"color":"#5CA99C","dark":false},{"i":3,"num":4,"name":"Berkowitz, L.","n":7,"split":[4,3,0,0],"score":0.571,"color":"#3D8F81","dark":true},{"i":4,"num":5,"name":"Kourgiantakis, T.","n":5,"split":[0,1,1,3],"score":0.0,"color":"#9FD3CB","dark":false},{"i":5,"num":6,"name":"Lee, Eunjung","n":5,"split":[0,1,1,3],"score":0.0,"color":"#9FD3CB","dark":false},{"i":6,"num":7,"name":"Chang, E.","n":4,"split":[4,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":7,"num":8,"name":"Sewell, K.","n":4,"split":[0,2,1,1],"score":0.0,"color":"#9FD3CB","dark":false},{"i":8,"num":9,"name":"Chang, O.","n":3,"split":[3,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":9,"num":10,"name":"Hirsch, Jameson","n":3,"split":[3,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":10,"num":11,"name":"Li, Mingqi","n":3,"split":[3,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":11,"num":12,"name":"Regehr, C.","n":3,"split":[1,1,0,1],"score":0.333,"color":"#5CA99C","dark":false},{"i":12,"num":13,"name":"Yu, E.","n":3,"split":[3,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":13,"num":14,"name":"Adamson, K.","n":2,"split":[0,0,1,1],"score":0.0,"color":"#9FD3CB","dark":false},{"i":14,"num":15,"name":"Ariad, S.","n":2,"split":[0,2,0,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":15,"num":16,"name":"Ben-David, M.","n":2,"split":[0,2,0,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":16,"num":17,"name":"Birze, A.","n":2,"split":[1,1,0,0],"score":0.5,"color":"#3D8F81","dark":true},{"i":17,"num":18,"name":"Boffey, M.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":18,"num":19,"name":"Bogo, M.","n":2,"split":[0,1,0,1],"score":0.0,"color":"#9FD3CB","dark":false},{"i":19,"num":20,"name":"Evans, R.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":20,"num":21,"name":"Fallon, B.","n":2,"split":[1,1,0,0],"score":0.5,"color":"#3D8F81","dark":true},{"i":21,"num":22,"name":"Granek, L.","n":2,"split":[0,2,0,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":22,"num":23,"name":"Kirvan, A.","n":2,"split":[0,1,1,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":23,"num":24,"name":"Kuehl, D.","n":2,"split":[0,0,1,1],"score":0.0,"color":"#9FD3CB","dark":false},{"i":24,"num":25,"name":"Lucas, A.","n":2,"split":[2,0,0,0],"score":1.0,"color":"#0F5257","dark":true},{"i":25,"num":26,"name":"Macdonald, S.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":26,"num":27,"name":"Mccormick, M.","n":2,"split":[0,0,1,1],"score":0.0,"color":"#9FD3CB","dark":false},{"i":27,"num":28,"name":"Melendez-Torres, G.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":28,"num":29,"name":"Moffatt, K.","n":2,"split":[1,0,0,1],"score":0.5,"color":"#3D8F81","dark":true},{"i":29,"num":30,"name":"Nakash, O.","n":2,"split":[0,2,0,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":30,"num":31,"name":"Noyes, J.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":31,"num":32,"name":"Robling, M.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":32,"num":33,"name":"Shapira, S.","n":2,"split":[0,2,0,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":33,"num":34,"name":"Trubey, R.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":34,"num":35,"name":"Vinnicombe, S.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":35,"num":36,"name":"Willis, S.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false},{"i":36,"num":37,"name":"Wooders, C.","n":2,"split":[0,0,2,0],"score":0.0,"color":"#9FD3CB","dark":false}],"links":[{"s":6,"t":9,"w":3},{"s":6,"t":12,"w":3},{"s":9,"t":12,"w":3},{"s":3,"t":2,"w":4},{"s":3,"t":1,"w":4},{"s":3,"t":0,"w":7},{"s":2,"t":1,"w":8},{"s":2,"t":0,"w":8},{"s":1,"t":0,"w":9},{"s":3,"t":28,"w":1},{"s":2,"t":28,"w":1},{"s":1,"t":28,"w":1},{"s":0,"t":28,"w":1},{"s":6,"t":8,"w":3},{"s":6,"t":10,"w":3},{"s":6,"t":24,"w":2},{"s":8,"t":9,"w":2},{"s":8,"t":10,"w":3},{"s":8,"t":24,"w":2},{"s":8,"t":12,"w":2},{"s":9,"t":10,"w":2},{"s":9,"t":24,"w":2},{"s":10,"t":24,"w":2},{"s":10,"t":12,"w":2},{"s":24,"t":12,"w":2},{"s":13,"t":18,"w":1},{"s":13,"t":4,"w":2},{"s":13,"t":23,"w":2},{"s":13,"t":5,"w":2},{"s":13,"t":26,"w":2},{"s":13,"t":7,"w":2},{"s":18,"t":4,"w":1},{"s":18,"t":23,"w":1},{"s":18,"t":5,"w":1},{"s":18,"t":26,"w":1},{"s":18,"t":7,"w":2},{"s":4,"t":23,"w":2},{"s":4,"t":5,"w":5},{"s":4,"t":26,"w":2},{"s":4,"t":7,"w":3},{"s":23,"t":5,"w":2},{"s":23,"t":26,"w":2},{"s":23,"t":7,"w":2},{"s":5,"t":26,"w":2},{"s":5,"t":7,"w":3},{"s":26,"t":7,"w":2},{"s":14,"t":15,"w":2},{"s":14,"t":21,"w":2},{"s":14,"t":29,"w":2},{"s":14,"t":32,"w":2},{"s":15,"t":21,"w":2},{"s":15,"t":29,"w":2},{"s":15,"t":32,"w":2},{"s":21,"t":29,"w":2},{"s":21,"t":32,"w":2},{"s":29,"t":32,"w":2},{"s":22,"t":4,"w":2},{"s":22,"t":5,"w":2},{"s":22,"t":7,"w":2},{"s":13,"t":22,"w":1},{"s":22,"t":23,"w":1},{"s":22,"t":26,"w":1},{"s":16,"t":18,"w":1},{"s":16,"t":20,"w":1},{"s":16,"t":11,"w":2},{"s":16,"t":7,"w":1},{"s":18,"t":20,"w":1},{"s":18,"t":11,"w":1},{"s":20,"t":11,"w":1},{"s":20,"t":7,"w":1},{"s":11,"t":7,"w":1},{"s":17,"t":19,"w":2},{"s":17,"t":25,"w":2},{"s":17,"t":27,"w":2},{"s":17,"t":30,"w":2},{"s":17,"t":31,"w":2},{"s":17,"t":33,"w":2},{"s":17,"t":34,"w":2},{"s":17,"t":35,"w":2},{"s":17,"t":36,"w":2},{"s":19,"t":25,"w":2},{"s":19,"t":27,"w":2},{"s":19,"t":30,"w":2},{"s":19,"t":31,"w":2},{"s":19,"t":33,"w":2},{"s":19,"t":34,"w":2},{"s":19,"t":35,"w":2},{"s":19,"t":36,"w":2},{"s":25,"t":27,"w":2},{"s":25,"t":30,"w":2},{"s":25,"t":31,"w":2},{"s":25,"t":33,"w":2},{"s":25,"t":34,"w":2},{"s":25,"t":35,"w":2},{"s":25,"t":36,"w":2},{"s":27,"t":30,"w":2},{"s":27,"t":31,"w":2},{"s":27,"t":33,"w":2},{"s":27,"t":34,"w":2},{"s":27,"t":35,"w":2},{"s":27,"t":36,"w":2},{"s":30,"t":31,"w":2},{"s":30,"t":33,"w":2},{"s":30,"t":34,"w":2},{"s":30,"t":35,"w":2},{"s":30,"t":36,"w":2},{"s":31,"t":33,"w":2},{"s":31,"t":34,"w":2},{"s":31,"t":35,"w":2},{"s":31,"t":36,"w":2},{"s":33,"t":34,"w":2},{"s":33,"t":35,"w":2},{"s":33,"t":36,"w":2},{"s":34,"t":35,"w":2},{"s":34,"t":36,"w":2},{"s":35,"t":36,"w":2}]},"conference":{"venue":"conference","ramp":["#F0C39A","#E5A874","#D98E52","#C97B3E","#A9612C","#83481D"],"min_items":3,"min_links":4,"total_authors":1489,"nodes":[{"i":0,"num":1,"name":"Anthony Fulginiti","n":20,"split":[20,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":1,"num":2,"name":"Christina M. Sellers","n":15,"split":[12,3,0,0],"score":0.8,"color":"#A9612C","dark":true},{"i":2,"num":3,"name":"Lindsay A. Bornheimer","n":15,"split":[13,2,0,0],"score":0.867,"color":"#83481D","dark":true},{"i":3,"num":4,"name":"Eric Rice","n":13,"split":[13,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":4,"num":5,"name":"Phillip Baiden","n":13,"split":[13,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":5,"num":6,"name":"Harmony Rhoades","n":6,"split":[6,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":6,"num":7,"name":"Hsun-Ta Hsu","n":6,"split":[6,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":7,"num":8,"name":"Jarrod Call","n":6,"split":[6,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":8,"num":9,"name":"Juliann Li Verdugo","n":6,"split":[5,1,0,0],"score":0.833,"color":"#83481D","dark":true},{"i":9,"num":10,"name":"Kimberly A. Bender","n":6,"split":[6,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":10,"num":11,"name":"Meghan Romanelli","n":6,"split":[6,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":11,"num":12,"name":"Nicholas Brdar","n":6,"split":[5,1,0,0],"score":0.833,"color":"#83481D","dark":true},{"i":12,"num":13,"name":"Cheryl King","n":5,"split":[5,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":13,"num":14,"name":"Robin Petering","n":5,"split":[5,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":14,"num":15,"name":"Yi Jin Kim","n":5,"split":[5,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":15,"num":16,"name":"Catalina Cañizares","n":4,"split":[3,0,1,0],"score":0.75,"color":"#A9612C","dark":true},{"i":16,"num":17,"name":"Catherine A. LaBrenz","n":4,"split":[4,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":17,"num":18,"name":"Diane Santa Maria","n":4,"split":[4,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":18,"num":19,"name":"Jama Shelton","n":4,"split":[4,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":19,"num":20,"name":"Maura Campbell","n":4,"split":[3,1,0,0],"score":0.75,"color":"#A9612C","dark":true},{"i":20,"num":21,"name":"Sarah C. Narendorf","n":4,"split":[4,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":21,"num":22,"name":"Timothy Florence","n":4,"split":[3,1,0,0],"score":0.75,"color":"#A9612C","dark":true},{"i":22,"num":23,"name":"Amanda Minogue","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":23,"num":24,"name":"Anamika Barman-Adhikari","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":24,"num":25,"name":"Aneeza Agha","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":25,"num":26,"name":"Ann Elizabeth Montgomery","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":26,"num":27,"name":"Carolina Vélez-Grau","n":3,"split":[2,1,0,0],"score":0.667,"color":"#A9612C","dark":true},{"i":27,"num":28,"name":"Hailey Winetrobe","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":28,"num":29,"name":"Henry K Onyeaka","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":29,"num":30,"name":"Katherine Iverson","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":30,"num":31,"name":"Katie Hoener","n":3,"split":[2,1,0,0],"score":0.667,"color":"#A9612C","dark":true},{"i":31,"num":32,"name":"Kristin M. Ferguson","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":32,"num":33,"name":"Lauren Krishnamurti","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":33,"num":34,"name":"Lindsey Monteith","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":34,"num":35,"name":"Lisa S. Panisch","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":35,"num":36,"name":"Melissa E. Dichter","n":3,"split":[1,2,0,0],"score":0.333,"color":"#D98E52","dark":false},{"i":36,"num":37,"name":"Yangjin Park","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true},{"i":37,"num":38,"name":"Yeonwoo Kim","n":3,"split":[3,0,0,0],"score":1.0,"color":"#83481D","dark":true}],"links":[{"s":3,"t":27,"w":3},{"s":3,"t":5,"w":3},{"s":27,"t":5,"w":3},{"s":3,"t":0,"w":5},{"s":3,"t":6,"w":2},{"s":0,"t":6,"w":5},{"s":0,"t":27,"w":1},{"s":0,"t":5,"w":1},{"s":6,"t":27,"w":1},{"s":6,"t":5,"w":1},{"s":3,"t":13,"w":1},{"s":9,"t":20,"w":4},{"s":9,"t":18,"w":4},{"s":9,"t":17,"w":4},{"s":20,"t":18,"w":4},{"s":20,"t":17,"w":4},{"s":18,"t":17,"w":4},{"s":9,"t":31,"w":3},{"s":9,"t":23,"w":3},{"s":9,"t":6,"w":3},{"s":9,"t":13,"w":3},{"s":31,"t":20,"w":3},{"s":31,"t":23,"w":3},{"s":31,"t":6,"w":3},{"s":31,"t":18,"w":3},{"s":31,"t":13,"w":3},{"s":31,"t":17,"w":3},{"s":20,"t":23,"w":3},{"s":20,"t":6,"w":3},{"s":20,"t":13,"w":3},{"s":23,"t":6,"w":3},{"s":23,"t":18,"w":3},{"s":23,"t":13,"w":3},{"s":23,"t":17,"w":3},{"s":6,"t":18,"w":3},{"s":6,"t":13,"w":3},{"s":6,"t":17,"w":3},{"s":18,"t":13,"w":3},{"s":13,"t":17,"w":3},{"s":3,"t":7,"w":1},{"s":0,"t":7,"w":3},{"s":2,"t":8,"w":6},{"s":14,"t":4,"w":1},{"s":14,"t":37,"w":1},{"s":14,"t":16,"w":1},{"s":14,"t":34,"w":1},{"s":14,"t":28,"w":1},{"s":4,"t":37,"w":1},{"s":4,"t":16,"w":4},{"s":4,"t":34,"w":1},{"s":4,"t":28,"w":3},{"s":37,"t":16,"w":1},{"s":37,"t":34,"w":1},{"s":37,"t":28,"w":1},{"s":16,"t":34,"w":1},{"s":16,"t":28,"w":2},{"s":34,"t":28,"w":1},{"s":9,"t":0,"w":2},{"s":9,"t":7,"w":2},{"s":31,"t":0,"w":2},{"s":31,"t":7,"w":2},{"s":20,"t":0,"w":2},{"s":20,"t":7,"w":2},{"s":23,"t":0,"w":2},{"s":23,"t":7,"w":2},{"s":0,"t":18,"w":2},{"s":0,"t":13,"w":2},{"s":0,"t":17,"w":2},{"s":6,"t":7,"w":2},{"s":18,"t":7,"w":2},{"s":13,"t":7,"w":2},{"s":17,"t":7,"w":2},{"s":35,"t":25,"w":3},{"s":35,"t":32,"w":3},{"s":35,"t":33,"w":3},{"s":35,"t":29,"w":3},{"s":35,"t":24,"w":3},{"s":25,"t":32,"w":3},{"s":25,"t":33,"w":3},{"s":25,"t":29,"w":3},{"s":25,"t":24,"w":3},{"s":32,"t":33,"w":3},{"s":32,"t":29,"w":3},{"s":32,"t":24,"w":3},{"s":33,"t":29,"w":3},{"s":33,"t":24,"w":3},{"s":29,"t":24,"w":3},{"s":2,"t":12,"w":3},{"s":2,"t":30,"w":3},{"s":2,"t":21,"w":4},{"s":8,"t":12,"w":2},{"s":8,"t":30,"w":1},{"s":8,"t":21,"w":1},{"s":12,"t":30,"w":1},{"s":12,"t":21,"w":2},{"s":30,"t":21,"w":3},{"s":4,"t":1,"w":4},{"s":4,"t":10,"w":1},{"s":4,"t":26,"w":1},{"s":16,"t":1,"w":2},{"s":16,"t":10,"w":1},{"s":16,"t":26,"w":1},{"s":1,"t":10,"w":1},{"s":1,"t":26,"w":1},{"s":10,"t":26,"w":1},{"s":2,"t":11,"w":6},{"s":2,"t":19,"w":4},{"s":30,"t":11,"w":2},{"s":30,"t":19,"w":2},{"s":21,"t":11,"w":3},{"s":21,"t":19,"w":3},{"s":11,"t":19,"w":4},{"s":4,"t":36,"w":1},{"s":4,"t":15,"w":1},{"s":4,"t":22,"w":1},{"s":16,"t":36,"w":1},{"s":16,"t":15,"w":1},{"s":16,"t":22,"w":1},{"s":1,"t":36,"w":1},{"s":1,"t":15,"w":1},{"s":1,"t":22,"w":1},{"s":36,"t":15,"w":1},{"s":36,"t":22,"w":1},{"s":15,"t":22,"w":1},{"s":8,"t":11,"w":1},{"s":12,"t":11,"w":2},{"s":12,"t":19,"w":1}]}};
+(function(){
+  const svg = document.getElementById("net"), list = document.getElementById("netlist"),
+        meta = document.getElementById("netmeta"), cap = document.getElementById("netcap");
+  if (!svg) return;
+  const NS = "http://www.w3.org/2000/svg";
+  let W = 900, H = 620, view = "journals", sim = null, nodes = [], links = [], gEdge, gNode;
+
+  const r = n => 11 + 2.6 * Math.min(n.n, 18);
+
+  function build(){
+    const g = NETDATA[view];
+    nodes = g.nodes.map(n => Object.assign({}, n, {
+      x: W/2 + (Math.cos(n.i * 2.399) * (60 + 9 * (n.i % 7))),
+      y: H/2 + (Math.sin(n.i * 2.399) * (60 + 9 * (n.i % 7))),
+      vx: 0, vy: 0, fixed: false }));
+    links = g.links.map(l => Object.assign({}, l));
+    meta.textContent = `${g.nodes.length} authors · ${g.links.length} collaborations`;
+    var rb = document.querySelector(".rampbar");
+    if (rb && g.ramp) rb.style.background = "linear-gradient(90deg," + g.ramp.join(",") + ")";
+    var tt = document.getElementById("nettitle");
+    if (tt) tt.textContent = view === "conference" ? "Conference Authors" : "Journal Authors";
+    document.getElementById("netthresh").innerHTML =
+      `THRESHOLD: showing only authors with <b>${g.min_items} or more</b> items `
+      + `<b>and ${g.min_links} or more</b> co-author links`;
+    cap.innerHTML = `Inclusion: authors on <b>${g.min_items}+</b> corpus items holding <b>${g.min_links}+</b> `
+      + `co-author links, applied repeatedly so every node shown really has that many links within the graph `
+      + `(${g.nodes.length} of ${g.total_authors} authors in this venue). Node size and the key number are the `
+      + `author's item count; edge width is joint items. Position carries no meaning beyond connectivity.`;
+    list.innerHTML = nodes.map(n =>
+      `<li data-i="${n.i}"><b>${n.num}.</b> ${n.name} (${n.n})</li>`).join("");
+    render();
+    kick();
+  }
+
+  function render(){
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.innerHTML = "";
+    gEdge = document.createElementNS(NS, "g"); svg.appendChild(gEdge);
+    gNode = document.createElementNS(NS, "g"); svg.appendChild(gNode);
+    links.forEach(l => {
+      const ln = document.createElementNS(NS, "line");
+      ln.setAttribute("stroke", "#C9C7C0");
+      ln.setAttribute("stroke-width", 0.9 + 0.9 * l.w);
+      ln.setAttribute("stroke-linecap", "round");
+      gEdge.appendChild(ln); l.el = ln;
+    });
+    nodes.forEach(n => {
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("class", "nodeg"); g.dataset.i = n.i;
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("r", r(n)); c.setAttribute("fill", n.color);
+      c.setAttribute("stroke", "#111"); c.setAttribute("stroke-width", 1.2);
+      const t = document.createElementNS(NS, "text");
+      t.setAttribute("text-anchor", "middle"); t.setAttribute("dy", "0.36em");
+      t.setAttribute("font-size", "11.5"); t.setAttribute("font-weight", "700");
+      t.setAttribute("fill", n.dark ? "#fff" : "#241E38");
+      t.setAttribute("pointer-events", "none");
+      t.textContent = n.num;
+      const ttl = document.createElementNS(NS, "title");
+      ttl.textContent = `${n.name}: ${n.n} items (${n.split[0]} empirical / ${n.split[1]} study of AI / ${n.split[2]} commentary)`;
+      g.appendChild(c); g.appendChild(t); g.appendChild(ttl);
+      gNode.appendChild(g); n.el = g; n.circle = c;
+    });
+    position();
+  }
+
+  function position(){
+    links.forEach(l => {
+      const a = nodes[l.s], b = nodes[l.t];
+      l.el.setAttribute("x1", a.x); l.el.setAttribute("y1", a.y);
+      l.el.setAttribute("x2", b.x); l.el.setAttribute("y2", b.y);
+    });
+    nodes.forEach(n => n.el.setAttribute("transform", `translate(${n.x},${n.y})`));
+  }
+
+  function step(){
+    const K = 0.012, REP = 5200, DAMP = 0.86;
+    for (let i = 0; i < nodes.length; i++){
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++){
+        const b = nodes[j];
+        let dx = a.x - b.x, dy = a.y - b.y, d2 = dx*dx + dy*dy || 0.01;
+        let d = Math.sqrt(d2);
+        const minD = r(a) + r(b) + 12;
+        let f = REP / d2;
+        if (d < minD) f += (minD - d) * 0.22;      // hard separation
+        const fx = (dx/d) * f, fy = (dy/d) * f;
+        a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+      }
+    }
+    links.forEach(l => {
+      const a = nodes[l.s], b = nodes[l.t];
+      const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 0.01;
+      const rest = 96 + 26 * Math.min(l.w, 3);
+      const f = K * (d - rest);
+      const fx = (dx/d) * f, fy = (dy/d) * f;
+      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    });
+    nodes.forEach(n => {
+      n.vx += (W/2 - n.x) * 0.0016; n.vy += (H/2 - n.y) * 0.0016;
+      if (n.fixed){ n.vx = n.vy = 0; return; }
+      n.vx *= DAMP; n.vy *= DAMP;
+      n.x += Math.max(-14, Math.min(14, n.vx));
+      n.y += Math.max(-14, Math.min(14, n.vy));
+      const pad = r(n) + 4;
+      n.x = Math.max(pad, Math.min(W - pad, n.x));
+      n.y = Math.max(pad, Math.min(H - pad, n.y));
+    });
+    position();
+  }
+
+  let frames = 0;
+  function loop(){
+    step(); frames++;
+    if (frames < 900 || dragging) sim = requestAnimationFrame(loop); else sim = null;
+  }
+  function kick(){ frames = 0; if (!sim) sim = requestAnimationFrame(loop); }
+
+  let dragging = null;
+  function pt(evt){
+    const m = svg.getScreenCTM().inverse(),
+          p = new DOMPoint(evt.clientX, evt.clientY).matrixTransform(m);
+    return p;
+  }
+  svg.addEventListener("pointerdown", e => {
+    const g = e.target.closest(".nodeg"); if (!g) return;
+    dragging = nodes[+g.dataset.i]; dragging.fixed = true;
+    g.classList.add("pinned"); svg.classList.add("dragging");
+    svg.setPointerCapture(e.pointerId); kick(); e.preventDefault();
+  });
+  svg.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    const p = pt(e); dragging.x = p.x; dragging.y = p.y; position(); kick();
+  });
+  svg.addEventListener("pointerup", e => {
+    if (!dragging) return;
+    dragging.fixed = false; dragging.el.classList.remove("pinned");
+    svg.classList.remove("dragging"); dragging = null; kick();
+  });
+
+  list.addEventListener("mouseover", e => {
+    const li = e.target.closest("li"); if (!li) return;
+    const n = nodes[+li.dataset.i]; if (n) n.circle.setAttribute("stroke-width", 3.4);
+  });
+  list.addEventListener("mouseout", e => {
+    const li = e.target.closest("li"); if (!li) return;
+    const n = nodes[+li.dataset.i]; if (n) n.circle.setAttribute("stroke-width", 1.2);
+  });
+  gNodeHover();
+  function gNodeHover(){
+    svg.addEventListener("mouseover", e => {
+      const g = e.target.closest(".nodeg"); if (!g) return;
+      const li = list.querySelector(`li[data-i="${g.dataset.i}"]`); if (li) li.classList.add("hl");
+    });
+    svg.addEventListener("mouseout", e => {
+      const g = e.target.closest(".nodeg"); if (!g) return;
+      const li = list.querySelector(`li[data-i="${g.dataset.i}"]`); if (li) li.classList.remove("hl");
+    });
+  }
+
+  document.querySelectorAll(".vbtn[data-v]").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".vbtn[data-v]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on"); view = b.dataset.v; build();
+  }));
+  document.getElementById("netreset").addEventListener("click", build);
+  build();
+})();
+</script>
+</body>
+</html>

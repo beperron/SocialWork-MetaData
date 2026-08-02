@@ -1,0 +1,482 @@
+{
+  "summary": {
+    "method": "Independent manual inspection of title and full abstract against the prespecified rubric",
+    "random_seed": 20260803,
+    "excluded_prior_model_audit_records": 100,
+    "sample_per_group": 4,
+    "total_sampled": 20,
+    "agreements": 18,
+    "agreement_rate": 0.9,
+    "records_corrected": 2,
+    "group_statistics": {
+      "Irrelevant": {
+        "sampled": 4,
+        "agreements": 3,
+        "agreement_rate": 0.75
+      },
+      "Relevant Non-empirical": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      },
+      "Quantitative": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      },
+      "Qualitative": {
+        "sampled": 4,
+        "agreements": 3,
+        "agreement_rate": 0.75
+      },
+      "Review": {
+        "sampled": 4,
+        "agreements": 4,
+        "agreement_rate": 1.0
+      }
+    },
+    "completed_at": "2026-08-02T19:42:14.498416+00:00"
+  },
+  "audited_records": [
+    {
+      "record_key": "SWRD:98221",
+      "sample_group": "Irrelevant",
+      "title": "The BP catastrophe and sociological practice mitigating community impacts through peer-listener training",
+      "initial_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "Suicide is contextual motivation for a broad disaster mental-health intervention and is not distinctly analyzed.",
+      "final_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SSWR:2016-U-0447",
+      "sample_group": "Irrelevant",
+      "title": "Gender Differences in the Pathways from Sexual Abuse to Risky Sexual Behavior in Homeless Youth",
+      "initial_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "agreement": false,
+      "rationale": "Suicidal ideation is included in regression as an analyzed mechanism and has a separately reported significant association.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      }
+    },
+    {
+      "record_key": "SWRD:100438",
+      "sample_group": "Irrelevant",
+      "title": "Enhanced Cognitive Behavioral Therapy (CBT-E) as an Intervention for BIPOC Adolescent Girls with Eating Disorders",
+      "initial_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "Suicidality appears only in background on eating-disorder mortality; the article argues for culturally responsive eating-disorder treatment.",
+      "final_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SSWR:2026-U-0041",
+      "sample_group": "Irrelevant",
+      "title": "Constructing the Modern Worker: The Occluded Origins of Clinical Social Work",
+      "initial_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "The phrase race suicide is a historical demographic ideology, not suicide or suicidal behavior.",
+      "final_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SWRD:24841",
+      "sample_group": "Relevant Non-empirical",
+      "title": "HIV/AIDS and suicide: Be open",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "The title is centrally about HIV/AIDS and suicide; no abstract establishes an empirical design, so the conservative title-only rule applies.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SWRD:46344",
+      "sample_group": "Relevant Non-empirical",
+      "title": "Suicide: Foucault, History and Truth",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "The title is centrally about suicide and Foucauldian history; no abstract establishes an empirical design.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SWRD:38211",
+      "sample_group": "Relevant Non-empirical",
+      "title": "Evidence-based gatekeeper suicide prevention in a small community context",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "Suicide-prevention programs are central, but the abstract does not describe a systematic, scoping, or meta-analytic search and selection method.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SWRD:38347",
+      "sample_group": "Relevant Non-empirical",
+      "title": "Suicide among individuals with schizophrenia: A risk factor model",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": true,
+      "rationale": "The paper centrally develops a conceptual suicide-risk model without analyzing new observations or conducting a systematic review.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Non-empirical",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SSWR:2018-P-0091",
+      "sample_group": "Quantitative",
+      "title": "Mapping Suicide Mortality in Ohio: A Spatial Epidemiological Analysis of Suicide Clusters and Area Level Correlates",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "agreement": true,
+      "rationale": "The study uses death records, spatial statistics, principal components, and regression to analyze suicide clusters.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      }
+    },
+    {
+      "record_key": "SSWR:2024-P-0285",
+      "sample_group": "Quantitative",
+      "title": "Exploring Suicide Risk Among Homeless Adults in Texas: Investigating Factors Influencing Suicide Ideation and the Need for Safety Planning",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "agreement": true,
+      "rationale": "Suicide ideation is the stated outcome in a multivariable logistic-regression study.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      }
+    },
+    {
+      "record_key": "SSWR:2024-P-0287",
+      "sample_group": "Quantitative",
+      "title": "Understanding the Role of Peer Victimization As an Adverse Childhood Experience in Predicting Behavior Problems across Racial/Ethnic Groups",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "agreement": true,
+      "rationale": "Suicidal ideation and attempts are explicit dependent variables analyzed using weighted logistic regression.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      }
+    },
+    {
+      "record_key": "SSWR:2026-P-0414",
+      "sample_group": "Quantitative",
+      "title": "Military Providers' Attitudes Towards Assessing and Treating Suicidality",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      },
+      "agreement": true,
+      "rationale": "Provider suicide-assessment attitudes and practices are measured by survey and analyzed with regression.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Quantitative"
+      }
+    },
+    {
+      "record_key": "SWRD:81403",
+      "sample_group": "Qualitative",
+      "title": "Growing www.parentsofsuicide: A Case Study of an online support community",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "agreement": true,
+      "rationale": "The article reports case-study findings on an online community for parents bereaved by suicide.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      }
+    },
+    {
+      "record_key": "SWRD:42729",
+      "sample_group": "Qualitative",
+      "title": "Personal and Professional Knowledge of and Experience With Suicide and Suicide Prevention Among Stakeholders in Clinical and Community Practice",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "agreement": true,
+      "rationale": "The abstract explicitly reports qualitative interview data on providers' suicide experience and responses.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      }
+    },
+    {
+      "record_key": "SWRD:39284",
+      "sample_group": "Qualitative",
+      "title": "No One Theory of Suicide: The Experience of a Cancer Patient Who Killed Himself",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "agreement": true,
+      "rationale": "The study uses a phenomenological psychological autopsy to analyze a suicide case.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      }
+    },
+    {
+      "record_key": "SSWR:2019-P-0257",
+      "sample_group": "Qualitative",
+      "title": "An Exploration of Knowledge and Attitudes about Victims or Survivors of Domestic Violence with Mental Health Disability: Perspectives from Domestic Violence Service Providers",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Qualitative"
+      },
+      "manual_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      },
+      "agreement": false,
+      "rationale": "Suicide and self-harm are minor items within a broader needs assessment of domestic-violence services and are not distinctly analyzed.",
+      "final_screening": {
+        "is_relevant": false,
+        "evidence_class": "Not applicable",
+        "empirical_method": "Not applicable"
+      }
+    },
+    {
+      "record_key": "SSWR:2018-U-0164",
+      "sample_group": "Review",
+      "title": "Dead inside: A Systematic Review of the Psychosocial Effects of Combat-Related Emotional Numbing",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "agreement": true,
+      "rationale": "This PRISMA-guided systematic review distinctly reports suicidality as one psychosocial outcome domain.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      }
+    },
+    {
+      "record_key": "SWRD:63268",
+      "sample_group": "Review",
+      "title": "Empirically Evaluated Suicide Prevention Program Approaches for Older Adults: A Review of the Literature from 2009-2021",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "agreement": true,
+      "rationale": "The suicide-prevention review explicitly uses PICO, PRISMA, predefined selection, and GRADE assessment.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      }
+    },
+    {
+      "record_key": "SWRD:56221",
+      "sample_group": "Review",
+      "title": "Peer-support groups for suicide loss survivors: a systematic review",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "agreement": true,
+      "rationale": "The suicide-loss intervention review reports a registered systematic search, study selection, synthesis, and bias assessment.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      }
+    },
+    {
+      "record_key": "SWRD:71706",
+      "sample_group": "Review",
+      "title": "Screening and Assessment of Suicidal Behavior in Transition-Age Youth with Foster Care Involvement",
+      "initial_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "manual_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      },
+      "agreement": true,
+      "rationale": "The suicide-screening paper uses a database search and predefined inclusion criteria to synthesize assessment tools.",
+      "final_screening": {
+        "is_relevant": true,
+        "evidence_class": "Empirical",
+        "empirical_method": "Review"
+      }
+    }
+  ]
+}
