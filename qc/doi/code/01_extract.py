@@ -31,7 +31,20 @@ OUT = os.path.join(ROOT, "data", "malformed.json")
 # Measured 2026-08-02. A mismatch is not necessarily an error, but it means the
 # corpus moved and the recovery rules below were validated against a different
 # population — so stop and re-check rather than silently proposing corrections.
-EXPECTED = {"total": 3556, "oai": 2002, "dc": 1554, "journals": 9}
+#
+# The two patterns carry different evidence and so get different scopes.
+#
+#   oai:  ALL YEARS. The rule that recovers these was validated against the
+#         publisher's own OAI-PMH feed (set publication:jssw, 3,056 records):
+#         the article number in the identifier equals the DOI suffix with zero
+#         exceptions. That holds regardless of publication year, so restricting
+#         to 1989+ would withhold a verified DOI from 770 Supplement rows for no
+#         reason. 2,002 of these are in the 1989+ corpus and 770 are older.
+#
+#   dc/   1989+ ONLY. These are recovered by bibliographic search, which is
+#         weaker, and the pre-1989 Supplement is documented as substantially
+#         incomplete — searching it would mostly produce review-queue entries.
+EXPECTED = {"total": 4326, "oai": 2772, "dc": 1554, "journals": 9}
 
 QUERY = r"""
 select
@@ -45,9 +58,9 @@ select
   case when p.doi like 'oai:%' then 'oai' else 'dc' end as pattern
 from swrd.papers p
 left join swrd.journals j on j.id = p.journal_id
-where p.publication_year >= 1989
-  and p.doi is not null
+where p.doi is not null
   and p.doi !~ '^10\.[0-9]{4,9}/'
+  and (p.doi like 'oai:%' or p.publication_year >= 1989)
 order by p.id
 """
 

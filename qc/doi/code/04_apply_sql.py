@@ -27,6 +27,8 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
+sys.path.insert(0, os.path.join(HERE, "..", "..", "crossref", "code"))
+import swrdqc as Q  # noqa: E402
 
 REC = os.path.join(ROOT, "data", "recovery.json")
 AUD = os.path.join(ROOT, "data", "audit.json")
@@ -59,6 +61,56 @@ def main():
     if skipped:
         print(f"  {skipped} proposals held back: tier not covered by the audit")
 
+    # ---- collision preflight against the LIVE column --------------------
+    #
+    # swrd.papers carries a partial unique index:
+    #     unique_papers_doi ON swrd.papers (doi) WHERE doi IS NOT NULL
+    #
+    # so a proposal whose DOI is already held by another row does not just
+    # produce a duplicate — it raises a unique violation, and inside
+    # `begin; ... commit;` with ON_ERROR_STOP=1 that rolls back the ENTIRE
+    # patch. An earlier version of this script only compared proposals against
+    # each other and never against the table; 323 of 2,973 collided and the
+    # whole file would have applied nothing.
+    #
+    # These are not failures of DOI recovery. In almost every case the DOI is
+    # right and the row is a redundant second ingest of an article SWRD already
+    # holds — a duplicate-record problem wearing a DOI problem's clothes.
+    print("  collision preflight against the live column…")
+    existing = {}
+    items = [(r["id"], r["proposed_doi"]) for r in emit]
+    for i in range(0, len(items), 400):
+        chunk = items[i:i + 400]
+        inlist = ",".join("'" + d.replace("'", "''") + "'" for _, d in chunk)
+        for row in Q.rows(f"select id, doi, title, publication_year as year "
+                          f"from swrd.papers where doi in ({inlist})"):
+            existing.setdefault(row["doi"].lower(), []).append(row)
+
+    collided, clean = [], []
+    for r in emit:
+        owners = [o for o in existing.get(r["proposed_doi"].lower(), [])
+                  if o["id"] != r["id"]]
+        if not owners:
+            clean.append(r)
+            continue
+        owner = owners[0]
+        # Same article or a different one? That decides who the finding belongs
+        # to: a duplicate row to merge, or a genuine conflict to adjudicate.
+        same = Q.title_sim(r.get("title") or "", owner.get("title") or "") >= 0.90
+        r = {**r,
+             "verdict": "duplicate_of_existing_row" if same else "collision_needs_review",
+             "collides_with_id": owner["id"],
+             "collides_with_title": (owner.get("title") or "")[:200],
+             "collides_with_year": owner.get("year")}
+        collided.append(r)
+    print(f"    {len(collided):,} proposals collide with a row already in the column")
+    print(f"      same article (duplicate row): "
+          f"{sum(1 for r in collided if r['verdict'] == 'duplicate_of_existing_row'):,}")
+    print(f"      different article (review)  : "
+          f"{sum(1 for r in collided if r['verdict'] == 'collision_needs_review'):,}")
+    emit = clean
+    queue += collided
+
     # Two different DOIs must never be proposed for the same record, and one DOI
     # must not be proposed for two records — either would mean a matching bug.
     by_id = Counter(r["id"] for r in emit)
@@ -67,10 +119,17 @@ def main():
         sys.exit("duplicate record ids in the patch set — aborting")
     collisions = {d: n for d, n in by_doi.items() if n > 1}
     if collisions:
-        print(f"  WARNING: {len(collisions)} DOIs proposed for more than one record; "
-              "these are held back for review")
+        print(f"  {len(collisions)} DOIs proposed for more than one record within the "
+              "patch; held back with the sibling id named")
+        siblings = {}
+        for r in emit:
+            siblings.setdefault(r["proposed_doi"].lower(), []).append(r["id"])
+        held = [r for r in emit if by_doi[r["proposed_doi"].lower()] > 1]
         emit = [r for r in emit if by_doi[r["proposed_doi"].lower()] == 1]
-        queue += [r for r in proposals if by_doi[r["proposed_doi"].lower()] > 1]
+        for r in held:
+            others = [i for i in siblings[r["proposed_doi"].lower()] if i != r["id"]]
+            queue.append({**r, "verdict": "duplicate_within_patch",
+                          "collides_with_id": others[0] if others else None})
 
     cols = ["record_id", "journal_name", "year", "current_doi", "proposed_doi",
             "tier", "method", "title_similarity", "journal_verdict",
@@ -90,7 +149,8 @@ def main():
                         "title": (r["title"] or "")[:200]})
 
     qcols = ["record_id", "journal_name", "year", "current_doi", "pattern",
-             "verdict", "best_candidate", "title_similarity", "journal_verdict", "title"]
+             "verdict", "best_candidate", "title_similarity", "journal_verdict",
+             "author_token_overlap", "collides_with_id", "collides_with_title", "title"]
     with open(QUEUE_OUT, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=qcols, extrasaction="ignore")
         w.writeheader()
@@ -101,6 +161,9 @@ def main():
                         "best_candidate": r.get("proposed_doi"),
                         "title_similarity": r.get("title_similarity"),
                         "journal_verdict": r.get("journal_verdict"),
+                        "author_token_overlap": r.get("author_token_overlap"),
+                        "collides_with_id": r.get("collides_with_id"),
+                        "collides_with_title": (r.get("collides_with_title") or "")[:120],
                         "title": (r["title"] or "")[:200]})
 
     n = len(emit)

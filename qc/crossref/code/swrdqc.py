@@ -189,7 +189,14 @@ def title_sim(a: str, b: str) -> float:
         return 1.0
     # A source title truncated by the publisher should not read as a mismatch.
     if na.startswith(nb) or nb.startswith(na):
-        return 0.97
+        # One title is a prefix of the other — usually a subtitle truncated on
+        # our side. Scale by how much text is actually shared, rather than
+        # returning a flat high score: "Responding to Child Maltreatment" is a
+        # prefix of the issue editorial AND of the real article, and a flat 0.97
+        # made them indistinguishable, so result order decided. Long shared
+        # prefixes still score high; short ones no longer masquerade as matches.
+        return max(0.75, min(0.97, len(nb) / len(na) if len(na) > len(nb)
+                             else len(na) / len(nb)))
     return SequenceMatcher(None, na, nb).ratio()
 
 
@@ -233,6 +240,39 @@ def journal_match(our_issns, their_issns, our_name, their_name):
     return "mismatch", "name"
 
 
+_DIGITS = re.compile(r"\d+")
+
+
+def digits_conflict(a: str, b: str) -> bool:
+    """True when two titles carry different numbers.
+
+    Serial titles differ by a single character — "Letter from the Editors (5)"
+    against "(7)" scores 0.98 on any string metric and is a different article.
+    Numbers in a title are load-bearing, so a difference in them is disqualifying
+    regardless of similarity. Only compares when both sides have digits.
+    """
+    da, db = _DIGITS.findall(a or ""), _DIGITS.findall(b or "")
+    if not da or not db:
+        return False
+    return [x.lstrip("0") or "0" for x in da] != [x.lstrip("0") or "0" for x in db]
+
+
+def name_tokens(s: str) -> set[str]:
+    """Every meaningful token in a personal name, lowercased.
+
+    Isolating "the surname" cannot work across the formats SWRD holds and the
+    compound and non-Western names it contains -- de Jesus, Van Wormer, Rios
+    Campos, Truong Thi. Comparing token sets sidesteps the problem: a match on
+    any substantive token is evidence, and initials are dropped as noise.
+    """
+    out = set()
+    for tok in re.split(r"[\s,;.]+", (s or "").lower()):
+        tok = re.sub(r"[^a-z\u00c0-\u024f]", "", tok)
+        if len(tok) > 2:
+            out.add(tok)
+    return out
+
+
 def cr_title(item: dict) -> str:
     t = (item.get("title") or [""])[0]
     sub = (item.get("subtitle") or [""])[0]
@@ -269,6 +309,22 @@ def cr_surnames(item: dict) -> set[str]:
 
 
 _INITIALS = re.compile(r"^[A-Za-z]\.?([A-Za-z]\.?)?$")
+
+
+def swrd_name_tokens(authors: str) -> set[str]:
+    """All name tokens across every SWRD author on a record."""
+    out = set()
+    for chunk in (authors or "").split(";"):
+        out |= name_tokens(chunk)
+    return out
+
+
+def cr_name_tokens(item: dict) -> set[str]:
+    """All name tokens across every Crossref author, family and given."""
+    out = set()
+    for a in item.get("author") or []:
+        out |= name_tokens(a.get("family", "")) | name_tokens(a.get("given", ""))
+    return out
 
 
 def swrd_surnames(authors: str) -> set[str]:

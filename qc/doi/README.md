@@ -27,16 +27,24 @@ problem sits in nine journals:
 
 | | Recovered | Held for review |
 |---|---:|---:|
-| `oai:` (deterministic rule) | **1,999** (99.9%) | 3 |
-| `dc/` (Crossref search) | **994** (64.0%) | 560 |
-| **Proposed after collision guard** | **2,973** | **583** |
+| `oai:` (deterministic rule, all years) | **2,769** of 2,772 | 3 |
+| `dc/` (Crossref search, 1989+) | **846** of 1,554 | 708 |
+| Less collisions with rows already in the column | −216 | +216 |
+| **Proposed** | **3,399** | **927** |
 
-**Precision: 120/120 (100%)** — 60 sampled per stratum, seed `20260802`, each proposal
-re-fetched from Crossref on its own terms and required to agree on title *and*
-journal. Author surnames corroborated 101 of 120; the rest are editorials and records
-with no author metadata in Crossref.
+Applying takes malformed values from **4,326 to 927** (all years), and from 3,556 to
+927 in the 1989+ corpus — every pre-1989 Supplement row is repaired.
 
-Applying the patch would take malformed values from **3,556 to 583**.
+Sampled precision, 60 per stratum, seed `20260802`, 95% Wilson intervals: tier A
+60/60 [94.0–100], tier B/ISSN 60/60 [94.0–100], tier B/name 60/60 [94.0–100].
+
+> **An earlier version of this file reported "120/120 precision". That figure is
+> retracted.** The audit that produced it re-applied the same two predicates that
+> caused acceptance, so it could not fail. An adversarial review then found three
+> wrong DOIs, one of them inside that very sample. See
+> [`docs/QC_REVIEW_2026-08.md`](../../docs/QC_REVIEW_2026-08.md); the audit has been
+> rebuilt on independent signals and now ships a self-test that fails the run if it
+> confirms any of the three.
 
 ## How each half works
 

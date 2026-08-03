@@ -104,9 +104,9 @@ def base_of(rec):
     # ISSN and authors travel with the record so that later stages can verify
     # against the identifier rather than re-deriving it from the journal name.
     return {k: rec[k] for k in ("id", "title", "year", "doi", "data_source",
-                                "journal_name", "issn_print", "issn_online",
-                                "authors", "pattern", "is_scientific",
-                                "document_type")}
+                                "journal_id", "journal_name", "issn_print",
+                                "issn_online", "authors", "pattern",
+                                "is_scientific", "document_type")}
 
 
 def recover_oai(records, cache):
@@ -162,21 +162,72 @@ def recover_dc(records, scache):
     out = []
     for rec in records:
         base = base_of(rec)
-        best, best_sim, best_jv, best_jb = None, -1.0, None, None
-        for item in scache.get(str(rec["id"])) or []:
+        cands = scache.get(str(rec["id"])) or []
+
+        # Score every candidate, then choose among the ones whose JOURNAL agrees.
+        # Choosing the best title first and testing the journal afterwards threw
+        # away correct same-journal candidates whenever an off-journal item
+        # happened to score higher — that is how 115257 was assigned the issue
+        # editorial while the real article sat in the same result list.
+        scored = []
+        for item in cands:
             sim = Q.title_sim(rec["title"] or "", Q.cr_title(item))
-            if sim > best_sim:
-                jv, jb = journal_verdict(rec, item)
-                best, best_sim, best_jv, best_jb = item, sim, jv, jb
-        if best is None:
+            jv, jb = journal_verdict(rec, item)
+            auth = Q.jaccard(Q.swrd_name_tokens(rec.get("authors")),
+                             Q.cr_name_tokens(item))
+            scored.append((item, sim, jv, jb, auth))
+
+        eligible = [c for c in scored if c[2] == "match"
+                    and not Q.digits_conflict(rec["title"] or "", Q.cr_title(c[0]))]
+        # Rank on title, then author agreement — never on API result order.
+        eligible.sort(key=lambda c: (c[1], c[4]), reverse=True)
+        overall = max(scored, key=lambda c: c[1]) if scored else None
+
+        if not scored:
             out.append({**base, "method": "crossref_search",
                         "verdict": "no_candidate", "tier": "C"})
             continue
+
+        if not eligible:
+            # Nothing survived the journal and digit gates: report the best
+            # overall candidate as evidence, but never propose it. Name the gate
+            # that actually rejected it — a queue that misattributes its own
+            # reasons is worse than no queue, because the reviewer looks in the
+            # wrong place.
+            item, sim, jv, jb, auth = overall
+            ev = evidence(rec, item, sim, jv, jb)
+            row = {**base, "method": "crossref_search",
+                   "proposed_doi": item.get("DOI"), **ev,
+                   "author_token_overlap": round(auth, 3)}
+            if sim < CONFIRM:
+                reason = "weak_title"
+            elif Q.digits_conflict(rec["title"] or "", Q.cr_title(item)):
+                reason = "digits_conflict"      # e.g. "…Editors (5)" vs "(7)"
+            else:
+                reason = "rejected_wrong_journal"
+            row.update(verdict=reason, tier="C")
+            out.append(row)
+            continue
+
+        best, best_sim, best_jv, best_jb, best_auth = eligible[0]
         ev = evidence(rec, best, best_sim, best_jv, best_jb)
         row = {**base, "method": "crossref_search",
-               "proposed_doi": best.get("DOI"), **ev}
-        if best_sim < CONFIRM:
+               "proposed_doi": best.get("DOI"), **ev,
+               "author_token_overlap": round(best_auth, 3)}
+
+        # Two journal-passing candidates within a hair of each other means the
+        # ranking, not the evidence, is deciding. Refuse rather than guess.
+        if len(eligible) > 1 and abs(eligible[0][1] - eligible[1][1]) < 0.02 \
+                and eligible[0][4] <= eligible[1][4]:
+            row.update(verdict="ambiguous_candidates", tier="C",
+                       runner_up_doi=eligible[1][0].get("DOI"))
+        elif best_sim < CONFIRM:
             row.update(verdict="weak_title", tier="C")
+        elif best_auth == 0.0 and Q.swrd_name_tokens(rec.get("authors")) \
+                and Q.cr_name_tokens(best):
+            # Both sides name authors and they share nothing. That is how a
+            # reply article got the DOI of the article it replied to (115909).
+            row.update(verdict="authors_disagree", tier="C")
         elif best_jv == "mismatch":
             # Right title, wrong journal: almost always a book review of the same
             # work, or a same-titled paper elsewhere. This is the guard that the
