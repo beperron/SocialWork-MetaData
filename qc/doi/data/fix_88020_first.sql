@@ -17,7 +17,7 @@
 --
 -- Afterwards, add 114805 back to the patch:
 --   update swrd.papers set doi = '10.18060/23600'
---    where id = 114805 and doi = 'dc/71a4b60e0e';
+--    where id = 114805 and doi = 'dc/8492984d69';
 
 begin;
 
