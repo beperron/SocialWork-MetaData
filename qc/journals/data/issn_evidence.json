@@ -1,0 +1,3319 @@
+{
+ "1": {
+  "journal_id": 1,
+  "name": "Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0037-8046",
+     "1545-6846"
+    ],
+    "n": 93
+   },
+   {
+    "issn": [
+     "0886-1099",
+     "1552-3020"
+    ],
+    "n": 27
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work",
+    93
+   ],
+   [
+    "Affilia",
+    27
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0037-8046",
+   "1545-6846"
+  ],
+  "agreement": 0.775,
+  "n_votes": 93,
+  "total": 120
+ },
+ "2": {
+  "journal_id": 2,
+  "name": "Studies in Clinical Social Work: Transforming Practice, Education and Research",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0037-7317",
+     "1553-0426"
+    ],
+    "n": 96
+   },
+   {
+    "issn": [
+     "1753-1403",
+     "1753-1411"
+    ],
+    "n": 20
+   },
+   {
+    "issn": [
+     "0037-7317"
+    ],
+    "n": 3
+   },
+   {
+    "issn": [
+     "2837-6811",
+     "2837-682X"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Smith College Studies in Social Work",
+    99
+   ],
+   [
+    "Asian Social Work and Policy Review",
+    20
+   ],
+   [
+    "Studies in Clinical Social Work: Transforming Practice, Education and Research",
+    1
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0037-7317",
+   "1553-0426"
+  ],
+  "agreement": 0.8,
+  "n_votes": 96,
+  "total": 120
+ },
+ "3": {
+  "journal_id": 3,
+  "name": "British Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 119,
+  "votes": [
+   {
+    "issn": [
+     "0045-3102",
+     "1468-263X"
+    ],
+    "n": 113
+   },
+   {
+    "issn": [
+     "2165-0993",
+     "2994-9769"
+    ],
+    "n": 4
+   },
+   {
+    "issn": [
+     "0218-5385",
+     "2165-0993"
+    ],
+    "n": 2
+   }
+  ],
+  "crossref_containers": [
+   [
+    "British Journal of Social Work",
+    62
+   ],
+   [
+    "The British Journal of Social Work",
+    51
+   ],
+   [
+    "Asia Pacific Journal of Social Work and Development",
+    6
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0045-3102",
+   "1468-263X"
+  ],
+  "agreement": 0.95,
+  "n_votes": 113,
+  "total": 119
+ },
+ "4": {
+  "journal_id": 4,
+  "name": "Indian Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 82,
+  "votes": [
+   {
+    "issn": [
+     "0019-5634",
+     "2456-7809"
+    ],
+    "n": 82
+   }
+  ],
+  "crossref_containers": [
+   [
+    "The Indian Journal of Social Work",
+    82
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0019-5634",
+   "2456-7809"
+  ],
+  "agreement": 1.0,
+  "n_votes": 82,
+  "total": 82
+ },
+ "5": {
+  "journal_id": 5,
+  "name": "Research on Social Work Practice",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1049-7315",
+     "1552-7581"
+    ],
+    "n": 109
+   },
+   {
+    "issn": [
+     "1356-7500",
+     "1365-2206"
+    ],
+    "n": 11
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Research on Social Work Practice",
+    109
+   ],
+   [
+    "Child &amp; Family Social Work",
+    11
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1049-7315",
+   "1552-7581"
+  ],
+  "agreement": 0.908,
+  "n_votes": 109,
+  "total": 120
+ },
+ "6": {
+  "journal_id": 6,
+  "name": "Social Service Review",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0037-7961",
+     "1537-5404"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Service Review",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0037-7961",
+   "1537-5404"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "7": {
+  "journal_id": 7,
+  "name": "Clinical Social Work Journal",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0091-1674",
+     "1573-3343"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Clinical Social Work Journal",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0091-1674",
+   "1573-3343"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "8": {
+  "journal_id": 8,
+  "name": "Journal of Social Work Education",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1043-7797",
+     "2163-5811"
+    ],
+    "n": 101
+   },
+   {
+    "issn": [
+     "1936-7244",
+     "1937-0245"
+    ],
+    "n": 18
+   },
+   {
+    "issn": [
+     "0749-0232"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work Education",
+    101
+   ],
+   [
+    "Journal of Applied Social Science",
+    18
+   ],
+   [
+    "Journal of Applied Sociology",
+    1
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1043-7797",
+   "2163-5811"
+  ],
+  "agreement": 0.842,
+  "n_votes": 101,
+  "total": 120
+ },
+ "9": {
+  "journal_id": 9,
+  "name": "Social Work in Health Care",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 113,
+  "votes": [
+   {
+    "issn": [
+     "0098-1389",
+     "1541-034X"
+    ],
+    "n": 104
+   },
+   {
+    "issn": [
+     "1748-6831",
+     "1748-684X"
+    ],
+    "n": 8
+   },
+   {
+    "issn": [
+     "0098-1389"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work in Health Care",
+    105
+   ],
+   [
+    "Journal of Comparative Social Welfare",
+    8
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0098-1389",
+   "1541-034X"
+  ],
+  "agreement": 0.92,
+  "n_votes": 104,
+  "total": 113
+ },
+ "10": {
+  "journal_id": 10,
+  "name": "Social Work with Groups",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0160-9513",
+     "1540-9481"
+    ],
+    "n": 112
+   },
+   {
+    "issn": [
+     "1531-3204",
+     "1531-3212"
+    ],
+    "n": 7
+   },
+   {
+    "issn": [
+     "0160-9513"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work With Groups",
+    65
+   ],
+   [
+    "Social Work with Groups",
+    48
+   ],
+   [
+    "Journal of Ethnic &amp; Cultural Diversity in Social Work",
+    4
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0160-9513",
+   "1540-9481"
+  ],
+  "agreement": 0.933,
+  "n_votes": 112,
+  "total": 120
+ },
+ "11": {
+  "journal_id": 11,
+  "name": "Journal of Gerontological Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0163-4372",
+     "1540-4048"
+    ],
+    "n": 101
+   },
+   {
+    "issn": [
+     "1053-8720",
+     "1540-4056"
+    ],
+    "n": 18
+   },
+   {
+    "issn": [
+     "0163-4372"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Gerontological Social Work",
+    102
+   ],
+   [
+    "Journal of Gay &amp; Lesbian Social Services",
+    18
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0163-4372",
+   "1540-4048"
+  ],
+  "agreement": 0.842,
+  "n_votes": 101,
+  "total": 120
+ },
+ "12": {
+  "journal_id": 12,
+  "name": "Administration in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0364-3107",
+     "1544-4376"
+    ],
+    "n": 84
+   },
+   {
+    "issn": [
+     "1542-6432",
+     "1542-6440"
+    ],
+    "n": 35
+   },
+   {
+    "issn": [
+     "0364-3107"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Administration in Social Work",
+    85
+   ],
+   [
+    "Journal of Religion &amp; Spirituality in Social Work: Social Thought",
+    32
+   ],
+   [
+    "Journal of Religion &amp; Spirituality in Social Work",
+    3
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0364-3107",
+   "1544-4376"
+  ],
+  "agreement": 0.7,
+  "n_votes": 84,
+  "total": 120
+ },
+ "13": {
+  "journal_id": 13,
+  "name": "Journal of Social Work in End-Of-Life & Palliative Care",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1552-4256",
+     "1552-4264"
+    ],
+    "n": 117
+   },
+   {
+    "issn": [
+     "0276-3850"
+    ],
+    "n": 3
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work in End-of-Life &amp; Palliative Care",
+    81
+   ],
+   [
+    "Journal of Social Work in End-Of-Life &amp; Palliative Care",
+    36
+   ],
+   [
+    "Journal of Social Work &amp; Human Sexuality",
+    3
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1552-4256",
+   "1552-4264"
+  ],
+  "agreement": 0.975,
+  "n_votes": 117,
+  "total": 120
+ },
+ "14": {
+  "journal_id": 14,
+  "name": "Journal of Social Work Practice",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0265-0533",
+     "1465-3885"
+    ],
+    "n": 101
+   },
+   {
+    "issn": [
+     "0191-5096"
+    ],
+    "n": 19
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work Practice",
+    101
+   ],
+   [
+    "The Journal of Sociology &amp; Social Welfare",
+    19
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0265-0533",
+   "1465-3885"
+  ],
+  "agreement": 0.842,
+  "n_votes": 101,
+  "total": 120
+ },
+ "15": {
+  "journal_id": 15,
+  "name": "International Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0020-8728",
+     "1461-7234"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "International Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0020-8728",
+   "1461-7234"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "16": {
+  "journal_id": 16,
+  "name": "Australian Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0312-407X",
+     "1447-0748"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Australian Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0312-407X",
+   "1447-0748"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "17": {
+  "journal_id": 17,
+  "name": "Affilia-Feminist Inquiry in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0886-1099",
+     "1552-3020"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Affilia",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0886-1099",
+   "1552-3020"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "18": {
+  "journal_id": 18,
+  "name": "Social Work-Maatskaplike Werk",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 101,
+  "votes": [
+   {
+    "issn": [
+     "0037-8054",
+     "2312-7198"
+    ],
+    "n": 57
+   },
+   {
+    "issn": [
+     "2312-7198"
+    ],
+    "n": 42
+   },
+   {
+    "issn": [
+     "0037-8054"
+    ],
+    "n": 2
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work/Maatskaplike Werk",
+    91
+   ],
+   [
+    "Social Work",
+    10
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0037-8054",
+   "2312-7198"
+  ],
+  "agreement": 0.564,
+  "n_votes": 57,
+  "total": 101
+ },
+ "19": {
+  "journal_id": 19,
+  "name": "Journal of Teaching in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 119,
+  "votes": [
+   {
+    "issn": [
+     "0884-1233",
+     "1540-7349"
+    ],
+    "n": 119
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Teaching in Social Work",
+    119
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0884-1233",
+   "1540-7349"
+  ],
+  "agreement": 1.0,
+  "n_votes": 119,
+  "total": 119
+ },
+ "20": {
+  "journal_id": 20,
+  "name": "International Journal of Social Welfare",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1369-6866",
+     "1468-2397"
+    ],
+    "n": 109
+   },
+   {
+    "issn": [
+     "0907-2055"
+    ],
+    "n": 11
+   }
+  ],
+  "crossref_containers": [
+   [
+    "International Journal of Social Welfare",
+    109
+   ],
+   [
+    "Scandinavian Journal of Social Welfare",
+    11
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1369-6866",
+   "1468-2397"
+  ],
+  "agreement": 0.908,
+  "n_votes": 109,
+  "total": 120
+ },
+ "21": {
+  "journal_id": 21,
+  "name": "Journal of Human Behavior in the Social Environment",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1091-1359",
+     "1540-3556"
+    ],
+    "n": 119
+   },
+   {
+    "issn": [
+     "1091-1359"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Human Behavior in the Social Environment",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1091-1359",
+   "1540-3556"
+  ],
+  "agreement": 0.992,
+  "n_votes": 119,
+  "total": 120
+ },
+ "22": {
+  "journal_id": 22,
+  "name": "Child & Family Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1356-7500",
+     "1365-2206"
+    ],
+    "n": 116
+   },
+   {
+    "issn": [
+     "1356-7500"
+    ],
+    "n": 4
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Child &amp; Family Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1356-7500",
+   "1365-2206"
+  ],
+  "agreement": 0.967,
+  "n_votes": 116,
+  "total": 120
+ },
+ "23": {
+  "journal_id": 23,
+  "name": "Social Work in Mental Health",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1533-2985",
+     "1533-2993"
+    ],
+    "n": 117
+   },
+   {
+    "issn": [
+     "1533-2985"
+    ],
+    "n": 3
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work in Mental Health",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1533-2985",
+   "1533-2993"
+  ],
+  "agreement": 0.975,
+  "n_votes": 117,
+  "total": 120
+ },
+ "24": {
+  "journal_id": 24,
+  "name": "Journal of HIV-AIDS & Social Services",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1538-1501",
+     "1538-151X"
+    ],
+    "n": 117
+   },
+   {
+    "issn": [
+     "1538-1501"
+    ],
+    "n": 3
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of HIV/AIDS &amp; Social Services",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1538-1501",
+   "1538-151X"
+  ],
+  "agreement": 0.975,
+  "n_votes": 117,
+  "total": 120
+ },
+ "25": {
+  "journal_id": 25,
+  "name": "Journal of Social Service Research",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0148-8376",
+     "1540-7314"
+    ],
+    "n": 119
+   },
+   {
+    "issn": [
+     "0148-8376"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Service Research",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0148-8376",
+   "1540-7314"
+  ],
+  "agreement": 0.992,
+  "n_votes": 119,
+  "total": 120
+ },
+ "27": {
+  "journal_id": 27,
+  "name": "Journal of Evidence-Based Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1543-3714",
+     "1543-3722"
+    ],
+    "n": 62
+   },
+   {
+    "issn": [
+     "2640-8066",
+     "2640-8074"
+    ],
+    "n": 56
+   },
+   {
+    "issn": [
+     "1543-3714"
+    ],
+    "n": 2
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Evidence-Based Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1543-3714",
+   "1543-3722"
+  ],
+  "agreement": 0.517,
+  "n_votes": 62,
+  "total": 120
+ },
+ "28": {
+  "journal_id": 28,
+  "name": "European Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1369-1457",
+     "1468-2664"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "European Journal of Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1369-1457",
+   "1468-2664"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "29": {
+  "journal_id": 29,
+  "name": "Social Work Education",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0261-5479",
+     "1470-1227"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work Education",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0261-5479",
+   "1470-1227"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "30": {
+  "journal_id": 30,
+  "name": "Journal of Progressive Human Services",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 103,
+  "votes": [
+   {
+    "issn": [
+     "1042-8232",
+     "1540-7616"
+    ],
+    "n": 103
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Progressive Human Services",
+    103
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1042-8232",
+   "1540-7616"
+  ],
+  "agreement": 1.0,
+  "n_votes": 103,
+  "total": 103
+ },
+ "31": {
+  "journal_id": 31,
+  "name": "Social Work in Public Health",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1937-190X",
+     "1937-1918"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work in Public Health",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1937-190X",
+   "1937-1918"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "32": {
+  "journal_id": 32,
+  "name": "Health & Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0360-7283",
+     "1545-6854"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Health &amp; Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0360-7283",
+   "1545-6854"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "33": {
+  "journal_id": 33,
+  "name": "Journal of Ethnic & Cultural Diversity in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1531-3204",
+     "1531-3212"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Ethnic &amp; Cultural Diversity in Social Work",
+    84
+   ],
+   [
+    "Journal of Ethnic And Cultural Diversity in Social Work",
+    36
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1531-3204",
+   "1531-3212"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "34": {
+  "journal_id": 34,
+  "name": "Journal of Psychosocial Oncology",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 119,
+  "votes": [
+   {
+    "issn": [
+     "0734-7332",
+     "1540-7586"
+    ],
+    "n": 110
+   },
+   {
+    "issn": [
+     "2637-5974"
+    ],
+    "n": 9
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Psychosocial Oncology",
+    110
+   ],
+   [
+    "Journal of Psychosocial Oncology Research &amp; Practice",
+    9
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0734-7332",
+   "1540-7586"
+  ],
+  "agreement": 0.924,
+  "n_votes": 110,
+  "total": 119
+ },
+ "35": {
+  "journal_id": 35,
+  "name": "Journal of Family Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1052-2158",
+     "1540-4072"
+    ],
+    "n": 119
+   },
+   {
+    "issn": [
+     "1052-2158"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Family Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1052-2158",
+   "1540-4072"
+  ],
+  "agreement": 0.992,
+  "n_votes": 119,
+  "total": 120
+ },
+ "36": {
+  "journal_id": 36,
+  "name": "Journal of Community Practice",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1070-5422",
+     "1543-3706"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Community Practice",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1070-5422",
+   "1543-3706"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "37": {
+  "journal_id": 37,
+  "name": "Qualitative Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1473-3250",
+     "1741-3117"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Qualitative Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1473-3250",
+   "1741-3117"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "38": {
+  "journal_id": 38,
+  "name": "China Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1752-5098",
+     "1752-5101"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "China Journal of Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1752-5098",
+   "1752-5101"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "39": {
+  "journal_id": 39,
+  "name": "Journal of the Society for Social Work and Research",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1948-822X",
+     "2334-2315"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of the Society for Social Work and Research",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1948-822X",
+   "2334-2315"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "40": {
+  "journal_id": 40,
+  "name": "Journal of Social Work Practice in the Addictions",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1533-256X",
+     "1533-2578"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work Practice in the Addictions",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1533-256X",
+   "1533-2578"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "41": {
+  "journal_id": 41,
+  "name": "Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1468-0173",
+     "1741-296X"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1468-0173",
+   "1741-296X"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "42": {
+  "journal_id": 42,
+  "name": "Psychoanalytic Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1522-8878",
+     "1522-9033"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Psychoanalytic Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1522-8878",
+   "1522-9033"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "43": {
+  "journal_id": 43,
+  "name": "Social Work Research",
+  "current": {
+   "issn_print": "1070-5309",
+   "issn_online": "1545-6838"
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1070-5309",
+     "1545-6838"
+    ],
+    "n": 112
+   },
+   {
+    "issn": [
+     "0148-0847"
+    ],
+    "n": 4
+   },
+   {
+    "issn": [
+     "1545-6838"
+    ],
+    "n": 4
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work Research",
+    116
+   ],
+   [
+    "Social Work Research and Abstracts",
+    4
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1070-5309",
+   "1545-6838"
+  ],
+  "agreement": 0.933,
+  "n_votes": 112,
+  "total": 120
+ },
+ "45": {
+  "journal_id": 45,
+  "name": "Ethics & Social Welfare",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1749-6535",
+     "1749-6543"
+    ],
+    "n": 117
+   },
+   {
+    "issn": [
+     "1749-6535"
+    ],
+    "n": 3
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Ethics and Social Welfare",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1749-6535",
+   "1749-6543"
+  ],
+  "agreement": 0.975,
+  "n_votes": 117,
+  "total": 120
+ },
+ "46": {
+  "journal_id": 46,
+  "name": "Journal of Social Work in Disability & Rehabilitation",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1536-710X",
+     "1536-7118"
+    ],
+    "n": 119
+   },
+   {
+    "issn": [
+     "1536-710X"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Social Work in Disability &amp; Rehabilitation",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1536-710X",
+   "1536-7118"
+  ],
+  "agreement": 0.992,
+  "n_votes": 119,
+  "total": 120
+ },
+ "47": {
+  "journal_id": 47,
+  "name": "Social Work & Social Sciences Review",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 18,
+  "with_issn": 18,
+  "votes": [
+   {
+    "issn": [
+     "0953-5225",
+     "1746-6105"
+    ],
+    "n": 18
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work and Social Sciences Review",
+    18
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0953-5225",
+   "1746-6105"
+  ],
+  "agreement": 1.0,
+  "n_votes": 18,
+  "total": 18
+ },
+ "49": {
+  "journal_id": 49,
+  "name": "Families in Society",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0037-7678"
+    ],
+    "n": 62
+   },
+   {
+    "issn": [
+     "1044-3894",
+     "1945-1350"
+    ],
+    "n": 38
+   },
+   {
+    "issn": [
+     "0887-400X"
+    ],
+    "n": 17
+   },
+   {
+    "issn": [
+     "8755-4879"
+    ],
+    "n": 3
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Casework",
+    62
+   ],
+   [
+    "Families in Society: The Journal of Contemporary Social Services",
+    38
+   ],
+   [
+    "The Family",
+    17
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0037-7678"
+  ],
+  "agreement": 0.517,
+  "n_votes": 62,
+  "total": 120
+ },
+ "52": {
+  "journal_id": 52,
+  "name": "Asian Social Work and Policy Review",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 42,
+  "with_issn": 42,
+  "votes": [
+   {
+    "issn": [
+     "1753-1403",
+     "1753-1411"
+    ],
+    "n": 42
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Asian Social Work and Policy Review",
+    42
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1753-1403",
+   "1753-1411"
+  ],
+  "agreement": 1.0,
+  "n_votes": 42,
+  "total": 42
+ },
+ "58": {
+  "journal_id": 58,
+  "name": "Critical and Radical Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2049-8608",
+     "2049-8675"
+    ],
+    "n": 119
+   },
+   {
+    "issn": [
+     "2049-8608"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Critical and Radical Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2049-8608",
+   "2049-8675"
+  ],
+  "agreement": 0.992,
+  "n_votes": 119,
+  "total": 120
+ },
+ "61": {
+  "journal_id": 61,
+  "name": "Southern African Journal of Social Work and Social Development",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 91,
+  "votes": [
+   {
+    "issn": [
+     "2520-0097",
+     "2708-9355"
+    ],
+    "n": 90
+   },
+   {
+    "issn": [
+     "2415-5829"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Southern African Journal of Social Work and Social Development",
+    91
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2520-0097",
+   "2708-9355"
+  ],
+  "agreement": 0.989,
+  "n_votes": 90,
+  "total": 91
+ },
+ "63": {
+  "journal_id": 63,
+  "name": "Asia Pacific Journal of Social Work and Development",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2165-0993",
+     "2994-9769"
+    ],
+    "n": 115
+   },
+   {
+    "issn": [
+     "0218-5385",
+     "2165-0993"
+    ],
+    "n": 5
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Asia Pacific Journal of Social Work and Development",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2165-0993",
+   "2994-9769"
+  ],
+  "agreement": 0.958,
+  "n_votes": 115,
+  "total": 120
+ },
+ "68": {
+  "journal_id": 68,
+  "name": "Journal of Human Rights and Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2365-1792"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Human Rights and Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2365-1792"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "69": {
+  "journal_id": 69,
+  "name": "Nordic Social Work Research",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2156-857X",
+     "2156-8588"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Nordic Social Work Research",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2156-857X",
+   "2156-8588"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "102": {
+  "journal_id": 102,
+  "name": "Urban Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 109,
+  "with_issn": 109,
+  "votes": [
+   {
+    "issn": [
+     "2474-8684",
+     "2474-8692"
+    ],
+    "n": 109
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Urban Social Work",
+    109
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2474-8684",
+   "2474-8692"
+  ],
+  "agreement": 1.0,
+  "n_votes": 109,
+  "total": 109
+ },
+ "124": {
+  "journal_id": 124,
+  "name": "Social Work and Society",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 4,
+  "with_issn": 4,
+  "votes": [
+   {
+    "issn": [
+     "1749-6535",
+     "1749-6543"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "0020-8728",
+     "1461-7234"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "0037-8054",
+     "2312-7198"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "0163-4372",
+     "1540-4048"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Ethics and Social Welfare",
+    1
+   ],
+   [
+    "International Social Work",
+    1
+   ],
+   [
+    "Social Work/Maatskaplike Werk",
+    1
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1749-6535",
+   "1749-6543"
+  ],
+  "agreement": 0.25,
+  "n_votes": 1,
+  "total": 4
+ },
+ "128": {
+  "journal_id": 128,
+  "name": "African Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 59,
+  "with_issn": 59,
+  "votes": [
+   {
+    "issn": [
+     "1563-3934",
+     "2409-5605"
+    ],
+    "n": 59
+   }
+  ],
+  "crossref_containers": [
+   [
+    "African Journal of Social Work",
+    59
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1563-3934",
+   "2409-5605"
+  ],
+  "agreement": 1.0,
+  "n_votes": 59,
+  "total": 59
+ },
+ "130": {
+  "journal_id": 130,
+  "name": "Journal of Comparative Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0809-9936"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Comparative Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0809-9936"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "196": {
+  "journal_id": 196,
+  "name": "Child & Adolescent Social Work Journal",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0738-0151",
+     "1573-2797"
+    ],
+    "n": 115
+   },
+   {
+    "issn": [
+     "0163-9641",
+     "1573-2797"
+    ],
+    "n": 3
+   },
+   {
+    "issn": [
+     "0738-0150",
+     "1573-2797"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "0041-0608",
+     "1573-2797"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Child and Adolescent Social Work Journal",
+    95
+   ],
+   [
+    "Child &amp; Adolescent Social Work Journal",
+    25
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0738-0151",
+   "1573-2797"
+  ],
+  "agreement": 0.958,
+  "n_votes": 115,
+  "total": 120
+ },
+ "211": {
+  "journal_id": 211,
+  "name": "Social Development Issues",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Social Development Issues",
+    "ISSN": [
+     "0147-1473",
+     "2372-014X"
+    ],
+    "publisher": "Northern Michigan University"
+   },
+   {
+    "title": "Social Development Economic and Legal Issues",
+    "ISSN": [
+     "3083-6018"
+    ],
+    "publisher": "NGO \"Eastern European Union of Scientists\""
+   },
+   {
+    "title": "Issues of Social-Economic development of Siberia",
+    "ISSN": [
+     "2224-1833"
+    ],
+    "publisher": "Bratsk State University"
+   }
+  ]
+ },
+ "212": {
+  "journal_id": 212,
+  "name": "Social Work Research & Abstracts",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0148-0847"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work Research and Abstracts",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0148-0847"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "213": {
+  "journal_id": 213,
+  "name": "Children & Schools",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1532-8759",
+     "1545-682X"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Children &amp; Schools",
+    119
+   ],
+   [
+    "Children and Schools",
+    1
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1532-8759",
+   "1545-682X"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "218": {
+  "journal_id": 218,
+  "name": "Columbia Social Work Review",
+  "current": {
+   "issn_print": null,
+   "issn_online": "2164-1250"
+  },
+  "sampled_dois": 120,
+  "with_issn": 32,
+  "votes": [
+   {
+    "issn": [
+     "2164-1250",
+     "2372-255X"
+    ],
+    "n": 32
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Columbia Social Work Review",
+    32
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2164-1250",
+   "2372-255X"
+  ],
+  "agreement": 1.0,
+  "n_votes": 32,
+  "total": 32
+ },
+ "219": {
+  "journal_id": 219,
+  "name": "Critical Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1543-9372"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Critical Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1543-9372"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "222": {
+  "journal_id": 222,
+  "name": "Advances in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1527-8565",
+     "2331-4125"
+    ],
+    "n": 117
+   },
+   {
+    "issn": [
+     "0261-5479",
+     "1470-1227"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "1749-6535",
+     "1749-6543"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "1749-6535"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Advances in Social Work",
+    117
+   ],
+   [
+    "Ethics and Social Welfare",
+    2
+   ],
+   [
+    "Social Work Education",
+    1
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1527-8565",
+   "2331-4125"
+  ],
+  "agreement": 0.975,
+  "n_votes": 117,
+  "total": 120
+ },
+ "224": {
+  "journal_id": 224,
+  "name": "Journal of Religion & Spirituality in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 115,
+  "votes": [
+   {
+    "issn": [
+     "1542-6432",
+     "1542-6440"
+    ],
+    "n": 115
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Religion &amp; Spirituality in Social Work: Social Thought",
+    113
+   ],
+   [
+    "Journal of Religion &amp; Spirituality in Social Work",
+    2
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1542-6432",
+   "1542-6440"
+  ],
+  "agreement": 1.0,
+  "n_votes": 115,
+  "total": 115
+ },
+ "225": {
+  "journal_id": 225,
+  "name": "The Journal of Baccalaureate Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 118,
+  "with_issn": 118,
+  "votes": [
+   {
+    "issn": [
+     "1084-7219"
+    ],
+    "n": 118
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Baccalaureate Social Work",
+    118
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1084-7219"
+  ],
+  "agreement": 1.0,
+  "n_votes": 118,
+  "total": 118
+ },
+ "226": {
+  "journal_id": 226,
+  "name": "Social Work & Christianity",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 6,
+  "with_issn": 4,
+  "votes": [
+   {
+    "issn": [
+     "0737-5778"
+    ],
+    "n": 4
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Social Work &amp; Christianity",
+    4
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0737-5778"
+  ],
+  "agreement": 1.0,
+  "n_votes": 4,
+  "total": 4
+ },
+ "227": {
+  "journal_id": 227,
+  "name": "Reflections: Narratives of Professional Helping",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "230": {
+  "journal_id": 230,
+  "name": "Journal of Technology in Human Services",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "1522-8835",
+     "1522-8991"
+    ],
+    "n": 83
+   },
+   {
+    "issn": [
+     "0740-445X"
+    ],
+    "n": 20
+   },
+   {
+    "issn": [
+     "0737-5778"
+    ],
+    "n": 15
+   },
+   {
+    "issn": [
+     "1743-0437",
+     "1743-0445"
+    ],
+    "n": 1
+   },
+   {
+    "issn": [
+     "1522-8835"
+    ],
+    "n": 1
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Technology in Human Services",
+    84
+   ],
+   [
+    "Computers in Human Services",
+    20
+   ],
+   [
+    "Social Work &amp; Christianity",
+    15
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1522-8835",
+   "1522-8991"
+  ],
+  "agreement": 0.692,
+  "n_votes": 83,
+  "total": 120
+ },
+ "232": {
+  "journal_id": 232,
+  "name": "Sexual and Gender Diversity in Social Services",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 119,
+  "votes": [
+   {
+    "issn": [
+     "1053-8720",
+     "1540-4056"
+    ],
+    "n": 109
+   },
+   {
+    "issn": [
+     "2993-3021",
+     "2993-303X"
+    ],
+    "n": 10
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Gay &amp; Lesbian Social Services",
+    109
+   ],
+   [
+    "Sexual and Gender Diversity in Social Services",
+    10
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1053-8720",
+   "1540-4056"
+  ],
+  "agreement": 0.916,
+  "n_votes": 109,
+  "total": 119
+ },
+ "233": {
+  "journal_id": 233,
+  "name": "International Journal of Social Work Values and Ethics",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 19,
+  "votes": [
+   {
+    "issn": [
+     "2790-6345"
+    ],
+    "n": 15
+   },
+   {
+    "issn": [
+     "1553-6947"
+    ],
+    "n": 4
+   }
+  ],
+  "crossref_containers": [
+   [
+    "International Journal of Social Work Values and Ethics",
+    16
+   ],
+   [
+    "Journal of Social Work Values and Ethics",
+    4
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2790-6345"
+  ],
+  "agreement": 0.789,
+  "n_votes": 15,
+  "total": 19
+ },
+ "234": {
+  "journal_id": 234,
+  "name": "Abolitionist Perspectives in Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 13,
+  "with_issn": 13,
+  "votes": [
+   {
+    "issn": [
+     "2832-1154"
+    ],
+    "n": 13
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Abolitionist Perspectives in Social Work",
+    13
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2832-1154"
+  ],
+  "agreement": 1.0,
+  "n_votes": 13,
+  "total": 13
+ },
+ "236": {
+  "journal_id": 236,
+  "name": "The Journal of Sociology & Social Welfare",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "0191-5096"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "The Journal of Sociology &amp; Social Welfare",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0191-5096"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "237": {
+  "journal_id": 237,
+  "name": "Global Social Work / Trabajo Social Global",
+  "current": {
+   "issn_print": null,
+   "issn_online": "2013-6757"
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2013-6757"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Trabajo Social Global-Global Social Work",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2013-6757"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "238": {
+  "journal_id": 238,
+  "name": "Journal of Social Work Education and Practice",
+  "current": {
+   "issn_print": null,
+   "issn_online": "2456-2068"
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "239": {
+  "journal_id": 239,
+  "name": "Journal of Forensic Social Work",
+  "current": {
+   "issn_print": "1936-928X",
+   "issn_online": "1936-9298"
+  },
+  "sampled_dois": 93,
+  "with_issn": 93,
+  "votes": [
+   {
+    "issn": [
+     "1936-928X",
+     "1936-9298"
+    ],
+    "n": 93
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Journal of Forensic Social Work",
+    87
+   ],
+   [
+    "JoFSW",
+    6
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "1936-928X",
+   "1936-9298"
+  ],
+  "agreement": 1.0,
+  "n_votes": 93,
+  "total": 93
+ },
+ "240": {
+  "journal_id": 240,
+  "name": "ASEAN Social Work Journal",
+  "current": {
+   "issn_print": "2089-1075",
+   "issn_online": "2963-2404"
+  },
+  "sampled_dois": 52,
+  "with_issn": 52,
+  "votes": [
+   {
+    "issn": [
+     "2089-1075",
+     "2963-2404"
+    ],
+    "n": 52
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Asean Social Work Journal",
+    52
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2089-1075",
+   "2963-2404"
+  ],
+  "agreement": 1.0,
+  "n_votes": 52,
+  "total": 52
+ },
+ "241": {
+  "journal_id": 241,
+  "name": "Social Work & Criminal Justice - UW Tacoma",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "243": {
+  "journal_id": 243,
+  "name": "Canadian Social Work Review",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 120,
+  "with_issn": 120,
+  "votes": [
+   {
+    "issn": [
+     "2369-5757"
+    ],
+    "n": 120
+   }
+  ],
+  "crossref_containers": [
+   [
+    "Canadian Social Work Review",
+    120
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "2369-5757"
+  ],
+  "agreement": 1.0,
+  "n_votes": 120,
+  "total": 120
+ },
+ "244": {
+  "journal_id": 244,
+  "name": "Hong Kong Journal of Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 74,
+  "with_issn": 74,
+  "votes": [
+   {
+    "issn": [
+     "0219-2462",
+     "2424-7731"
+    ],
+    "n": 74
+   }
+  ],
+  "crossref_containers": [
+   [
+    "The Hong Kong Journal of Social Work",
+    74
+   ]
+  ],
+  "method": "vote",
+  "winner": [
+   "0219-2462",
+   "2424-7731"
+  ],
+  "agreement": 1.0,
+  "n_votes": 74,
+  "total": 74
+ },
+ "245": {
+  "journal_id": 245,
+  "name": "School Social Work Journal",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Journal of School Social Work",
+    "ISSN": [
+     "1975-1567",
+     "1975-1567",
+     "2950-9130"
+    ],
+    "publisher": "The Korean Society of School Social Work"
+   },
+   {
+    "title": "Journal of School Social Work",
+    "ISSN": [
+     "1975-2431"
+    ],
+    "publisher": "Honam Historical Association"
+   },
+   {
+    "title": "International Journal of School Social Work",
+    "ISSN": [
+     "2161-4148"
+    ],
+    "publisher": "Kansas State University"
+   }
+  ]
+ },
+ "246": {
+  "journal_id": 246,
+  "name": "Journal of Social Work Values and Ethics",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Journal of Social Work Values and Ethics",
+    "ISSN": [
+     "1553-6947",
+     "1553-6947"
+    ],
+    "publisher": "International Federation of Social Workers"
+   },
+   {
+    "title": "International Journal of Social Work Values and Ethics",
+    "ISSN": [
+     "2790-6345"
+    ],
+    "publisher": "International Federation of Social Workers"
+   }
+  ]
+ },
+ "254": {
+  "journal_id": 254,
+  "name": "Arete",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Arete Political Philosophy Journal",
+    "ISSN": [
+     "2757-9123"
+    ],
+    "publisher": "ASOS Yayinevi"
+   },
+   {
+    "title": "αρετή (Arete) Journal of Excellence in Global Leadership",
+    "ISSN": [
+     "2836-4937",
+     "2836-4937"
+    ],
+    "publisher": "Private Academic Library Network of Indiana, Inc."
+   }
+  ]
+ },
+ "255": {
+  "journal_id": 255,
+  "name": "Contemporary Rural Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Contemporary Rural Social Work Journal",
+    "ISSN": [
+     "2165-4611"
+    ],
+    "publisher": "Murray State University Libraries"
+   }
+  ]
+ },
+ "256": {
+  "journal_id": 256,
+  "name": "Journal of International and Comparative Social Policy",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Journal of International and Comparative Social Policy",
+    "ISSN": [
+     "2169-9763",
+     "2169-978X"
+    ],
+    "publisher": "Cambridge University Press"
+   }
+  ]
+ },
+ "257": {
+  "journal_id": 257,
+  "name": "Journal of Practice Teaching and Learning",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Journal of Effective Teaching and Learning Practices",
+    "ISSN": [
+     "3048-9601"
+    ],
+    "publisher": "RK University"
+   },
+   {
+    "title": "The Journal of Practice Teaching and Learning",
+    "ISSN": [
+     "1759-5150",
+     "1759-5150"
+    ],
+    "publisher": "Whiting & Birch Ltd"
+   },
+   {
+    "title": "Journal of University Teaching and Learning Practice",
+    "ISSN": [
+     "1449-9789",
+     "1449-9789"
+    ],
+    "publisher": "Open Access Publishing Association"
+   }
+  ]
+ },
+ "258": {
+  "journal_id": 258,
+  "name": "Journal of Social Work Research and Evaluation",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "259": {
+  "journal_id": 259,
+  "name": "Practice: Social Work in Action",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "260": {
+  "journal_id": 260,
+  "name": "Professional Development: The International Journal of Continuing Social Work Education",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "261": {
+  "journal_id": 261,
+  "name": "The Jewish Social Work Forum",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": []
+ },
+ "262": {
+  "journal_id": 262,
+  "name": "Aotearoa New Zealand Social Work",
+  "current": {
+   "issn_print": null,
+   "issn_online": null
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Aotearoa New Zealand Social Work",
+    "ISSN": [
+     "1178-5527",
+     "2463-4131"
+    ],
+    "publisher": "University of Otago Library"
+   }
+  ]
+ },
+ "263": {
+  "journal_id": 263,
+  "name": "Sexual and Gender Diversity in Social Services",
+  "current": {
+   "issn_print": "1053-8720",
+   "issn_online": "1540-4056"
+  },
+  "sampled_dois": 0,
+  "with_issn": 0,
+  "votes": [],
+  "crossref_containers": [],
+  "method": "lookup",
+  "candidates": [
+   {
+    "title": "Sexual and Gender Diversity in Social Services",
+    "ISSN": [
+     "2993-3021",
+     "2993-303X"
+    ],
+    "publisher": "Informa UK (Taylor & Francis)"
+   }
+  ]
+ }
+}

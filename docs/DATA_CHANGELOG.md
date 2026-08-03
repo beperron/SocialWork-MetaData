@@ -20,55 +20,116 @@ prior releases are never modified or removed.
 4. Update the version badge in `index.html` (Download section), the
    "Current data release" line in `README.md`, and add an entry below.
 
-## Applied to the live database, not yet released
-
-These corrections are **in the live database now** and will ship in v1.2. Anyone
-working from the v1.1 download will not see them yet.
-
-| # | fix | scope | issue |
-|---|---|---|---|
-| 1 | 801 *Affilia* articles reassigned off *Social Work* | `journal_id` | [#2](../../issues/2) |
-| 2 | 393 *J. Gay & Lesbian Social Services* articles reassigned off *J. Gerontological Social Work* | `journal_id` | [#2](../../issues/2) |
-| 3 | 7,756 duplicate authorship credits removed; 509 corresponding-author flags merged onto the surviving credit | `paper_authors` | [#6](../../issues/6) |
-
-**No paper counts change.** `swrd.papers` is untouched by all three: fixes 1 and 2
-move articles between journals that are both already in the set, and fix 3 touches
-only `paper_authors`. The released figure of 62,602 articles is unaffected.
-
-Verified after applying: `paper_authors` 241,766 → 234,010; distinct authors
-credited 137,659 → 133,211; corresponding-author links 31,727 → 29,204 but papers
-*with* a corresponding author unchanged at 25,621, which is the flag merge working.
-Health check clean — 0 orphaned `paper_authors`, 0 null or dangling `journal_id`,
-0 duplicate DOIs.
-
-Two consequences to carry into the release:
-
-- **Authors-without-papers rose from 26,890 to 31,338.** Deduping a credit usually
-  orphans the redundant `swrd.authors` row. Harmless for counts, but it means a raw
-  `count(*) from swrd.authors` overstates credited authors by more than it did.
-  Cleaning those rows is a separate fix and is deliberately not bundled here.
-- **Report 04 was regenerated and did not change.** Its co-authorship network and
-  author statistics derive from `paper_authors`, so it was re-run against the
-  corrected database: `stats.json` identical on all 174 values, `networks.json`
-  byte-identical, same 37 and 38 nodes. Only **3** of the report's 705 DOIs are
-  among the 2,885 deduped papers, and its conference half (1,238 of 2,034 records)
-  has no `paper_authors` rows at all. The live page needs no republish.
-
-Fix 3 covers roughly half the defect **by design**: 4,855 of the 9,895 corpus-wide
-duplicate groups. The remainder fail the DOI-confirmation gate, and 107 in-scope
-groups were explicitly refused by a gate rather than missed. The defect is reduced,
-not eliminated. Non-Latin-script names (e.g. `炳光 甘`) are outside the fix entirely.
-
-Rollbacks for all three are committed and were proven exact before applying:
-`qc/journals/data/rollback_{affilia,glss}.sql` and
-`qc/authors/data/rollback_credits.sql`.
-
-Full reasoning, gate design and independent verification: `qc/authors/README.md`
-and `qc/authors/VERIFICATION.md`.
-
 ## Versions
 
-### v1.1 — August 2026 (current)
+### v1.2 — August 2026 (current)
+
+**Journal attribution and duplicate authorship credits.** No article is added,
+removed, or merged: `swrd.papers` is untouched, so `swrd_articles` remains
+**62,602** and the figure cited in Perron, Victor & Qi (2026) is unaffected.
+
+| # | correction | scope | issue |
+|---|---|---|---|
+| 1 | 801 *Affilia* articles reassigned off *Social Work* | `journal_id` | [#2](https://github.com/beperron/SocialWork-MetaData/issues/2) |
+| 2 | 393 *J. Gay & Lesbian Social Services* articles reassigned off *J. Gerontological Social Work* | `journal_id` | [#2](https://github.com/beperron/SocialWork-MetaData/issues/2) |
+| 3 | 7,756 duplicate authorship credits removed, 509 corresponding-author flags merged onto the surviving credit | `paper_authors` | [#6](https://github.com/beperron/SocialWork-MetaData/issues/6) |
+
+| | before | after |
+|---|---:|---:|
+| `paper_authors` links | 241,766 | **234,010** |
+| distinct authors credited | 137,659 | **133,211** |
+| corresponding-author links | 31,727 | **29,204** |
+| papers *with* a corresponding author | 25,621 | 25,621 |
+| articles (`swrd_articles`) | 62,602 | 62,602 |
+
+#### 1 — Affilia (801 records)
+
+Articles filed under *Social Work* (id 1) moved to *Affilia-Feminist Inquiry in
+Social Work* (id 17): Social Work 8,987 → 8,186, Affilia 1,932 → 2,733.
+
+Six independent signals agreed on all 801: Crossref ISSN `0886-1099`/`1552-3020`
+(corroborated 120/120 by Affilia's own correctly-filed articles), container-title
+"Affilia", and DOI prefix `10.1177` — disjoint from *Social Work*'s `10.1093`.
+1,440 Affilia-ISSN records were already filed correctly and no *Social Work*
+record sat under Affilia, so the error ran one way only.
+
+Title was deliberately **not** a gate. Eleven records differ from Crossref's title
+(corrigenda, editorials, multi-part titles truncated on one side), and none of
+that bears on which journal an article is in.
+
+#### 2 — Journal of Gay & Lesbian Social Services (393 records)
+
+Both journals published through Haworth, so the DOI *prefix* cannot separate them —
+`10.1300` appears on both sides. The Haworth **series code** can, with no overlap:
+`10.1300/J041` is J. Gay & Lesbian Social Services (all 393) and `10.1300/J083` is
+J. Gerontological Social Work (1,264, all left in place). Corroborated by ISSN
+`1053-8720`/`1540-4056` and a 1994–2006 span matching that journal's own era.
+
+#### 3 — Duplicate authorship credits (7,756 removed)
+
+One person credited more than once on the same paper — the same name at the same
+byline position, from repeated ingests. Crossref did **not** supply the author
+lists: it confirmed each DOI identifies its article and vetoed merges, nothing
+more. Trusting it would have deleted real co-authors, because its author lists are
+routinely truncated to the first author on older deposits (paper 19724 lists
+"T. Booth" for an article by Tim Booth, Wendy Booth and David McConnell).
+
+The corresponding-author flag is **merged, not discarded**: 3,032 deleted rows
+carried it, and without the merge 502 papers would have gone from asserting a
+corresponding author to asserting none.
+
+**This reduces the defect, it does not eliminate it.** 4,855 of 9,895 corpus-wide
+duplicate groups are corrected — the rest fail the DOI-confirmation gate. A
+further 107 in-scope groups were explicitly refused by a gate rather than missed,
+and non-Latin-script names are outside the fix entirely.
+
+#### Deliberately not changed
+
+- **Orphaned author rows.** Deduping a credit usually orphans the redundant
+  `swrd.authors` row; authors-without-papers rose from 26,890 to 31,338. A raw
+  `count(*) from swrd.authors` therefore overstates credited authors by more than
+  before. Cleaning these is a separate job and was not bundled here.
+- **The other misattribution clusters** in issue #2, and the three remaining
+  authorship defects in issue #6 (split names, reference lists ingested as
+  authors, colliding positions).
+
+#### How it was verified
+
+- **Census, not sample.** All 4,855 merge groups checked against **OpenAlex**,
+  which runs its own author disambiguation: 98.3% confirmed as exactly one person,
+  and every apparent contradiction resolved as an artifact of the check.
+- **Publisher bylines.** 16 groups drawn at random from the 1,228 where the two
+  renderings genuinely differ, read off each journal's own article page: 16/16
+  correct. 74.7% of all groups merge strings identical modulo punctuation and need
+  no external source at all.
+- **Adversarial review.** 18 agents across five lenses with two refutation
+  skeptics per finding; 19 findings, 5 survived, 2 had real data effect. Both were
+  fixed before applying: the corresponding-author loss above, and four merges that
+  conflated two people through a given-name fragment.
+- **Round trip.** Apply → rollback → set difference in both directions: 0 rows
+  lost, 0 altered, identical on all five columns including `created_at`.
+
+Full method: [`qc/authors/README.md`](../qc/authors/README.md),
+[`qc/authors/VERIFICATION.md`](../qc/authors/VERIFICATION.md),
+[`qc/journals/`](../qc/journals/).
+
+#### Reversibility
+
+The prior state is preserved **inside the database** in the unlinked
+`swrd_archive` schema — 7,756 removed credits with their original `created_at`,
+509 promoted flags with their prior value, and 1,194 reassigned articles with
+their original `journal_id`. No foreign keys, triggers, or views reference these
+tables, and they are not exported.
+[`qc/archive/restore_from_archive_v1_2.sql`](../qc/archive/restore_from_archive_v1_2.sql)
+reverses the release reading only those tables — no file, no git object — and
+asserts its way back to 241,766 links and 1,194 articles.
+
+| Archive | Contents |
+|---|---|
+| `swrd-database-csv-v1.2.zip` | As v1.1, with journal attribution corrected for 1,194 articles and 7,756 duplicate authorship credits removed |
+| `sswr-database-csv-v1.2.zip` | Unchanged from v1.0 |
+
+### v1.1 — August 2026
 
 **Repairs the `doi` column. Nothing else changes** — no rows added, removed, or
 merged, and no other field touched.
