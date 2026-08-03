@@ -1,0 +1,21 @@
+{
+  "records_checked": 300,
+  "verdicts": {
+    "journal_mismatch": 9,
+    "confirmed": 250,
+    "title_mismatch": 25,
+    "title_weak": 16
+  },
+  "confirmed_rate": 0.8333,
+  "journal_basis": {
+    "name": 300
+  },
+  "year_verdicts_informational": {
+    "match": 297,
+    "match_offset_1": 3
+  },
+  "by_journal_mismatch": {
+    "Studies in Clinical Social Work: Transforming Practice, Education and Research": 9
+  },
+  "not_in_crossref_by_journal": {}
+}
