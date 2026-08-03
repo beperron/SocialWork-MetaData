@@ -276,10 +276,14 @@ def main():
 
         # Crossref surnames, for the veto only. Never used as the author list.
         cr_surnames = defaultdict(int)
+        cr_given = set()
         for a in (item.get("author") or []):
             p = parse_name((a.get("family") or "") or (a.get("name") or ""))
             if p:
                 cr_surnames[p[0]] += 1
+            for t in strip_accents(a.get("given") or "").lower().replace(".", " ").split():
+                if len(t) > 1:
+                    cr_given.add(t)
 
         parsed = []
         for l in ls:
@@ -313,15 +317,36 @@ def main():
                 queued.append({**base, "refused": "crossref_has_two_of_this_surname"})
                 stats["refused_surname_veto"] += 1
                 continue
+            # GATE 1b — the key is not a surname at all, it is somebody's GIVEN
+            # name. This is bug (b) in a new input class: the surname-first
+            # branch accepts a leading token without ever checking it IS a
+            # surname, so a bare fragment left by the split-name defect (#1)
+            # becomes a group key. parse_name('John') -> ('john', []), GATE 1
+            # then looks up cr_surnames['john'] = 0 and silently passes.
+            #
+            # On papers 100522/100548 that merged the fragment 'John' into
+            # 'John R.' -- John Coates folded into John R. Graham. Two people.
+            if cr_surnames.get(surname, 0) == 0 and surname in cr_given:
+                queued.append({**base, "refused": "key_is_a_crossref_given_name"})
+                stats["refused_given_name_key"] += 1
+                continue
             # GATE 2 — a bare surname that fits two different given names.
+            #
+            # STRUCTURALLY UNREACHABLE, kept as a tripwire. compatible() already
+            # forces every given-bearing member of a group to share a first
+            # initial, so len(initials) > 1 cannot hold here. It fires only if
+            # someone loosens compatible(); the count below is therefore 0 by
+            # construction, not by measurement.
             bare = [m for m in g if not m["parsed"][1]]
             initials = {m["parsed"][1][0][0] for m in g if m["parsed"][1]}
             if bare and len(initials) > 1:
                 queued.append({**base, "refused": "bare_surname_fits_two_people"})
                 stats["refused_ambiguous"] += 1
                 continue
-            # A row linked to the paper twice cannot be addressed by
-            # (paper_id, author_id) alone; leave it for a hand fix.
+            # GATE 3 — a row linked to the paper twice cannot be addressed by
+            # (paper_id, author_id) alone. Also structurally 0: that pair is
+            # unique in swrd.paper_authors (verified against the live table).
+            # Kept so the patch stays correct if that ever stops being true.
             if len({d["author_id"] for d in drop}) != len(drop) or \
                     keep["author_id"] in {d["author_id"] for d in drop}:
                 queued.append({**base, "refused": "author_id_repeats_on_this_paper"})
@@ -337,7 +362,7 @@ def main():
     print("\nscreening:")
     for k in ("doi_not_in_crossref", "doi_not_confirmed_by_title",
               "skipped_non_person_name", "refused_surname_veto",
-              "refused_ambiguous", "refused_repeat_link"):
+              "refused_given_name_key", "refused_ambiguous", "refused_repeat_link"):
         print(f"  {k:<30} {stats[k]:>7,}")
     print(f"\n  merged groups                  {stats['merged_groups']:>7,}")
     print(f"  duplicate links to delete      {stats['links_dropped']:>7,}")
@@ -382,6 +407,51 @@ def main():
     pairs = sorted({(r["paper_id"], int(a))
                     for r in rows for a in r["drop_author_ids"].split(";")})
     vals = ",".join(f"({p},{a})" for p, a in pairs)
+
+    # Read every live link on every affected paper. Needed twice: to restore the
+    # deleted rows exactly, and to decide which surviving credits inherit the
+    # corresponding-author flag. Batched -- a single IN of ~7,500 tuples returns
+    # HTTP 500 from the endpoint.
+    want, live, live_rows = set(pairs), {}, []
+    ids = sorted({p for p, _ in pairs})
+    for i in range(0, len(ids), 500):
+        chunk = ",".join(map(str, ids[i:i + 500]))
+        for r in Q.rows('select paper_id, author_id, "position", is_corresponding, '
+                        "created_at from swrd.paper_authors "
+                        f"where paper_id in ({chunk})"):
+            live_rows.append(r)
+            if (r["paper_id"], r["author_id"]) in want:
+                live[(r["paper_id"], r["author_id"])] = r
+    if len(live) != len(pairs):
+        sys.exit(f"read back {len(live):,} of {len(pairs):,} targeted links — "
+                 "the table moved under us; re-run before applying")
+
+    # ---- is_corresponding must MERGE, not be discarded with the row.
+    #
+    # A deleted duplicate can be the row carrying is_corresponding. Deleting it
+    # does not just lose a row, it silently turns a true statement false: there
+    # are ZERO nulls in this column corpus-wide, so false is an assertion, not
+    # "unknown". It cannot be recovered from position either -- 1,236 flagged
+    # rows sit at position <> 1 and 94,566 position-1 rows are false. The value
+    # ships, in migration/10_export_release_csv.py and in the
+    # author_publication_stats.corresponding_author_count view.
+    #
+    # So before deleting, the surviving credit inherits the flag. Ordering
+    # matters: this runs AFTER gate 1b, because on paper 100522 the dropped
+    # 'John' row is flagged and the keeper is 'John R.' -- a different person.
+    # Promoting first would have turned a bad merge into a false attribution.
+    corr = {(r["paper_id"], r["author_id"]): r["is_corresponding"]
+            for r in live_rows}
+    promote = sorted({
+        (r["paper_id"], r["keep_author_id"])
+        for r in rows
+        if not corr.get((r["paper_id"], r["keep_author_id"]))
+        and any(corr.get((r["paper_id"], int(a)))
+                for a in r["drop_author_ids"].split(";"))})
+    dropped_flags = sum(1 for p in pairs if corr.get(p))
+    print(f"\ncorresponding-author flags on deleted rows : {dropped_flags:,}")
+    print(f"  promoted onto the surviving credit       : {len(promote):,}")
+    pvals = ",\n".join(f"  ({p},{a})" for p, a in promote) or "  (null, null)"
     with open(OUT_SQL, "w") as f:
         f.write(f"""-- Remove {len(pairs)} duplicate authorship credits: one person credited
 -- more than once on the same paper.
@@ -406,6 +476,17 @@ create temporary table _dupes (paper_id int, author_id int) on commit drop;
 insert into _dupes (paper_id, author_id) values
 {vals};
 
+create temporary table _promote (paper_id int, author_id int) on commit drop;
+insert into _promote (paper_id, author_id) values
+{pvals};
+
+-- Papers that assert a corresponding author right now. Snapshotted BEFORE any
+-- change so the post-delete assertion has something honest to compare against.
+create temporary table _corr_before on commit drop as
+  select distinct paper_id from swrd.paper_authors
+   where is_corresponding
+     and paper_id in (select paper_id from _dupes);
+
 -- Preflight against the LIVE table, not against this patch. Every targeted link
 -- must exist, and every paper must keep at least one credit.
 do $$
@@ -428,12 +509,18 @@ begin
   end if;
 end $$;
 
+-- Inherit the corresponding-author flag BEFORE the row carrying it is deleted.
+update swrd.paper_authors pa
+   set is_corresponding = true
+  from _promote m
+ where pa.paper_id = m.paper_id and pa.author_id = m.author_id;
+
 delete from swrd.paper_authors pa
  using _dupes d
  where d.paper_id = pa.paper_id and d.author_id = pa.author_id;
 
 do $$
-declare gone int;
+declare gone int; lost int;
 begin
   select count(*) into gone
     from swrd.paper_authors pa join _dupes d
@@ -441,45 +528,89 @@ begin
   if gone <> 0 then
     raise exception '% targeted links survived the delete', gone;
   end if;
-  raise notice 'removed {len(pairs)} duplicate credits across {len(affected)} papers';
+  -- No paper may go from asserting a corresponding author to asserting none.
+  select count(*) into lost from _corr_before b
+   where not exists (select 1 from swrd.paper_authors pa
+                      where pa.paper_id = b.paper_id and pa.is_corresponding);
+  if lost <> 0 then
+    raise exception '% papers lost their corresponding author', lost;
+  end if;
+  raise notice 'removed {len(pairs)} duplicate credits across {len(affected)} papers; '
+               'promoted {len(promote)} corresponding-author flags';
 end $$;
 
 commit;
 """)
 
-    # Read back what we are about to delete so the rollback restores the exact
-    # position and is_corresponding. Batched: a single IN of ~7,500 tuples
-    # returns HTTP 500 from the endpoint.
-    want, live = set(pairs), {}
-    ids = sorted({p for p, _ in pairs})
-    for i in range(0, len(ids), 500):
-        chunk = ",".join(map(str, ids[i:i + 500]))
-        for r in Q.rows('select paper_id, author_id, "position", is_corresponding '
-                        f"from swrd.paper_authors where paper_id in ({chunk})"):
-            key = (r["paper_id"], r["author_id"])
-            if key in want:
-                live[key] = r
-    if len(live) != len(pairs):
-        sys.exit(f"read back {len(live):,} of {len(pairs):,} targeted links — "
-                 "the table moved under us; re-run before applying")
+    def lit(v):
+        if v is None:
+            return "null"
+        if isinstance(v, bool):
+            return str(v).lower()
+        if isinstance(v, (int, float)):
+            return str(v)
+        return "'" + str(v).replace("'", "''") + "'"
+
     restore = ",\n".join(
-        "  (%d, %d, %s, %s)" % (p, a,
-                                "null" if live[(p, a)]["position"] is None else live[(p, a)]["position"],
-                                "null" if live[(p, a)]["is_corresponding"] is None
-                                else str(live[(p, a)]["is_corresponding"]).lower())
+        "  (%d, %d, %s, %s, %s)" % (
+            p, a, lit(live[(p, a)]["position"]),
+            lit(live[(p, a)]["is_corresponding"]),
+            lit(live[(p, a)]["created_at"]))
         for p, a in pairs if (p, a) in live)
     with open(OUT_RB, "w") as f:
-        f.write(f"""-- Reverse of dedupe_credits.sql, written before applying and holding the
--- position and is_corresponding values read off the live table beforehand, so
--- the restore is exact rather than approximate.
+        f.write(f"""-- Reverse of dedupe_credits.sql, written before applying and holding EVERY
+-- column of swrd.paper_authors read off the live table beforehand, so the
+-- restore is byte-exact rather than approximate. created_at is included on
+-- purpose: letting it default would silently rewrite the ingest history of
+-- {len(pairs)} rows, which is not what "rollback" should mean.
+--
+-- The delete removes {len(pairs)} rows; this puts back {len(restore.splitlines())}.
+--
+-- The rows go through a temp table rather than a literal IN list. A
+-- {len(pairs)}-tuple IN exceeds max_stack_depth and the statement dies with
+-- 'stack depth limit exceeded' -- found by the round-trip test, not by reading.
 --
 --   psql "$TGT" -v ON_ERROR_STOP=1 -f rollback_credits.sql
 
 begin;
-insert into swrd.paper_authors (paper_id, author_id, "position", is_corresponding)
+
+create temporary table _restore (
+  paper_id int, author_id int, "position" int,
+  is_corresponding boolean, created_at timestamp) on commit drop;
+
+insert into _restore (paper_id, author_id, "position", is_corresponding, created_at)
 values
-{restore}
+{restore};
+
+insert into swrd.paper_authors
+  (paper_id, author_id, "position", is_corresponding, created_at)
+select paper_id, author_id, "position", is_corresponding, created_at from _restore
 on conflict do nothing;
+
+-- Undo the corresponding-author promotion. Restoring only the deleted rows
+-- would leave {len(promote)} surviving credits flagged true that were false
+-- before, so the "rollback" would quietly change data of its own.
+create temporary table _unpromote (paper_id int, author_id int) on commit drop;
+insert into _unpromote (paper_id, author_id) values
+{pvals};
+
+update swrd.paper_authors pa
+   set is_corresponding = false
+  from _unpromote m
+ where pa.paper_id = m.paper_id and pa.author_id = m.author_id;
+
+do $$
+declare back int;
+begin
+  select count(*) into back
+    from swrd.paper_authors pa join _restore r
+      on r.paper_id = pa.paper_id and r.author_id = pa.author_id;
+  if back <> {len(pairs)} then
+    raise exception 'expected {len(pairs)} links restored, found %', back;
+  end if;
+  raise notice 'restored {len(pairs)} authorship credits';
+end $$;
+
 commit;
 """)
     print(f"\n{len(pairs):,} deletions -> {OUT_CSV}\n{OUT_SQL}\n{OUT_RB}\n"
