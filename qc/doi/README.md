@@ -41,8 +41,11 @@ substantially incomplete.
 Applying takes malformed values from **4,326 to 927** (all years), and from 3,556 to
 927 in the 1989+ corpus — every pre-1989 Supplement row is repaired.
 
-Sampled precision, 60 per stratum, seed `20260802`, 95% Wilson intervals: tier A
-60/60 [94.0–100], tier B/ISSN 60/60 [94.0–100], tier B/name 60/60 [94.0–100].
+Every proposal — all 3,615, not a sample — was re-checked against Crossref on signals the recovery step does not use, and all 3,615 confirm: tier A 2,769/2,769, tier B/ISSN 375/375, tier B/name 471/471.
+
+The audit is run exhaustively rather than on a sample because the population is
+small and the Crossref responses are cached, so there is no reason to estimate
+something that can be measured.
 
 > **An earlier version of this file reported "120/120 precision". That figure is
 > retracted.** The audit that produced it re-applied the same two predicates that

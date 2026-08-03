@@ -102,13 +102,16 @@ selftest — the audit must REJECT all of these:
   117167: rejected (good)  reasons=['digit_sequence_differs']
 ```
 
-Current precision, 60 per stratum, seed `20260802`:
+Precision, run **exhaustively over every proposal** rather than on a sample:
 
-| Stratum | Confirmed | 95% CI | Population |
-|---|---|---|---:|
-| A / rule | 60/60 | 94.0–100 | 2,769 |
-| B / ISSN | 60/60 | 94.0–100 | 375 |
-| B / name | 60/60 | 94.0–100 | 471 |
+| Stratum | Confirmed | Population |
+|---|---|---:|
+| A / rule | 2,769/2,769 | 2,769 |
+| B / ISSN | 375/375 | 375 |
+| B / name | 471/471 | 471 |
+
+Sampling was the wrong tool here: 3,615 records with cached Crossref responses can
+be checked in full, so estimating a rate would have been a choice to know less.
 
 ## A false positive worth recording
 

@@ -84,9 +84,8 @@ survived. Two were disqualifying and both were fixed before this release:
    sequences, author-token overlap, year agreement — and now carries a self-test that
    feeds it those three known-wrong proposals and fails the run if it confirms any.
 
-Current sampled precision, 60 per stratum, seed `20260802`, with 95% Wilson
-intervals: tier A 60/60 [94.0–100], tier B/ISSN 60/60 [94.0–100], tier B/name 60/60
-[94.0–100]. Full method and the complete finding list:
+Every proposal — all 3,615, not a sample — was re-checked against Crossref on signals the recovery step does not use, and all 3,615 confirm: tier A 2,769/2,769, tier B/ISSN 375/375, tier B/name 471/471. This is verification, not sampling: the population is small
+enough to check exhaustively, so it was. Full method and the complete finding list:
 [`docs/QC_REVIEW_2026-08.md`](QC_REVIEW_2026-08.md) and
 [`qc/doi/README.md`](../qc/doi/README.md).
 
