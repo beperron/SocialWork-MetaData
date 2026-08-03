@@ -82,7 +82,7 @@ def main():
     for i in range(0, len(items), 400):
         chunk = items[i:i + 400]
         inlist = ",".join("'" + d.replace("'", "''") + "'" for _, d in chunk)
-        for row in Q.rows(f"select id, doi, title, publication_year as year "
+        for row in Q.rows(f"select id, doi, title, publication_year as year, journal_id "
                           f"from swrd.papers where doi in ({inlist})"):
             existing.setdefault(row["doi"].lower(), []).append(row)
 
@@ -96,12 +96,29 @@ def main():
         owner = owners[0]
         # Same article or a different one? That decides who the finding belongs
         # to: a duplicate row to merge, or a genuine conflict to adjudicate.
-        same = Q.title_sim(r.get("title") or "", owner.get("title") or "") >= 0.90
+        #
+        # 0.90 was too strict. Duplicate ingests routinely differ by a truncated
+        # subtitle — "Celebrating our 20th Anniversary!" against "Editorial
+        # celebrating our 20<sup>th</sup> anniversary!" scores 0.77 — and three
+        # real duplicates were being labelled as conflicts, pointing the reviewer
+        # at the wrong question. The genuine conflict in this data scores 0.33,
+        # so 0.70 sits in a wide gap.
+        #
+        # Deliberately NOT also requiring the two rows to agree on journal, even
+        # though that sounds like a safer test. The duplicate pairs here are
+        # precisely the records the journal-misattribution defect affects: one
+        # copy is filed under the right journal and the other is not. Adding the
+        # journal condition reclassified 171 correctly-identified duplicates as
+        # conflicts. A guard that assumes a field is trustworthy cannot be used
+        # to police a dataset where that field is known to be broken.
+        sim = Q.title_sim(r.get("title") or "", owner.get("title") or "")
+        same = sim >= 0.70
         r = {**r,
              "verdict": "duplicate_of_existing_row" if same else "collision_needs_review",
              "collides_with_id": owner["id"],
              "collides_with_title": (owner.get("title") or "")[:200],
-             "collides_with_year": owner.get("year")}
+             "collides_with_year": owner.get("year"),
+             "collides_with_title_sim": round(sim, 3)}
         collided.append(r)
     print(f"    {len(collided):,} proposals collide with a row already in the column")
     print(f"      same article (duplicate row): "
