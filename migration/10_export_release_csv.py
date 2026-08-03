@@ -148,7 +148,11 @@ def export_csv(conn, name, query):
         env={**os.environ, "PGGSSENCMODE": "disable", "PGSSLMODE": "require"})
     if out.returncode != 0:
         sys.exit(f"{name}: psql failed:\n{out.stderr}")
-    rows = out.stdout.count("\n") - 1
+    # Count CSV *records*, not physical lines. 220 SWRD abstracts contain an
+    # embedded newline, so a line count over-reports by ~500 and the invariant
+    # below fails against correct data. Caught when the v1.1 export refused to
+    # package: the script said 63,147 rows where the database says 62,602.
+    rows = max(0, sum(1 for _ in csv.reader(io.StringIO(out.stdout))) - 1)
     if name in EXPECTED and rows != EXPECTED[name]:
         sys.exit(f"{name}: got {rows:,} rows, expected {EXPECTED[name]:,} — refusing to package")
     print(f"  {name}.csv  {rows:,} rows")

@@ -1,0 +1,54 @@
+{
+  "records_checked": 69349,
+  "verdicts": {
+    "journal_mismatch": 4909,
+    "confirmed": 59465,
+    "title_mismatch": 3289,
+    "title_weak": 710,
+    "not_in_crossref": 976
+  },
+  "confirmed_rate": 0.8575,
+  "journal_basis": {
+    "name": 67124,
+    "issn": 1249
+  },
+  "year_verdicts_informational": {
+    "match": 66765,
+    "match_offset_1": 1198,
+    "mismatch": 410
+  },
+  "by_journal_mismatch": {
+    "Studies in Clinical Social Work: Transforming Practice, Education and Research": 1014,
+    "Social Work": 795,
+    "Sexual and Gender Diversity in Social Services": 517,
+    "Administration in Social Work": 484,
+    "Journal of Gerontological Social Work": 408,
+    "Journal of Social Work Education": 352,
+    "Research on Social Work Practice": 327,
+    "Journal of Technology in Human Services": 250,
+    "British Journal of Social Work": 213,
+    "Journal of Social Work Practice": 181,
+    "Social Work with Groups": 119,
+    "International Journal of Social Welfare": 86,
+    "Families in Society": 62,
+    "Social Work in Health Care": 62,
+    "Advances in Social Work": 9
+  },
+  "not_in_crossref_by_journal": {
+    "International Journal of Social Work Values and Ethics": 359,
+    "Social Work-Maatskaplike Werk": 142,
+    "Social Work in Health Care": 112,
+    "Columbia Social Work Review": 103,
+    "Journal of Progressive Human Services": 60,
+    "Indian Journal of Social Work": 56,
+    "Southern African Journal of Social Work and Social Development": 47,
+    "British Journal of Social Work": 24,
+    "Journal of Evidence-Based Social Work": 7,
+    "Sexual and Gender Diversity in Social Services": 7,
+    "Journal of Religion & Spirituality in Social Work": 6,
+    "Social Work": 5,
+    "Families in Society": 5,
+    "Children & Schools": 5,
+    "Journal of Social Work Education": 4
+  }
+}

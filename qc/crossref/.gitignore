@@ -1,0 +1,3 @@
+# Crossref responses are regenerable evidence; the pilot's are small enough to
+# keep, but a full 70k-record run is not. Commit deliberately, not by default.
+cache/*.jsonl.gz

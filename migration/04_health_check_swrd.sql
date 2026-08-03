@@ -35,6 +35,29 @@ select count(*) as duplicate_doi_groups from (
   select doi from swrd.papers where doi is not null group by doi having count(*) > 1
 ) d;
 
+\echo '=== SWRD: DOI SYNTAX VALIDITY (1989+) ==='
+-- A populated doi that is not a DOI is worse than a null one: it satisfies
+-- "has a DOI" while breaking every lookup, and it misleads dedup rules that
+-- prefer the row carrying an identifier. Found 2026-08 at 3,556 rows (5.1% of
+-- populated values), entirely from two ingests -- Digital Commons wrote OAI
+-- identifiers and DOAJ wrote internal dc/ hashes. See issue #1.
+select count(*) filter (where doi is not null)                              as populated,
+       count(*) filter (where doi ~ '^10\.[0-9]{4,9}/')                     as valid_syntax,
+       count(*) filter (where doi is not null and doi !~ '^10\.[0-9]{4,9}/') as malformed,
+       count(*) filter (where doi like 'oai:%')                             as pattern_oai,
+       count(*) filter (where doi like 'dc/%')                              as pattern_dc
+from swrd.papers where publication_year >= 1989;
+
+\echo '=== SWRD: MALFORMED DOIs BY SOURCE AND JOURNAL (1989+) ==='
+select coalesce(p.data_source, '(null)') as data_source,
+       coalesce(j.name, '(no journal)')  as journal,
+       count(*) as malformed
+from swrd.papers p
+left join swrd.journals j on j.id = p.journal_id
+where p.publication_year >= 1989
+  and p.doi is not null and p.doi !~ '^10\.[0-9]{4,9}/'
+group by 1, 2 order by 3 desc;
+
 \echo '=== SWRD: DUPLICATE wos_uid / scopus_eid ==='
 select (select count(*) from (select wos_uid from swrd.papers where wos_uid is not null group by wos_uid having count(*) > 1) x) as dup_wos,
        (select count(*) from (select scopus_eid from swrd.papers where scopus_eid is not null group by scopus_eid having count(*) > 1) y) as dup_scopus;

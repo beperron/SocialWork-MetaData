@@ -1,0 +1,70 @@
+{
+  "sample_size": 442,
+  "by_stratum": {
+    "valid_doi": 100,
+    "malformed_oai": 100,
+    "thin_coverage": 42,
+    "malformed_dc": 100,
+    "null_doi": 100
+  },
+  "by_verdict": {
+    "confirmed": 97,
+    "field_mismatch": 20,
+    "recovered": 201,
+    "doi_not_in_crossref": 5,
+    "rejected_wrong_journal": 93,
+    "no_candidate": 12,
+    "weak_candidate": 14
+  },
+  "by_tier": {
+    "A": 197,
+    "C": 128,
+    "B": 117
+  },
+  "verdict_by_stratum": {
+    "malformed_dc": {
+      "recovered": 71,
+      "rejected_wrong_journal": 18,
+      "no_candidate": 11
+    },
+    "malformed_oai": {
+      "recovered": 100
+    },
+    "null_doi": {
+      "rejected_wrong_journal": 61,
+      "recovered": 27,
+      "weak_candidate": 11,
+      "no_candidate": 1
+    },
+    "thin_coverage": {
+      "doi_not_in_crossref": 5,
+      "field_mismatch": 7,
+      "confirmed": 10,
+      "rejected_wrong_journal": 14,
+      "recovered": 3,
+      "weak_candidate": 3
+    },
+    "valid_doi": {
+      "confirmed": 87,
+      "field_mismatch": 13
+    }
+  },
+  "journal_check_basis": {
+    "name": 385,
+    "issn": 26,
+    "no_container_title": 14
+  },
+  "proposed_corrections": {
+    "total": 214,
+    "by_field": {
+      "title(review)": 4,
+      "journal": 9,
+      "doi": 201
+    },
+    "by_tier": {
+      "C": 4,
+      "B": 110,
+      "A": 100
+    }
+  }
+}
