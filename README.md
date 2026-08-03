@@ -25,12 +25,12 @@ Going deeper: the [skills folder](skills/) also holds full per-database skills w
 
 ## ⬇️ Download the data
 
-Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration. **Current data release: v1.1 (August 2026).** The data are versioned: corrections and additions are published as new numbered releases (see [Reporting data problems](#reporting-data-problems) below), and every prior version remains available on the [releases page](https://github.com/beperron/SocialWork-MetaData/releases). What changed in each version is recorded in the [data changelog](docs/DATA_CHANGELOG.md).
+Complete CSV exports of both databases are published as [GitHub releases](https://github.com/beperron/SocialWork-MetaData/releases/latest) — no forms, no registration. **Current data release: v1.2 (August 2026).** The data are versioned: corrections and additions are published as new numbered releases (see [Reporting data problems](#reporting-data-problems) below), and every prior version remains available on the [releases page](https://github.com/beperron/SocialWork-MetaData/releases). What changed in each version is recorded in the [data changelog](docs/DATA_CHANGELOG.md).
 
 | | |
 |---|---|
-| 📗 [`swrd-database-csv-v1.1.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.1/swrd-database-csv-v1.1.zip) (28 MB) | **The SWRD** — exactly the 62,602-article corpus of the 2026 article, plus the historical Supplement (1920–1988), additional records, journals, authors, and linkage tables |
-| 📘 [`sswr-database-csv-v1.1.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.1/sswr-database-csv-v1.1.zip) (26 MB) | **The SSWR Conference Database** — all 23,793 presentations with abstracts and methodology labels, disambiguated authors, and authorship links |
+| 📗 [`swrd-database-csv-v1.2.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.2/swrd-database-csv-v1.2.zip) (28 MB) | **The SWRD** — exactly the 62,602-article corpus of the 2026 article, plus the historical Supplement (1920–1988), additional records, journals, authors, and linkage tables |
+| 📘 [`sswr-database-csv-v1.2.zip`](https://github.com/beperron/SocialWork-MetaData/releases/download/data-v1.2/sswr-database-csv-v1.2.zip) (26 MB) | **The SSWR Conference Database** — all 23,793 presentations with abstracts and methodology labels, disambiguated authors, and authorship links |
 
 Each zip includes a README describing every file, the join keys, and the citation. (Semantic embeddings are not included — they are regenerable; see the skills.)
 
