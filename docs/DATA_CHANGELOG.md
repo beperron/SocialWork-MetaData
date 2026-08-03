@@ -47,9 +47,12 @@ Two consequences to carry into the release:
   orphans the redundant `swrd.authors` row. Harmless for counts, but it means a raw
   `count(*) from swrd.authors` overstates credited authors by more than it did.
   Cleaning those rows is a separate fix and is deliberately not bundled here.
-- **Report 04 must be regenerated.** Its co-authorship network and author statistics
-  derive from `paper_authors`, and that page is live. `compute_stats.py` and
-  `make_network.py` both re-derive from the database, so it is a re-run.
+- **Report 04 was regenerated and did not change.** Its co-authorship network and
+  author statistics derive from `paper_authors`, so it was re-run against the
+  corrected database: `stats.json` identical on all 174 values, `networks.json`
+  byte-identical, same 37 and 38 nodes. Only **3** of the report's 705 DOIs are
+  among the 2,885 deduped papers, and its conference half (1,238 of 2,034 records)
+  has no `paper_authors` rows at all. The live page needs no republish.
 
 Fix 3 covers roughly half the defect **by design**: 4,855 of the 9,895 corpus-wide
 duplicate groups. The remainder fail the DOI-confirmation gate, and 107 in-scope
