@@ -1,0 +1,26 @@
+﻿journal_id,name,current_print,current_online,issn_print,issn_online,method,n_votes,sampled,agreement,tier,crossref_container,reason
+1,Social Work,,,0037-8046,1545-6846,vote,93,120,0.775,C,Social Work,agreement 78% below 80%
+12,Administration in Social Work,,,0364-3107,1544-4376,vote,84,120,0.7,C,Administration in Social Work,agreement 70% below 80%
+18,Social Work-Maatskaplike Werk,,,0037-8054,2312-7198,vote,57,101,0.564,C,Social Work/Maatskaplike Werk,agreement 56% below 80%
+27,Journal of Evidence-Based Social Work,,,1543-3714,1543-3722,vote,62,120,0.517,C,Journal of Evidence-Based Social Work,agreement 52% below 80%
+49,Families in Society,,,0037-7678,,vote,62,120,0.517,C,Social Casework,agreement 52% below 80%
+124,Social Work and Society,,,1749-6535,1749-6543,vote,1,4,0.25,C,Ethics and Social Welfare,too few votes
+211,Social Development Issues,,,0147-1473,2372-014X,lookup,0,0,,C,Social Development Issues,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+226,Social Work & Christianity,,,0737-5778,,vote,4,4,1.0,C,Social Work &amp; Christianity,too few votes
+227,Reflections: Narratives of Professional Helping,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+230,Journal of Technology in Human Services,,,1522-8835,1522-8991,vote,83,120,0.692,C,Journal of Technology in Human Services,agreement 69% below 80%
+233,International Journal of Social Work Values and Ethics,,,2790-6345,,vote,15,19,0.789,C,International Journal of Social Work Values and Ethics,agreement 79% below 80%
+238,Journal of Social Work Education and Practice,,2456-2068,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+241,Social Work & Criminal Justice - UW Tacoma,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+245,School Social Work Journal,,,1975-1567,1975-1567,lookup,0,0,,C,Journal of School Social Work,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+246,Journal of Social Work Values and Ethics,,,1553-6947,1553-6947,lookup,0,0,,C,Journal of Social Work Values and Ethics,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+254,Arete,,,2757-9123,,lookup,0,0,,C,Arete Political Philosophy Journal,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+255,Contemporary Rural Social Work,,,2165-4611,,lookup,0,0,,C,Contemporary Rural Social Work Journal,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+256,Journal of International and Comparative Social Policy,,,2169-9763,2169-978X,lookup,0,0,,C,Journal of International and Comparative Social Policy,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+257,Journal of Practice Teaching and Learning,,,3048-9601,,lookup,0,0,,C,Journal of Effective Teaching and Learning Practices,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+258,Journal of Social Work Research and Evaluation,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+259,Practice: Social Work in Action,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+260,Professional Development: The International Journal of Continuing Social Work Education,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+261,The Jewish Social Work Forum,,,,,lookup,0,0,,C,,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+262,Aotearoa New Zealand Social Work,,,1178-5527,2463-4131,lookup,0,0,,C,Aotearoa New Zealand Social Work,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
+263,Sexual and Gender Diversity in Social Services,1053-8720,1540-4056,2993-3021,2993-303X,lookup,0,0,,C,Sexual and Gender Diversity in Social Services,"no articles with a valid DOI — title lookup only, must be confirmed by hand"
