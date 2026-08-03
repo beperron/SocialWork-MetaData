@@ -20,6 +20,39 @@ prior releases are never modified or removed.
 4. Update the version badge in `index.html` (Download section), the
    "Current data release" line in `README.md`, and add an entry below.
 
+## Applied, not yet released
+
+Corrections applied to the live database since v1.1. These ship in the next
+numbered release; until then the published archives do not contain them.
+
+### Journal attribution — Affilia (801 records)
+
+801 articles filed under *Social Work* (journal id 1) are Affilia articles and
+were moved to *Affilia-Feminist Inquiry in Social Work* (id 17).
+
+| | before | after |
+|---|---:|---:|
+| Social Work | 8,987 | 8,186 |
+| Affilia-Feminist Inquiry in Social Work | 1,932 | 2,733 |
+
+Six independent signals agreed on all 801: Crossref ISSN `0886-1099`/`1552-3020`
+(corroborated 120/120 by Affilia's own correctly-filed articles), Crossref
+container-title "Affilia", DOI prefix `10.1177` — disjoint from *Social Work*'s
+`10.1093` — and year agreement. 1,440 Affilia-ISSN records were already filed
+correctly, and no *Social Work* record sat under Affilia, so the error ran one
+way only.
+
+Title was deliberately not used as a gate. Eleven records differ from Crossref's
+title (corrigenda, editorials, and multi-part titles truncated on one side), and
+none of that bears on which journal an article is in.
+
+Row counts are unaffected: both journals are in the 91-journal set, so the
+export's inner join still holds and `swrd_articles` remains 62,602.
+
+Method, evidence per record, and the rollback: [`qc/journals/`](../qc/journals/).
+Part of [issue #2](https://github.com/beperron/SocialWork-MetaData/issues/2),
+which remains open — this is one cluster of several.
+
 ## Versions
 
 ### v1.1 — August 2026 (current)
