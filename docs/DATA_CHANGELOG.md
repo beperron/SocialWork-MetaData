@@ -20,6 +20,49 @@ prior releases are never modified or removed.
 4. Update the version badge in `index.html` (Download section), the
    "Current data release" line in `README.md`, and add an entry below.
 
+## Applied to the live database, not yet released
+
+These corrections are **in the live database now** and will ship in v1.2. Anyone
+working from the v1.1 download will not see them yet.
+
+| # | fix | scope | issue |
+|---|---|---|---|
+| 1 | 801 *Affilia* articles reassigned off *Social Work* | `journal_id` | [#2](../../issues/2) |
+| 2 | 393 *J. Gay & Lesbian Social Services* articles reassigned off *J. Gerontological Social Work* | `journal_id` | [#2](../../issues/2) |
+| 3 | 7,756 duplicate authorship credits removed; 509 corresponding-author flags merged onto the surviving credit | `paper_authors` | [#6](../../issues/6) |
+
+**No paper counts change.** `swrd.papers` is untouched by all three: fixes 1 and 2
+move articles between journals that are both already in the set, and fix 3 touches
+only `paper_authors`. The released figure of 62,602 articles is unaffected.
+
+Verified after applying: `paper_authors` 241,766 → 234,010; distinct authors
+credited 137,659 → 133,211; corresponding-author links 31,727 → 29,204 but papers
+*with* a corresponding author unchanged at 25,621, which is the flag merge working.
+Health check clean — 0 orphaned `paper_authors`, 0 null or dangling `journal_id`,
+0 duplicate DOIs.
+
+Two consequences to carry into the release:
+
+- **Authors-without-papers rose from 26,890 to 31,338.** Deduping a credit usually
+  orphans the redundant `swrd.authors` row. Harmless for counts, but it means a raw
+  `count(*) from swrd.authors` overstates credited authors by more than it did.
+  Cleaning those rows is a separate fix and is deliberately not bundled here.
+- **Report 04 must be regenerated.** Its co-authorship network and author statistics
+  derive from `paper_authors`, and that page is live. `compute_stats.py` and
+  `make_network.py` both re-derive from the database, so it is a re-run.
+
+Fix 3 covers roughly half the defect **by design**: 4,855 of the 9,895 corpus-wide
+duplicate groups. The remainder fail the DOI-confirmation gate, and 107 in-scope
+groups were explicitly refused by a gate rather than missed. The defect is reduced,
+not eliminated. Non-Latin-script names (e.g. `炳光 甘`) are outside the fix entirely.
+
+Rollbacks for all three are committed and were proven exact before applying:
+`qc/journals/data/rollback_{affilia,glss}.sql` and
+`qc/authors/data/rollback_credits.sql`.
+
+Full reasoning, gate design and independent verification: `qc/authors/README.md`
+and `qc/authors/VERIFICATION.md`.
+
 ## Versions
 
 ### v1.1 — August 2026 (current)
