@@ -20,6 +20,20 @@ prior releases are never modified or removed.
 4. Update the version badge in `index.html` (Download section), the
    "Current data release" line in `README.md`, and add an entry below.
 
+## Applied to the live database, not yet released
+
+- **44 corrupted author-name strings repaired** (will ship in v1.4): 27 mojibake
+  decodes (`Vesna LeskoÅ¡ek` → `Vesna Leskošek`), 4 footnote digits
+  (`Eybalin1` → `Eybalin`), 6 trailing commas, 7 doubled spaces. No linkage
+  changes — `paper_authors` joins on `author_id`. Prior values archived in
+  `swrd_archive.renamed_authors_v1_4`; rollback in
+  `qc/authors/data/rollback_strings.sql`. Four rows deliberately left: two `7`
+  rows (spurious links, issue #6 class), one fax/email block on a no-DOI record,
+  one broken entity — all need evidence, not string transforms. Verified false
+  positives left untouched: `Coldon, Lawrence, 3rd` (generational suffix) and
+  `Zuraini J.@.O.` (Malaysian alias convention, confirmed at Crossref).
+  Census: `qc/authors/code/02_name_quality.py`.
+
 ## Versions
 
 ### v1.3 — August 2026 (current)
