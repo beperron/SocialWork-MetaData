@@ -55,6 +55,12 @@ SWRD = {
     "swrd_author_affiliations": """
         select paper_id, author_id, organization_id
         from swrd.author_affiliations order by paper_id, author_id""",
+    "swrd_author_name_enrichment": """
+        select author_id, name_as_published, full_name, family, given_full,
+               source, array_to_string(evidence_dois, '|') as evidence_dois,
+               n_papers_linked, n_papers_checked, n_papers_agreeing,
+               generated_at::date as generated_at, generator, batch
+        from swrd.author_name_enrichment order by author_id""",
 }
 
 SSWR = {
@@ -70,7 +76,8 @@ SSWR = {
 
 # Row-count invariants checked at export time. Update alongside intentional
 # data changes; a mismatch means the query or the data drifted unexpectedly.
-EXPECTED = {"swrd_articles": 62602, "sswr_presentations": 23793, "sswr_authors": 21209}
+EXPECTED = {"swrd_articles": 62602, "sswr_presentations": 23793, "sswr_authors": 21209,
+            "swrd_authors": 164549, "swrd_author_name_enrichment": 26313}
 
 README_SWRD = """The Social Work Research Database (SWRD) — CSV export {version}
 Exported {date} · https://beperron.github.io/SocialWork-MetaData/
@@ -86,6 +93,15 @@ FILES
                                         incomplete — treat counts as lower bounds.
   swrd_journals.csv                     The journal population list.
   swrd_authors.csv                      Author names AS PUBLISHED (not disambiguated).
+  swrd_author_name_enrichment.csv       DERIVED, OPTIONAL: fuller given names for
+                                        26,313 initials-only authors ('THYER, BA'
+                                        -> 'Thyer, Bruce A.'), recovered from each
+                                        author's OWN papers' Crossref records and
+                                        included only where every checkable paper
+                                        agrees. Join on author_id. swrd_authors.csv
+                                        is never altered by this file, and this is
+                                        NOT disambiguation: never merge author ids
+                                        because their full_name matches.
   swrd_paper_authors.csv                Paper–author links with byline position.
   swrd_organizations.csv                Affiliation strings as reported.
   swrd_author_affiliations.csv          Paper–author–organization links.
@@ -161,6 +177,20 @@ def export_csv(conn, name, query):
 
 def build(version):
     conn = read_tgt()
+    # The enrichment is derived from swrd.authors; a stale snapshot must stop
+    # the release, not ride in it.
+    out = subprocess.run(
+        ["psql", conn, "-t", "-A", "-v", "ON_ERROR_STOP=1", "-c",
+         "select count(*) from swrd.author_name_enrichment e "
+         "join swrd.authors a on a.id = e.author_id "
+         "where a.name <> e.name_as_published"],
+        capture_output=True, text=True,
+        env={**os.environ, "PGGSSENCMODE": "disable", "PGSSLMODE": "require"})
+    if out.returncode != 0 or out.stdout.strip() != "0":
+        sys.exit("author_name_enrichment is stale against swrd.authors "
+                 f"({out.stdout.strip() or out.stderr.strip()}) — regenerate "
+                 "with qc/authors/code/05_enrich_initials.py before packaging")
+
     date = datetime.date.today().isoformat()
     dist = os.path.join(REPO, "dist")
     os.makedirs(dist, exist_ok=True)

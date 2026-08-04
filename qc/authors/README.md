@@ -171,3 +171,26 @@ Defects found on this fix, in order, each by a different mechanism:
 | the swarm | `parse_name` accepts a given-name fragment as a surname key — 4 cross-person merges |
 
 **Not applied.**
+
+
+## The enrichment template contract
+
+`swrd.author_name_enrichment` is the first *derived* table in the database, and
+its shape is the contract every future enrichment (ORCID, affiliations) must
+follow:
+
+1. a **verbatim copy of the observed value** at generation time
+   (`name_as_published`) — staleness is then a checkable predicate, enforced at
+   load, in the health check, and at export packaging, each able to stop a
+   release on its own;
+2. **full evidence pointers** (`evidence_dois`), never a summary of them;
+3. checked/agreeing counts with **unanimity as a CHECK constraint**, so a row
+   that is not backed by every one of its papers cannot physically exist;
+4. `generator` (script @ git sha) and `batch` (release), so any consumer can
+   date and reproduce what they hold;
+5. an `EXPECTED` row count in the export, forcing a conscious update;
+6. **regenerate wholesale, never increment** — eligibility is a property of the
+   row's whole link set, and appends cannot retract.
+
+The enrichment never writes the observed table. Its rollback is `drop table` —
+the only change in this project that destroys nothing observed.

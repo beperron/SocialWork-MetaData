@@ -22,6 +22,43 @@ prior releases are never modified or removed.
 
 ## Applied to the live database, not yet released
 
+- **New: `swrd.author_name_enrichment` — derived fuller names for 26,313
+  initials-only authors** (ships in v1.4 as `swrd_author_name_enrichment.csv`).
+  `THYER, BA` gains the annotation `Thyer, Bruce A.`, recovered from the
+  author's **own papers'** Crossref records and admitted only when every
+  checkable paper agrees on the identical rendering — unanimity is a CHECK
+  constraint on the table, not a convention. `swrd.authors` is **not written**:
+  the "names as published" guarantee is unchanged, this is an annotation, and
+  it is not disambiguation — two ids sharing a `full_name` are not thereby one
+  person, and the table must never be used to merge author ids.
+
+  Census over all 164,549 author rows: 50,393 initials-only forms (the planning
+  figure of 24,007 was scoped to 1989+/valid-DOI authors and missed two name
+  orders); 26,313 enriched, 24,080 refused across 12 itemised classes in
+  `qc/authors/data/enrich_initials_queue.csv` — largest: no DOI (9,929),
+  orphaned rows (5,253), Crossref's own author list truncated (2,992),
+  Crossref itself initials-only (2,390). Two rows were refused because
+  **Crossref's own deposit carries U+FFFD encoding damage** (`Ren� C.` at the
+  registry itself) — verbatim is the rule, but shipping a replacement
+  character is shipping garbage.
+
+  Verified: 18-case selftest including the three name orders and the historical
+  parser traps; OpenAlex census of all 26,313 (97.4% confirmed outright, every
+  apparent contradiction adjudicated — 53/54 reproduce exactly at live
+  Crossref, the 54th is a non-breaking space our normalisation correctly
+  collapses); 25 live-registry refetches bypassing the cache (25/25);
+  a seeded 20-row sample from the weakest stratum (single-paper rows, 81% of
+  the table) checked against Semantic Scholar (20/20 consistent, 0
+  contradictions); and a mechanical all-rows check that every `full_name`
+  reproduces its `name_as_published`'s surname and initials (26,313/26,313).
+
+  Rollback is `drop table` — the first change in this project that destroys
+  nothing observed, which is also why there is no `swrd_archive` entry for it.
+  The export gains the CSV with `EXPECTED = 26,313`, a new guard on
+  `swrd_authors` itself (164,549), and a freshness preflight that refuses to
+  package if any `name_as_published` has drifted from the live name.
+  Regenerated wholesale each release, never patched.
+
 - **99 surnames truncated by the legacy WoS ingest restored** (will ship in
   v1.4): `SCHUERMA.JR` → `Schuerman, John R.`, `KEITHLUC.A` → `Keith-Lucas,
   Alan`. The ingest cut surnames at an 8-character field limit — not a

@@ -135,3 +135,9 @@ from counted c join swrd.journals j on j.id = c.journal_id
 where c.n >= 10 and c.n < 0.01 * c.total
 order by c.n desc
 limit 25;
+
+\echo '=== SWRD: NAME ENRICHMENT FRESHNESS (must be 0 stale) ==='
+select count(*) as stale_enrichment_rows
+from swrd.author_name_enrichment e
+join swrd.authors a on a.id = e.author_id
+where a.name <> e.name_as_published;
