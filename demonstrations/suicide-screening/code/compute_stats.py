@@ -86,6 +86,42 @@ def main():
         r["journal_or_venue"] for r in rel if r["source_database"] == "SWRD"
     )
 
+    # Top contributors per venue. SSWR is counted on the conference's canonical
+    # author names (disambiguated upstream). SWRD names are as published in
+    # three formats, so they go through the SAME report-layer resolver the
+    # co-authorship network uses (make_network.resolve_swrd) — one resolution,
+    # two figures, and the database itself stays untouched. solo = appears on
+    # records with no co-author; the network cannot draw sole-authored work,
+    # which is exactly why this table exists alongside it. Cuts are tie-aware
+    # (>= the count of the author at rank 20) because splitting a tie at a flat
+    # 20 would misrepresent the ranking.
+    from make_network import resolve_swrd
+
+    def top_table(author_lists):
+        contrib = Counter(a for aus in author_lists for a in aus)
+        solo = Counter(aus[0] for aus in author_lists if len(aus) == 1)
+        ranked = contrib.most_common()
+        cut = ranked[19][1] if len(ranked) >= 20 else 1
+        return [{"name": a, "presentations": n, "solo": solo.get(a, 0)}
+                for a, n in ranked if n >= cut]
+
+    sswr_lists = [
+        [a.strip() for a in (r.get("authors") or "").split(";") if a.strip()]
+        for r in rel if r["source_database"] == "SSWR"
+    ]
+    swrd_rel = [r for r in rel if r["source_database"] == "SWRD"]
+    resolve = resolve_swrd(swrd_rel)
+    swrd_lists = []
+    for r in swrd_rel:
+        names = []
+        for raw in (r.get("authors") or "").split(";"):
+            _, disp = resolve(raw)
+            if disp:
+                names.append(disp)
+        swrd_lists.append(sorted(set(names)))
+    top_sswr = top_table(sswr_lists)
+    top_swrd = top_table(swrd_lists)
+
     # Evidence synthesis against primary empirical work, by period. Averaging
     # reviews over the whole window is misleading — none appear before 2004 —
     # so the page reports the trend rather than a flat rate.
@@ -151,6 +187,8 @@ def main():
         "relevant_by_year": years,
         "relevant_swrd_journal_count": len(journals),
         "top_swrd_journals": journals.most_common(15),
+        "top_sswr_contributors": top_sswr,
+        "top_swrd_contributors": top_swrd,
         "year_range": [min(r["year"] for r in rel), max(r["year"] for r in rel)],
         "audit": {
             "blind_model_audit": summary["accuracy_audit"],

@@ -245,6 +245,225 @@
       13
     ]
   ],
+  "top_sswr_contributors": [
+    {
+      "name": "Anthony Fulginiti",
+      "presentations": 20,
+      "solo": 3
+    },
+    {
+      "name": "Sean Joe",
+      "presentations": 17,
+      "solo": 3
+    },
+    {
+      "name": "Jordan E. DeVylder",
+      "presentations": 15,
+      "solo": 1
+    },
+    {
+      "name": "Lindsay A. Bornheimer",
+      "presentations": 15,
+      "solo": 0
+    },
+    {
+      "name": "Christina M. Sellers",
+      "presentations": 15,
+      "solo": 0
+    },
+    {
+      "name": "Eric Rice",
+      "presentations": 13,
+      "solo": 0
+    },
+    {
+      "name": "Phillip Baiden",
+      "presentations": 13,
+      "solo": 0
+    },
+    {
+      "name": "Michael A. Lindsey",
+      "presentations": 12,
+      "solo": 0
+    },
+    {
+      "name": "Kimberly H. McManama O'Brien",
+      "presentations": 11,
+      "solo": 0
+    },
+    {
+      "name": "Jeremy Goldbach",
+      "presentations": 11,
+      "solo": 0
+    },
+    {
+      "name": "Enoch Azasu",
+      "presentations": 11,
+      "solo": 2
+    },
+    {
+      "name": "Yunyu Xiao",
+      "presentations": 10,
+      "solo": 2
+    },
+    {
+      "name": "Boyoung Nam",
+      "presentations": 10,
+      "solo": 0
+    },
+    {
+      "name": "Elizabeth A. Wharff",
+      "presentations": 9,
+      "solo": 0
+    },
+    {
+      "name": "Orion P. Mowbray",
+      "presentations": 9,
+      "solo": 0
+    },
+    {
+      "name": "Hannah Szlyk",
+      "presentations": 9,
+      "solo": 1
+    },
+    {
+      "name": "Abigail Ross",
+      "presentations": 9,
+      "solo": 0
+    },
+    {
+      "name": "Hyeouk Chris Hahm",
+      "presentations": 8,
+      "solo": 0
+    },
+    {
+      "name": "Carolina M. Hausmann-Stabile",
+      "presentations": 8,
+      "solo": 1
+    },
+    {
+      "name": "Robin E. Gearing",
+      "presentations": 8,
+      "solo": 0
+    },
+    {
+      "name": "Lauren E. Gulbas",
+      "presentations": 8,
+      "solo": 0
+    },
+    {
+      "name": "Sarah Kintzle",
+      "presentations": 8,
+      "solo": 2
+    },
+    {
+      "name": "Janelle R. Goodwill",
+      "presentations": 8,
+      "solo": 5
+    }
+  ],
+  "top_swrd_contributors": [
+    {
+      "name": "Mirick, R.",
+      "presentations": 18,
+      "solo": 6
+    },
+    {
+      "name": "Mccauley, J.",
+      "presentations": 9,
+      "solo": 0
+    },
+    {
+      "name": "Nugent, W.",
+      "presentations": 8,
+      "solo": 0
+    },
+    {
+      "name": "Joe, S.",
+      "presentations": 8,
+      "solo": 1
+    },
+    {
+      "name": "Bridger, J.",
+      "presentations": 8,
+      "solo": 0
+    },
+    {
+      "name": "Jacobson, J.",
+      "presentations": 7,
+      "solo": 0
+    },
+    {
+      "name": "Berkowitz, L.",
+      "presentations": 7,
+      "solo": 0
+    },
+    {
+      "name": "Slovak, K.",
+      "presentations": 6,
+      "solo": 1
+    },
+    {
+      "name": "Walls, N.",
+      "presentations": 6,
+      "solo": 0
+    },
+    {
+      "name": "Kim, Y.",
+      "presentations": 6,
+      "solo": 0
+    },
+    {
+      "name": "Devylder, J.",
+      "presentations": 6,
+      "solo": 1
+    },
+    {
+      "name": "Manetta, A.",
+      "presentations": 5,
+      "solo": 1
+    },
+    {
+      "name": "Sanders, S.",
+      "presentations": 5,
+      "solo": 0
+    },
+    {
+      "name": "Ting, L.",
+      "presentations": 5,
+      "solo": 0
+    },
+    {
+      "name": "Matthieu, M.",
+      "presentations": 5,
+      "solo": 0
+    },
+    {
+      "name": "Cerel, J.",
+      "presentations": 5,
+      "solo": 0
+    },
+    {
+      "name": "O'Brien, K.",
+      "presentations": 5,
+      "solo": 1
+    },
+    {
+      "name": "Osteen, Philip",
+      "presentations": 5,
+      "solo": 1
+    },
+    {
+      "name": "Kourgiantakis, T.",
+      "presentations": 5,
+      "solo": 0
+    },
+    {
+      "name": "Lee, Eunjung",
+      "presentations": 5,
+      "solo": 0
+    }
+  ],
   "year_range": [
     1989,
     2026

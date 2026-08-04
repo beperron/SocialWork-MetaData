@@ -358,7 +358,9 @@
     <h3 id="scope-examples">What the network cannot show you</h3>
     <p>This graph is bounded by the disciplinary social work journals and the SSWR conference. That boundary is the point of the exercise — it defines what social work publishes <em>in its own venues</em> — but it means the graph is not a map of who does suicide research in social work. A great deal of that work is published in suicidology, psychiatry, public health, and medical journals, none of which are in the database by construction.</p>
 
-    <p>Two researchers make the gap concrete, and neither appears anywhere in the figure above.</p>
+    <p>There is also a second, structural way to vanish from this figure, unrelated to where anyone publishes: <b>a co-authorship graph draws links, so sole-authored work leaves no trace in it.</b> Jonathan Singer's six suicide-relevant SSWR presentations are all counted on this page, but three of them are sole-authored and his main collaborator falls below the drawing threshold, so the graph has almost nothing to draw — six presentations, one qualifying link, pruned. The <a href="#top-contributors">contributor counts below</a> exist precisely because a network cannot show that kind of record.</p>
+
+    <p>Two researchers make the publishing-venue gap concrete, and neither appears anywhere in the figure above.</p>
 
     <p><b>Jonathan Singer</b> — whose report of a connection failure prompted this whole analysis — has three suicide-relevant articles in the journal corpus and six SSWR presentations. His published suicide scholarship is much larger than that: his CV lists suicide work in <em>JAMA Network Open</em>, <em>American Psychologist</em>, <em>Suicide and Life-Threatening Behavior</em>, <em>School Mental Health</em>, and <em>Psychiatric Annals</em>, plus three books on suicide in schools and a long list of handbook chapters. Almost none of it is visible here, and <em>Suicide and Life-Threatening Behavior</em> — the field's flagship suicidology journal — is not a social work journal, so his work there falls outside the corpus by definition.</p>
 
@@ -369,6 +371,16 @@
     <div class="note">
       <p><b>The PubMed count carries the same caveat as everything else on this page.</b> An author-name search is not disambiguated either, so those 88 records are what the name returns, not a verified bibliography. The problem this report spent so long fixing for 41 nodes is not peculiar to SWRD.</p>
     </div>
+
+    <h3 id="top-contributors">Counting instead of connecting: the most frequent contributors</h3>
+    <p>The complement to the network is a plain count. These are the researchers with the most suicide-relevant records in each venue — every record counted, whether written with a team or alone. The hatched slice is sole-authored work: real output that the co-authorship graph above cannot draw, because it has no link to hang it on. Janelle Goodwill's eight conference presentations, five of them sole-authored, are the clearest case — a substantial record that a collaboration graph structurally understates.</p>
+
+    <figure>
+      <img src="figures/contributors.svg" alt="Two horizontal bar charts of the most frequent contributors of suicide-relevant records. Left, SSWR conference presentations: 23 researchers with 8 or more, led by Anthony Fulginiti with 20, Sean Joe with 17, and Jordan DeVylder, Lindsay Bornheimer, and Christina Sellers with 15 each. Right, SWRD journal articles: 20 researchers with 5 or more, led by Mirick with 18, McCauley with 9, and Nugent, Joe, and Bridger with 8 each. Hatched bar segments mark sole-authored records.">
+      <figcaption>Most frequent contributors of suicide-relevant records, by venue. Hatched segments are sole-authored records — counted here, invisible in the co-authorship network above. Conference names are SSWR's canonical identities; journal names are resolved at the report layer from SWRD's as-published strings and shown as surname plus initial, gaining a full first name only where one surname-initial key covers two different people.</figcaption>
+    </figure>
+
+    <p>The two panels are not measured on the same ruler, and reading them together needs three cautions. First, the cutoffs are tie-aware rather than a flat top twenty: everyone at or above the twentieth-ranked count is shown, which is why the conference panel holds 23 names. Second, the conference counts rest on SSWR's canonical author identities, while the journal counts required the same report-layer name resolution as the network — SWRD stores names as published, in three formats, so journal-side names are shown as surname plus initial and carry the same residual uncertainty the network section describes. Third, the journal panel counts only the 91 disciplinary journals: Sean Joe appears with 8 journal articles not because his output is small but because, like most researchers on this page, much of his work is published outside social work's own venues.</p>
 
     <div class="note">
       <p><b>The journal names had to be disambiguated before this figure could be trusted.</b> SSWR carries canonical author ids with variants already resolved, so the conference graph needed nothing. SWRD stores names exactly as published with no disambiguation, in three inconsistent formats — this corpus contains <span class="mono">GILLILAND, D</span>, <span class="mono">Gilliland D.</span> and <span class="mono">Fiona Gardner</span> — and keying on surname plus first initial turned out to be wrong in <em>both</em> directions.</p>

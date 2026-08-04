@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Regenerate the three figures on the demonstration page from the released labels.
+Regenerate the figures on the demonstration page from the released labels.
 
     pip install matplotlib
     python3 make_figures.py
 
 Reads  ../data/stats.json   (written by compute_stats.py — run that first)
-Writes ../figures/growth.svg, composition.svg, audit.svg
+Writes ../figures/growth.svg, composition.svg, audit.svg, contributors.svg
 """
 import json
 import os
@@ -162,6 +162,57 @@ def audit(S):
     plt.close(fig)
 
 
+def contributors(S):
+    """Most frequent contributors per venue, sole-authored share marked.
+
+    The companion to the co-authorship network: the network draws links, so
+    sole-authored work is invisible there by construction. Here it is the
+    hatched slice. Cuts are tie-aware (everyone at or above the rank-20
+    count), which is why the panels hold 23 and 20 names rather than a flat
+    20 each.
+    """
+    panels = [
+        ("SSWR conference presentations", S["top_sswr_contributors"], SSWR),
+        ("SWRD journal articles", S["top_swrd_contributors"], SWRD),
+    ]
+    fig, axes = plt.subplots(1, 2, figsize=(10, 6.6))
+    fig.patch.set_facecolor(SURF)
+    for ax, (title, rows, colour) in zip(axes, panels):
+        rows = rows[::-1]                      # most frequent at the top
+        names = [r["name"] for r in rows]
+        co = [r["presentations"] - r["solo"] for r in rows]
+        solo = [r["solo"] for r in rows]
+        y = range(len(rows))
+        ax.set_facecolor(SURF)
+        ax.barh(y, co, color=colour, height=0.68, zorder=3)
+        ax.barh(y, solo, left=co, color=colour, height=0.68, zorder=3,
+                hatch="//////", edgecolor=SURF, lw=0)
+        for i, r in enumerate(rows):
+            ax.text(r["presentations"] + 0.25, i, str(r["presentations"]),
+                    va="center", fontsize=8.5, color=INK2)
+        ax.set_yticks(list(y))
+        ax.set_yticklabels(names, fontsize=8.8, color=INK)
+        ax.set_xlim(0, max(r["presentations"] for r in rows) * 1.12)
+        ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+        ax.set_title(title, fontsize=10.5, color=INK, pad=8, loc="left")
+        ax.grid(axis="x", color=GRID, lw=0.8, zorder=0)
+        for s in ("top", "right", "left"):
+            ax.spines[s].set_visible(False)
+        ax.spines["bottom"].set_color(BASE)
+        ax.tick_params(colors=MUT, labelsize=8.5)
+        ax.tick_params(axis="y", length=0)
+    solid = Patch(facecolor=INK2, label="co-authored records")
+    hatched = Patch(facecolor=INK2, hatch="//////", edgecolor=SURF,
+                    label="sole-authored — invisible to the co-authorship network")
+    fig.legend(handles=[solid, hatched], frameon=False, fontsize=9.5,
+               ncol=2, loc="lower center", bbox_to_anchor=(0.5, -0.01),
+               labelcolor=INK2)
+    fig.tight_layout(rect=(0, 0.045, 1, 1))
+    fig.savefig(os.path.join(FIGS, "contributors.svg"), format="svg",
+                facecolor=SURF, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main():
     with open(STATS) as f:
         S = json.load(f)
@@ -169,7 +220,8 @@ def main():
     growth(S)
     composition(S)
     audit(S)
-    print("wrote growth.svg, composition.svg, audit.svg")
+    contributors(S)
+    print("wrote growth.svg, composition.svg, audit.svg, contributors.svg")
 
 
 if __name__ == "__main__":
