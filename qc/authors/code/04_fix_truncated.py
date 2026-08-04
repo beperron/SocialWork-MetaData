@@ -165,6 +165,7 @@ def main():
     fixes, queued = [], []
     for (aid, name), links in sorted(per.items()):
         verdicts = []
+        dissent = False
         for l in links:
             d = (l["doi"] or "").lower()
             x = cache.get(d) if d.startswith("10.") else None
@@ -176,6 +177,20 @@ def main():
             elif v[0] == "ambiguous":
                 verdicts = [("AMBIGUOUS",)]
                 break
+            elif v[0] == "no_match" and any(
+                    re.sub(r"[^a-z]", "", (ca.get("family") or "").lower())
+                    .startswith(name.partition(".")[0].lower())
+                    for ca in (x.get("author") or [])):
+                # A sibling paper carries a SAME-STEM author whose initials
+                # conflict — that is a dissenting vote, not an absence of
+                # evidence, and it must veto the row rather than be skipped.
+                # (Review finding; non-firing on the current 99, kept for
+                # when the queue ripens.)
+                dissent = True
+        if dissent:
+            queued.append({"author_id": aid, "name": name,
+                           "reason": "sibling_initials_conflict"})
+            continue
         if verdicts and verdicts[0][0] == "AMBIGUOUS":
             queued.append({"author_id": aid, "name": name,
                            "reason": "two_same_stem_authors_on_paper"})

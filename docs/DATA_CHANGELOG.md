@@ -22,6 +22,38 @@ prior releases are never modified or removed.
 
 ## Applied to the live database, not yet released
 
+- **99 surnames truncated by the legacy WoS ingest restored** (will ship in
+  v1.4): `SCHUERMA.JR` → `Schuerman, John R.`, `KEITHLUC.A` → `Keith-Lucas,
+  Alan`. The ingest cut surnames at an 8-character field limit — not a
+  published form, so the stored value is overwritten, the same reasoning as the
+  mojibake repair. Each restoration comes from the author's **own paper's**
+  Crossref record: family name extends the stem (compared letters-only, which
+  is how hyphenated and apostrophe surnames were hiding), every initial agrees
+  in order, exactly one candidate on the paper, and all of a row's papers
+  agree. Verified 99/99 against live Crossref and 10/10 against OpenAlex by an
+  independent review that re-implemented the matching rule from scratch.
+
+  Three qualifications, stated rather than buried:
+  - The name-quality census did not classify this form, so census totals are
+    unchanged by this fix by design; it now carries a `format_wos_truncated`
+    category. Before/after verification is the regex count
+    (`name ~ '^[A-Z]{8}\.[A-Z]{1,3}$'`): **200 before, 101 after**, the
+    residue itemised with reasons in `qc/authors/data/truncated_queue.csv`
+    (89 papers with no DOI, 9 orphaned rows, 2 ambiguous, 1 where the row's
+    papers name two different people — Edward vs Eliyahu Rosenheim).
+  - For 2 of the 99 (`RABINOVI.H`, `ROSENFEL.HM`) the evidence DOI is a
+    bundled "Book reviews" section record with no per-item title; identity
+    rests on journal + year + unique stem/initials match, one notch weaker
+    than the title-corroborated 97.
+  - 18 of the repaired names now visibly duplicate names on other author rows
+    (`Garfinkel, Irwin` appears on 5). Expected and corroborating under the
+    no-merge policy — no linkage was changed, and the sibling *misspelled*
+    truncation `GARFINKL.I` remains queued. Zero same-paper duplicate credits
+    were created (verified before applying).
+
+  Prior values in `swrd_archive.renamed_authors_v1_4` (kind `wos_truncated`);
+  rollback in `qc/authors/data/rollback_truncated.sql`, round-trip proven.
+
 - **44 corrupted author-name strings repaired** (will ship in v1.4): 27 mojibake
   decodes (`Vesna LeskoÅ¡ek` → `Vesna Leskošek`), 4 footnote digits
   (`Eybalin1` → `Eybalin`), 6 trailing commas, 7 doubled spaces. No linkage

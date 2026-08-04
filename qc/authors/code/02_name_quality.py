@@ -92,6 +92,12 @@ def classify(name):
         return "corruption_whitespace"
     if re.search(r"[,;:(\[{/-]\s*$", n):
         return "corruption_trailing_punct"
+    if re.match(r"^[A-Z]{8}\.[A-Z]{1,3}$", n.strip()):
+        # legacy WoS 8-char surname truncation (SCHUERMA.JR). 99 were restored
+        # from their own papers' Crossref records (04_fix_truncated.py); the
+        # rows still matching here are the residue itemised with reasons in
+        # data/truncated_queue.csv.
+        return "format_wos_truncated"
     if len(n.split()) == 1 and 0 < len(n.strip()) < 4:
         return "structural_fragment_short"
     if len(n.split()) == 1 and re.match(r"^[A-Za-zÀ-ÿ'-]+$", n.strip()):
