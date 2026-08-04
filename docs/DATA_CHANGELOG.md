@@ -22,7 +22,84 @@ prior releases are never modified or removed.
 
 ## Versions
 
-### v1.2 — August 2026 (current)
+### v1.3 — August 2026 (current)
+
+**Journal attribution: the five remaining ISSN-backed clusters.** 1,517 articles
+moved to the journal their DOI's registry record names. No article is added,
+removed, or merged — `swrd_articles` remains **62,602**.
+
+| fix | records | from → to |
+|---|---:|---|
+| `fix_bjsw` | 216 | British J. Social Work → Asia Pacific J. of Social Work and Development |
+| `fix_rswp` | 318 | Research on Social Work Practice → Child & Family Social Work |
+| `fix_scsw` | 318 | Studies in Clinical Social Work → Asian Social Work and Policy Review |
+| `fix_jswp` | 181 | J. of Social Work Practice → The J. of Sociology & Social Welfare |
+| `fix_admin` | 484 | Administration in Social Work → J. of Religion & Spirituality in Social Work |
+
+Per-record gates (each independently able to refuse): Crossref ISSN is the
+target's and not the source's, container-title carries the target's tokens, and
+the DOI's own publisher code agrees. Four clusters are fully prefix-separable
+(e.g. moving `10.1080` vs staying `10.1093` on all 4,386 correctly-filed BJSW
+records). The fifth is Taylor & Francis on both sides, so the Haworth series code
+decides: `J377` is Religion & Spirituality, `J147` (Admin's own, 520 records) is
+forbidden — the same proof shape as v1.2's GLSS fix.
+
+**A circularity resolved.** Administration in Social Work was the one journal
+whose ISSN failed its own majority vote (70%, below the 0.80 bar) — *because of
+this contamination*: 484 of its 1,629 DOI'd records were another journal's.
+Post-fix the vote is **0.989**, and the ISSN graduates from
+`qc/journals/data/issn_review_queue.csv`.
+
+#### How it was verified
+
+Four independent routes, before applying:
+
+- **Gates** over cached Crossref — all 1,517 pass all four; zero rejections
+- **OpenAlex census** of all 1,517 (not a sample) — 1,512/1,512 resolvable
+  confirm the target venue; the 2 apparent exceptions were OpenAlex's own venue
+  errors, confirmed as the target at the DOI registry directly
+- **Structural census** — every moving DOI embeds the target journal's publisher
+  code in its own string (T&F 8-digit codes, Wiley `1365-2206`/`aswp`/`cfs`,
+  WMU's literal `0191-5096`, Haworth `J377`); all 1,517 stems accounted for
+- **Live Crossref sample** — 25 movers fetched fresh from api.crossref.org,
+  bypassing the cache: 25/25 return the target's container and ISSN, closing the
+  corrupt-DOI-field loophole
+
+Premise checks: no ISSN-confirmed staying record carries a moving signal, and
+zero source-ISSN records sit under any target — the error runs one way in every
+cluster. An 18-agent adversarial review returned **apply as is**, the first wave
+to pass with no required changes; its independent live-registry sample and
+whole-DB DOI-pattern census both came back clean.
+
+#### Deliberately not changed (the next queue)
+
+- 5 Religion & Spirituality records under journal 232, and 10 more strays found
+  by the completeness sweep
+- 15 *Family Journal* records under Research on Social Work Practice; 1 stray
+  under J. of Social Work Practice
+- 14 GLSS records under J. Gerontological Social Work with `10.1080`-era DOIs,
+  outside the v1.2 series-code fix — surfaced by the new health-check block
+- *Social Work with Groups* → J. Ethnic & Cultural Diversity (120 records,
+  shared-prefix, needs its own proof); journal rows 232/263 merge; out-of-set
+  containers
+
+The health check now carries a `SWRD: JOURNAL ATTRIBUTION` block flagging
+journals whose records carry a rare DOI publisher-code — the check that would
+have surfaced all of these clusters from the start.
+
+#### Reversibility
+
+Prior state archived in the unlinked `swrd_archive.reassigned_papers_v1_3`
+(1,517 rows, populated in the same transaction as each fix). Rollback scripts in
+`qc/journals/data/rollback_*.sql`; round-trip proven exact on the largest
+cluster before applying. Report 04 was re-run and is unchanged (0 of 213 values).
+
+| Archive | Contents |
+|---|---|
+| `swrd-database-csv-v1.3.zip` | As v1.2, with journal attribution corrected for a further 1,517 articles |
+| `sswr-database-csv-v1.3.zip` | Unchanged from v1.0 |
+
+### v1.2 — August 2026
 
 **Journal attribution and duplicate authorship credits.** No article is added,
 removed, or merged: `swrd.papers` is untouched, so `swrd_articles` remains

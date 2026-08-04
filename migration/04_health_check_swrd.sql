@@ -106,3 +106,32 @@ union all select 'authors', (select last_value from swrd.authors_id_seq), (selec
 union all select 'organizations', (select last_value from swrd.organizations_id_seq), (select max(id) from swrd.organizations)
 union all select 'journals', (select last_value from swrd.journals_id_seq), (select max(id) from swrd.journals)
 union all select 'author_affiliations', (select last_value from swrd.author_affiliations_id_seq), (select max(id) from swrd.author_affiliations);
+
+\echo '=== SWRD: JOURNAL ATTRIBUTION (DOI publisher-code vs journal, informational) ==='
+-- Every journal accumulates a set of DOI "stems" -- the prefix, or the Haworth
+-- series code, or the T&F/Wiley journal code embedded in the suffix. A record
+-- whose stem is carried by fewer than 1% of its journal's DOI'd papers is worth
+-- a look: that shape is exactly how the Affilia (v1.2) and the five v1.3
+-- misattribution clusters presented. Informational: renames and platform
+-- migrations also produce rare stems, so this flags, never fails.
+with stems as (
+  select p.journal_id,
+         case
+           when p.doi ~* '^10\.1300/j[0-9]+' then upper(substring(p.doi from '^10\.1300/(j[0-9]+)'))
+           when p.doi ~* '^10\.1080/[0-9]{8}' then substring(p.doi from '^10\.1080/([0-9]{8})')
+           when p.doi ~* '^10\.1(046|111)/(j\.)?[0-9]{4}-[0-9]{3}[0-9xX]' then substring(p.doi from '([0-9]{4}-[0-9]{3}[0-9xX])')
+           when p.doi ~* '^10\.1111/[a-z]+\.' then substring(p.doi from '^10\.1111/([a-z]+)\.')
+           else substring(p.doi from '^(10\.[0-9]{4,9})/')
+         end as stem
+  from swrd.papers p
+  where p.doi ~ '^10\.[0-9]{4,9}/'
+), counted as (
+  select journal_id, stem, count(*) as n,
+         sum(count(*)) over (partition by journal_id) as total
+  from stems group by 1, 2
+)
+select j.name as journal, c.stem, c.n as records_with_stem, c.total as journal_total
+from counted c join swrd.journals j on j.id = c.journal_id
+where c.n >= 10 and c.n < 0.01 * c.total
+order by c.n desc
+limit 25;
