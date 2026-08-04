@@ -1,54 +1,8 @@
 ﻿author_id,name,links,category,suggested
-125590,"Eybalin1, Dominique",1,corruption_digits,
-125664,"Labra1, Oscar",1,corruption_digits,
 129077,7,1,corruption_digits,
-141120,"Eybalin1, Dominique",1,corruption_digits,
-141194,"Labra1, Oscar",1,corruption_digits,
 144607,7,1,corruption_digits,
-117418,"Coldon, Lawrence, 3rd",0,corruption_digits,
-98571,Zuraini J.@.O.,1,corruption_email_url,
 159943,570-662-43 (fax nsidell@mansfield.edu,1,corruption_email_url,
 159942,"&;#xd;rvig, Kjersti",0,corruption_entity,
-139107,Vesna LeskoÅ¡ek,2,corruption_mojibake,Vesna Leskošek
-139625,Vesna LeskoÅ¡ek,2,corruption_mojibake,Vesna Leskošek
-151101,Filip CoussÃ©e,2,corruption_mojibake,Filip Coussée
-158852,Filip CoussÃ©e,2,corruption_mojibake,Filip Coussée
-138921,VÃ©ronique Simon,1,corruption_mojibake,Véronique Simon
-138944,ZoÃ« Clark,1,corruption_mojibake,Zoë Clark
-139205,ZoÃ« Clark,1,corruption_mojibake,Zoë Clark
-139347,Viktorija BarÅ¡auskiene,1,corruption_mojibake,Viktorija Baršauskiene
-139439,MaÃ«l Dif-Pradalier,1,corruption_mojibake,Maël Dif-Pradalier
-151116,VÃ©ronique Simon,1,corruption_mojibake,Véronique Simon
-151138,ZoÃ« Clark,1,corruption_mojibake,Zoë Clark
-151275,Vesna LeskoÅ¡ek,1,corruption_mojibake,Vesna Leskošek
-151476,MaÃ«l Dif-Pradalier,1,corruption_mojibake,Maël Dif-Pradalier
-151741,RogÃ©rio Adolfo de Moura,1,corruption_mojibake,Rogério Adolfo de Moura
-158867,VÃ©ronique Simon,1,corruption_mojibake,Véronique Simon
-158889,ZoÃ« Clark,1,corruption_mojibake,Zoë Clark
-159026,Vesna LeskoÅ¡ek,1,corruption_mojibake,Vesna Leskošek
-159227,MaÃ«l Dif-Pradalier,1,corruption_mojibake,Maël Dif-Pradalier
-159492,RogÃ©rio Adolfo de Moura,1,corruption_mojibake,Rogério Adolfo de Moura
-138906,Filip CoussÃ©e,0,corruption_mojibake,Filip Coussée
-139249,Filip CoussÃ©e,0,corruption_mojibake,Filip Coussée
-139988,RogÃ©rio Adolfo de Moura,0,corruption_mojibake,Rogério Adolfo de Moura
-140379,Stefan MorÃ©n,0,corruption_mojibake,Stefan Morén
-151422,Viktorija BarÅ¡auskiene,0,corruption_mojibake,Viktorija Baršauskiene
-151838,Stefan MorÃ©n,0,corruption_mojibake,Stefan Morén
-159173,Viktorija BarÅ¡auskiene,0,corruption_mojibake,Viktorija Baršauskiene
-159589,Stefan MorÃ©n,0,corruption_mojibake,Stefan Morén
-120566,"Dietz, Tracy J,",1,corruption_trailing_punct,
-127625,"Chan, Wing-tai,",1,corruption_trailing_punct,
-127633,"Chan, Wing-tai,",1,corruption_trailing_punct,
-143155,"Chan, Wing-tai,",1,corruption_trailing_punct,
-143163,"Chan, Wing-tai,",1,corruption_trailing_punct,
-164706,"Earner,",0,corruption_trailing_punct,
-115215,Darlene  Chalmers,1,corruption_whitespace,
-115228,Erinn  Barry,1,corruption_whitespace,
-115233,Francisco J.  Lozornio,1,corruption_whitespace,
-115276,Larry  Nackerud,1,corruption_whitespace,
-115322,Sarah R.  Bussey,1,corruption_whitespace,
-115326,Shannon  Vokes,1,corruption_whitespace,
-115352,Walter WAI TAK  Chan,0,corruption_whitespace,
 2304,"GUMMER, B",82,format_all_caps_legacy,
 219,"MEYER, CH",75,format_all_caps_legacy,
 2379,"OZAWA, MN",66,format_all_caps_legacy,
@@ -19706,6 +19660,7 @@
 159681,Habibullah,0,structural_bare_token,
 159684,Muhtar,0,structural_bare_token,
 159728,Nahar,0,structural_bare_token,
+164706,Earner,0,structural_bare_token,
 110008,Meg,26,structural_fragment_short,
 111499,Van,22,structural_fragment_short,
 106609,Siv,20,structural_fragment_short,

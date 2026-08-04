@@ -35,6 +35,10 @@ FALSE POSITIVES THE FIRST PASS MADE, kept here as a warning:
   - 'Bergmark Å.' is not mojibake; Å is Åke. A mojibake test must require the
     latin-1 -> utf-8 round trip to SUCCEED, not just spot suspicious bytes.
   - 'Park, Sunggeun (Ethan)' and tribal names in parentheses are real names.
+  - 'Coldon, Lawrence, 3rd' is a generational suffix, not a stray digit.
+  - 'Zuraini J.@.O.' is not an email. Crossref for 10.1111/aswp.12165 gives
+    'Jamil @ Osman Zuraini' -- the @ is the Malaysian alias convention, part of
+    the person's name as officially written.
 
 Read-only.
 """
@@ -76,9 +80,13 @@ def classify(name):
         return "corruption_mojibake"
     if re.search(r"&[a-z]+;|&#x?\d+|<[^>]+>|&;#", n, re.I):
         return "corruption_entity"
-    if re.search(r"@|https?://|www\.", n):
+    if re.search(r"https?://|www\.|@[a-z]+\.", n, re.I):
+        # a bare @ inside a name is NOT enough: 'Zuraini J.@.O.' abbreviates
+        # 'Jamil @ Osman Zuraini', the Malaysian alias convention (verified
+        # against Crossref). Only @domain patterns and URLs count.
         return "corruption_email_url"
-    if re.search(r"\d", n):
+    if re.search(r"\d", re.sub(r"\b[23]rd\b|\b[45]th\b|\b1st\b", "", n)):
+        # '3rd' in 'Coldon, Lawrence, 3rd' is a generational suffix.
         return "corruption_digits"
     if re.search(r"\s{2,}|[\x00-\x1f]", n):
         return "corruption_whitespace"
