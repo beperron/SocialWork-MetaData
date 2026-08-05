@@ -28,7 +28,16 @@ prior releases are never modified or removed.
    releases stale (still describing 3,556 malformed rows two releases after
    v1.1 repaired them) and its `paper_authors` count survived two.
 
-## Applied to the live database, not yet released
+## Versions
+
+### v1.4 — August 2026 (current)
+
+**Author-name repairs and the first derived table.** No article is added,
+removed, or merged — `swrd_articles` remains **62,602** through a fourth
+consecutive release. `swrd_authors.csv` differs from v1.3 in exactly 143
+itemised name strings (44 corruption repairs + 99 truncation restorations);
+everything else observed is byte-identical. New in the archive:
+`swrd_author_name_enrichment.csv` (26,313 rows).
 
 - **New: `swrd.author_name_enrichment` — derived fuller names for 26,313
   initials-only authors** (ships in v1.4 as `swrd_author_name_enrichment.csv`).
@@ -67,8 +76,7 @@ prior releases are never modified or removed.
   package if any `name_as_published` has drifted from the live name.
   Regenerated wholesale each release, never patched.
 
-- **99 surnames truncated by the legacy WoS ingest restored** (will ship in
-  v1.4): `SCHUERMA.JR` → `Schuerman, John R.`, `KEITHLUC.A` → `Keith-Lucas,
+- **99 surnames truncated by the legacy WoS ingest restored**: `SCHUERMA.JR` → `Schuerman, John R.`, `KEITHLUC.A` → `Keith-Lucas,
   Alan`. The ingest cut surnames at an 8-character field limit — not a
   published form, so the stored value is overwritten, the same reasoning as the
   mojibake repair. Each restoration comes from the author's **own paper's**
@@ -99,7 +107,7 @@ prior releases are never modified or removed.
   Prior values in `swrd_archive.renamed_authors_v1_4` (kind `wos_truncated`);
   rollback in `qc/authors/data/rollback_truncated.sql`, round-trip proven.
 
-- **44 corrupted author-name strings repaired** (will ship in v1.4): 27 mojibake
+- **44 corrupted author-name strings repaired**: 27 mojibake
   decodes (`Vesna LeskoÅ¡ek` → `Vesna Leskošek`), 4 footnote digits
   (`Eybalin1` → `Eybalin`), 6 trailing commas, 7 doubled spaces. No linkage
   changes — `paper_authors` joins on `author_id`. Prior values archived in
@@ -111,9 +119,12 @@ prior releases are never modified or removed.
   `Zuraini J.@.O.` (Malaysian alias convention, confirmed at Crossref).
   Census: `qc/authors/code/02_name_quality.py`.
 
-## Versions
+| Archive | Contents |
+|---|---|
+| `swrd-database-csv-v1.4.zip` | As v1.3, with 143 author-name strings repaired and the new `swrd_author_name_enrichment.csv` |
+| `sswr-database-csv-v1.4.zip` | Unchanged from v1.0 |
 
-### v1.3 — August 2026 (current)
+### v1.3 — August 2026
 
 **Journal attribution: the five remaining ISSN-backed clusters.** 1,517 articles
 moved to the journal their DOI's registry record names. No article is added,
