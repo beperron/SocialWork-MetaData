@@ -19,6 +19,11 @@ prior releases are never modified or removed.
    with notes listing the changes and closing the underlying issues.
 4. Update the version badge in `index.html` (Download section), the
    "Current data release" line in `README.md`, and add an entry below.
+5. Re-verify every count `llms.txt` asserts against the live database, then
+   regenerate the mirror with `python3 tools_make_llms_html.py`. This step
+   exists because the file's DOI-defect paragraph survived three releases
+   stale (still describing 3,556 malformed rows two releases after v1.1
+   repaired them) and its `paper_authors` count survived two.
 
 ## Applied to the live database, not yet released
 
