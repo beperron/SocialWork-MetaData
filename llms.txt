@@ -1,4 +1,4 @@
-# Social Work Meta-Data Project — Agent Connection Guide
+# Social Work Meta-Data Project — Agent Connection Guide (400+ lines, ends "END OF GUIDE"; anything shorter is a summary — refetch raw)
 
 This one file is everything an AI assistant needs to query the project's two
 hosted research databases. Plain HTTPS, public read-only key, no account, no
@@ -152,10 +152,13 @@ exclude them from trend claims and say so.
 Author records: 164,549 `swrd.authors` rows and 234,010 `swrd.paper_authors`
 links (204,493 of them on 1989+ papers). CRITICAL: author names are stored
 exactly as published, with NO disambiguation — never report unique-author
-counts from SWRD as fact; caveat them.
+counts from SWRD as fact; caveat them. The same printed string also occupies
+many ids (164,549 id rows vs 129,605 distinct name strings), so neither
+`count(distinct name)` nor grouping by `author_id` yields person-level numbers
+— aggregate by name string when you must, and caveat the result.
 
 `swrd.author_name_enrichment` adds a DERIVED fuller name for 26,313
-initials-only rows ('THYER, BA' -> 'Thyer, Bruce A.'; evidence: Crossref on
+initials-only rows ('SHERIDAN, MS' -> 'Sheridan, Mary S.', author_id 3; evidence: Crossref on
 the author's own papers, unanimous across every checkable paper; audit any
 row via its `evidence_dois`). It is an annotation, not a correction and NOT
 disambiguation: `authors.name` is unchanged, two ids sharing a `full_name`
@@ -240,7 +243,11 @@ high `rank` does not certify relevance the way a semantic `similarity` band
 does, so "the top N" always needs abstracts read before it is reported as
 on-topic. Expect little or no overlap between phrasings — on some topics
 different vocabulary returns entirely disjoint result sets, which is the
-argument for running several phrasings rather than trusting one. When unioning results from several
+argument for running several phrasings rather than trusting one. Search output also
+contains the double-indexed articles described above under two DIFFERENT ids — e.g.
+`search_papers_keyword('suicide', 5)` returns the same 2022 article at two ranks (ids
+120276 and 99511, as of v1.4), so dedupe any top-N you report on normalized
+title-within-year, not on id. When unioning results from several
 phrasings, dedupe by `id` and note which phrasing(s) found each record; to
 present a merged top-N, order by the primary phrasing's ranking and annotate
 which rephrasings also matched each item.
@@ -394,7 +401,12 @@ Troubleshooting: any error naming `public.` (`could not find the table
 header is missing; add `Content-Profile: swrd` on POST or `Accept-Profile` on
 GET. A `401 No API key found` on a URL you opened in a browser or fetch tool
 → this is a POST API, not a page; see the section above. `relation "papers" does not exist` → schema-qualify
-(`swrd.papers` / `sswr.papers`). `permission denied` → you attempted a write.
+(`swrd.papers` / `sswr.papers`).
+A `400` with `42601` "syntax error" on SQL that looks valid → check whether it
+is a write (`update`/`insert`/`delete`/`drop`): `run_sql` only parses SELECT, so
+writes fail as syntax errors, not "permission denied"; direct table writes via
+`/rest/v1/<table>` are rejected by row-level security (`42501`). Read-only
+either way.
 Exactly 1,000 rows → you hit the per-call cap; paginate or aggregate.
 
 ## Citations to report when the user publishes with these data

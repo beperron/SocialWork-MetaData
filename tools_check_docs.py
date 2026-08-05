@@ -78,6 +78,11 @@ CLAIMS = [
      "select count(*) from swrd.author_affiliations", 113646),
     ("| `swrd.author_name_enrichment` | 26,313 |",
      "select count(*) from swrd.author_name_enrichment", 26313),
+    ("129,605 distinct name strings",
+     "select count(distinct name) from swrd.authors", 129605),
+    ("'SHERIDAN, MS' -> 'Sheridan, Mary S.', author_id 3",
+     "select count(*) from swrd.author_name_enrichment "
+     "where author_id = 3 and full_name = 'Sheridan, Mary S.'", 1),
 ]
 
 
@@ -104,6 +109,18 @@ def main():
             failures += 1
         else:
             print(f"  ok    {label:<52} = {live:,}")
+
+    # anti-summarization tripwires: the guide must end with its sentinel and be
+    # long enough that a paraphrase is detectable by its own stated bound
+    lines = txt.count("\n") + 1
+    if not txt.rstrip().endswith("END OF GUIDE"):
+        print('  FAIL  llms.txt does not end with "END OF GUIDE"')
+        failures += 1
+    elif lines < 400:
+        print(f"  FAIL  llms.txt is {lines} lines; the title promises 400+")
+        failures += 1
+    else:
+        print(f"  ok    tripwires intact ({lines} lines, sentinel present)")
 
     # the mirror must embed the current text, HTML-escaped exactly the way
     # tools_make_llms_html.py writes it
